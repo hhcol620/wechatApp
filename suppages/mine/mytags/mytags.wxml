@@ -1,0 +1,10 @@
+<!-- 这个标签选择页 顶部使用一个tab页显示已关注 和所有的标签 -->
+
+<van-tabs active="{{ active }}" bind:change="onChange" swipe-threshold = '2' color="#2ecc71">
+  <van-tab title="已关注标签">
+    <selectTags></selectTags>
+  </van-tab>
+  <van-tab title="所有标签">
+    <selectTags></selectTags>
+  </van-tab>
+</van-tabs>

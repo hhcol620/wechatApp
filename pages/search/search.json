@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "SearchSelect":"../../components/SearchSelect/SearchSelect",
+    "ForumList":"../../components/forumList/forumList",
+    "StoreList":"../../components/storeList/storeList"
+  }
+}

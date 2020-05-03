@@ -1,0 +1,65 @@
+page{
+  background-color: #f6f6f6;
+}
+
+.sticky {
+  background-color: #fff;
+  height: 100rpx;
+  position: fixed;
+  width: 100vw;
+  padding: 0 20rpx;
+  >view{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    line-height: 100rpx;
+    font-weight: 600;
+    color: #4d4d4d;
+    font-style: normal;
+  }
+}
+// 内容区域
+.container{
+  padding-top: 100rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  view.item_b {
+    view.time_title {
+      margin-left: 6rpx;
+      font-size: 22rpx;
+      line-height: 60rpx;
+      font-weight: 500;
+      color: #666;
+      font-style: normal;
+      height: 60rpx;
+    }
+  
+    view.content_b {
+      display: flex;
+      flex-wrap: wrap;
+      view.item {
+        margin: 6rpx;
+        background-color: #fff;
+        view.image {
+          height: 240rpx;
+          border-radius: 4rpx;
+          image {
+            width: calc(~"((100vw - 40rpx) / 3) - 12rpx");
+            height: 240rpx;
+            border-radius: 4rpx;
+          }
+        }
+  
+        view.price {
+          font-size: 28rpx;
+          line-height: 60rpx;
+          font-weight: 600;
+          font-style: normal;
+          color: var(--iconALIColor);
+          height: 60rpx;
+        }
+      }
+    }
+  }
+}

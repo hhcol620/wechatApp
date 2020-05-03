@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "errandDetail":"/components/errand_detail/errand_detail"
+  }
+}

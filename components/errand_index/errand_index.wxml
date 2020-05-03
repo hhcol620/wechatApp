@@ -1,0 +1,78 @@
+<view class="container">
+  <view class="item">
+    <view class="head">
+      <view class="creatTime">下单时间: 2020-10-21 14:18:00</view>
+      <view class="countDown">订单自动关闭: <van-count-down  time="{{ time }}"
+      format="HH 时 mm 分 ss 秒"/></view>
+    </view>
+    <view class="main">
+      <view class="desc">
+        <view class="goodsDesc">物品描述: 一双鞋子</view>
+        <view class="emit">起始地点: 快递柜</view>
+        <view class="receive">收货地点: 23号楼922宿舍</view>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="viewDetail">
+        <van-button round type="primary" size="mini" bind:click="To_errand_detail">查看详情</van-button>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="head">
+      <view class="creatTime">下单时间: 2020-10-21 14:18:00</view>
+      <view class="countDown">订单自动关闭: <van-count-down  time="{{ time }}"
+      format="HH 时 mm 分 ss 秒"/></view>
+    </view>
+    <view class="main">
+      <view class="desc">
+        <view class="goodsDesc">物品描述: 一双鞋子</view>
+        <view class="emit">起始地点: 快递柜</view>
+        <view class="receive">收货地点: 23号楼922宿舍</view>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="viewDetail">
+        <van-button round type="primary" size="mini">查看详情</van-button>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="head">
+      <view class="creatTime">下单时间: 2020-10-21 14:18:00</view>
+      <view class="countDown">订单自动关闭: <van-count-down  time="{{ time }}"
+      format="HH 时 mm 分 ss 秒"/></view>
+    </view>
+    <view class="main">
+      <view class="desc">
+        <view class="goodsDesc">物品描述: 一双鞋子</view>
+        <view class="emit">起始地点: 快递柜</view>
+        <view class="receive">收货地点: 23号楼922宿舍</view>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="viewDetail">
+        <van-button round type="primary" size="mini">查看详情</van-button>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="head">
+      <view class="creatTime">下单时间: 2020-10-21 14:18:00</view>
+      <view class="countDown">订单自动关闭: <van-count-down  time="{{ time }}"
+      format="HH 时 mm 分 ss 秒"/></view>
+    </view>
+    <view class="main">
+      <view class="desc">
+        <view class="goodsDesc">物品描述: 一双鞋子</view>
+        <view class="emit">起始地点: 快递柜</view>
+        <view class="receive">收货地点: 23号楼922宿舍</view>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="viewDetail">
+        <van-button round type="primary" size="mini">查看详情</van-button>
+      </view>
+    </view>
+  </view>
+</view>

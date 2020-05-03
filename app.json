@@ -1,14 +1,79 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/search/search",
+    "pages/service/service",
+    "pages/mine/mine",
+    "pages/register/register",
+    "pages/login/login" 
+  ],
+  "subPackages": [ 
+    { 
+      "root": "suppages", 
+      "name":"store",
+      "pages": [
+        "store/commodity/commodity",
+        "store/store_index/store_index",
+        "store/creat_order/creat_order",
+        "store/payment/payment",
+        "store/lea_Message_detail/lea_Message_detail",
+        "errand/errand_index/errand_index",
+        "errand/errand_detail/errand_detail",
+        "release/release_product/release_product",
+        "release/release_demand/release_demand",
+        "release/errand/errand",
+        "public_service/public_service_index/public_service_index",
+        "public_service/public_service_detail/public_service_detail",
+        "mine/browsing_history/browsing_history",
+        "mine/inform/inform",
+        "mine/reply_to_mine/reply_to_mine",
+        "mine/collect/collect",
+        "mine/mytags/mytags",
+        "mine/my_info/my_info",
+        "mine/real_name/real_name",
+        "mine/store_orders/store_orders",
+        "mine/store_release_product/store_release_product",
+        "mine/store_demand/store_demand",
+        "mine/store_leave_message/store_leave_message",
+        "mine/store_evaluate/store_evaluate",
+        "mine/errand_completing_orders/errand_completing_orders",
+        "mine/errand_completed_orders/errand_completed_orders"
+      ]
+    }
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#2ecc71",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white" 
   },
-  "style": "v2",
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#2ecc71",
+    "backgroundColor": "#fefefe",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./icons/icon_font_img/shouye.png",
+        "selectedIconPath": "./icons/icon_font_img/shouye-select.png"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "服务",
+        "iconPath": "./icons/icon_font_img/fenlei.png",
+        "selectedIconPath": "./icons/icon_font_img/fenlei-select.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./icons/icon_font_img/wode.png",
+        "selectedIconPath": "./icons/icon_font_img/wode-select.png"
+      }
+    ]
+  },
+  
   "sitemapLocation": "sitemap.json"
 }

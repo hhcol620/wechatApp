@@ -1,0 +1,93 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container {
+  padding: 20rpx;
+  background-color: #fff;
+  padding-bottom: 100rpx;
+}
+view.container view.sponsor_desc view.tip,
+view.container view.activity_desc view.tip {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+}
+view.container view.sponsor_desc view.desc,
+view.container view.activity_desc view.desc {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+view.container view.materials view.title {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+}
+view.container view.materials view.images view.item {
+  margin-top: 10rpx;
+}
+view.container view.materials view.images view.item image {
+  width: calc(100vw - 40rpx);
+  border-radius: 6rpx;
+}
+view.container view.participators {
+  margin-top: 20rpx;
+}
+view.container view.participators .title {
+  font-style: normal;
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 500;
+  line-height: 50rpx;
+  margin-bottom: 10rpx;
+}
+view.container view.participators .item_row {
+  width: calc(100vw - 40rpx);
+  border-top: 1rpx solid #999;
+  box-sizing: border-box;
+  display: flex;
+}
+view.container view.participators .item_row .item_col {
+  border-left: 1rpx solid #999;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+view.container view.participators .item_row .item_col:last-child {
+  border-right: 1rpx solid #999;
+}
+view.container view.participators .item_row .item_col:nth-child(1) {
+  width: 10%;
+}
+view.container view.participators .item_row .item_col:nth-child(2) {
+  width: 30%;
+}
+view.container view.participators .item_row .item_col:nth-child(3) {
+  width: 45%;
+}
+view.container view.participators .item_row .item_col:nth-child(4) {
+  width: 15%;
+}
+view.container view.participators .item_row:last-child {
+  border-bottom: 1rpx solid #999;
+}
+.footerFixed {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+}
+.footerFixed .van-goods-action {
+  height: 100rpx;
+  background-color: #fff;
+}

@@ -1,0 +1,38 @@
+page {
+  background-color: #F5F5F5;
+}
+.plate {
+  margin-top: 20rpx;
+  background-color: #fff;
+  width: 100%;
+  padding: 0 20rpx;
+}
+.plate .title {
+  font-size: 36rpx;
+  line-height: 100rpx;
+  color: #4d4d4d;
+  font-weight: 800;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+.plate .box {
+  padding-top: 10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.plate .box .left,
+.plate .box .right {
+  width: 50%;
+  padding: 0 5rpx;
+}
+.plate .box .left .item,
+.plate .box .right .item {
+  margin: 10rpx 0;
+  height: 300rpx;
+  background-color: #F5F5F5;
+}
+.plate .box .left .itemL,
+.plate .box .right .itemL {
+  margin: 10rpx 0;
+  height: 610rpx;
+  background-color: #F5F5F5;
+}

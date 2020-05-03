@@ -1,0 +1,50 @@
+page {
+  background-color: #f6f6f6;
+}
+.item {
+  margin: 40rpx 30rpx;
+}
+.item .time {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #fefefe;
+  text-align: center;
+}
+.item .time text {
+  background-color: #b1b1b1;
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+}
+.item .content {
+  background-color: #fff;
+  min-height: 300rpx;
+  border-radius: 4rpx;
+  padding: 30rpx;
+  margin-top: 20rpx;
+}
+.item .content .title {
+  font-size: 36rpx;
+  line-height: 50rpx;
+  font-weight: 600;
+  color: #4d4d4d;
+  font-style: normal;
+}
+.item .content .desc {
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  font-weight: 500;
+  color: #4d4d4d;
+  font-style: normal;
+}
+.item .content .more {
+  height: 60rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: var(--iconPETColor);
+  border-top: 1rpx solid var(--borderColor);
+  margin-top: 30rpx;
+}

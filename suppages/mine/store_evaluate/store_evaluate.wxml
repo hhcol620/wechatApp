@@ -1,0 +1,76 @@
+<!-- 这是我的评价页面 每一条数据上半部分应该是我评论的内容 下半部分是商品的一个简介 和 卖家的信息 -->
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <view class="left">
+        <view class="headImg">
+          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="nickName">
+          张三李四
+        </view>
+      </view>
+      <view class="right">
+        <view class="more" bind:tap="more_btn">
+          <text class="iconfont icon-more"></text>
+        </view>
+      </view>
+    </view>
+    <!-- 评价的信息 -->
+    <view class="content">
+      袜子感觉还是不错的,刚试了一下,没啥毛病...
+    </view>
+    <!-- 商品的信息 -->
+    <view class="commdity_desc">
+      <view class="left mainImage">
+          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="right desc_price">
+        <view class="desc">高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p </view>
+        <view class="price">￥ 998</view>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="header">
+      <view class="left">
+        <view class="headImg">
+          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="nickName">
+          张三李四
+        </view>
+      </view>
+      <view class="right">
+        <view class="more" bind:tap="more_btn">
+          <text class="iconfont icon-more"></text>
+        </view>
+      </view>
+    </view>
+    <!-- 评价的信息 -->
+    <view class="content">
+      袜子感觉还是不错的,刚试了一下,没啥毛病...
+    </view>
+    <!-- 商品的信息 -->
+    <view class="commdity_desc">
+      <view class="left mainImage">
+          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="right desc_price">
+        <view class="desc">高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p </view>
+        <view class="price">￥ 998</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 遮罩弹框提示用户   -->
+<van-overlay show="{{ isShow }}" bind:click="onClickHide">
+  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
+    <view class="block">
+      <!-- 删除评价-->
+      <view class="delete_evaluate item" bind:tap="delete_evaluate">删除评价</view>
+    </view>
+  </view>
+</van-overlay>

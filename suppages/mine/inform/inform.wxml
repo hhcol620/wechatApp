@@ -1,0 +1,42 @@
+<view class="container">
+  <view class="item">
+    <view class="time">
+      <text class="" selectable="false" space="false" decode="false">2020年03月29日 21:42</text>
+    </view>
+    <view class="content">
+      <view class="title">感谢您参与了红十字组织的奉献爱心的活动</view>
+      <view class="desc">快来领取您的奖励吧</view>
+      <view class="more">查看更多</view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="time">
+      <text class="" selectable="false" space="false" decode="false">2020年03月29日 21:42</text>
+    </view>
+    <view class="content">
+      <view class="title">感谢您参与了红十字组织的奉献爱心的活动</view>
+      <view class="desc">快来领取您的奖励吧</view>
+      <view class="more">查看更多</view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="time">
+      <text class="" selectable="false" space="false" decode="false">2020年03月29日 21:42</text>
+    </view>
+    <view class="content">
+      <view class="title">感谢您参与了红十字组织的奉献爱心的活动</view>
+      <view class="desc">快来领取您的奖励吧</view>
+      <view class="more">查看更多</view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="time">
+      <text class="" selectable="false" space="false" decode="false">2020年03月29日 21:42</text>
+    </view>
+    <view class="content">
+      <view class="title">感谢您参与了红十字组织的奉献爱心的活动</view>
+      <view class="desc">快来领取您的奖励吧</view>
+      <view class="more">查看更多</view>
+    </view>
+  </view>
+</view>

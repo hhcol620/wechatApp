@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="item">
+    <view class="title">头像</view>
+    <!-- 点击用户头像的这个图片区域 -->
+    <!-- 调用小程序中内置的选择图片api 获取到图片路径的数组 把图片路径存到data变量中 页面就可以根据图片数组 进行循环显示 -->
+    <view class="headImg" bind:tap="handleChooseImg">
+      <image class="" src="{{chooseImgs[0]}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+  </view>
+  <view class="cellgroup">
+    <van-cell-group>
+      <van-field value="{{ username3 }}" label="用户名" placeholder="请输入用户名" input-align="right" />
+    
+      <van-field value="{{ username3 }}" label="学校" placeholder="请输入所在学校" input-align="right" />
+    
+      <van-field value="{{ username3 }}" label="学院名" placeholder="请输入所在学院" input-align="right" />
+    
+      <van-field value="{{ username3 }}" label="简介" placeholder="个人介绍" input-align="right" />
+    </van-cell-group>
+  </view>
+</view>

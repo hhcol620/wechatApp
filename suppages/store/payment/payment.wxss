@@ -1,0 +1,75 @@
+page {
+  background-color: #4d4d4d;
+}
+.alipay {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alipay .card {
+  height: 90vh;
+  width: 80vw;
+  border-radius: 10rpx;
+  background-color: #fff;
+  position: relative;
+}
+.alipay .card .qrcode {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 100rpx;
+}
+.alipay .card .qrcode .scan_desc_box {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: #666;
+  font-style: normal;
+  font-weight: 500;
+  margin-top: 20rpx;
+}
+.alipay .card .scan_desc {
+  border-bottom: 1rpx solid var(--borderColor);
+}
+.alipay .card .desc {
+  margin-top: 10rpx;
+  padding: 0 40rpx;
+}
+.alipay .card .desc .title {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  font-weight: 600;
+  font-style: normal;
+  color: #4d4d4d;
+}
+.alipay .card .desc .item {
+  font-size: 26rpx;
+  line-height: 40rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #666;
+}
+.alipay .card:before {
+  content: " ";
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  z-index: 999;
+  top: 59%;
+  left: 0;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  background-color: #4d4d4d;
+}
+.alipay .card:after {
+  content: " ";
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  z-index: 999;
+  top: 59%;
+  left: 100%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  background-color: #4d4d4d;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "SearchInput" : "../../components/SearchInput/SearchInput",
+    "Swiper_num":"/components/Swiper_num/Swiper_num"
+  }
+}

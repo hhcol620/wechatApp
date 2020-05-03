@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "errand_completed_orders_release":"/components/errand_completed_orders_release/errand_completed_orders_release",
+    "errand_completed_orders_receive":"/components/errand_completed_orders_receive/errand_completed_orders_receive"
+
+  },
+  "navigationBarTitleText": "已完成订单"
+}

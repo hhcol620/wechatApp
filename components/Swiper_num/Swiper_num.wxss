@@ -1,0 +1,23 @@
+.swiper_box {
+  position: relative;
+}
+.swiper_box .index_swiper swiper {
+  width: 750rpx;
+  height: 340rpx;
+}
+.swiper_box .index_swiper swiper image {
+  width: 100%;
+}
+.swiper_box .dot {
+  height: 40rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 30rpx;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  width: 80rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+}

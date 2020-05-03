@@ -1,0 +1,28 @@
+<!-- 自己发布的应该有一个发布的时间   -->
+<!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
+<!-- 订单的简略信息 物品描述 起始地点 收货地点 价格 -->
+
+<!-- 查看详情 这个使用弹框 跑腿人信息展示出来 -->
+
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <!-- 下单时间 -->
+      <view class="creatTime">接单时间:2020-09-11 19:00:00</view>
+      <!-- 交易类型 订单是否完成 -->
+      <view class="transactionType">交易完成</view>
+    </view>
+    <view class="orderId">订单编号: 3333333333333</view>
+    <view class="main">
+      <view class="errand_desc">
+        <view class="things_desc">物品描述: 一个快递 大概2kg</view>
+        <view class="fromAddress">起始地址: 内蒙古科技大学逸夫楼d312</view>
+        <view class="toAddress">收货地址: 内蒙古科技大学23号楼922宿舍</view>
+      </view>
+      <!-- 单子信息 -->
+      <view class="price">悬赏价格: ￥ 2.0</view>
+      <!-- 发布人信息 -->
+      <view class="receiverMessage">发布人手机号: 177777777</view>
+    </view>
+  </view>
+</view>

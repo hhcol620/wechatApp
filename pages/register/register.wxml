@@ -1,0 +1,47 @@
+<!-- 这里需要实现登陆和邮箱验证码 -->
+
+<view class="container">
+<!-- 背景 -->
+  <view class="bg">
+    <view class="first item"></view>
+    <view class="second item"></view>
+    <view class="three item"></view>
+  </view>
+  <view class="card">
+    <view class="title">注册</view>
+    <view class="input_box">
+      <view class="item">
+        <view class="leftdesc">用户名</view>
+        <view class="input">
+           <input class="weui-input" auto-focus placeholder="请输入用户名"/>
+        </view>
+      </view>
+      <view class="item">
+        <view class="leftdesc">密码</view>
+        <view class="input">
+           <input class="weui-input" placeholder="请输入密码"/>
+        </view>
+      </view>
+      <view class="item">
+        <view class="leftdesc">密码</view>
+        <view class="input">
+           <input class="weui-input" placeholder="请再次输入密码"/>
+        </view>
+      </view>
+      <view class="item">
+        <view class="leftdesc">邮箱</view>
+        <view class="input">
+           <input class="weui-input" auto-focus placeholder="请输入邮箱"/>
+        </view>
+      </view>
+      <view class="item">
+        <view class="leftdesc">验证码</view>
+        <view class="input code">
+           <input class="weui-input" placeholder="验证码"/>
+        </view>
+        <view class="right">获取验证码</view>
+      </view>
+    </view>
+    <view class="submit_btn">注册</view>
+  </view>
+</view>

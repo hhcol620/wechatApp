@@ -1,0 +1,58 @@
+<!-- 我卖出的订单 -->
+<view class="container">
+  <view class="item">
+     <view class="header">
+      <view class="headImg">
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="nickName">kchuj2020</view>
+      </view>
+      <view class="orders_desc">交易成功</view>
+    </view>
+    <view class="main">
+      <view class="mainImg">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31c399d55.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="commodity_desc">
+        魅族手机  99新  显示器支架  显示器
+        魅族手机  99新  显示器支架  显示器
+        魅族手机  99新  显示器支架  显示器
+        魅族手机  99新  显示器支架  显示器
+        魅族手机  99新  显示器支架  显示器
+      </view>
+    </view>
+    <view class="footer">
+      <!-- 联系 -->
+      <view class="contact_buyer" bind:tap="contact_buyer">
+        <van-icon name="chat-o" size="1.6em" color="#4d4d4d" />
+        联系买家
+      </view>
+      <view class="right">
+        <!-- 查看评价 -->
+        <view class="evaluation">
+          <van-button type="default" round size="small" bind:click="review_evaluation">
+            查看评价
+          </van-button>
+        </view>
+        <!-- 更多 点击这个可以打开一个弹框 -->
+        <view class="more" bind:tap="more_btn">
+          <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 遮罩弹框提示用户  显示内容 选择更多  查看钱款 查看物流 -->
+<van-overlay show="{{ isShow }}" bind:click="onClickHide">
+  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
+    <view class="block">
+      <!-- 查看买家信息 -->
+      <view class="buyer_detail item" bind:tap="buyer_detail">查看买家信息</view>
+      <!-- 查看物流 -->
+      <view class="review_logistics item" bind:tap="review_logistics">查看物流</view>
+      <!-- 查看订单信息 -->
+      <view class="order_detail item" bind:tap="order_detail">查看订单信息</view>
+      <!-- 查看钱款去向 这个可以使用弹框告诉用户 -->
+      <view class="where_monery item" bind:tap="where_monery">查看钱款去向</view>
+    </view>
+  </view>
+</van-overlay>

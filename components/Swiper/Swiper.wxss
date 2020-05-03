@@ -1,0 +1,46 @@
+view.container .swiper {
+  width: 100vw;
+  height: calc(100vw/(408/250));
+  border-radius: 12rpx;
+}
+view.container .swiper .swiperItem {
+  width: 100%;
+  border-radius: 12rpx;
+}
+view.container .swiper .swiperItem image {
+  width: 100%;
+}
+swiper-item.swiperItem image {
+  transition: all 0.2s linear;
+}
+.side image {
+  padding: 20rpx;
+  border-radius: 80rpx;
+}
+/*用来包裹所有的小圆点 */
+.dots {
+  width: 156rpx;
+  height: 36rpx;
+  flex-direction: row;
+  position: absolute;
+  left: 320rpx;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+/*未选中时的小圆点样式 */
+.dot {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background-color: white;
+  transition: all 0.2s ease-in;
+}
+/*选中以后的小圆点样式 */
+.active {
+  width: 10rpx;
+  padding: 0 20rpx;
+  height: 10rpx;
+  background-color: coral;
+}
+/* 默认指示点的样式 */

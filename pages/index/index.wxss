@@ -1,21 +1,62 @@
-/**index.wxss**/
-.userinfo {
+.index_swiper swiper {
+  width: 750rpx;
+  height: 340rpx;
+}
+.index_swiper swiper image {
+  width: 100%;
+}
+view.submenu {
+  margin-top: 30rpx;
+}
+view.submenu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+view.submenu ul li {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  list-style: none;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+view.submenu ul li view.icon {
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
+  background-color: var(--iconALIColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+view.submenu ul li view.icon text {
+  text-align: center;
+  color: #fff;
 }
-
-.usermotto {
-  margin-top: 200px;
+view.submenu ul li view.text text {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 26rpx;
+  text-align: center;
+  color: #333;
+}
+view.submenu ul li:nth-child(1) view.icon {
+  background-color: var(--iconALIColor);
+}
+view.submenu ul li:nth-child(2) view.icon {
+  background-color: var(--iconORAColor);
+}
+view.submenu ul li:nth-child(3) view.icon {
+  background-color: var(--iconAMEColor);
+}
+view.submenu ul li:nth-child(4) view.icon {
+  background-color: var(--iconPETColor);
+}
+view.submenu ul li:nth-child(5) view.icon {
+  background-color: var(--iconTURColor);
+}
+view.palte {
+  margin-top: 30rpx;
 }

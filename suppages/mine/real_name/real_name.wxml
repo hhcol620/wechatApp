@@ -1,0 +1,57 @@
+<!-- 这是 实名认证页面  如果用户已经实名认证 提示用户已经实名 否则进入实名页面 -->
+<!-- 未实名 -->
+<view class="noreal" wx:if="{{isreal}}">
+  <view class="form">
+    <van-cell-group>
+      <van-field value="{{ username3 }}" label="姓名:" placeholder="请填写姓名" input-align="right" />
+      <van-field value="{{ username3 }}" label="学校:" placeholder="请输入学校" input-align="right" />
+      <van-field value="{{ username3 }}" label="学院:" placeholder="请输入学院" input-align="right" />
+      <van-field value="{{ username3 }}" label="学号:" placeholder="请输入学号" input-align="right" />
+    </van-cell-group>
+  </view>
+  <!-- 上传证件区域 -->
+  <view class="uploadImg">
+    <!-- 上传一卡通正面 -->
+    <view class="left item">
+      <view class="upbox" bind:tap="upStudentCard">
+        <!-- 未上传之前图片 -->
+        <view wx:if="{{!studentCardImg}}" class="beforeUpload">
+          <view class="icon">
+            <view class="col"></view>
+            <view class="row"></view>
+          </view>
+        </view>  
+        <image class="" src="{{studentCardImg}}"  mode="aspectFill" lazy-load="false" binderror="" bindload="" wx:else></image>
+      </view>
+      <view class="title">一卡通正面</view>
+    </view>
+    <!-- 上传其他证件备用审核 -->
+    <view class="right item">
+      <view class="upbox" bind:tap="upOtherImg">
+        <!-- 未上传之前图片 -->
+        <view wx:if="{{!otherImg}}" class="beforeUpload">
+          <view class="icon">
+            <view class="col"></view>
+            <view class="row"></view>
+          </view>
+        </view>
+          
+        <image class="" src="{{otherImg}}"  mode="aspectFill" lazy-load="false" binderror="" bindload="" wx:else></image>
+      </view>
+      <view class="title">其他审核资料</view>
+    </view>
+  </view>
+  <!-- 提交按钮 -->
+  <view class="submit">
+    <van-button type="primary" size="middle" bind:tap="submitFunc">提交</van-button>
+  </view>
+</view>
+<!-- 已经实名认证 -->
+<view class="isreal" wx:if="{{!isreal}}">
+  <view class="desc animated swing">您已成功实名认证!!!</view>
+</view>
+
+<!-- 在页面内顶部的提示 失败提示 -->
+<van-notify id="van-notify" />
+<!-- 成功提示 -->
+<van-dialog id="van-dialog" />

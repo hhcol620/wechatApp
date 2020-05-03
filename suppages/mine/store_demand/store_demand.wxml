@@ -1,0 +1,49 @@
+<!-- 这是我发布的需求页 -->
+<view class="container">
+  <view class="item">
+    <view class="main">
+      <view class="left mainImg">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload="">  
+        </image>
+      </view>
+      <view class="right">
+        <view class="desc">数位板手绘板数位板手绘板数位板手绘板数位板手绘板数位板手绘板数位板手绘板</view>
+        <view class="price">￥ 999999</view>
+        <view class="other">
+          <text>留言0</text><text>浏览10</text><text >收藏998</text>
+        </view>
+      </view>
+    </view>
+    <view class="footer">
+      <view class="right">
+        <!-- 点击编辑 进入发布页面 -->
+        <view class="edit">
+          <van-button type="default" round size="small" bind:click="editFunc">
+            编辑
+          </van-button>
+        </view>
+        <!-- 更多 点击这个可以打开一个弹框 -->
+        <view class="more" bind:tap="more_btn">
+          <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottomBtn">
+  <view class="release_demand" bind:tap="release_demand">
+    <text class="iconfont icon-fabuxuqiu"></text>
+    发布需求
+  </view>
+</view>
+
+
+<!-- 遮罩弹框提示用户  显示内容 选择更多  查看钱款 查看物流 -->
+<van-overlay show="{{ isShow }}" bind:click="onClickHide">
+  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
+    <view class="block">
+      <!-- 删除需求 -->
+      <view class="delete_commodity item" bind:tap="delete_commodity">删除需求</view>
+    </view>
+  </view>
+</van-overlay>

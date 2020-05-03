@@ -1,0 +1,117 @@
+page {
+  background-color: #F8F8F8;
+}
+view.container {
+  position: relative;
+  margin-bottom: 360rpx;
+}
+view.container view.title {
+  height: 200rpx;
+  background-color: var(--themeColor);
+  text-align: center;
+}
+view.container view.title text {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+}
+view.container view.title text text.strong {
+  padding: 0 10rpx;
+  font-size: 46rpx;
+  font-weight: 600;
+}
+view.container view.swipers {
+  position: absolute;
+  top: 100rpx;
+  left: 0;
+}
+.pub_benefit {
+  padding-top: 50rpx;
+}
+.pub_benefit .title {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #333333;
+}
+.pub_benefit .page-section-spacing {
+  margin-top: 60rpx;
+}
+.pub_benefit .scroll-view_H {
+  white-space: nowrap;
+}
+.pub_benefit .scroll-view-item_H {
+  display: inline-block;
+  width: 65%;
+  height: 300rpx;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+}
+.pub_benefit .scroll-view-item_H .ben_tit {
+  display: flex;
+  justify-content: space-between;
+}
+.pub_benefit .scroll-view-item_H .ben_tit > text {
+  display: block;
+}
+.pub_benefit .scroll-view-item_H .ben_tit > text:nth-child(1) {
+  font-size: 26rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #333;
+}
+.pub_benefit .scroll-view-item_H .ben_contain {
+  display: flex;
+  justify-content: space-between;
+}
+.pub_benefit .scroll-view-item_H .ben_contain .ben_contain_img {
+  margin-top: 30rpx;
+  width: 160rpx;
+  height: 160rpx;
+}
+.pub_benefit .scroll-view-item_H .ben_contain .ben_contain_img image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 6rpx;
+}
+.pub_benefit .scroll-view-item_H .ben_contain .ben_contain_desc {
+  flex: 1;
+  padding: 20rpx;
+  color: #4d4d4d;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+.hidescrollBar::-webkit-scrollbar {
+  width: 0rpx;
+  height: 0rpx;
+  border-width: 0;
+  outline-width: 0;
+  color: transparent;
+}
+.hidescrollBar::-webkit-scrollbar-thumb {
+  width: 0rpx;
+  height: 0rpx;
+  border-width: 0;
+  outline-width: 0;
+  color: transparent;
+}
+.recommend {
+  padding-top: 30rpx;
+}
+.recommend .recommend_title {
+  margin-bottom: 20rpx;
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #333333;
+}

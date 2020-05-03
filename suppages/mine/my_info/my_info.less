@@ -1,0 +1,49 @@
+page {
+  background-color: #f6f6f6;
+}
+
+.container {
+  background-color: #fff;
+  box-shadow: 0 1rpx 6rpx #00000020;
+  .item {
+    margin: 0 30rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid var(--borderColor);
+    .title {
+      font-size: 26rpx;
+      line-height: 100rpx;
+      font-style: normal;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .headImg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      image {
+        height: 80rpx;
+        width: 80rpx;
+        border-radius: 50%;
+      }
+    }
+  }
+  .cellgroup {
+    // 输入表单高度 统一
+    .field-index--van-field.van-cell {
+      height: 100rpx;
+      display: flex;
+      align-items: center;
+      margin-right: 30rpx;
+    }
+    .van-cell{
+      
+    }
+    .van-cell::after{
+      margin-right: 30rpx;
+    }
+  }
+}
+

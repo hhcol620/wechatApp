@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-field": "/miniprogram_npm/vant-weapp/field/index"
+  },
+  "navigationBarTitleText":"我的信息"
+}

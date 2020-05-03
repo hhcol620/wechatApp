@@ -1,0 +1,47 @@
+view.container view.item {
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+}
+view.container view.item view.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  line-height: 46rpx;
+  font-weight: 500;
+  font-style: normal;
+}
+view.container view.item view.header view.right {
+  color: #ff3f34;
+}
+view.container view.item view.main view.content {
+  background-color: #f6f6f6;
+  padding: 20rpx;
+  font-weight: 500;
+  font-size: 26rpx;
+  line-height: 38rpx;
+  font-style: normal;
+  color: #4d4d4d;
+}
+view.container view.item view.main view.receiverMessage {
+  font-size: 28rpx;
+  line-height: 46rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #ff3f34;
+}
+view.container view.item view.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--borderColor);
+}
+view.container view.item view.footer view.left {
+  display: flex;
+}
+view.container view.item view.footer view.left view.contactReceiver {
+  margin-right: 20rpx;
+}

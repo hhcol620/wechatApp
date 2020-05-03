@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-slider": "/miniprogram_npm/vant-weapp/slider/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-uploader": "/miniprogram_npm/vant-weapp/uploader/index",
+    "Radio_self":"/components/Radio_self/Radio_self",
+    "Checkbox_self":"/components/Checkbox_self/Checkbox_self"
+  },
+  "navigationBarTitleText":"发布宝贝"
+}

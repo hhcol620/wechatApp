@@ -1,0 +1,36 @@
+<!-- 这是商城首页展示 -->
+<!-- 顶部搜索 -->
+<view class="search">
+  <SearchInput></SearchInput>
+</view>
+<!-- banner图区域 -->
+<view class="swiper_box">
+  <Swiper_num></Swiper_num>
+</view>
+<!-- 板块区域 -->
+<view class="plate">
+  <view class="title">校园专供</view>
+  <view class="box">
+    <view class="left">
+      <navigator class="" target="" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
+        <view class="item"></view>
+      </navigator>
+      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
+        <view class="item"></view>
+      </navigator>
+    </view>
+    <view class="right">
+      <view class="item"></view>
+      <view class="item"></view>
+    </view>
+  </view>
+  <view class="box">
+    <view class="left">
+      <view class="itemL"></view>
+    </view>
+    <view class="right">
+      <view class="item"></view>
+      <view class="item"></view>
+    </view>
+  </view>
+</view>

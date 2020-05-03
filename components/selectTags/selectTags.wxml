@@ -1,0 +1,55 @@
+<!-- 选择标签的组件 -->
+<view class="container">
+  <view class="item">
+    <view class="left">
+      <view class="title">IOS</view>
+      <view class="desc">
+        <text>1999人关注</text>
+      </view>
+    </view>
+    <view class="right">
+      <van-button plain hairline type="primary" size="small" wx:if="{{isConcern}}" bind:click="click_concern" class="top">+ 关注</van-button>
+      <van-button loading size="small" type="primary" loading-text="加载中..." class="bottom"/>
+      <van-button type="primary" size="small" wx:if="{{!isConcern}}" bind:click="click_noconcern" class="top">取消关注</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">
+      <view class="title">IOS</view>
+      <view class="desc">
+        <text>1999人关注</text>
+      </view>
+    </view>
+    <view class="right">
+      <van-button plain hairline type="primary" size="small" wx:if="{{isConcern}}" bind:click="click_concern" class="top">+ 关注</van-button>
+      <van-button loading size="small" type="primary" loading-text="加载中..." class="bottom"/>
+      <van-button type="primary" size="small" wx:if="{{!isConcern}}" bind:click="click_noconcern" class="top">取消关注</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">
+      <view class="title">IOS</view>
+      <view class="desc">
+        <text>1999人关注</text>
+      </view>
+    </view>
+    <view class="right">
+      <van-button plain hairline type="primary" size="small" wx:if="{{isConcern}}" bind:click="click_concern" class="top">+ 关注</van-button>
+      <van-button loading size="small" type="primary" loading-text="加载中..." class="bottom"/>
+      <van-button type="primary" size="small" wx:if="{{!isConcern}}" bind:click="click_noconcern" class="top">取消关注</van-button>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">
+      <view class="title">IOS</view>
+      <view class="desc">
+        <text>1999人关注</text>
+      </view>
+    </view>
+    <view class="right">
+      <van-button plain hairline type="primary" size="small" wx:if="{{isConcern}}" bind:click="click_concern" class="top">+ 关注</van-button>
+      <van-button loading size="small" type="primary" loading-text="加载中..." class="bottom"/>
+      <van-button type="primary" size="small" wx:if="{{!isConcern}}" bind:click="click_noconcern" class="top">取消关注</van-button>
+    </view>
+  </view>
+</view>

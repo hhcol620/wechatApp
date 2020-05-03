@@ -1,0 +1,145 @@
+/* 阿里字体图标 */
+page {
+  background-color: #f6f6f6;
+}
+
+view.container {
+  view.item {
+    margin: 20rpx;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+
+    view.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      view.headImg {
+        display: flex;
+
+        image {
+          height: 60rpx;
+          width: 60rpx;
+          border-radius: 50%;
+        }
+
+        .nickName {
+          font-size: 26rpx;
+          color: #333;
+          font-weight: 500;
+          line-height: 60rpx;
+          font-style: normal;
+          margin-left: 16rpx;
+        }
+      }
+
+      view.orders_desc {
+        font-size: 26rpx;
+        line-height: 60rpx;
+        font-weight: 500;
+        color: #ff3f34;
+        font-style: normal;
+      }
+    }
+
+    view.main {
+      margin-top: 20rpx;
+      display: flex;
+
+      view.mainImg {
+        image {
+          width: 160rpx;
+          height: 160rpx;
+          border-radius: 20rpx;
+        }
+      }
+
+      view.commodity_desc {
+        font-size: 26rpx;
+        font-weight: 500;
+        color: #333;
+        font-style: normal;
+        line-height: 38rpx;
+        margin-left: 20rpx;
+      }
+    }
+
+    view.footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20rpx;
+      padding-top: 20rpx;
+      border-top: 1rpx solid var(--borderColor);
+      height: 80rpx;
+
+      view.contact_buyer {
+        font-size: 28rpx;
+        line-height: 40rpx;
+        height: 40rpx;
+        color: #333;
+        font-style: normal;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+
+        van-icon {
+          margin-right: 14rpx;
+        }
+      }
+
+      view.right {
+        display: flex;
+        align-items: center;
+
+        view.evaluation {
+          margin-right: 16rpx;
+        }
+
+        view.more {
+          height: 40rpx;
+          display: flex;
+          align-items: center;
+          font-size: 40rpx;
+
+          .van-icon {
+            font-size: 40rpx;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// 遮罩里面的容器
+.overlay_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .block {
+    width: 360rpx;
+    background-color: #fff;
+    padding: 30rpx;
+    border-radius: 6rpx;
+    .item{
+      font-size: 28rpx;
+      line-height: 70rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+    .review_logistics{
+      
+    }
+    .order_detail{
+
+    }
+    .where_monery{
+
+    }
+  }
+}

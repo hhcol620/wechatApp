@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 顶部放一些发起方的一个简介 包括这个活动的简介 -->
+  <!-- 这是申请方的一些简介信息 -->
+  <view class="sponsor_desc">
+    <view class="tip">申请方:</view>
+    <view class="desc">内蒙古科技大学青年志愿者协会,1982年成立,多次参与献爱心活动</view>
+  </view>
+  <!-- 活动的描述 -->
+  <view class="activity_desc">
+    <view class="tip">活动主题:</view>
+    <view class="desc">内蒙古科技大学青年志愿者协会,1982年成立,多次参与献爱心活动</view>
+  </view>
+  <!-- 申请的材料信息 -->
+  <view class="materials">
+    <view class="title">申请材料</view>
+    <view class="images">
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+      </view>
+    </view>
+  </view>
+  <!-- 申请情况 如果成功下面这一块显示 否则不显示 -->
+  <!-- 公布一些参与者信息 -->
+  <view class="participators">
+    <view class="title">参与活动名单公布</view>
+    <!-- 这里弄一个表格 用户昵称 qq邮箱 金额 -->
+    <view class="item_row">
+      <view class="item_col">#</view>
+      <view class="item_col">用户昵称</view>
+      <view class="item_col">邮箱</view>
+      <view class="item_col">金额</view>
+    </view>
+    <view class="item_row">
+      <view class="item_col">1</view>
+      <view class="item_col">张三</view>
+      <view class="item_col">2838990077@qq.com</view>
+      <view class="item_col">12</view>
+    </view>
+    <view class="item_row">
+      <view class="item_col">1</view>
+      <view class="item_col">张三</view>
+      <view class="item_col">2838990077@qq.com</view>
+      <view class="item_col">12</view>
+    </view>
+  </view>
+</view>
+<view class="footerFixed">
+  <van-goods-action>
+    <van-goods-action-button color="#e84118" text="点赞支持 998" type="warning" />
+    <van-goods-action-button color="#9b59b6" text="保持中立 28" />
+    <van-goods-action-button color="#bdc3c7" text="不支持 00" />
+  </van-goods-action>
+</view>

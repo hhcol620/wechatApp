@@ -1,0 +1,93 @@
+view {
+  box-sizing: border-box;
+  outline: none;
+}
+view.container {
+  display: flex;
+  justify-content: center;
+}
+view.box {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+}
+view.box view.com-selectBox {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #666666;
+  height: 70rpx;
+  border-left: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  border-right: 1rpx solid #ccc;
+  border-top-left-radius: 40rpx;
+  border-bottom-left-radius: 40rpx;
+  background-color: #fff;
+}
+view.box view.com-selectBox view.com-sContent {
+  display: flex;
+  justify-content: space-between;
+  height: 70rpx;
+  padding-left: 30rpx;
+  padding-right: 20rpx;
+}
+view.box view.com-selectBox view.com-sContent view.com-sTxt text {
+  display: block;
+  height: 100%;
+  font-size: 24rpx;
+  line-height: 70rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+view.box view.com-selectBox view.com-sContent .image_box {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+view.box view.com-selectBox view.com-sContent .image_box image.com-sImg {
+  width: 20rpx;
+  height: 20rpx;
+}
+view.box view.com-selectBox view.com-sList {
+  position: absolute;
+  left: 0;
+  top: 70rpx;
+  box-shadow: 1rpx 2rpx 6rpx #bbb;
+  border-radius: 4rpx;
+  background-color: #fff;
+}
+view.box view.com-selectBox view.com-sList view.com-sItem {
+  height: 70rpx;
+  min-width: 180rpx;
+  padding: 0 20rpx;
+  line-height: 70rpx;
+  text-align: center;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+view.box view.com-search {
+  background-color: #fff;
+  flex: 8;
+  height: 70rpx;
+  border-right: 1rpx solid #ccc;
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  border-top-right-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
+  display: flex;
+  align-items: center;
+}
+view.box view.com-search input.searchInput {
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 40rpx;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  height: 39rpx;
+}

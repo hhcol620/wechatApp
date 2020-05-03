@@ -1,0 +1,23 @@
+<view class="notice">
+  <van-notice-bar mode="closeable" text="选择自己想要接的单子进行接单,跑腿赚钱啦...          选择自己想要接的单子进行接单,跑腿赚钱啦....">
+    <text slot="left-icon" class="iconfont icon-tongzhi1"></text>
+  </van-notice-bar>
+</view>
+<!-- tab横向滚动 -->
+<view class="tab">
+  <van-tabs color="#2ecc71" swipe-threshold="3">
+    <van-tab title="全部">
+      <Errand_index />
+    </van-tab>
+    <van-tab title="最新">最新</van-tab>
+    <van-tab title="价格">价格</van-tab>
+    <van-tab title="距离">距离</van-tab>
+    <van-tab title=""></van-tab>
+  </van-tabs>
+  <view class="placeOrderBtn" hover-class="none" hover-stop-propagation="false">
+    <text class="iconfont icon-fabuxuqiu"></text>
+    <view class="desc" hover-class="none" hover-stop-propagation="false">
+      发布
+    </view>
+  </view>
+</view>

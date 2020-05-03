@@ -1,0 +1,97 @@
+page{
+  background-color: #f6f6f6;
+}
+// 已经实名
+.isreal{
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .desc{
+    font-size: 30rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+    padding: 0 20rpx;
+    border-radius: 6rpx;
+    color: #fff;
+    background-color: var(--themeColor);
+  }
+}
+
+// 未实名
+.noreal{
+  position: relative;
+  height: 100vh;
+  view.uploadImg{
+    margin-top: 20rpx;
+    height: 340rpx;
+    padding: 0 30rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .item{
+      .upbox{
+        width: 45vw;
+        height: 240rpx;
+        box-sizing: border-box;
+        border: 2rpx dashed #999;
+        .beforeUpload{
+          .icon{
+            position: relative;
+            height: 240rpx;
+            .col{
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              width: 100rpx;
+              height: 10rpx;
+              background-color: #999;
+            }
+            .row{
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%,-50%);
+              width: 10rpx;
+              height: 100rpx;
+              background-color: #999;
+            }
+          }
+        }
+        image{
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .title{
+        margin-top: 10rpx;
+        line-height: 40rpx;
+        font-size: 26rxp;
+        color: #4d4d4d;
+        font-style: normal;
+        font-weight: 500;
+        text-align: center;
+      }
+    }
+  }
+  view.form{
+    background-color: #fff;
+    margin: 20rpx 0;
+    padding: 0 20rpx;
+    .van-cell::after{
+      margin-right: 30rpx;
+    }
+  }
+  .submit{
+    position: absolute;
+    bottom: 100rpx;
+    left: 30rpx;
+    button{
+      width: calc(~"100vw - 60rpx");
+    }
+  }
+}

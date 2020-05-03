@@ -1,0 +1,26 @@
+
+<!-- 支付宝支付 -->
+<view class="alipay" wx:if="{{pay_type == 2}}">
+  <!-- <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas> -->
+  <view class="card">
+    <view class="qrcode">
+      <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+      <view class="scan_desc_box">
+        支付宝扫一扫
+      </view>
+        
+    </view>
+    <view class="scan_desc">
+     
+    </view>
+    <view class="desc">
+      <view class="title">说明:</view>
+      <view class="item">1.付款之后回到小程序订单里面就能看到支付的订单了</view>
+      <view class="item">2.付款之后回到小程序订单里面就能看到支付的订单了</view>
+      <view class="item">3.付款之后回到小程序订单里面就能看到支付的订单了</view>
+    </view>
+  </view>
+    
+</view>
+
+  

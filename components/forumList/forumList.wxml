@@ -1,0 +1,103 @@
+<!-- forum  模块使用 列表行 表示一条数据 -->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+  <view class="" hover-class="none" hover-stop-propagation="false">
+  <ul>
+    <!-- 这个li表示一条数据  -->
+    <li>
+        <view class="header" hover-class="none" hover-stop-propagation="false">
+          <view class="meta-list">
+            <text class="item post">专栏</text>
+            <text class="item userName">周礼又少棠</text>
+            <text class="item creatTime">1月前</text>
+            <!-- 如果有多个tags  循环这一项 -->
+            <text class="item tags">前端</text>
+          </view>
+        </view>
+        <view class="main" hover-class="none" hover-stop-propagation="false">
+          <text class="articleTitle">2020前端春招经验分享,从面试小白到收割大厂offer2020前端春招经验分享,从面试小白到收割大厂offer</text>
+            
+        </view>
+        <view class="footer" hover-class="none" hover-stop-propagation="false">
+          <text class="item userName">CSDN学院</text>
+          <text class="item browseTimes">131次阅读</text>
+        </view>
+    </li>
+    <li>
+        <view class="header" hover-class="none" hover-stop-propagation="false">
+          <view class="meta-list">
+            <text class="item post">专栏</text>
+            <text class="item userName">周礼又少棠</text>
+            <text class="item creatTime">1月前</text>
+            <!-- 如果有多个tags  循环这一项 -->
+            <text class="item tags">前端</text>
+          </view>
+        </view>
+        <view class="main" hover-class="none" hover-stop-propagation="false">
+          <text class="articleTitle">2020前端春招经验分享,从面试小白到收割大厂offer2020前端春招经验分享,从面试小白到收割大厂offer</text>
+            
+        </view>
+        <view class="footer" hover-class="none" hover-stop-propagation="false">
+          <text class="item userName">CSDN学院</text>
+          <text class="item browseTimes">131次阅读</text>
+        </view>
+    </li>
+    <li>
+        <view class="header" hover-class="none" hover-stop-propagation="false">
+          <view class="meta-list">
+            <text class="item post">专栏</text>
+            <text class="item userName">周礼又少棠</text>
+            <text class="item creatTime">1月前</text>
+            <!-- 如果有多个tags  循环这一项 -->
+            <text class="item tags">前端</text>
+          </view>
+        </view>
+        <view class="main" hover-class="none" hover-stop-propagation="false">
+          <text class="articleTitle">2020前端春招经验分享,从面试小白到收割大厂offer2020前端春招经验分享,从面试小白到收割大厂offer</text>
+            
+        </view>
+        <view class="footer" hover-class="none" hover-stop-propagation="false">
+          <text class="item userName">CSDN学院</text>
+          <text class="item browseTimes">131次阅读</text>
+        </view>
+    </li>
+    <li>
+        <view class="header" hover-class="none" hover-stop-propagation="false">
+          <view class="meta-list">
+            <text class="item post">专栏</text>
+            <text class="item userName">周礼又少棠</text>
+            <text class="item creatTime">1月前</text>
+            <!-- 如果有多个tags  循环这一项 -->
+            <text class="item tags">前端</text>
+          </view>
+        </view>
+        <view class="main" hover-class="none" hover-stop-propagation="false">
+          <text class="articleTitle">2020前端春招经验分享,从面试小白到收割大厂offer2020前端春招经验分享,从面试小白到收割大厂offer</text>
+            
+        </view>
+        <view class="footer" hover-class="none" hover-stop-propagation="false">
+          <text class="item userName">CSDN学院</text>
+          <text class="item browseTimes">131次阅读</text>
+        </view>
+    </li>
+    <li>
+        <view class="header" hover-class="none" hover-stop-propagation="false">
+          <view class="meta-list">
+            <text class="item post">专栏</text>
+            <text class="item userName">周礼又少棠</text>
+            <text class="item creatTime">1月前</text>
+            <!-- 如果有多个tags  循环这一项 -->
+            <text class="item tags">前端</text>
+          </view>
+        </view>
+        <view class="main" hover-class="none" hover-stop-propagation="false">
+          <text class="articleTitle">2020前端春招经验分享,从面试小白到收割大厂offer2020前端春招经验分享,从面试小白到收割大厂offer</text>
+            
+        </view>
+        <view class="footer" hover-class="none" hover-stop-propagation="false">
+          <text class="item userName">CSDN学院</text>
+          <text class="item browseTimes">131次阅读</text>
+        </view>
+    </li>
+  </ul>
+  </view>
+</view>

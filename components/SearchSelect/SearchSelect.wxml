@@ -1,0 +1,25 @@
+<!-- components/SearchSelect/SearchSelect.wxml -->
+<!-- <text>components/SearchSelect/SearchSelect.wxml</text> -->
+<!-- 用这个组件的时候将数组传过来 -->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+  <view class="box">
+    <view class='com-selectBox'>
+      <view class='com-sContent' catchtap='selectToggle'>
+        <view class='com-sTxt'>
+          <text class="">{{label}}</text>
+        </view>
+        <view class="image_box">
+          <image src='../../icons/images/jiantou.png' class='com-sImg' mode="widthFix" animation="{{animationData}}"></image>
+        </view>
+      </view>
+      <view class='com-sList' wx:if="{{selectShow}}">
+        <view wx:for="{{propArray}}" data-index="{{index}}" wx:key='id' class='com-sItem' bindtap='setText'>
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+    <view class="com-search" hover-class="none" hover-stop-propagation="false">
+      <input class="searchInput" value="{{inputValue}}" type="text" placeholder="请输入关键词" placeholder-class="input-placeholder" maxlength="140" focus="true" bindconfirm="searchInput" bindinput="bInput"></input>
+    </view>
+  </view>
+</view>

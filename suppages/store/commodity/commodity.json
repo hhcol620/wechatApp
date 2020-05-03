@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-tag": "/miniprogram_npm/vant-weapp/tag/index",
+    "van-row": "/miniprogram_npm/vant-weapp/row/index",
+    "van-col": "/miniprogram_npm/vant-weapp/col/index",
+    "StoreList":"/components/storeList/storeList",
+    "van-goods-action": "/miniprogram_npm/vant-weapp/goods-action/index",
+    "van-goods-action-icon": "/miniprogram_npm/vant-weapp/goods-action-icon/index",
+    "van-goods-action-button": "/miniprogram_npm/vant-weapp/goods-action-button/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-transition": "/miniprogram_npm/vant-weapp/transition/index"
+  }
+}

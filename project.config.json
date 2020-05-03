@@ -4,19 +4,28 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"nodeModules": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
-	"appid": "wx501bf98254be3421",
+	"appid": "wxc7911b0a367c62b6",
 	"projectname": "wechatProject",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -33,13 +42,238 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "搜索页面",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务页面",
+					"pathName": "pages/service/service",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情",
+					"pathName": "suppages/store/commodity/commodity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城首页",
+					"pathName": "suppages/store/store_index/store_index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "留言详情",
+					"pathName": "suppages/store/lea_Message_detail/lea_Message_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "生成预订单",
+					"pathName": "suppages/store/creat_order/creat_order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "支付页面支付",
+					"pathName": "suppages/store/payment/payment",
+					"query": "radio=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跑腿帮首页",
+					"pathName": "suppages/errand/errand_index/errand_index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跑腿订单详情页",
+					"pathName": "suppages/errand/errand_detail/errand_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "浏览历史",
+					"pathName": "suppages/store/browsing_history/browsing_history",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息通知",
+					"pathName": "suppages/store/inform/inform",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "回复我的",
+					"pathName": "suppages/store/reply_to_mine/reply_to_mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "收藏",
+					"pathName": "suppages/store/collect/collect",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "标签页",
+					"pathName": "suppages/store/mytags/mytags",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的信息页",
+					"pathName": "suppages/store/my_info/my_info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "实名页面",
+					"pathName": "suppages/store/real_name/real_name",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商城中我的订单",
+					"pathName": "suppages/mine/store_orders/store_orders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的发布",
+					"pathName": "suppages/mine/store_release_product/store_release_product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我发布的需求",
+					"pathName": "suppages/mine/store_demand/store_demand",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的留言",
+					"pathName": "suppages/mine/store_leave_message/store_leave_message",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的评价",
+					"pathName": "suppages/mine/store_evaluate/store_evaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跑腿正在进行的订单",
+					"pathName": "suppages/mine/errand_completing_orders/errand_completing_orders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跑腿已完成订单",
+					"pathName": "suppages/mine/errand_completed_orders/errand_completed_orders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "发布需求页",
+					"pathName": "suppages/release/release_demand/release_demand",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布宝贝页",
+					"pathName": "suppages/release/release_product/release_product",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登陆页",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册页",
+					"pathName": "pages/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公益榜首页",
+					"pathName": "suppages/public_service/public_service_index/public_service_index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公益榜详情页",
+					"pathName": "suppages/public_service/public_service_detail/public_service_detail",
+					"scene": null
+				}
+			]
 		}
 	}
 }

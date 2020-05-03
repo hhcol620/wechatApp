@@ -1,0 +1,11 @@
+<!-- 加载loading组件 -->
+<view class="container">
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+  <view class="item"></view>
+</view>

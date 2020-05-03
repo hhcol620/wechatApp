@@ -1,0 +1,80 @@
+<view class="container">
+  <!-- 标题 -->
+  <view class="title">
+    <van-cell-group>
+      <van-field value="{{ value }}" placeholder="请输入标题" label="标题" border="{{ false }}" title-width="80rpx" />
+    </van-cell-group>
+  </view>
+  <!-- 描述 -->
+  <view class="desc">
+    <view class="tip">描述</view>
+    <view class="content_box">
+      <textarea show-confirm-bar="{{false}}" placeholder="请输入您的宝贝最全的描述"></textarea>
+    </view>
+  </view>
+  <!-- 选择主图 -->
+  <view class="mainImg">
+    <view class="tip">主图</view>
+    <!-- 底下放图标 上面放上传成功的图片 -->
+    <view class="mainImg_content">
+      <view class="icon">
+        <text class="iconfont icon-zhaopian"></text>
+      </view>
+      <view class="mainImage">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+    </view>
+  </view>
+  <!-- 选择附图 可以多张 -->
+  <view class="desc_images">
+    <view class="tip">附图</view>
+    <view class="desc_images_box">
+      <van-uploader file-list="{{ fileList }}" />
+    </view>
+  </view>
+  <!-- 价格 -->
+  <view class="price">
+    <view class="tip">价格</view>
+    <view class="price_content">
+      <input class="weui-number" type="number" placeholder="请输入您心仪的价格" />
+    </view>
+  </view>
+  <!-- 分类 -->
+  <view class="cate"></view>
+  <!-- 交易方式 -->
+  <view class="transactionWay">
+    <view class="tip">交易方式</view>
+    <view class="transactionWay_box">
+      <!-- 自定义单选框 -->
+      <Checkbox_self list="{{way_ridio_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+    </view>
+  </view>
+  <!-- 交易类型 -->
+  <view class="transactionType">
+    <view class="tip">交易类型</view>
+    <view class="transactionType_box">
+      <!-- 自定义单选框 -->
+      <Radio_self list="{{type_ridio_items}}" bind:handleItemChange="handleItemChange"></Radio_self>
+    </view>
+  </view>
+  <!-- 新旧程度 -->
+  <view class="degree">
+    <view class="tip">新旧程度</view>
+    <view class="degree_box">
+      <input class="weui-number" type="digit" placeholder="请输入宝贝的新旧程度" />
+    </view>
+  </view>
+  <!-- 让用户给自己的商品打上标签 tags -->
+  <view class="setTags">
+    <view class="tip">标签</view>
+    <view class="setTags_content">
+      <input class="weui-number" type="number" placeholder="请输入标签关键词 使用空格分开" />
+    </view>
+  </view>
+</view>
+<view class="submitBtn">
+  <van-button type="primary" size="normal">立即发布</van-button>
+</view>
+
+
+

@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "public_service_list":"/components/public_service_list/public_service_list"
+  },
+  "navigationBarTitleText":"公益审核"
+}

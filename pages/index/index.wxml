@@ -1,13 +1,84 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="" hover-class="none" hover-stop-propagation="false">
+  <!-- 首页 -->
+  <!-- 轮播图  start -->
+  <view class="index_swiper" hover-class="none" hover-stop-propagation="false">
+  <!-- 
+
+    swiper 标签存在默认的宽度和高度  100% * 150px 
+    image 标签也存在 默认的宽度和高度   320px * 240px
+
+    原图宽高  750* 340
+    让图片高度自适应  宽度  等于100%
+
+    4 图片标签    
+    mode 属性   渲染模式
+    widthFix 让图片的标签宽高 和  图片标签的内容的宽高都等比例的发生变化
+
+   -->
+    <swiper class="" autoplay indicator-dots circular>
+      <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+        <navigator class="">
+          <image class="" src="{{item.image_src}}" mode="widthFix">
+            
+          </image>
+        </navigator>
+          
+      </swiper-item>
+    </swiper>
+      
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- 轮播图 end -->
+  <!-- 导航 start -->
+  <view class="submenu" hover-class="none" hover-stop-propagation="false">
+    <ul>
+      <li>
+        <navigator class="" target="" url="/suppages/store/store_index/store_index" hover-class="navigator-hover" open-type="navigate">
+          <view class="icon">
+          <text selectable="false" space="false" decode="false">商城</text>
+          </view>
+          <view class="text">
+            <text class="">
+            商城首页
+            </text>
+          </view> 
+        </navigator>  
+      </li>
+      <li>
+        <navigator class="" target="" url="/suppages/errand/errand_index/errand_index" 
+        hover-class="navigator-hover" open-type="navigate">
+          <view class="icon">
+            <text selectable="false" space="false" decode="false">跑腿</text>
+          </view>
+          <view class="text">
+            <text class="">
+            跑腿帮
+            </text>
+          </view>
+        </navigator>  
+      </li>
+      <li>
+       <navigator class="" target="" url="/suppages/public_service/public_service_index/public_service_index" 
+        hover-class="navigator-hover" open-type="navigate">
+          <view class="icon">
+            <text selectable="false" space="false" decode="false">公益</text>
+          </view>
+          <view class="text">
+            <text class="">
+              公益榜
+            </text>
+          </view>
+        </navigator>
+      </li>
+    </ul>
   </view>
+  <!-- 导航 end -->
+  <!-- 板块展示 start -->
+  <view class="plate" hover-class="none" hover-stop-propagation="false">
+    
+  </view>
+  <!-- 板块展示 end -->
+
+
+  <!-- 加载loading -->
+  <!-- <Loading /> -->
 </view>

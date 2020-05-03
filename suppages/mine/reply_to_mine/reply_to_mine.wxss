@@ -1,0 +1,61 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container view.item {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+view.container view.item view.left {
+  display: flex;
+}
+view.container view.item view.left view.headImage image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 4rpx;
+}
+view.container view.item view.left view.n_c_t {
+  margin-left: 20rpx;
+}
+view.container view.item view.left view.n_c_t .nickName {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  font-style: normal;
+  line-height: 50rpx;
+}
+view.container view.item view.left view.n_c_t .content {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #666;
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 10rpx;
+}
+view.container view.item view.left view.n_c_t .time {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #666;
+  font-weight: 500;
+  font-style: normal;
+}
+view.container view.item view.right view.commodityImage image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 6rpx;
+}
+.delete_btn {
+  height: 100%;
+  width: 130rpx;
+  box-sizing: border-box;
+  background-color: #ff3f34;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  font-weight: 500;
+}

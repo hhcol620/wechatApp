@@ -1,0 +1,81 @@
+<view class="container">
+  <view class="item">
+    <view class="left">
+      <view class="headImage">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="n_c_t">
+        <view class="nickName">广龙能飞 给您留言了</view>
+        <view class="content">下单立刻发货</view>
+        <view class="time">两天前</view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="commodityImage">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3e040f.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="left">
+      <view class="headImage">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="n_c_t">
+        <view class="nickName">广龙能飞 给您留言了</view>
+        <view class="content">下单立刻发货</view>
+        <view class="time">两天前</view>
+      </view>
+    </view>
+    <view class="right">
+      <view class="commodityImage">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3e040f.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+    </view>
+  </view>
+  <!-- 滚动显示其他的功能 -->
+  <van-swipe-cell right-width="{{ 65 }}">
+    <view class="item">
+      <view class="left">
+        <view class="headImage">
+          <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="n_c_t">
+          <view class="nickName">广龙能飞 给您留言了</view>
+          <view class="content">下单立刻发货</view>
+          <view class="time">两天前</view>
+        </view>
+      </view>
+      <view class="right">
+        <view class="commodityImage">
+          <image class="" src="https://pic.images.ac.cn/image/5e9e31c3e040f.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+    <view slot="right" class="delete_btn" bind:tap="deleteFunc">删除</view>
+  </van-swipe-cell>
+  <van-swipe-cell right-width="{{ 65 }}">
+    <view class="item">
+      <view class="left">
+        <view class="headImage">
+          <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="n_c_t">
+          <view class="nickName">广龙能飞 给您留言了</view>
+          <view class="content">下单立刻发货</view>
+          <view class="time">两天前</view>
+        </view>
+      </view>
+      <view class="right">
+        <view class="commodityImage">
+          <image class="" src="https://pic.images.ac.cn/image/5e9e31c3e040f.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+      </view>
+    </view>
+    <view slot="right" class="delete_btn" bind:tap="deleteFunc">删除</view>
+  </van-swipe-cell>
+</view>
+
+
+<!-- 删除的弹框提示 -->
+<van-dialog id="van-dialog" />

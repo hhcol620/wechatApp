@@ -1,0 +1,49 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container view.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  background-color: #fff;
+  height: 120rpx;
+}
+view.container view.item:not(:last-child) {
+  border-bottom: 1rpx solid var(--borderColor);
+}
+view.container view.item view.left view.title {
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+view.container view.item view.left view.desc text {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  font-weight: 500;
+  color: #4d4d4d;
+  font-style: normal;
+}
+view.container view.item view.right {
+  height: 60rpx;
+  width: 180rpx;
+  position: relative;
+}
+view.container view.item view.right .top,
+view.container view.item view.right .bottom {
+  width: 180rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+view.container view.item view.right button {
+  width: 180rpx;
+}
+view.container view.item view.right .top {
+  z-index: 999;
+}
+view.container view.item view.right .bottom {
+  z-index: 998;
+}

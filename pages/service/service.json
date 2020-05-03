@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Swiper":"../../components/Swiper/Swiper",
+    "StoreList":"../../components/storeList/storeList"
+  }
+}

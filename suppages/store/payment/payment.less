@@ -1,0 +1,77 @@
+page {
+  background-color: #4d4d4d;
+}
+
+// 支付宝支付
+.alipay {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card {
+    height: 90vh;
+    width: 80vw;
+    border-radius: 10rpx;
+    background-color: #fff;
+    position: relative;
+    .qrcode {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 100rpx;
+      .scan_desc_box{
+        font-size: 24rpx;
+        line-height: 30rpx;
+        color: #666;
+        font-style: normal;
+        font-weight: 500;
+        margin-top: 20rpx;
+      }
+    }
+    .scan_desc{
+      border-bottom: 1rpx solid var(--borderColor);
+    }
+    .desc{
+      margin-top: 10rpx;
+      padding: 0 40rpx;
+      .title{
+        font-size: 30rpx;
+        line-height: 60rpx;
+        font-weight: 600;
+        font-style: normal;
+        color: #4d4d4d;
+      }
+      .item{
+        font-size: 26rpx;
+        line-height: 40rpx;
+        font-weight: 500;
+        font-style: normal;
+        color: #666;
+      }
+    }
+    &:before{
+      content: " ";
+      width: 20rpx;
+      height: 20rpx;
+      position: absolute;
+      z-index: 999;
+      top: 59%;
+      left: 0;
+      transform: translate(-50%,0);
+      border-radius: 50%;
+      background-color: #4d4d4d;
+    }
+    &:after{
+      content: " ";
+      width: 20rpx;
+      height: 20rpx;
+      position: absolute;
+      z-index: 999;
+      top: 59%;
+      left: 100%;
+      transform: translate(-50%,0);
+      border-radius: 50%;
+      background-color: #4d4d4d;
+    }
+  }
+}

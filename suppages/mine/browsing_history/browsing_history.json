@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-sticky": "/miniprogram_npm/vant-weapp/sticky/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+  },
+  "navigationBarTitleText": "浏览历史"
+}

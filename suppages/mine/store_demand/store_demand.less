@@ -1,0 +1,159 @@
+page{
+  background-color: #f6f6f6;
+}
+
+.container {
+  .item {
+    background-color: #fff;
+    margin: 20rpx;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    view.main{
+      display: flex;
+      .left{
+        image{
+          width: 200rpx;
+          height: 200rpx;
+          border-radius: 6rpx;
+        }
+      }
+      .right{
+        margin-left: 20rpx;
+        .desc{
+          font-size: 28rpx;
+          line-height: 38rpx;
+          font-weight: 600;
+          color: #333;
+          font-style: normal;
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        .price{
+          font-size: 26rpx;
+          line-height: 60rpx;
+          font-weight: 600;
+          color: #ff3f34;
+          font-style: normal;
+        }
+        .other{
+          font-size: 24rpx;
+          color: #666;
+          line-height: 30rpx;
+          font-style: normal;
+          font-weight: 500;
+          text{
+            margin-right: 10rpx;
+          }
+        }
+      }
+    }
+    view.footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 20rpx;
+      padding-top: 20rpx;
+      border-top: 1rpx solid var(--borderColor);
+      height: 80rpx;
+
+      view.contact_buyer {
+        font-size: 28rpx;
+        line-height: 40rpx;
+        height: 40rpx;
+        color: #333;
+        font-style: normal;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+
+        van-icon {
+          margin-right: 14rpx;
+        }
+      }
+
+      view.right {
+        display: flex;
+        align-items: center;
+
+        view.edit {
+          margin-right: 16rpx;
+        }
+
+        view.more {
+          height: 40rpx;
+          display: flex;
+          align-items: center;
+          font-size: 40rpx;
+
+          .van-icon {
+            font-size: 40rpx;
+          }
+        }
+      }
+    }
+  }
+  padding-bottom: 100rpx;
+}
+
+.bottomBtn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  .release_product{
+    height: 100rpx;
+    font-size: 30rpx;
+    line-height: 100rpx;
+    font-style: normal;
+    font-weight: 500;
+    color: #333;
+  }
+  .release_demand{
+    height: 100rpx;
+    background-color: #fff;
+    font-size: 30rpx;
+    line-height: 100rpx;
+    font-style: normal;
+    font-weight: 500;
+    color: #333;
+  }
+  
+}
+
+
+
+// 遮罩里面的容器
+.overlay_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .block {
+    width: 360rpx;
+    background-color: #fff;
+    padding: 30rpx;
+    border-radius: 6rpx;
+
+    .item {
+      font-size: 28rpx;
+      line-height: 70rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    .review_logistics {}
+
+    .order_detail {}
+
+    .where_monery {}
+  }
+}

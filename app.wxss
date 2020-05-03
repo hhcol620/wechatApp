@@ -1,10 +1,26 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+/* 阿里字体图标 */
+@import "./style/iconfont/iconfont.wxss";
+/* animate动画 */
+@import "./style/animate/animate.wxss";
+/* 在微信小程序中不支持通配符 */
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-} 
+}
+/* 
+  定义主题颜色  通过变量来实现
+  其他地方如果需要使用可以按照下面这种方式
+  color:var(--themeColor)
+*/
+
+page{
+  --themeColor:#2ecc71;
+  --borderColor:#ecf0f1;
+  --iconALIColor:#e74c3c;
+  --iconORAColor:#f39c12;
+  --iconAMEColor:#9b59b6;
+  --iconPETColor:#3498db;
+  --iconTURColor:#1abc9c;
+  font-size: 28rpx;
+}

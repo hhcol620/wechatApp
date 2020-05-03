@@ -1,0 +1,40 @@
+view.container view.item {
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+}
+view.container view.item view.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container view.item view.header view.creatTime {
+  font-size: 24rpx;
+  line-height: 39rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #333;
+}
+view.container view.item view.header view.transactionType {
+  font-size: 24rpx;
+  line-height: 39rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #ff3f34;
+}
+view.container view.item view.orderId {
+  font-size: 26rpx;
+  line-height: 46rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #4d4d4d;
+}
+view.container view.item view.main {
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background-color: #f6f6f6;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 36rpx;
+}

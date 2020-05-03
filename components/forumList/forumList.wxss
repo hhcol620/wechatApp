@@ -1,0 +1,57 @@
+view.container {
+  padding: 0 20rpx;
+}
+view.container ul li {
+  display: block;
+  list-style: none;
+  padding: 20rpx 0;
+  border-bottom: 1px solid var(--borderColor);
+}
+view.container ul li:first-child {
+  border-top: 1px solid var(--borderColor);
+}
+view.container ul li view.header,
+view.container ul li view.main,
+view.container ul li view.footer {
+  padding: 0 10rpx;
+}
+view.container ul li view.header {
+  line-height: 50rpx;
+}
+view.container ul li view.header view.meta-list text.item {
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  color: #aaa;
+  line-height: 30rpx;
+}
+view.container ul li view.header view.meta-list text.item:not(:last-child)::after {
+  content: '·';
+  color: #aaa;
+  margin: 0 0.4em;
+}
+view.container ul li view.header view.meta-list text.item.post {
+  color: #b71ed7;
+}
+view.container ul li view.main {
+  height: 40rpx;
+}
+view.container ul li view.main text.articleTitle {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #2e3135;
+  font-style: normal;
+  font-weight: 600;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+view.container ul li view.footer text.item {
+  font-size: 24rpx;
+  line-height: 60rpx;
+  color: #4f4f4f;
+  font-style: normal;
+  font-weight: 500;
+  margin-right: 20rpx;
+}

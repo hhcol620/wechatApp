@@ -1,0 +1,110 @@
+page{
+  background-color: #f6f6f6;
+}
+view.container {
+  padding: 20rpx;
+  background-color: #fff;
+  padding-bottom: 100rpx;
+  view.sponsor_desc,view.activity_desc {
+    view.tip {
+      margin-top: 10rpx;
+      font-size: 30rpx;
+      line-height: 50rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+    view.desc {
+      font-size: 28rpx;
+      line-height: 36rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+      padding-bottom: 20rpx;
+      border-bottom: 1rpx solid var(--borderColor);
+    }
+  }
+
+  view.activity_desc {
+    view.tip {
+
+    }
+
+    view.desc {
+
+    }
+  }
+
+  view.materials {
+    view.title {
+      margin-top: 10rpx;
+      font-size: 30rpx;
+      line-height: 50rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    view.images {
+      view.item{
+        margin-top: 10rpx;
+        image{
+          width: calc(~"100vw - 40rpx");
+          border-radius: 6rpx;
+        }
+      }
+    }
+  }
+  view.participators{
+    margin-top: 20rpx;
+    .title{
+      font-style: normal;
+      font-size: 30rpx;
+      color: #333;
+      font-weight: 500;
+      line-height: 50rpx;
+      margin-bottom: 10rpx;
+    }
+    .item_row{
+      width: calc(~"100vw - 40rpx");
+      border-top: 1rpx solid #999;
+      box-sizing: border-box;
+      display: flex;
+      .item_col{
+        border-left: 1rpx solid #999;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        &:last-child{
+          border-right: 1rpx solid #999;
+        }
+      }
+      .item_col:nth-child(1){
+        width: 10%;
+      }
+      .item_col:nth-child(2){
+        width: 30%;
+      }
+      .item_col:nth-child(3){
+        width: 45%;
+      }
+      .item_col:nth-child(4){
+        width: 15%;
+      }
+    }
+    .item_row:last-child{
+      border-bottom: 1rpx solid #999;
+    }
+  }
+}
+
+.footerFixed{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  .van-goods-action {
+    height: 100rpx;
+    background-color: #fff;
+  }
+}

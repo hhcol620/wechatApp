@@ -1,0 +1,63 @@
+<view class="container">
+  <!-- 标题 -->
+  <view class="title">
+    <view class="tip">标题</view>
+    <view class="price_content">
+      <input class="weui-input" type="text" value="{{titleValue}}" data-name="titleValue" placeholder="请输入标题" bindinput="getInputData" />
+    </view>
+  </view>
+  <!-- 描述 -->
+  <view class="desc">
+    <view class="tip">描述</view>
+    <view class="content_box">
+      <textarea show-confirm-bar="{{false}}" value="{{mian_desc}}" data-name="mian_desc" bindinput="getInputData" placeholder="请输入您的宝贝最全的描述"></textarea>
+    </view>
+  </view>
+  <!-- 选择主图 -->
+  <view class="mainImg">
+    <view class="tip">主图</view>
+    <!-- 底下放图标 上面放上传成功的图片 -->
+    <view class="mainImg_content">
+      <view class="icon" wx:if="{{!mainImageUrl}}">
+        <text class="iconfont icon-zhaopian"></text>
+      </view>
+      <view class="mainImage" bind:tap="chooseMainImage">
+        <image class="" src="{{mainImageUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+    </view>
+  </view>
+  <!-- 选择附图 可以多张 -->
+  <view class="desc_images">
+    <view class="tip">附图</view>
+    <view class="desc_images_box">
+      <van-uploader file-list="{{ fileList }}" multiple="{{true}}" bind:before-read="beforeRead" bind:after-read="afterRead"/>
+    </view>
+  </view>
+  <!-- 价格 -->
+  <view class="price">
+    <view class="tip">价格</view>
+    <view class="price_content">
+      <input class="weui-number"  value="{{price}}" data-name="price" bindinput="getInputData" type="number" placeholder="请输入您心仪的价格" />
+    </view>
+  </view>
+  <!-- 分类 -->
+  <view class="cate"></view>
+  <!-- 交易方式 -->
+  <view class="transactionWay">
+    <view class="tip">交易方式</view>
+    <view class="transactionWay_box">
+      <!-- 自定义单选框 -->
+      <Checkbox_self list="{{way_ridio_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+    </view>
+  </view>
+  <!-- 让用户给自己的商品打上标签 tags -->
+  <view class="setTags">
+    <view class="tip">标签</view>
+    <view class="setTags_content">
+      <input class="weui-input" type="text" value="{{tags}}" data-name="tags" placeholder="请输入标题" bindinput="getInputData" bindblur="getUpTags" />
+    </view>
+  </view>
+</view>
+<view class="submitBtn">
+  <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
+</view>

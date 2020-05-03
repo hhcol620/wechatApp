@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <view class="left">
+        <view class="headImage">
+          <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="nick_t">
+          <view class="nickName">水晶之恋</view>
+          <view class="time">两天前来过</view>
+        </view>
+      </view>
+      <view class="right">
+        <view class="price">￥ 1199</view>
+      </view>
+    </view>
+    <view class="main">
+      <view class="images">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="desc">
+        戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新
+      </view>
+    </view>
+    <view class="footer">
+      <view class="address">来自内蒙古科技大学</view>
+      <view class="button_b">
+        <van-button icon="star" color="#f7b731" type="default" size="small" wx:if="{{isCollect}}" bind:click="collectFunc">
+          取消收藏
+        </van-button>
+        <van-button icon="star-o" type="default" size="small" wx:else bind:click="collectFunc">收藏</van-button>
+      </view>
+    </view>
+  </view>
+</view>
+<van-transition name="fade-up">
+  版本不支持
+</van-transition>

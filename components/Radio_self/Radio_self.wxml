@@ -1,0 +1,6 @@
+<!-- 自定义单选框 -->
+<view class="ridio">
+  <view class="'ridio_item' {{item.checked == true ? 'checkedLight':''}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item" data-index="{{index}}" size="mini" bind:tap="radioChange">
+    {{item.name}}
+  </view>
+</view>

@@ -1,0 +1,27 @@
+<!-- 商品的轮播图start  -->
+  <view class="swiper_box" hover-class="none" hover-stop-propagation="false">
+    <view class="index_swiper" hover-class="none" hover-stop-propagation="false">
+  <!-- 
+    swiper 标签存在默认的宽度和高度  100% * 150px 
+    image 标签也存在 默认的宽度和高度   320px * 240px
+
+    原图宽高  750* 340
+    让图片高度自适应  宽度  等于100%
+
+    4 图片标签    
+    mode 属性   渲染模式
+    widthFix 让图片的标签宽高 和  图片标签的内容的宽高都等比例的发生变化
+   -->
+    <swiper class="" autoplay circular bindchange="changeCurrent">
+      <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
+        <navigator class="" url="">
+          <image class="" src="{{item.image_src}}" mode="widthFix">
+          </image>
+        </navigator>
+      </swiper-item>
+    </swiper>
+    </view>
+    <view class="dot" hover-class="none" hover-stop-propagation="false">
+        {{currentIndex}}/{{swiperList.length}}
+    </view>
+  </view>

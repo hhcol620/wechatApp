@@ -1,0 +1,79 @@
+view.container {
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+view.container ul {
+  display: flex;
+  flex-direction: column;
+}
+view.container ul li {
+  display: block;
+  list-style: none;
+  width: calc(50vw - 30rpx);
+  border-radius: 6rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+view.container ul li view.header {
+  padding: 0 6rpx;
+  width: 100%;
+}
+view.container ul li view.header view.main_img {
+  width: 100%;
+}
+view.container ul li view.header view.main_img image {
+  width: 100%;
+  border-radius: 6rpx;
+}
+view.container ul li view.footer view.desc {
+  height: 80rpx;
+  margin: 10rpx 0;
+  padding: 0 10rpx;
+}
+view.container ul li view.footer view.desc text {
+  font-size: 26rpx;
+  line-height: 36rpx;
+  color: #333;
+  font-style: normal;
+  font-weight: 600;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+view.container ul li view.footer view.foot {
+  padding: 0 10rpx;
+  padding-bottom: 40rpx;
+}
+view.container ul li view.footer view.foot view.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container ul li view.footer view.foot view.item > text.price {
+  font-size: 30rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #ff1a22;
+  font-style: normal;
+}
+view.container ul li view.footer view.foot view.item > text.tag {
+  font-size: 22rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #ff1a22;
+  background-color: #ffdddd;
+  padding: 0 4rpx;
+}
+view.container ul li view.footer view.foot view.item > text.userName {
+  padding-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  font-weight: 500;
+  color: #4d4d4d;
+}

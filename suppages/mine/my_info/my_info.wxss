@@ -1,0 +1,39 @@
+page {
+  background-color: #f6f6f6;
+}
+.container {
+  background-color: #fff;
+  box-shadow: 0 1rpx 6rpx #00000020;
+}
+.container .item {
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+.container .item .title {
+  font-size: 26rpx;
+  line-height: 100rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #333;
+}
+.container .item .headImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .item .headImg image {
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+}
+.container .cellgroup .field-index--van-field.van-cell {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+}
+.container .cellgroup .van-cell::after {
+  margin-right: 30rpx;
+}

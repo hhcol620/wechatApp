@@ -1,0 +1,40 @@
+<!-- 这是正在进行的订单 我发布的跑腿服务 -->
+<view class="container">
+  <view class="item">
+    <view class="header">
+      <view class="left">
+        <view class="creatTime">接单时间 2020-11-09 18:00</view>
+      </view>
+      <view class="right">
+        已经完成  <!-- 这里还可以显示倒计时 -->
+      </view>
+    </view>
+    <view class="main">
+      <view class="content">
+          <view class="it">
+            商品描述: 一个快递,大概2kg,现在在快递柜里面,需要帮我送到23号楼,922宿舍
+          </view>
+          <view class="it">
+            起始地点: 内蒙古科技大学快递柜里面
+          </view>
+          <view class="it">
+            收货地点: 内蒙古科技大学23号宿舍
+          </view>
+      </view>
+      <!-- 发布人信息 -->
+      <view class="releaserMessage">
+        发布者手机号: 1777777777
+      </view>
+    </view>
+    <view class="footer">
+      <view class="left">
+        <view class="contactReleaser">
+          <van-button plain type="primary" round size="small" bind:click="contactReleaser">联系发布者</van-button>
+        </view>
+        <view class="edit">
+           <van-button plain type="primary" round size="small" bind:click="edit">编辑</van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

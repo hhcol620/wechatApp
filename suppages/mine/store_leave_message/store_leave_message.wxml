@@ -1,0 +1,30 @@
+<!-- 我给别人的留言 -->
+<!-- 每一条数据 左侧放商品图片 右侧放置回复对象 以及回复的内容 点击跳转对应的商品页 长按删除 -->
+<view class="container">
+  <view class="item" bind:tap="toCommodity_detail" bind:longpress="longpressFunc">
+    <view class="commidityImg">
+      <image class="" src="https://pics.images.ac.cn/image/5e9e31b03b6dc.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+    </view>
+    <view class="right">
+      <view class="content">
+        您好啊,你的这个板子还出吗?????
+      </view>
+      <view class="creatTime">
+        4个小时前
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 遮罩弹框提示用户  显示内容 选择更多  查看钱款 查看物流 -->
+<van-overlay show="{{ isShow }}" bind:click="onClickHide">
+  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
+    <view class="block">
+      <!-- 删除 -->
+      <view class="delete_commodity item" bind:tap="delete_commodity">删除</view>
+      <!-- 取消 -->
+      <view class="cancel_btn item" bind:tap="cancel_btn">取消</view>
+    </view>
+  </view>
+</van-overlay>

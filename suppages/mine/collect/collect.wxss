@@ -1,0 +1,71 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container view.item {
+  padding: 30rpx;
+  padding-bottom: 0;
+  background-color: #fff;
+}
+view.container view.item view.header {
+  display: flex;
+  justify-content: space-between;
+}
+view.container view.item view.header view.left {
+  display: flex;
+}
+view.container view.item view.header view.left view.headImage image {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 4rpx;
+}
+view.container view.item view.header view.left view.nick_t {
+  margin-left: 20rpx;
+}
+view.container view.item view.header view.left view.nick_t view.nickName {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #4d4d4d;
+  font-style: normal;
+}
+view.container view.item view.header view.left view.nick_t view.time {
+  font-style: normal;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #666;
+}
+view.container view.item view.header view.right view.price {
+  font-size: 30rpx;
+  color: #ff3f34;
+  font-weight: 600;
+  line-height: 60prx;
+  font-style: normal;
+}
+view.container view.item view.main {
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+view.container view.item view.main view.images image {
+  width: 80vw;
+}
+view.container view.item view.main view.desc {
+  font-size: 30rpx;
+  line-height: 46rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+view.container view.item view.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid var(--borderColor);
+  padding: 20rpx 0;
+}
+view.container view.item view.footer view.address {
+  font-size: 26rpx;
+  color: #2d98da;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 60rpx;
+}

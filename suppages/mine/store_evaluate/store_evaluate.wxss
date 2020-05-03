@@ -1,0 +1,100 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container view.item {
+  margin: 30rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+view.container view.item view.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container view.item view.header view.left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container view.item view.header view.left view.headImg image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+view.container view.item view.header view.left view.nickName {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+view.container view.item view.header view.right view.more {
+  font-size: 26rpx;
+  line-height: 36rpx;
+  font-style: normal;
+  color: #4d4d4d;
+}
+view.container view.item view.content {
+  margin: 10rpx 0;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+  font-size: 30rpx;
+  line-height: 45rpx;
+}
+view.container view.item view.commdity_desc {
+  background-color: #f9f9f9;
+  padding: 10rpx;
+  display: flex;
+}
+view.container view.item view.commdity_desc view.left.mainImage image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 6rpx;
+}
+view.container view.item view.commdity_desc view.right.desc_price {
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+view.container view.item view.commdity_desc view.right.desc_price view.desc {
+  font-size: 28rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+view.container view.item view.commdity_desc view.right.desc_price view.price {
+  font-size: 30rpx;
+  line-height: 46rpx;
+  font-weight: 500;
+  color: #ff3f34;
+  font-style: normal;
+}
+.overlay_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay_container .block {
+  width: 360rpx;
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 6rpx;
+}
+.overlay_container .block .item {
+  font-size: 28rpx;
+  line-height: 70rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+}

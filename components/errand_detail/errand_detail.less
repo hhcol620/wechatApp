@@ -1,0 +1,101 @@
+view.container {
+  background-color: #fff;
+  padding: 0 20rpx;
+
+  view.head {
+    display: flex;
+    padding: 20rpx;
+    border-bottom: 1rpx solid var(--borderColor);
+
+    view.headImg {
+      image {
+        height: 100rpx;
+        width: 100rpx;
+        border-radius: 50%;
+      }
+    }
+
+    view.nickName_time {
+      font-size: 30rpx;
+      line-height: 50rpx;
+      color: #4d4d4d;
+      font-weight: 600;
+      font-style: normal;
+      margin-left: 20rpx;
+
+      .time {
+        font-size: 24rpx;
+        line-height: 40rpx;
+        font-weight: 500;
+        font-style: normal;
+      }
+    }
+  }
+
+  view.main {
+    padding: 0 20rpx;
+    margin-top: 20rpx;
+
+    .desc {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-height: 300rpx;
+    }
+
+    .privacy_message {
+      font-size: 26rpx;
+      line-height: 40rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #666;
+      margin-top: 20rpx;
+    }
+  }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin: 20rpx;
+  width: calc(~"100vw - 40rpx");
+  button{
+    width: 100%;
+  }
+}
+
+// 遮罩内部
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .wraper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .privacy_mess {
+    background-color: #fff;
+    width: 70vw;
+    font-size: 30rpx;
+    line-height: 50rpx;
+    font-weight: 500;
+    color: #4d4d4d;
+    font-style: normal;
+    padding: 30rpx;
+    border-radius: 10rpx;
+  }
+  // 加载loading
+  .loading{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+  }
+}
