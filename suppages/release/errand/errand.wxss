@@ -87,24 +87,6 @@ view.container view.mainImg .mainImg_content .mainImage image {
   height: 200rpx;
   border-radius: 6rpx;
 }
-view.container view.desc_images {
-  margin-top: 20rpx;
-  border-radius: 6rpx;
-  display: flex;
-  background-color: #fff;
-  padding: 30rpx;
-}
-view.container view.desc_images .tip {
-  font-size: 28rpx;
-  line-height: 42rpx;
-  font-weight: 500;
-  font-style: normal;
-  color: #333;
-  margin-right: 30rpx;
-}
-view.container view.desc_images .desc_images_box {
-  flex: 1;
-}
 view.container view.price {
   margin-top: 20rpx;
   border-radius: 6rpx;
@@ -119,46 +101,22 @@ view.container view.price .tip {
   font-weight: 500;
   font-style: normal;
   color: #333;
-  min-width: 116rpx;
   margin-right: 30rpx;
 }
-view.container view.transactionWay {
+view.container view.mini_tip {
   margin-top: 20rpx;
   border-radius: 6rpx;
   display: flex;
-  align-items: center;
   flex-wrap: nowrap;
   background-color: #fff;
   padding: 30rpx;
-}
-view.container view.transactionWay .tip {
   font-size: 28rpx;
   line-height: 42rpx;
   font-weight: 500;
   font-style: normal;
   color: #333;
-  min-width: 116rpx;
-  margin-right: 30rpx;
 }
-view.container view.transactionType {
-  margin-top: 20rpx;
-  border-radius: 6rpx;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  background-color: #fff;
-  padding: 30rpx;
-}
-view.container view.transactionType .tip {
-  font-size: 28rpx;
-  line-height: 42rpx;
-  font-weight: 500;
-  font-style: normal;
-  color: #333;
-  min-width: 116rpx;
-  margin-right: 30rpx;
-}
-view.container view.degree {
+view.container view.tel {
   margin-top: 20rpx;
   border-radius: 6rpx;
   display: flex;
@@ -166,16 +124,21 @@ view.container view.degree {
   background-color: #fff;
   padding: 30rpx;
 }
-view.container view.degree .tip {
+view.container view.tel .tip {
   font-size: 28rpx;
   line-height: 42rpx;
   font-weight: 500;
   font-style: normal;
   color: #333;
-  min-width: 116rpx;
   margin-right: 30rpx;
 }
-view.container view.setTags {
+view.container view.tel .tel_content {
+  width: calc(100% - 90rpx);
+}
+view.container view.tel .tel_content input {
+  width: 100%;
+}
+view.container view.remark {
   margin-top: 20rpx;
   border-radius: 6rpx;
   display: flex;
@@ -183,17 +146,19 @@ view.container view.setTags {
   background-color: #fff;
   padding: 30rpx;
 }
-view.container view.setTags .tip {
+view.container view.remark .tip {
   font-size: 28rpx;
-  line-height: 42rpx;
+  line-height: 36rpx;
   font-weight: 500;
   font-style: normal;
   color: #333;
-  min-width: 116rpx;
   margin-right: 30rpx;
 }
-view.container view.setTags .setTags_content {
-  width: calc(100% - 100rpx);
+view.container view.remark .content_box {
+  flex: 1;
+}
+view.container view.remark .content_box textarea {
+  width: 100%;
 }
 .submitBtn {
   width: 100%;

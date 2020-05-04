@@ -100,27 +100,6 @@ view.container {
 
   }
 
-  view.desc_images {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    background-color: #fff;
-    padding: 30rpx;
-
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      margin-right: 30rpx;
-    }
-    .desc_images_box{
-      flex: 1;
-    }
-
-  }
-
   view.price {
     margin-top: 20rpx;
     border-radius: 6rpx;
@@ -135,18 +114,26 @@ view.container {
       font-weight: 500;
       font-style: normal;
       color: #333;
-      min-width: 116rpx;
       margin-right: 30rpx;
     }
   }
-
-  view.cate {}
-
-  view.transactionWay {
+  view.mini_tip{
     margin-top: 20rpx;
     border-radius: 6rpx;
     display: flex;
-    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    font-size: 28rpx;
+    line-height: 42rpx;
+    font-weight: 500;
+    font-style: normal;
+    color: #333;
+  }
+  view.tel{
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
     flex-wrap: nowrap;
     background-color: #fff;
     padding: 30rpx;
@@ -156,30 +143,16 @@ view.container {
       font-weight: 500;
       font-style: normal;
       color: #333;
-      min-width: 116rpx;
       margin-right: 30rpx;
     }
-  }
-  view.transactionType {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    background-color: #fff;
-    padding: 30rpx;
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      min-width: 116rpx;
-      margin-right: 30rpx;
+    .tel_content{
+      width: calc(~"100% - 90rpx");
+      input{
+        width: 100%;
+      }
     }
   }
-
-  view.degree {
+  view.remark {
     margin-top: 20rpx;
     border-radius: 6rpx;
     display: flex;
@@ -189,34 +162,19 @@ view.container {
 
     .tip {
       font-size: 28rpx;
-      line-height: 42rpx;
+      line-height: 36rpx;
       font-weight: 500;
       font-style: normal;
       color: #333;
-      min-width: 116rpx;
       margin-right: 30rpx;
     }
-  }
 
-  view.setTags {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: #fff;
-    padding: 30rpx;
+    .content_box {
+      flex: 1;
 
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      min-width: 116rpx;
-      margin-right: 30rpx;
-    }
-    .setTags_content{
-      width: calc(~"100% - 100rpx");
+      textarea {
+        width: 100%;
+      }
     }
   }
 }

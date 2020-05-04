@@ -271,6 +271,13 @@
 					"id": -1,
 					"name": "公益榜详情页",
 					"pathName": "suppages/public_service/public_service_detail/public_service_detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布跑腿",
+					"pathName": "suppages/release/errand/errand",
 					"scene": null
 				}
 			]

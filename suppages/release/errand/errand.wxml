@@ -26,38 +26,31 @@
       </view>
     </view>
   </view>
-  <!-- 选择附图 可以多张 -->
-  <view class="desc_images">
-    <view class="tip">附图</view>
-    <view class="desc_images_box">
-      <van-uploader file-list="{{ fileList }}" multiple="{{true}}" bind:before-read="beforeRead" bind:after-read="afterRead"/>
-    </view>
-  </view>
   <!-- 价格 -->
   <view class="price">
     <view class="tip">价格</view>
     <view class="price_content">
-      <input class="weui-number"  value="{{price}}" data-name="price" bindinput="getInputData" type="number" placeholder="请输入您心仪的价格" />
+      <input class="weui-number"  value="{{price}}" data-name="price" bindinput="getInputData" type="number" placeholder="请输入您提供佣金的金额" />
     </view>
   </view>
-  <!-- 分类 -->
-  <view class="cate"></view>
-  <!-- 交易方式 -->
-  <view class="transactionWay">
-    <view class="tip">交易方式</view>
-    <view class="transactionWay_box">
-      <!-- 自定义单选框 -->
-      <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+
+  <!-- 这个位置放一个小提示 提醒用户下面的信息属于隐私类信息 我们不会直接提供显示给每一个用户  只有接单的人才允许收到这部分数据 -->
+  <view class="mini_tip">小提示 : 下面的信息请放心填写,我们会只提供给接单人,不会直接显示到页面上</view>
+  <view class="tel">
+    <view class="tip">手机</view>
+    <view class="tel_content">
+       <input class="weui-number"  value="{{price}}" data-name="price" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手及时能联系到您" />
     </view>
   </view>
-  <!-- 让用户给自己的商品打上标签 tags -->
-  <view class="setTags">
-    <view class="tip">标签</view>
-    <view class="setTags_content">
-      <input class="weui-input" type="text" value="{{tags}}" data-name="tags" placeholder="请输入标题" bindinput="getInputData" bindblur="getUpTags" />
+  <!-- 备注信息 -->
+  <view class="remark">
+    <view class="tip">备注</view>
+    <view class="content_box">
+      <textarea show-confirm-bar="{{false}}" value="{{remark}}" data-name="remark" bindinput="getInputData" placeholder="请输入您的备注信息，比如快递柜取件码，快递手机号，快递单号之类的"></textarea>
     </view>
   </view>
 </view>
+<!-- 这个提交需要跳转到支付接口   先支付才可以发布成功 -->
 <view class="submitBtn">
   <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
 </view>
