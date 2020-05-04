@@ -21,35 +21,36 @@
       <van-grid column-num="4">
         <van-grid-item text="消息通知" link-type="navigateTo" url="/suppages/mine/inform/inform">
           <text class="iconfont icon-xiaoxitongzhi" slot="icon"></text>
-            
         </van-grid-item>
         <van-grid-item text="@我的" link-type="navigateTo" url="/suppages/mine/reply_to_mine/reply_to_mine">
           <text class="iconfont icon--weiguanzhurenxinxisixinxiaoxizhongxin" slot="icon"></text>
-            
         </van-grid-item>
         <van-grid-item text="收藏" link-type="navigateTo" url="/suppages/mine/collect/collect">
           <text class="iconfont icon-shoucang2" slot="icon"></text>
-            
         </van-grid-item>
         <van-grid-item text="浏览历史" link-type="navigateTo" url="/suppages/mine/browsing_history/browsing_history">
-          <text class="iconfont icon-shijian2" slot="icon"></text> 
+          <text class="iconfont icon-shijian2" slot="icon"></text>
         </van-grid-item>
         <van-grid-item text="标签" link-type="navigateTo" url="/suppages/mine/mytags/mytags">
-          <text class="iconfont icon-biaoqian" slot="icon"></text> 
+          <text class="iconfont icon-biaoqian" slot="icon"></text>
         </van-grid-item>
         <van-grid-item text="我的信息" link-type="navigateTo" url="/suppages/mine/my_info/my_info">
-          <text class="iconfont icon-yonghuziliaogerenxinxigerenziliao-xianxing" slot="icon"></text> 
+          <text class="iconfont icon-yonghuziliaogerenxinxigerenziliao-xianxing" slot="icon"></text>
         </van-grid-item>
         <van-grid-item text="实名认证" link-type="navigateTo" url="/suppages/mine/real_name/real_name">
-          <text class="iconfont icon-shimingrenzheng1" slot="icon"></text> 
+          <text class="iconfont icon-shimingrenzheng1" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item bind:click="handleContact1"> 
+        <van-grid-item bind:click="handleContact1">
           <button open-type="contact" bindcontact="handleContact" slot="icon" class="iconfont icon-lianxi4"></button>
-          <button open-type="contact" bindcontact="handleContact" slot="text" class="text">联系客服</button>
+          <button open-type="contact" bindcontact="handleContact" slot="text" class="text">
+            联系客服
+          </button>
         </van-grid-item>
         <van-grid-item>
           <button open-type="feedback" bindcontact="handleContact" slot="icon" class="iconfont icon-fankuijianyi"></button>
-          <button open-type="feedback" bindcontact="handleContact" slot="text" class="text">反馈建议</button> 
+          <button open-type="feedback" bindcontact="handleContact" slot="text" class="text">
+            反馈建议
+          </button>
         </van-grid-item>
       </van-grid>
     </view>
@@ -60,23 +61,18 @@
       <van-grid column-num="4">
         <van-grid-item text="我的订单" link-type="navigateTo" url="/suppages/mine/store_orders/store_orders">
           <text class="iconfont icon-dingdan2" slot="icon"></text>
-            
         </van-grid-item>
-        <van-grid-item text="我的发布"link-type="navigateTo" url="/suppages/mine/store_release_product/store_release_product" >
+        <van-grid-item text="我的发布" link-type="navigateTo" url="/suppages/mine/store_release_product/store_release_product">
           <text class="iconfont icon-shangpin" slot="icon"></text>
-            
         </van-grid-item>
         <van-grid-item text="我的需求" link-type="navigateTo" url="/suppages/mine/store_demand/store_demand">
           <text class="iconfont icon-fabuxuqiu" slot="icon"></text>
-            
         </van-grid-item>
         <van-grid-item text="我的留言" link-type="navigateTo" url="/suppages/mine/store_leave_message/store_leave_message">
           <text class="iconfont icon-liuyan-duandian" slot="icon"></text>
-            
         </van-grid-item>
-         <van-grid-item text="我的评价" link-type="navigateTo" url="/suppages/mine/store_evaluate/store_evaluate">
+        <van-grid-item text="我的评价" link-type="navigateTo" url="/suppages/mine/store_evaluate/store_evaluate">
           <text class="iconfont icon-pingjia" slot="icon"></text>
-            
         </van-grid-item>
       </van-grid>
     </view>
@@ -85,8 +81,11 @@
     <view class="title">跑腿服务</view>
     <view class="container">
       <van-grid column-num="4">
+        <van-grid-item text="发布跑腿" link-type="navigateTo" url="/suppages/release/errand/errand">
+          <text class="iconfont icon-shangpin" slot="icon"></text>
+        </van-grid-item>
         <van-grid-item text="正在进行订单" link-type="navigateTo" url="/suppages/mine/errand_completing_orders/errand_completing_orders">
-          <text class="iconfont icon-RectangleCopy" slot="icon"></text>   
+          <text class="iconfont icon-RectangleCopy" slot="icon"></text>
         </van-grid-item>
         <van-grid-item text="已完成的订单" link-type="navigateTo" url="/suppages/mine/errand_completed_orders/errand_completed_orders">
           <text class="iconfont icon-dingdan2" slot="icon"></text>

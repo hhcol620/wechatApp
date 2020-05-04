@@ -47,7 +47,7 @@
     <view class="tip">交易方式</view>
     <view class="transactionWay_box">
       <!-- 自定义单选框 -->
-      <Checkbox_self list="{{way_ridio_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+      <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
     </view>
   </view>
   <!-- 让用户给自己的商品打上标签 tags -->

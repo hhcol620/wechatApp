@@ -18,10 +18,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 价格
-    price: '',
-    // 附图
-    descImages: [],
+
     // 组件展示用
     fileList: [
       { url: 'https://img.yzcdn.cn/vant/leaf.jpg', name: '图片1' },
@@ -33,15 +30,12 @@ Page({
         isImage: true
       }
     ],
-
-
     // 多选框可供选择项
-    way_ridio_items: [
+    way_checkbox_items: [
       { name: '自提', value: '1',checked: false },
       { name: '面交', value: '2', checked: true },
       { name: '快递', value: '3',checked: false }
     ],
-
 
     // 真实接口使用数据
     // 标题
@@ -61,7 +55,7 @@ Page({
   checkboxItemChange (e) {
     // console.log(e.detail.index);  这个是被点击的索引
     const { index } = e.detail
-    const arrList = JSON.parse(JSON.stringify(this.data.way_ridio_items))
+    const arrList = JSON.parse(JSON.stringify(this.data.way_checkbox_items))
     arrList.forEach((v, i) => {
       if (i === index) {
         if (v.checked == true) {
@@ -73,8 +67,9 @@ Page({
       }
     })
     this.setData({
-      way_ridio_items:arrList
+      way_checkbox_items:arrList
     })
+    // 然后根据checked 是否为 true  进行将id值拿到存起来传给后台
   },
   // 选择主图
   chooseMainImage () {
@@ -121,6 +116,16 @@ Page({
   /* 需要进行的  获取每一项中的数据 判断合法性 然后提交 */
   submit_btn () {
     console.log(this.data.titleValue);
+    const { titleValue, mainImageUrl, mian_desc, price, upTags } = this.data
+    if (!titleValue.trim() || !mainImageUrl.trim() || !mian_desc.trim() || !price.trim() || !upTags.trim()) {
+      // 输入不合法
+     wx.showToast({
+       title: '输入不合法',
+       icon: 'none',
+      //  禁止用户手抖连续点击
+       mask: true
+     });
+    }
   },
   // 获取输入框中的数据
   getInputData (e) {

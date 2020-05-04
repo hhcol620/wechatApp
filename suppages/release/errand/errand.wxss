@@ -1,1 +1,206 @@
-/* suppages/release//errand/errand.wxss */
+page {
+  background-color: #f6f6f6;
+}
+view.container {
+  margin: 20rpx;
+  padding: 10rpx;
+}
+view.container view.title {
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.title .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  margin-right: 30rpx;
+}
+view.container view.desc {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.desc .tip {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  margin-right: 30rpx;
+}
+view.container view.desc .content_box {
+  flex: 1;
+}
+view.container view.desc .content_box textarea {
+  width: 100%;
+}
+view.container view.mainImg {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.mainImg .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  margin-right: 30rpx;
+}
+view.container view.mainImg .mainImg_content {
+  position: relative;
+  height: 200rpx;
+  width: 200rpx;
+}
+view.container view.mainImg .mainImg_content .icon {
+  position: absolute;
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 6rpx;
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 98;
+}
+view.container view.mainImg .mainImg_content .icon .iconfont {
+  color: #999;
+  font-size: 80rpx;
+}
+view.container view.mainImg .mainImg_content .mainImage {
+  position: absolute;
+  z-index: 99;
+}
+view.container view.mainImg .mainImg_content .mainImage image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 6rpx;
+}
+view.container view.desc_images {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.desc_images .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  margin-right: 30rpx;
+}
+view.container view.desc_images .desc_images_box {
+  flex: 1;
+}
+view.container view.price {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.price .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.transactionWay {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.transactionWay .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.transactionType {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.transactionType .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.degree {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.degree .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.setTags {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.setTags .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.setTags .setTags_content {
+  width: calc(100% - 100rpx);
+}
+.submitBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20rpx;
+}
+.submitBtn .van-button {
+  width: 90vw;
+}

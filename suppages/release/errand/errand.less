@@ -1,0 +1,232 @@
+page {
+  background-color: #f6f6f6;
+}
+
+view.container {
+  margin: 20rpx;
+  padding: 10rpx;
+  view.title {
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      margin-right: 30rpx;
+    }
+  }
+
+  view.desc {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 36rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      margin-right: 30rpx;
+    }
+
+    .content_box {
+      flex: 1;
+
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+
+  view.mainImg {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      margin-right: 30rpx;
+    }
+
+    .mainImg_content {
+      position: relative;
+      height: 200rpx;
+      width: 200rpx;
+
+      .icon {
+        position: absolute;
+        height: 200rpx;
+        width: 200rpx;
+        border-radius: 6rpx;
+        background-color: #f6f6f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 98;
+
+        .iconfont {
+          color: #999;
+          font-size: 80rpx;
+        }
+      }
+
+      .mainImage {
+        position: absolute;
+        z-index: 99;
+
+        image {
+          width: 200rpx;
+          height: 200rpx;
+          border-radius: 6rpx;
+        }
+      }
+    }
+
+  }
+
+  view.desc_images {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      margin-right: 30rpx;
+    }
+    .desc_images_box{
+      flex: 1;
+    }
+
+  }
+
+  view.price {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+  }
+
+  view.cate {}
+
+  view.transactionWay {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+  }
+  view.transactionType {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+  }
+
+  view.degree {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+  }
+
+  view.setTags {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+    .setTags_content{
+      width: calc(~"100% - 100rpx");
+    }
+  }
+}
+// 发布按钮
+.submitBtn{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20rpx;
+  .van-button{
+    width: 90vw;
+  }
+}
