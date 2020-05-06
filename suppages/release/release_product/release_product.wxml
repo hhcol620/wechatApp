@@ -1,15 +1,16 @@
 <view class="container">
   <!-- 标题 -->
   <view class="title">
-    <van-cell-group>
-      <van-field value="{{ value }}" placeholder="请输入标题" label="标题" border="{{ false }}" title-width="80rpx" />
-    </van-cell-group>
+    <view class="tip">标题</view>
+    <view class="title_content">
+      <input class="weui-input" type="text" value="{{title}}" placeholder="请输入标题" data-name="title" bindinput="getInputData" />
+    </view>
   </view>
   <!-- 描述 -->
   <view class="desc">
     <view class="tip">描述</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" placeholder="请输入您的宝贝最全的描述"></textarea>
+      <textarea show-confirm-bar="{{false}}" placeholder="请输入您的宝贝最全的描述" value="{{productDesc}}" data-name="productDesc" bindinput="getInputData"></textarea>
     </view>
   </view>
   <!-- 选择主图 -->
@@ -17,11 +18,11 @@
     <view class="tip">主图</view>
     <!-- 底下放图标 上面放上传成功的图片 -->
     <view class="mainImg_content">
-      <view class="icon">
+      <view class="icon" wx:if="{{!mainImg}}">
         <text class="iconfont icon-zhaopian"></text>
       </view>
-      <view class="mainImage">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      <view class="mainImage" bind:tap="chooseMainImage">
+        <image class="" src="{{mainImg}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
     </view>
   </view>
@@ -29,24 +30,29 @@
   <view class="desc_images">
     <view class="tip">附图</view>
     <view class="desc_images_box">
-      <van-uploader file-list="{{ fileList }}" />
+      <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteItem" />
     </view>
   </view>
   <!-- 价格 -->
   <view class="price">
     <view class="tip">价格</view>
     <view class="price_content">
-      <input class="weui-number" type="number" placeholder="请输入您心仪的价格" />
+      <input class="weui-number" type="number" placeholder="请输入您心仪的价格" value="{{price}}" data-name="price" bindinput="getInputData" />
     </view>
   </view>
-  <!-- 分类 -->
-  <view class="cate"></view>
+  <!-- 分类  让用户选择 然后打开一个全屏弹框 -->
+  <view class="cate">
+    <view class="tip">分类</view>
+    <!-- 这里放置一个组件 打开选择分类 -->
+    <cateSelectTree bind:getActiveId="getAct" wx:if="{{cateShow}}" cateList="{{getCategoryTree}}"></cateSelectTree>
+    <view class="cateTitle" bind:tap="openCateShow">{{cateValue}}</view>
+  </view>
   <!-- 交易方式 -->
   <view class="transactionWay">
     <view class="tip">交易方式</view>
     <view class="transactionWay_box">
       <!-- 自定义单选框 -->
-      <Checkbox_self list="{{way_ridio_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+      <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
     </view>
   </view>
   <!-- 交易类型 -->
@@ -61,20 +67,17 @@
   <view class="degree">
     <view class="tip">新旧程度</view>
     <view class="degree_box">
-      <input class="weui-number" type="digit" placeholder="请输入宝贝的新旧程度" />
+      <input class="weui-number" type="digit" placeholder="请输入宝贝的新旧程度" value="{{degreeValue}}" data-name="degreeValue" bindinput="getInputData" />
     </view>
   </view>
   <!-- 让用户给自己的商品打上标签 tags -->
   <view class="setTags">
     <view class="tip">标签</view>
     <view class="setTags_content">
-      <input class="weui-number" type="number" placeholder="请输入标签关键词 使用空格分开" />
+      <input class="weui-inputr" type="text" value="{{tagNames}}" data-name="tagNames" placeholder="请输入标签关键词 使用空格分开" bindinput="getInputData" bindblur="getUpTags" />
     </view>
   </view>
 </view>
 <view class="submitBtn">
-  <van-button type="primary" size="normal">立即发布</van-button>
+  <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
 </view>
-
-
-

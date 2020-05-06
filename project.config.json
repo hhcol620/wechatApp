@@ -4,12 +4,13 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -20,8 +21,7 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		},
-		"nodeModules": true
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
@@ -184,8 +184,8 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "我的发布",
+					"id": 18,
+					"name": "我的宝贝",
 					"pathName": "suppages/mine/store_release_product/store_release_product",
 					"query": "",
 					"scene": null
@@ -278,6 +278,34 @@
 					"id": -1,
 					"name": "发布跑腿",
 					"pathName": "suppages/release/errand/errand",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 32,
+					"name": "编辑需求  id=3",
+					"pathName": "suppages/release/release_demand/release_demand",
+					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": 33,
+					"name": "编辑宝贝 id=1",
+					"pathName": "suppages/release/release_product/release_product",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品详情页 id =1",
+					"pathName": "suppages/store/commodity/commodity",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "写评价的页面",
+					"pathName": "suppages/mine/store_write_evaluate/store_write_evaluate",
 					"scene": null
 				}
 			]

@@ -19,6 +19,8 @@
         "store/lea_Message_detail/lea_Message_detail",
         "errand/errand_index/errand_index",
         "errand/errand_detail/errand_detail",
+        "demand/demand_detail/demand_detail",
+        "demand/lea_Message_detail/lea_Message_detail",
         "release/release_product/release_product",
         "release/release_demand/release_demand",
         "release/errand/errand",
@@ -37,7 +39,8 @@
         "mine/store_leave_message/store_leave_message",
         "mine/store_evaluate/store_evaluate",
         "mine/errand_completing_orders/errand_completing_orders",
-        "mine/errand_completed_orders/errand_completed_orders"
+        "mine/errand_completed_orders/errand_completed_orders",
+        "mine/store_write_evaluate/store_write_evaluate"
       ]
     }
   ],

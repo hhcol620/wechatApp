@@ -31,8 +31,8 @@
 //   })
 // }
 // 配置基地址
-// const baseUrl = "https://api-hmugo-web.itheima.net/api/public/v1"
-const baseUrl = "http://39.97.123.63:10900/api"
+// const baseUrl = "http://222.186.174.9:13163/api"
+const baseUrl = "https://www.imuster.top/api"
 // get请求
 const getData = (url, params) => {
   return new Promise((reslove, reject) => {

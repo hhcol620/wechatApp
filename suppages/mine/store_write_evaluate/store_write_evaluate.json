@@ -4,5 +4,5 @@
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
   },
-  "navigationBarTitleText":"我的宝贝"
+  "navigationBarTitleText":"填写评价"
 }

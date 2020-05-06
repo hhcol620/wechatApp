@@ -1,0 +1,3 @@
+<view class="container">
+  <van-tree-select items="{{ cateList }}" main-active-index="{{ mainActiveIndex }}" active-id="{{ activeId }}" bind:click-nav="onClickNav" bind:click-item="onClickItem" />
+</view>

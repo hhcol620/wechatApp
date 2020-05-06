@@ -189,18 +189,6 @@ page {
 .reply_all .reply_mess_box .container > .van-row .reply_box .color {
   color: var(--iconPETColor);
 }
-.reply_all .reply_mess_box .reply_mess_box_footer {
-  font-size: 26rpx;
-  line-height: 40rpx;
-  padding-bottom: 30rpx;
-  font-style: normal;
-  font-weight: 500;
-  color: var(--iconPETColor);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .recommend_box {
   margin-top: 20rpx;
   width: 100%;

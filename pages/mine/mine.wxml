@@ -62,7 +62,7 @@
         <van-grid-item text="我的订单" link-type="navigateTo" url="/suppages/mine/store_orders/store_orders">
           <text class="iconfont icon-dingdan2" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item text="我的发布" link-type="navigateTo" url="/suppages/mine/store_release_product/store_release_product">
+        <van-grid-item text="我的宝贝" link-type="navigateTo" url="/suppages/mine/store_release_product/store_release_product">
           <text class="iconfont icon-shangpin" slot="icon"></text>
         </van-grid-item>
         <van-grid-item text="我的需求" link-type="navigateTo" url="/suppages/mine/store_demand/store_demand">

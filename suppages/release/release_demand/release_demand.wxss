@@ -20,6 +20,9 @@ view.container view.title .tip {
   color: #333;
   margin-right: 30rpx;
 }
+view.container view.title .title_content {
+  width: calc(100% - 100rpx);
+}
 view.container view.desc {
   margin-top: 20rpx;
   border-radius: 6rpx;
@@ -105,7 +108,7 @@ view.container view.desc_images .tip {
 view.container view.desc_images .desc_images_box {
   flex: 1;
 }
-view.container view.price {
+view.container view.cate {
   margin-top: 20rpx;
   border-radius: 6rpx;
   display: flex;
@@ -113,7 +116,7 @@ view.container view.price {
   background-color: #fff;
   padding: 30rpx;
 }
-view.container view.price .tip {
+view.container view.cate .tip {
   font-size: 28rpx;
   line-height: 42rpx;
   font-weight: 500;
@@ -122,58 +125,9 @@ view.container view.price .tip {
   min-width: 116rpx;
   margin-right: 30rpx;
 }
-view.container view.transactionWay {
-  margin-top: 20rpx;
-  border-radius: 6rpx;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  background-color: #fff;
-  padding: 30rpx;
-}
-view.container view.transactionWay .tip {
-  font-size: 28rpx;
-  line-height: 42rpx;
-  font-weight: 500;
-  font-style: normal;
-  color: #333;
-  min-width: 116rpx;
-  margin-right: 30rpx;
-}
-view.container view.transactionType {
-  margin-top: 20rpx;
-  border-radius: 6rpx;
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  background-color: #fff;
-  padding: 30rpx;
-}
-view.container view.transactionType .tip {
-  font-size: 28rpx;
-  line-height: 42rpx;
-  font-weight: 500;
-  font-style: normal;
-  color: #333;
-  min-width: 116rpx;
-  margin-right: 30rpx;
-}
-view.container view.degree {
-  margin-top: 20rpx;
-  border-radius: 6rpx;
-  display: flex;
-  flex-wrap: nowrap;
-  background-color: #fff;
-  padding: 30rpx;
-}
-view.container view.degree .tip {
-  font-size: 28rpx;
-  line-height: 42rpx;
-  font-weight: 500;
-  font-style: normal;
-  color: #333;
-  min-width: 116rpx;
-  margin-right: 30rpx;
+view.container view.cate .cate_btn {
+  width: calc(100% - 100rpx);
+  overflow: hidden;
 }
 view.container view.setTags {
   margin-top: 20rpx;

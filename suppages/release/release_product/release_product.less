@@ -7,10 +7,22 @@ view.container {
   padding: 10rpx;
   view.title {
     border-radius: 6rpx;
-
-    van-cell-group {
-      van-field {}
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      margin-right: 30rpx;
     }
+    .title_content{
+      width: calc(~"100% - 100rpx");
+    }
+    
   }
 
   view.desc {
@@ -132,7 +144,31 @@ view.container {
     }
   }
 
-  view.cate {}
+  view.cate {
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+    .tip {
+      font-size: 28rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+    .cateTitle{
+      width: calc(~"100vw - 200rpx")
+    }
+    .cate_btn{
+      width: calc(~"100% - 100rpx");
+      overflow: hidden;
+    }
+    
+  }
 
   view.transactionWay {
     margin-top: 20rpx;

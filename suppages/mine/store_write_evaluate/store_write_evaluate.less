@@ -1,9 +1,9 @@
-page {
+page{
   background-color: #f6f6f6;
 }
 
 view.container {
-  view.item {
+  view.header_item {
     margin: 30rpx;
     padding: 20rpx;
     background-color: #fff;
@@ -35,26 +35,7 @@ view.container {
           font-style: normal;
         }
       }
-
-      view.right {
-        view.more {
-          font-size: 26rpx;
-          line-height: 36rpx;
-          font-style: normal;
-          color: #4d4d4d;
-        }
-      }
     }
-
-    view.content {
-      margin: 10rpx 0;
-      font-weight: 500;
-      color: #333;
-      font-style: normal;
-      font-size: 30rpx;
-      line-height: 45rpx;
-    }
-
     view.commdity_desc {
       background-color: #f9f9f9;
       padding: 10rpx;
@@ -94,30 +75,10 @@ view.container {
       }
     }
   }
-}
-
-
-
-// 遮罩里面的容器
-.overlay_container {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .block {
-    width: 360rpx;
+  view.main_item{
+    margin: 30rpx;
+    padding: 20rpx;
     background-color: #fff;
-    padding: 30rpx;
-    border-radius: 6rpx;
-
-    .item {
-      font-size: 28rpx;
-      line-height: 70rpx;
-      color: #333;
-      font-weight: 500;
-      font-style: normal;
-    }
+    border-radius: 16rpx;
   }
 }

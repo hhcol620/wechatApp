@@ -4,5 +4,6 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "store_orders_buy":"/components/store_orders_buy/store_orders_buy",
     "store_orders_sale":"/components/store_orders_sale/store_orders_sale"
-  }
+  },
+  "navigationBarTitleText":"订单"
 }

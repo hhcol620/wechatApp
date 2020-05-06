@@ -1,47 +1,54 @@
-// 如果使用  async  await 这个es7 的将异步的请求
-import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-// 引入  用来发送请求的方法  需要将路径补全
-import { get_evaluate,delete_evaluate } from '../../../request/api/store_api.js'
-//index.js
-//获取应用实例
-const app = getApp()
-// 引入全局  请求加载动画方法
-const { showLoading,hideLoading } = app.globalData
-
-
-// suppages/mine/store_evaluate/store_evaluate.js
+// suppages/store/lea_Message_detail/lea_Message_detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 控制遮罩是否打开
-    isShow:false
+    inputShow: false,
+    keyBoardHeight:"0px"
   },
-
-  // 点击了更多  打开一个弹框
-  more_btn () {
+  replyFunc (e) {
+    console.log('点击了回复');
+    // console.log(e);
     this.setData({
-      isShow: true
+      inputShow:!this.data.inputShow
     })
   },
-  // 隐藏遮罩弹框 
-  onClickHide() {
+  // 输入框获得焦点
+  inputFocus (e) {
+    const h = e.detail.height + 'px'
+    console.log(h);
+      this.setData({
+        keyBoardHeight: h
+      })
+    },
+   // 输入框脱焦
+   inputBlur () {
     this.setData({
-      isShow: false
-    });
+      inputShow:!this.data.inputShow
+    })
   },
-  // 页面加载 就发起请求  获得自己给别人的评价列表
-  async getEvaluate () {
-    const { data } = await get_evaluate(10,1)
-    console.log(data);
+  // 点击了发送
+  send () {
+    
+  },
+
+
+  // 页面滚动
+  onPageScroll (e) {
+    console.log(e);
+  },
+  // 页面尺寸变化
+  onResize (e) {
+    console.log('尺寸变化了');
+    console.log(e);
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getEvaluate()
+
   },
 
   /**

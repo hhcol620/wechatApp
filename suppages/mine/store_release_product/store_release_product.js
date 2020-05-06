@@ -1,3 +1,15 @@
+// 如果使用  async  await 这个es7 的将异步的请求
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 引入  用来发送请求的方法  需要将路径补全
+import { get_goodsList } from '../../../request/api/store_api.js'
+//index.js
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const { showLoading,hideLoading } = app.globalData
+
+
+
 // suppages/mine/store_release_product/store_release_product.js
 Page({
 
@@ -6,13 +18,67 @@ Page({
    */
   data: {
     // 控制遮罩是否打开
-    isShow:false
+    isShow: false,
+    // 自己发布的二手商品列表
+    goodsList: [],
+    // pageSize
+    pageSize: 10,
+    // 当前页
+    currrentPage: 1,
+    // 数据总条数
+    totalCount: 1,
+    // 点击查看更多的 那条数据的id 
+    id:''
   },
-
-  // 点击了更多  打开一个弹框
-  more_btn () {
+  // 页面加载 请求方法 获取自己发布的二手商品列表
+  async getGoodsList () {
+    const { data } = await get_goodsList(1,1)
+    // console.log(data.code);
+    if (data.code !== 200) {
+      // 提醒用户获取信息失败
+      wx.showToast({
+        title: '获取信息失败',
+        icon: 'none',
+        duration: 1000,
+        mask: true
+      });
+      return   
+    }
+    // 获取信息成功  将数据渲染到页面上
+    console.log(data);
+    // 将页面大小和数据总条数和当前页记录一下 
+    const { pageSize, currrentPage, totalCount } = data.data
     this.setData({
-      isShow: true
+      pageSize,
+      currrentPage,
+      totalCount
+    })
+    const list = data.data.data
+    console.log(list);
+    const l = list.map((v) => {
+      const title = v.title
+      const productDesc = v.productDesc
+      const mainPicUrl = v.mainPicUrl
+      const browserTimes = v.browserTimes
+      const salePrice = v.salePrice
+      const id = v.id
+      return {
+        title,productDesc,mainPicUrl,browserTimes,salePrice,id
+      }
+    })
+    console.log(l);
+    this.setData({
+      goodsList:l
+    })
+  },
+  // 点击了更多  打开一个弹框
+  more_btn (e) {
+    // 这个就是这条数据的id值  存储一下 提供打开弹框后使用
+    // console.log(e.currentTarget.dataset);
+    const id = e.currentTarget.dataset
+    this.setData({
+      isShow: true,
+      id:id
     })
   },
   // 隐藏遮罩弹框 
@@ -32,11 +98,25 @@ Page({
       complete: ()=>{}
     });
   },
+  // 点击编辑  将id传到发布页面
+  editFunc (e) {
+    // 这个就是这条数据的id值
+    // console.log(e.currentTarget.dataset);
+    // 解构赋值 然后使用模板字符串拼接
+    const { id } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/suppages/release/release_product/release_product?id=${id}`,
+      success: (result)=>{
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getGoodsList()
   },
 
   /**

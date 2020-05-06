@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-tree-select": "/miniprogram_npm/vant-weapp/tree-select/index"
+  }
+}

@@ -62,7 +62,7 @@ view.container view.item view.commdity_desc view.right.desc_price {
 }
 view.container view.item view.commdity_desc view.right.desc_price view.desc {
   font-size: 28rpx;
-  line-height: 32rpx;
+  line-height: 36rpx;
   font-weight: 500;
   color: #333;
   font-style: normal;

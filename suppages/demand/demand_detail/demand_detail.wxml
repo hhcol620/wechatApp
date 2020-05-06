@@ -1,6 +1,3 @@
-<!-- wxs 格式化时间 微信小程序里面的过滤器  写在wxs文件里面 -->
-<wxs src="../../../utils/timeFormat.wxs" module="timeFormat"></wxs>
-<!-- <view>{{timeFormat.time_for('2020-05-05 15:09:31')}}</view> -->
 <!-- suppages/store/commodity/commodity.wxml -->
 <view class="container" hover-class="none" hover-stop-propagation="false">
   <!-- 发布者信息 -->
@@ -10,34 +7,39 @@
     </view>
     <view class="author_mess" hover-class="none" hover-stop-propagation="false">
       <view class="nickName">一路向东</view>
-      <view class="creatTime">发布于{{timeFormat.time_for(goodsInfo.createTime)}}</view>
+      <view class="creatTime">发布于两天前</view>
     </view>
   </view>
   <!-- 商品描述 start -->
   <view class="comm_desc" hover-class="none" hover-stop-propagation="false">
     <view class="price">
       <text class="icon">￥</text>
-      {{goodsInfo.salePrice}}
+      998
     </view>
     <view class="desc_box">
-      {{goodsInfo.productDesc}}
+      女孩自用的三星s8 几乎全新 原装国行系统，环机转手，便宜货，正品三星无拆修，全网通，插卡即可使用，使用流畅。女孩自用的三星s8 几乎全新 原装国行系统，环机转手，便宜货，正品三星无拆修，全网通，插卡即可使用，使用流畅。女孩自用的三星s8 几乎全新 原装国行系统，环机转手，便宜货，正品三星无拆修，全网通，插卡即可使用，使用流畅。女孩自用的三星s8 几乎全新 原装国行系统，环机转手，便宜货，正品三星无拆修，全网通，插卡即可使用，使用流畅。
       <view class="desc_tags" hover-class="none" hover-stop-propagation="false">
-        <van-tag plain type="primary" size="medium" wx:for="{{goodsInfo.tagNames}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
-          {{item}}
-        </van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
+        <van-tag plain type="primary" size="medium">标签</van-tag>
       </view>
       <view class="desc_images" hover-class="none" hover-stop-propagation="false">
-        <image class="" src="{{goodsInfo.mainPicUrl}}" mode="widthFix" lazy-load="false" />
-        <image class="" wx:for="{{goodsInfo.otherImgUrl}}" wx:for-item="item" wx:for-index="index" wx:key="*this" src="{{item}}" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="widthFix" lazy-load="false" />
       </view>
       <!-- 商品情况 -->
       <view class="comm_desc_bottom" hover-class="none" hover-stop-propagation="false">
         <view class="comm_desc_left">平台担保</view>
         <view class="comm_desc_right">
           <ul>
+            <li>19人想要</li>
+            <li>超赞99</li>
             <li>浏览9997</li>
-            <li>回复998</li>
-            <li>点赞99</li>
           </ul>
         </view>
       </view>
@@ -54,19 +56,17 @@
 </view>
 <!-- 留言板 -->
 <view class="reply_all" hover-class="none" hover-stop-propagation="false">
-  <view class="title" hover-class="none" hover-stop-propagation="false">
-    全部留言 {{first_lea_mess_TotalCount}}
-  </view>
+  <view class="title" hover-class="none" hover-stop-propagation="false">全部留言 17</view>
   <!-- 留言面板 -->
   <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
-    <van-row class="container" wx:for="{{first_lea_mess}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+    <van-row class="container">
       <van-col span="4" class="headeImg">
         <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
       <van-col span="15" class="reply_container">
         <view class="userName">一路向西</view>
-        <view class="content">{{item.content}}</view>
-        <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
+        <view class="content">到底怎么样,好吗</view>
+        <view class="creatTime">两天前</view>
       </van-col>
       <van-col span="5" class="like">
         <view class="box" hover-class="none" hover-stop-propagation="false">
@@ -86,11 +86,31 @@
         </van-row>
       </navigator>
     </van-row>
-    <view class="reply_mess_box_footer" wx:if="{{isShowMore}}" bind:tap="get_more" data-id="{{id}}">
-      <!-- 查看更多 -->
-      加载更多的留言
-      <text class="iconfont icon-jiantou-copy"></text>
-    </view>
+    <van-row class="container">
+      <van-col span="4" class="headeImg">
+        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </van-col>
+      <van-col span="15" class="reply_container">
+        <view class="userName">一路向西</view>
+        <view class="content">到底怎么样,好吗</view>
+        <view class="creatTime">两天前</view>
+      </van-col>
+      <van-col span="5" class="like">
+        <view class="box" hover-class="none" hover-stop-propagation="false">
+          <text class="iconfont icon-dianzan" />
+          <text class="" selectable="false" space="false" decode="false">997</text>
+        </view>
+      </van-col>
+      <van-row>
+        <van-col offset="4" span="20">
+          <view class="reply_box">
+            <view class="item">前端劝退师: 你知道也太多了吧</view>
+            <view class="item">前端劝退师: 你知道也太多了吧</view>
+            <view class="item color">全部18条回复></view>
+          </view>
+        </van-col>
+      </van-row>
+    </van-row>
   </view>
 </view>
 <!-- 推荐面板 -->
@@ -104,7 +124,7 @@
 <!-- 底部栏目 需要固定到底部 -->
 <view class="fixed_bottom">
   <van-goods-action>
-    <van-goods-action-icon icon="good-job-o" text="点赞" bind:click="upFunc" />
+    <van-goods-action-icon icon="good-job-o" text="超赞" bind:click="upFunc" />
     <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
     <van-goods-action-icon icon="star-o" text="收藏" bind:click="collectFunc" />
     <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />

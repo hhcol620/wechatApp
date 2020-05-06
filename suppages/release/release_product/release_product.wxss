@@ -7,6 +7,21 @@ view.container {
 }
 view.container view.title {
   border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.title .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  margin-right: 30rpx;
+}
+view.container view.title .title_content {
+  width: calc(100% - 100rpx);
 }
 view.container view.desc {
   margin-top: 20rpx;
@@ -109,6 +124,30 @@ view.container view.price .tip {
   color: #333;
   min-width: 116rpx;
   margin-right: 30rpx;
+}
+view.container view.cate {
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  background-color: #fff;
+  padding: 30rpx;
+}
+view.container view.cate .tip {
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #333;
+  min-width: 116rpx;
+  margin-right: 30rpx;
+}
+view.container view.cate .cateTitle {
+  width: calc(100vw - 200rpx);
+}
+view.container view.cate .cate_btn {
+  width: calc(100% - 100rpx);
+  overflow: hidden;
 }
 view.container view.transactionWay {
   margin-top: 20rpx;

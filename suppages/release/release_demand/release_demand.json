@@ -7,7 +7,8 @@
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
     "van-uploader": "/miniprogram_npm/vant-weapp/uploader/index",
     "Radio_self":"/components/Radio_self/Radio_self",
-    "Checkbox_self":"/components/Checkbox_self/Checkbox_self"
+    "Checkbox_self":"/components/Checkbox_self/Checkbox_self",
+    "cateSelectTree":"/components/cateSelectTree/cateSelectTree"
   },
   "navigationBarTitleText":"发布需求"
 }

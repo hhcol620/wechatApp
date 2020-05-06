@@ -19,6 +19,10 @@ view.container {
       color: #333;
       margin-right: 30rpx;
     }
+    .title_content{
+      width: calc(~"100% - 100rpx");
+    }
+    
   }
 
   view.desc {
@@ -121,32 +125,10 @@ view.container {
 
   }
 
-  view.price {
+  view.cate {
     margin-top: 20rpx;
     border-radius: 6rpx;
     display: flex;
-    flex-wrap: nowrap;
-    background-color: #fff;
-    padding: 30rpx;
-
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      min-width: 116rpx;
-      margin-right: 30rpx;
-    }
-  }
-
-  view.cate {}
-
-  view.transactionWay {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    align-items: center;
     flex-wrap: nowrap;
     background-color: #fff;
     padding: 30rpx;
@@ -159,45 +141,12 @@ view.container {
       min-width: 116rpx;
       margin-right: 30rpx;
     }
-  }
-  view.transactionType {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    background-color: #fff;
-    padding: 30rpx;
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      min-width: 116rpx;
-      margin-right: 30rpx;
+    .cate_btn{
+      width: calc(~"100% - 100rpx");
+      overflow: hidden;
     }
+    
   }
-
-  view.degree {
-    margin-top: 20rpx;
-    border-radius: 6rpx;
-    display: flex;
-    flex-wrap: nowrap;
-    background-color: #fff;
-    padding: 30rpx;
-
-    .tip {
-      font-size: 28rpx;
-      line-height: 42rpx;
-      font-weight: 500;
-      font-style: normal;
-      color: #333;
-      min-width: 116rpx;
-      margin-right: 30rpx;
-    }
-  }
-
   view.setTags {
     margin-top: 20rpx;
     border-radius: 6rpx;
@@ -219,6 +168,7 @@ view.container {
       width: calc(~"100% - 100rpx");
     }
   }
+  
 }
 // 发布按钮
 .submitBtn{

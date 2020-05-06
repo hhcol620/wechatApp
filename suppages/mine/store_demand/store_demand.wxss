@@ -21,7 +21,7 @@ page {
 .container .item view.main .right {
   margin-left: 20rpx;
 }
-.container .item view.main .right .desc {
+.container .item view.main .right .title {
   font-size: 28rpx;
   line-height: 38rpx;
   font-weight: 600;
@@ -32,17 +32,25 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.container .item view.main .right .price {
+.container .item view.main .right .tags {
   font-size: 26rpx;
-  line-height: 60rpx;
-  font-weight: 600;
-  color: #ff3f34;
+  height: 60rpx;
+  line-height: 30rpx;
+  font-weight: 500;
+  color: #fff;
   font-style: normal;
+  display: flex;
+  align-items: center;
+}
+.container .item view.main .right .tags .tagItem {
+  padding: 4rpx 10rpx;
+  border-radius: 20rpx;
+  background-color: #ff7675;
 }
 .container .item view.main .right .other {
   font-size: 24rpx;
   color: #666;
-  line-height: 30rpx;
+  line-height: 40rpx;
   font-style: normal;
   font-weight: 500;
 }

@@ -1,0 +1,30 @@
+<!-- 这个页面是写评价的页面  上面头部部分应该显示这个商品的信息 -->
+<view class="container">
+  <!-- 顶部显示订单的信息 -->
+  <view class="header_item">
+    <view class="header">
+      <view class="left">
+        <view class="headImg">
+          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="nickName">张三李四</view>
+      </view>
+    </view>
+    <!-- 商品的信息 -->
+    <view class="commdity_desc">
+      <view class="left mainImage">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="right desc_price">
+        <view class="desc">
+          高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p
+        </view>
+        <view class="price">￥ 998</view>
+      </view>
+    </view>
+  </view>
+  <view class="main_item">
+    <!-- 这个区域加一个文本域 自动获得焦点 -->
+    <textarea placeholder="请根据此次交易输入您对商品和卖家最真实的描述吧" auto-focus />
+  </view>
+</view>

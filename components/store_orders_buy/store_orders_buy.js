@@ -30,9 +30,18 @@ Component({
         success: (res) => {},
       })
     },
-    // 点击查看评价  这个后面需要做一个页面 显示评价
-    review_evaluation (e) {
-      console.log('您点击了评价');
+    // 点击评价  这个后面需要做一个页面 跳转 评价页面
+    write_evaluation (e) {
+      console.log('您点击了评价  即将跳转到新的页面 开始评价');
+      wx.navigateTo({
+        url: '/suppages/mine/store_write_evaluate/store_write_evaluate',
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
     },
     // 点击了更多  打开一个弹框
     more_btn () {
