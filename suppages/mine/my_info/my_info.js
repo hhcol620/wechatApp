@@ -1,4 +1,5 @@
 // suppages/store/my_info/my_info.js
+import { getMyInfo } from '../../../request/api/store_api.js'
 Page({
 
   /**
@@ -6,9 +7,17 @@ Page({
    */
   data: {
     // 被选中的头像图片路径
-    chooseImgs:["https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg"]
+    chooseImgs:["https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg"],
+    userInfo: {}
   },
 
+  async getMyInfo(){
+    const { data } = await getMyInfo(1,1)
+    if(data.code !== 200){
+      return
+    }
+    this.userInfo = data.data
+  },
 
   // 选择图片
   handleChooseImg () {
@@ -34,7 +43,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //this.getMyInfo()
   },
 
   /**

@@ -50,7 +50,14 @@ export const get_leave_message_first = (pageSize,currentPage,goodsId,parentId,fi
   return getData(`/goods/goods/msg/${pageSize}/${currentPage}/${goodsId}/${parentId}/${firstClassId}`)
 }
 
+//获得自己的基本信息
+export const getMyInfo = () => {
+  return getData("/user/user/detail")
+}
 
+export const getSystemNews = (pageSize, currentPage) => {
+  return getData(`/message/msg/systemNews/${pageSize}/${currentPage}`)
+}
 
 
 // 分页查看自己评价  type 传 1

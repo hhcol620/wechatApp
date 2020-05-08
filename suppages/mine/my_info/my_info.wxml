@@ -4,7 +4,7 @@
     <!-- 点击用户头像的这个图片区域 -->
     <!-- 调用小程序中内置的选择图片api 获取到图片路径的数组 把图片路径存到data变量中 页面就可以根据图片数组 进行循环显示 -->
     <view class="headImg" bind:tap="handleChooseImg">
-      <image class="" src="{{chooseImgs[0]}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      <image class="" src="{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
     </view>
   </view>
   <view class="cellgroup">
