@@ -6,6 +6,10 @@ import { getData, postData, deleteData, putData } from '../index.js'
 export const getCategoryTree = () => {
   return getData(`/goods/goods/category/tree`)
 }
+// 获得用户信息  根据用户的id
+export const getUserInfo = (userId) => {
+  return getData(`/user/user/${userId}`)
+}
 
 
 // 分页查看自己发布的需求
@@ -45,7 +49,7 @@ export const put_goods_edit = (params) => {
   return putData(`/goods/goods/es/edit`,params)
 }
 
-// 根据商品id查询商品的留言信息  一级留言
+// 根据商品id查询商品的留言信息 一级留言 parentId,firstClassId 两个都传0 请求一级留言下的留言 请求 id 为2的一级留言下的留言   这个parentId,firstClassId 分别为0 和 2
 export const get_leave_message_first = (pageSize,currentPage,goodsId,parentId,firstClassId) => {
   return getData(`/goods/goods/msg/${pageSize}/${currentPage}/${goodsId}/${parentId}/${firstClassId}`)
 }
@@ -63,11 +67,14 @@ export const delete_evaluate = (id) => {
   return deleteData(`/goods/goods/evaluate/${id}`)
 }
 
-// 根据订单的id发布评价
+// 根据订单的id发布评价 入口在我的订单里面
 export const post_evaluate = (orderId) => {
   return postData(`/goods/goods/evaluate/${orderId}`)
 }
 
-// 
+// 搜索 参数 页面大小 当前页
+export const get_search_content = (pageSize, currentPage, keyword) => {
+  return getData(`goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
+}
 
 

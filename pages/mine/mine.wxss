@@ -77,21 +77,43 @@ page {
   font-size: 40rpx;
   color: #4d4d4d;
 }
-.main .item .container button.iconfont {
+.main .itemList {
+  display: flex;
+  flex-wrap: wrap;
+  width: none;
+  border-top: 1rpx solid var(--borderColor);
+}
+.main .itemList .item_i {
+  width: 25%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1rpx solid var(--borderColor);
+  border-bottom: 1rpx solid var(--borderColor);
+  box-sizing: border-box;
+}
+.main .itemList .item_i:last-child {
+  border-right: 1rpx solid var(--borderColor);
+}
+.main .itemList .item_i .item_nav {
+  line-height: 120rpx;
+  display: flex;
+  height: 120rpx;
+  margin-top: 30rpx;
+}
+.main .itemList .item_i .iconfont {
   font-size: 40rpx;
+  line-height: 60rpx;
+}
+.main .itemList .item_i .textdesc {
+  font-size: 22rpx;
+  line-height: 36rpx;
+  color: #4d4d4d;
+}
+.main .itemList .item_i button {
   background-color: #fff;
-  color: #666;
-  line-height: 70rpx;
 }
-.main .item .container button.iconfont::after {
-  border: none;
-}
-.main .item .container button.text {
-  font-size: 24rpx;
-  background-color: #fff;
-  color: #666;
-  line-height: 30rpx;
-}
-.main .item .container button.text::after {
+.main .itemList .item_i button::after {
   border: none;
 }

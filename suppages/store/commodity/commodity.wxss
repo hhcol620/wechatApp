@@ -225,3 +225,11 @@ page {
   z-index: 999;
   width: 100%;
 }
+.van-goods-action {
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.van-goods-action-button {
+  width: 36vw;
+}

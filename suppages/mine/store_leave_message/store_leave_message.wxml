@@ -1,4 +1,4 @@
-<!-- 我给别人的留言 -->
+<!-- 我给别人的留言  这个暂时不要了 -->
 <!-- 每一条数据 左侧放商品图片 右侧放置回复对象 以及回复的内容 点击跳转对应的商品页 长按删除 -->
 <view class="container">
   <view class="item" bind:tap="toCommodity_detail" bind:longpress="longpressFunc">

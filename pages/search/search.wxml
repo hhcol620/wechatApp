@@ -4,7 +4,7 @@
   <view class="selectInputContainer">
     <SearchSelect id="select" propArray='{{selectArray}}' bind:myget='getDate' bind:reset='resetFunc'></SearchSelect>
   </view>
-  <view class="historyContainer" hover-class="none" hover-stop-propagation="false" wx:if="{{selectValue == 0}}">
+  <view class="historyContainer" hover-class="none" hover-stop-propagation="false">
     <view class="titleCon" hover-class="none" hover-stop-propagation="false">
       <text>搜索历史</text>
     </view>
@@ -21,11 +21,5 @@
       <text class="tag">自行车</text>
       <text class="tag">自行车</text>
     </view>
-  </view>
-  <view class="store_forum_commponents" hover-class="none" hover-stop-propagation="false" wx:elif="{{selectValue != 0}}">
-    <!-- 商城列表 -->
-    <StoreList wx:if="{{selectValue == 1}}"></StoreList>
-    <!-- 论坛列表 -->
-    <ForumList wx:elif="{{selectValue == 2}}"></ForumList>
   </view>
 </view>

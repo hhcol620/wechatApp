@@ -8,12 +8,12 @@
   margin: 10rpx;
   padding: 0 16rpx;
   border-radius: 23rpx;
-  height: 46rpx;
   font-size: 28rpx;
   line-height: 46rpx;
   color: #333;
   background-color: #fff;
   border: 1rpx solid #999;
+  box-sizing: border-box;
 }
 .checkedLight {
   color: #fff !important;

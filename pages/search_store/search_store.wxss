@@ -1,0 +1,98 @@
+/* pages/search_store/search_store.wxss */
+view.sx_box {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50rpx;
+  background-color: #fff;
+}
+view.sx_box .sx {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  color: #333;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  font-style: normal;
+  font-weight: 500;
+}
+.van-popup {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.van-popup .van-popup--right {
+  background-color: #fff;
+}
+.van-popup view.main view.item {
+  margin-top: 20rpx;
+  padding: 20rpx;
+}
+.van-popup view.main view.item .title {
+  font-size: 26rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  color: #666;
+  font-style: normal;
+  padding-bottom: 10rpx;
+}
+.van-popup view.main view.item .container.price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.van-popup view.main view.item .container.price .leftInput,
+.van-popup view.main view.item .container.price .rightInput {
+  font-style: normal;
+  font-size: 28rpx;
+  line-height: 56rpx;
+  height: 56rpx;
+  font-weight: 500;
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+.van-popup view.main view.item .container.price .leftInput .input,
+.van-popup view.main view.item .container.price .rightInput .input {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+.van-popup view.main view.item .container.price .middle {
+  width: 60rpx;
+  margin: 30rpx;
+  height: 2rpx;
+  box-sizing: border-box;
+  background-color: #f6f6f6;
+}
+.van-popup view.footer {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+.van-popup view.footer .reset_btn {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #999;
+  border-right: transparent;
+  box-sizing: border-box;
+}
+.van-popup view.footer .submit_btn {
+  height: 100%;
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--themeColor);
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-rate": "/miniprogram_npm/vant-weapp/rate/index"
+  },
+  "navigationBarTitleText":"订单详情"
+}

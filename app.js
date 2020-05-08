@@ -10,7 +10,7 @@ App({
   globalData: {
     showLoading, hideLoading,
     // 加载图片 基地址
-    imgURL: 'http://39.105.0.169:8080/',
+    imgURL: 'https://www.imuster.top/img',
     // 上传文件夹的 url
     uploadImgURL:'https://www.imuster.top/api/file/file'
   }

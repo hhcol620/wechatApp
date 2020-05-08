@@ -1,0 +1,120 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container {
+  margin: 20rpx;
+}
+view.header {
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+}
+view.header view.top {
+  display: flex;
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+view.header view.top view.left.mainImg image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 10rpx;
+}
+view.header view.top view.right {
+  margin-left: 20rpx;
+}
+view.header view.top view.right view.desc {
+  font-size: 26rpx;
+  line-height: 38rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+view.header view.top view.right view.price {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  line-height: 30rpx;
+  color: #ff3f34;
+}
+view.header view.bottom .item {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  font-style: normal;
+}
+view.main {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+}
+view.main view.top {
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+view.main view.top view.title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.main view.top view.other_mess {
+  color: #666;
+  font-size: 26rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  font-style: normal;
+}
+view.main view.bottom view.title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.main view.bottom .evaluate_container {
+  color: #4d4d4d;
+  font-size: 26rpx;
+  line-height: 28rpx;
+  font-weight: 500;
+  font-style: normal;
+}
+view.main view.bottom .evaluate_grade {
+  margin-top: 20rpx;
+}
+view.main view.bottom .evaluate_grade .item .item_title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.footer {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 6rpx;
+}
+view.footer .title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.footer .order_container {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #666;
+}
+view.footer .order_container .copy_btn {
+  margin-left: 20rpx;
+  display: inline;
+  color: #4d4d4d;
+  font-size: 28rpx;
+}
