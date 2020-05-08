@@ -306,6 +306,28 @@
 					"id": -1,
 					"name": "写评价的页面",
 					"pathName": "suppages/mine/store_write_evaluate/store_write_evaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "错误页",
+					"pathName": "suppages/errorPage/errorPage/errorPage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "商城搜索页",
+					"pathName": "pages/search_store/search_store",
+					"query": "keyword=东方风格豆腐干",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单详情页",
+					"pathName": "suppages/mine/store_orders_detail/store_orders_detail",
+					"query": "keyword=东方风格豆腐干",
 					"scene": null
 				}
 			]

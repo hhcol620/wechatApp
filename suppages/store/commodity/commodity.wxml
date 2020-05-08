@@ -6,10 +6,10 @@
   <!-- 发布者信息 -->
   <view class="author" hover-class="none" hover-stop-propagation="false">
     <view class="head_img" hover-class="none" hover-stop-propagation="false">
-      <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742571804805312.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      <image class="" src="{{imgURL}}/{{goodsInfo.consumerInfo.pic}}" lazy-load="false" binderror="" bindload="" data-userId="{{goodsInfo.consumerInfo.userId}}" bind:tap="" />
     </view>
     <view class="author_mess" hover-class="none" hover-stop-propagation="false">
-      <view class="nickName">一路向东</view>
+      <view class="nickName">{{goodsInfo.consumerInfo.nickname}}</view>
       <view class="creatTime">发布于{{timeFormat.time_for(goodsInfo.createTime)}}</view>
     </view>
   </view>
@@ -36,8 +36,7 @@
         <view class="comm_desc_right">
           <ul>
             <li>浏览9997</li>
-            <li>回复998</li>
-            <li>点赞99</li>
+            <li>回复{{first_lea_mess_TotalCount}}</li>
           </ul>
         </view>
       </view>
@@ -46,11 +45,15 @@
 </view>
 <!-- 描述作者 -->
 <view class="author_desc" hover-class="none" hover-stop-propagation="false">
-  <view class="nickName" hover-class="none" hover-stop-propagation="false">一路向西</view>
-  <view class="author_mess" hover-class="none" hover-stop-propagation="false">
-    通过平台卖出了100件宝贝。多次参与公益活动，女生通过平台卖出了100件宝贝。多次参与公益活动，女生
+  <view class="nickName" hover-class="none" hover-stop-propagation="false">
+    {{goodsInfo.consumerInfo.nickname}}
   </view>
-  <view class="author_real" hover-class="none" hover-stop-propagation="false">实名认证已通过</view>
+  <view class="author_mess" hover-class="none" hover-stop-propagation="false">
+    {{goodsInfo.consumerInfo.signature}}
+  </view>
+  <view class="author_real" hover-class="none" hover-stop-propagation="false" wx:if="{{goodsInfo.consumerInfo.state===40}}">
+    实名认证已通过
+  </view>
 </view>
 <!-- 留言板 -->
 <view class="reply_all" hover-class="none" hover-stop-propagation="false">
@@ -61,10 +64,10 @@
   <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
     <van-row class="container" wx:for="{{first_lea_mess}}" wx:for-item="item" wx:for-index="index" wx:key="id">
       <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}/{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
       <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
+        <view class="userName">{{item.consumerInfo.nickname}}</view>
         <view class="content">{{item.content}}</view>
         <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
       </van-col>
@@ -77,10 +80,14 @@
       <navigator url="../lea_Message_detail/lea_Message_detail" hover-class="navigator-hover" open-type="navigate">
         <van-row>
           <van-col offset="4" span="20">
-            <view class="reply_box">
-              <view class="item">前端劝退师: 你知道也太多了吧</view>
-              <view class="item">前端劝退师: 你知道也太多了吧</view>
-              <view class="item color">全部18条回复></view>
+            <view class="reply_box" wx:if="{{replyTotal}}">
+              <view class="item" wx:for="{{item.second_lea_mess}}" wx:for-index="second_index" wx:for-item="second_item" wx:key="id">
+                {{second_item.content}}
+              </view>
+              <!-- <view class="item">测试人1: 你知道也太多了吧</view> -->
+              <view class="item color" wx:if="{{second_item.replyTotal>3}}">
+                全部{{second_item.replyTotal}}条回复>
+              </view>
             </view>
           </van-col>
         </van-row>
@@ -104,10 +111,13 @@
 <!-- 底部栏目 需要固定到底部 -->
 <view class="fixed_bottom">
   <van-goods-action>
-    <van-goods-action-icon icon="good-job-o" text="点赞" bind:click="upFunc" />
-    <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
-    <van-goods-action-icon icon="star-o" text="收藏" bind:click="collectFunc" />
-    <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />
+    <view>
+      <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
+      <van-goods-action-icon icon="star-o" text="收藏" bind:click="collectFunc" />
+    </view>
+    <view>
+      <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />
+    </view>
   </van-goods-action>
 </view>
 <!-- 底部输入框 -->

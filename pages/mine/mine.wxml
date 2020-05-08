@@ -15,44 +15,84 @@
 </view>
 <!-- 主体区域 -->
 <view class="main">
+  <!-- 修改部分 -->
   <view class="item">
     <view class="title">常用</view>
     <view class="container">
-      <van-grid column-num="4">
-        <van-grid-item text="消息通知" link-type="navigateTo" url="/suppages/mine/inform/inform">
-          <text class="iconfont icon-xiaoxitongzhi" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="@我的" link-type="navigateTo" url="/suppages/mine/reply_to_mine/reply_to_mine">
-          <text class="iconfont icon--weiguanzhurenxinxisixinxiaoxizhongxin" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="收藏" link-type="navigateTo" url="/suppages/mine/collect/collect">
-          <text class="iconfont icon-shoucang2" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="浏览历史" link-type="navigateTo" url="/suppages/mine/browsing_history/browsing_history">
-          <text class="iconfont icon-shijian2" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="标签" link-type="navigateTo" url="/suppages/mine/mytags/mytags">
-          <text class="iconfont icon-biaoqian" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="我的信息" link-type="navigateTo" url="/suppages/mine/my_info/my_info">
-          <text class="iconfont icon-yonghuziliaogerenxinxigerenziliao-xianxing" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item text="实名认证" link-type="navigateTo" url="/suppages/mine/real_name/real_name">
-          <text class="iconfont icon-shimingrenzheng1" slot="icon"></text>
-        </van-grid-item>
-        <van-grid-item bind:click="handleContact1">
-          <button open-type="contact" bindcontact="handleContact" slot="icon" class="iconfont icon-lianxi4"></button>
-          <button open-type="contact" bindcontact="handleContact" slot="text" class="text">
-            联系客服
+      <view class="itemList">
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/inform/inform" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-xiaoxitongzhi"></view>
+              <view class="textdesc">消息通知</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/reply_to_mine/reply_to_mine" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont  icon--weiguanzhurenxinxisixinxiaoxizhongxin"></view>
+              <view class="textdesc">@我的</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/collect/collect" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-shoucang2"></view>
+              <view class="textdesc">收藏</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/browsing_history/browsing_history" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-shijian2"></view>
+              <view class="textdesc">浏览历史</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/mytags/mytags" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-biaoqian"></view>
+              <view class="textdesc">标签</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/my_info/my_info" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-yonghuziliaogerenxinxigerenziliao-xianxing"></view>
+              <view class="textdesc">我的信息</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <navigator class="item_nav" target="" url="/suppages/mine/real_name/real_name" hover-class="navigator-hover" open-type="navigate">
+            <view>
+              <view class="iconfont icon-shimingrenzheng1"></view>
+              <view class="textdesc">实名认证</view>
+            </view>
+          </navigator>
+        </view>
+        <view class="item_i">
+          <button open-type="contact" bindcontact="handleContact" slot="icon" class="item_nav">
+            <view>
+              <view class="iconfont icon-lianxi4"></view>
+              <view class="textdesc">联系客服</view>
+            </view>
           </button>
-        </van-grid-item>
-        <van-grid-item>
-          <button open-type="feedback" bindcontact="handleContact" slot="icon" class="iconfont icon-fankuijianyi"></button>
-          <button open-type="feedback" bindcontact="handleContact" slot="text" class="text">
-            反馈建议
+        </view>
+        <view class="item_i">
+          <button open-type="feedback" slot="icon" class="item_nav">
+            <view>
+              <view class="iconfont icon-fankuijianyi"></view>
+              <view class="textdesc">反馈建议</view>
+            </view>
           </button>
-        </van-grid-item>
-      </van-grid>
+        </view>
+      </view>
     </view>
   </view>
   <view class="item">
@@ -68,11 +108,11 @@
         <van-grid-item text="我的需求" link-type="navigateTo" url="/suppages/mine/store_demand/store_demand">
           <text class="iconfont icon-fabuxuqiu" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item text="我的留言" link-type="navigateTo" url="/suppages/mine/store_leave_message/store_leave_message">
-          <text class="iconfont icon-liuyan-duandian" slot="icon"></text>
-        </van-grid-item>
         <van-grid-item text="我的评价" link-type="navigateTo" url="/suppages/mine/store_evaluate/store_evaluate">
           <text class="iconfont icon-pingjia" slot="icon"></text>
+        </van-grid-item>
+        <van-grid-item text="错误页" link-type="navigateTo" url="/suppages/errorPage/errorPage/errorPage">
+          <text class="iconfont icon-liuyan-duandian" slot="icon"></text>
         </van-grid-item>
       </van-grid>
     </view>

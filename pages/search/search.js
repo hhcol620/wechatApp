@@ -11,19 +11,35 @@ Page({
       "value": "1"
     }],
     // 搜索内容  控制列表组件  对应的数组里面的value
-    selectValue: 0
+    selectValue: 1,
+    // 输入框输入的内容
+    Inputvalue:''
   },
 
 
   getDate: function(e) {
     console.log(e.detail)
     const { selectValue,Inputvalue} = e.detail
-    // 通过控制回传回来的搜索数据将显示不同的组件 selectIndex 0表示商城  1表示论坛  Inputvalue发起不同的列表请求
-    console.log(selectValue,Inputvalue);
+    // 通过控制回传回来的搜索数据将显示不同的组件 selectIndex 0表示商城  Inputvalue发起不同的列表请求
+    // console.log(selectValue,Inputvalue);
     // 
     this.setData({
-      selectValue:selectValue
+      selectValue,
+      Inputvalue
     })
+    // 首先判断这两个值是否合法 这里判断是否为空
+    if (selectValue.trim() && Inputvalue.trim()) {
+      // 两个都合法进行跳转
+      wx.navigateTo({
+        url: `/pages/search_store/search_store?keyword=${Inputvalue}`,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
+    }
   },
   // 点击空白关闭
   close () {

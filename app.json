@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/search/search",
+    "pages/search_store/search_store",
     "pages/service/service",
     "pages/mine/mine",
     "pages/register/register",
@@ -34,13 +35,15 @@
         "mine/my_info/my_info",
         "mine/real_name/real_name",
         "mine/store_orders/store_orders",
+        "mine/store_orders_detail/store_orders_detail",
         "mine/store_release_product/store_release_product",
         "mine/store_demand/store_demand",
         "mine/store_leave_message/store_leave_message",
         "mine/store_evaluate/store_evaluate",
         "mine/errand_completing_orders/errand_completing_orders",
         "mine/errand_completed_orders/errand_completed_orders",
-        "mine/store_write_evaluate/store_write_evaluate"
+        "mine/store_write_evaluate/store_write_evaluate",
+        "errorPage/errorPage/errorPage"
       ]
     }
   ],

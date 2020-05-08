@@ -1,0 +1,55 @@
+<!-- <view class="header"></view> -->
+<van-sticky>
+  <van-search value="{{ value }}" shape="round" background="var(--themeColor)" placeholder="请输入搜索关键词" bind:search="search_submit" />
+  <view class="sx_box">
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{ selectValue }}" options="{{ option }}" />
+    </van-dropdown-menu>
+    <view class="sx" bind:tap="openSider">
+      <text class="iconfont icon-shaixuan"></text>
+      筛选
+    </view>
+  </view>
+</van-sticky>
+<view class="store_forum_commponents" hover-class="none" hover-stop-propagation="false">
+  <!-- 商城列表 -->
+  <StoreList></StoreList>
+</view>
+<!-- 弹出层 -->
+<van-popup show="{{ show }}" position="right" custom-style="width: 70%;height: 100%" bind:close="onClose" z-index="9999">
+  <view class="main">
+    <view class="item">
+      <view class="title">交易方式</view>
+      <!-- 这个可以多选 -->
+      <view class="container">
+        <!-- 自定义多选框 -->
+        <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
+      </view>
+    </view>
+    <view class="item">
+      <view class="title">新旧程度</view>
+      <!-- 单选 7成新及以上 8成新及以上 9成新及以上 其他 -->
+      <view class="container">
+        <!-- 自定义单选框 -->
+        <Radio_self list="{{type_ridio_items}}" bind:handleItemChange="handleItemChange"></Radio_self>
+      </view>
+    </view>
+    <view class="item">
+      <view class="title">价格</view>
+      <!-- 这里可以上输入两端价格 -->
+      <view class="container price">
+        <view class="leftInput">
+          <input class="weui-input" placeholder="最低价" />
+        </view>
+        <view class="middle"></view>
+        <view class="rightInput">
+          <input class="weui-input" placeholder="最高价" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="reset_btn">重置</view>
+    <view class="submit_btn">确定</view>
+  </view>
+</van-popup>

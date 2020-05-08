@@ -1,0 +1,78 @@
+<!-- 这个是订单详情页 -->
+<!-- 头部显示商品的一个简介信息 价格 钱款去向 -->
+<!-- 中间写收货地址 收货人信息 -->
+<!-- 评价 -->
+<!-- 底部写订单的信息  包括订单信息 卖家信息 联系卖家 交易时间 -->
+<view class="container">
+  <view class="header">
+    <!-- 商品信息 -->
+    <view class="top">
+      <view class="left mainImg">
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742571214112551.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="right">
+        <view class="desc">这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述</view>
+        <view class="price">￥ 999.00</view>
+      </view>
+    </view>
+    <view class="bottom">
+      <!-- 支付金额 钱款去向 -->
+      <view class="item">
+        <view class="title">商品总价</view>
+        <view class="price">￥ 999.00</view>
+      </view>
+      <view class="item">
+        <view class="title">钱款去向</view>
+        <view class="price">已到达卖家账户</view>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <!-- 这里放我的收货信息  和 评价的信息 -->
+    <view class="top">
+      <!-- 收货地址 -->
+      <view class="title">收货地址: 张三 1777777777</view>
+      <view class="other_mess">内蒙古科技大学23号宿舍楼 922 宿舍内蒙古科技大学23号宿舍楼 922 宿舍内蒙古科技大学23号宿舍楼 922</view>
+    </view>
+    <view class="bottom">
+      <!-- 评价的详细信息 -->
+      <view class="title">买家评价</view>
+      <view class="evaluate_container">卖家人不错，宝贝和照片一样，感觉还是比较新的，质量还可以</view>
+      <view class="evaluate_grade">
+        <!-- 对质量的评价 -->
+        <view class="item">
+          <view class="item_title">宝贝质量</view>
+          <view class="box">
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          </view>
+        </view>
+        <!-- 对卖家服务的评价 -->
+        <view class="item">
+          <view class="item_title">卖家服务</view>
+          <view class="box">
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          </view>
+        </view>
+        <!-- 整体评价 -->
+        <view class="item">
+          <view class="item_title">整体体验</view>
+          <view class="box">
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <!-- 订单的信息 -->
+    <view class="title">订单信息</view>
+    <view class="order_container">
+      <view class="item">卖家昵称: 内蒙古科技大学</view>
+      <view class="item">
+        订单编号: 29999999381289
+        <view class="copy_btn" bind:tap="copy_orderCode">复制</view>
+      </view>
+      <view class="item">交易时间: 2020-11-09 12:00:00</view>
+    </view>
+  </view>
+</view>

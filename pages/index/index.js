@@ -15,18 +15,18 @@ Page({
   },
   async getSwiper () {
     showLoading()
-    const res = await get_swipers()
-    console.log(res);
-    this.setData({
-      swiperList:res.data.message
-    })
+    // const res = await get_swipers()
+    // console.log(res);
+    // this.setData({
+    //   swiperList:res.data.message
+    // })
     hideLoading()
   },
   // 根据商品id获得商品的信息
   async getGoodsMessage () {
     showLoading()
-    const res = await getProductBriefById(1)
-    console.log('信息',res);
+    // const res = await getProductBriefById(1)
+    // console.log('信息',res);
     hideLoading()
   },
    // 页面开始加载 就会触发

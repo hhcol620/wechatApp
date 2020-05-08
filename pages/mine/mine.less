@@ -83,20 +83,59 @@ page {
         font-size: 40rpx;
         color: #4d4d4d;
       }
-      button.iconfont{
-        font-size: 40rpx;
-        background-color: #fff;
-        color: #666;
-        line-height: 70rpx;
-        &::after{
-          border: none;
-        }
+      // button.iconfont{
+      //   font-size: 40rpx;
+      //   background-color: #fff;
+      //   color: #666;
+      //   line-height: 70rpx;
+      //   &::after{
+      //     border: none;
+      //   }
+      // }
+      // button.text{
+      //   font-size: 24rpx;
+      //   background-color: #fff;
+      //   color: #666;
+      //   line-height: 30rpx;
+        
+      // }
+    }
+  }
+  .itemList{
+    display: flex;
+    flex-wrap: wrap;
+    width: none;
+    border-top: 1rpx solid var(--borderColor);
+    .item_i{
+      width: 25%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // border-top: 1rpx solid var(--borderColor);
+      border-left: 1rpx solid var(--borderColor);
+      border-bottom: 1rpx solid var(--borderColor);
+      box-sizing: border-box;
+      &:last-child{
+        border-right: 1rpx solid var(--borderColor);
       }
-      button.text{
-        font-size: 24rpx;
+      .item_nav{
+        line-height: 120rpx;
+        display: flex;
+        height: 120rpx;
+        margin-top: 30rpx;
+      }
+      .iconfont{
+        font-size: 40rpx;
+        line-height: 60rpx;
+      }
+      .textdesc{
+        font-size: 22rpx;
+        line-height: 36rpx;
+        color: #4d4d4d;
+      }
+      button{
         background-color: #fff;
-        color: #666;
-        line-height: 30rpx;
         &::after{
           border: none;
         }

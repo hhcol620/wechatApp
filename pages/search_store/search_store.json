@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "StoreList":"../../components/storeList/storeList",
+    "van-search": "/miniprogram_npm/vant-weapp/search/index",
+    "van-sticky": "/miniprogram_npm/vant-weapp/sticky/index",
+    "van-dropdown-menu": "/miniprogram_npm/vant-weapp/dropdown-menu/index",
+    "van-dropdown-item": "/miniprogram_npm/vant-weapp/dropdown-item/index",
+    "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
+    "Radio_self":"/components/Radio_self/Radio_self",
+    "Checkbox_self":"/components/Checkbox_self/Checkbox_self"
+  },
+  "navigationBarTitleText":"IRH商城"
+}

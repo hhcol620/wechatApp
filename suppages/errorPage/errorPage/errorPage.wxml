@@ -1,0 +1,5 @@
+<!-- 这个页面写错误页面 -->
+<view class="container">
+  <image class="" src="https://ae01.alicdn.com/kf/Hacb86d5d1bda4529a94d2de36aa1d88bh.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+  <view class="tip">正在加速开发中...</view>
+</view>

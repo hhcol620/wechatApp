@@ -16,9 +16,9 @@ Component({
   data: {
     // 组件内部的数据
     selectShow: false, //初始option不显示
-    label: "请选择", //初始内容
+    label: "商城", //初始内容
     // 对应的参数对照  有时需要使用这个参数
-    selectValue: '',
+    selectValue: '1',
     // 选择框索引
     selectIndex: '',
     // 输入数据
