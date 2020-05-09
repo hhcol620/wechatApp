@@ -40,6 +40,11 @@ export const get_demandMessage = (id) => {
   return getData(`/goods/goods/demand/${id}`)
 }
 
+//获得自己的订单列表
+export const getMyOrderList = (pageSize,currentPage, type) => {
+  return getData(`/order/order/es/list/${type}/${pageSize}/${currentPage}`)
+}
+
 // 分页查看自己发布商品
 export const get_goodsList = (pageSize,currentPage) => {
   return getData(`/goods/goods/es/list/${pageSize}/${currentPage}`)
@@ -69,6 +74,17 @@ export const getMyInfo = () => {
 
 export const getSystemNews = (pageSize, currentPage) => {
   return getData(`/message/msg/systemNews/${pageSize}/${currentPage}`)
+}
+
+
+//根据索引删除
+export const deleteCollectByInde = (index) => {
+  return deleteData(`/goods/record/${index}`)
+}
+
+//清空自己的浏览记录
+export const deleteOwnAllCollect = () => {
+  return deleteData("/goods/record")
 }
 
 

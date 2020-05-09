@@ -2,14 +2,14 @@
 <view class="head">
   <view class="card">
     <view class="headImg">
-      <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      <image class="" src="{{imgURL}}/{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
     </view>
     <view class="nickName_real_sign">
       <view class="nickName_real">
-        <view class="nickName">张三李四张三李四张三李四张三李四张三李四张三李四</view>
+        <view class="nickName">{{userInfo.nickname}}</view>
         <view class="real">申请认证</view>
       </view>
-      <view class="sign">个性签名: 努力让自己每天开心努力让自己每天开心 努力让自己每天开心努力让自己每天开心</view>
+      <view class="sign">{{userInfo.signature}}</view>
     </view>
   </view>
 </view>

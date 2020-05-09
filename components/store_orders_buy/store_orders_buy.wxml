@@ -4,7 +4,7 @@
     <view class="header">
       <view class="headImg">
         <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        <view class="nickName">kchuj2020</view>
+        <view class="nickName">{{}}</view>
       </view>
       <view class="orders_desc">交易成功</view>
     </view>

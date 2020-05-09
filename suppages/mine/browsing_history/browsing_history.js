@@ -1,5 +1,5 @@
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
-import { getUserRecodrByPage } from '../../../request/api/store_api.js'
+import { getUserRecodrByPage, deleteOwnAllCollect, deleteCollectByInde } from '../../../request/api/store_api.js'
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
 // suppages/store/browsing_history/browsing_history.js
@@ -20,7 +20,7 @@ Page({
     Dialog.confirm({
       message: '确定删除本条浏览记录吗'
     }).then(() => {
-      // on confirm
+      //this.deleteCollectByIndex(ind);
     }).catch(() => {
       // on cancel
     });
@@ -31,10 +31,20 @@ Page({
     Dialog.confirm({
       message: '确定删除全部的浏览记录吗'
     }).then(() => {
-      // on confirm
+      this.deleteAllCollect();
     }).catch(() => {
       // on cancel
     });
+  },
+  async deleteCollectByIndex(index){
+    const { data } = await deleteCollectByInde(index)
+  },
+  async deleteAllCollect(){
+    const{ data } = await deleteOwnAllCollect();
+    if(data.code !== 200) return
+    this.setData({
+      recordList: []
+    })
   },
   async getBrowseHistory(){
     const { data } = await getUserRecodrByPage(this.data.pageSize, this.data.currentPage)

@@ -5,18 +5,18 @@
     <view class="deleteBtn" bind:tap="deleteAll">清空</view>
   </view>
 </view>
-<view class="container">
+<view class="container" wx:for="{{recordList}}" wx:key="id">
   <view class="item_b">
-    <view class="time_title">这是时间</view>
+    <view class="time_title" >{{item.browseDate}}</view>
     <view class="content_b">
       <view class="item" bind:longpress="longPressFunc">
         <view class="image left">
-          <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="{{imgURL}}/{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="right">
-          <view class="desc">这是描述</view>
+          <view class="desc">{{item.title}}</view>
           <view class="price_sign">
-            <view class="price">￥ 这是价格</view>
+            <view class="price">￥ {{item.salePrice}}</view>
             <view class="sign">商品</view>
           </view>
         </view>

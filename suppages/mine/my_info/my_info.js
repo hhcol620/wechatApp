@@ -1,5 +1,15 @@
 // suppages/store/my_info/my_info.js
 import { getMyInfo } from '../../../request/api/store_api.js'
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
 Page({
 
   /**
@@ -12,7 +22,7 @@ Page({
   },
 
   async getMyInfo(){
-    const { data } = await getMyInfo(1,1)
+    const { data } = await getMyInfo()
     if(data.code !== 200){
       return
     }
@@ -45,7 +55,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //this.getMyInfo()
+    this.getMyInfo()
   },
 
   /**

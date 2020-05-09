@@ -1,6 +1,8 @@
 import Notify from '../../../miniprogram_npm/vant-weapp/notify/notify';
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
-
+import { getMyInfo } from '../../../request/api/store_api.js'
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
 
 
 // suppages/store/real_name/real_name.js

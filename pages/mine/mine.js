@@ -2,6 +2,14 @@
 import { getSystemInfoSync } from "../../miniprogram_npm/vant-weapp/common/utils";
 import { getMyInfo } from '../../request/api/store_api.js'
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
 Page({
 
   /**
@@ -10,7 +18,6 @@ Page({
   data: {
     userInfo:{}
   },
-
   // 联系客服
   handleContact1 (e) {
     console.log('ok');
@@ -25,6 +32,11 @@ Page({
   // 进入我的页面立即判断本地是否有token 如果没有的话就重定向到登陆页页面
   async redirectToLogin () {
     const token = wx.getStorageSync('token'); 
+    const { data } = await getMyInfo()
+    if (data.code !== 200) return
+    this.setData({
+      userInfo: data.data
+    })
     if (!token) {
       // 获取不到就跳转到登陆页
     // console.log('获取不到');
@@ -37,11 +49,11 @@ Page({
     //     complete: () => {}
     //   }); 
     }else{
-      const { data } = await getMyInfo()
-      if(data.code !== 200) return
-      this.setData({
-        userInfo: data.data
-      })
+      // const { data } = await getMyInfo()
+      // if(data.code !== 200) return
+      // this.setData({
+      //   userInfo: data.data
+      // })
     }
   },
   /**

@@ -28,6 +28,9 @@ Page({
     isShow: false,
     // 评价列表 
     evaluateList: [],
+
+    pageSize: 10,
+    currentPage: 1,
     // 评价id
     id: '',
     // 页面加载图片基地址
@@ -68,11 +71,8 @@ Page({
   async getEvaluate() {
     const {
       data
-    } = await get_evaluate(10, 1)
-    const {
-      evaluateList
-    } = this.data
-    console.log(data);
+    } = await get_evaluate(this.data.pageSize, this.data.currentPage)
+    
     if (data.code !== 200) {
       wx.showToast({
         title: '获取信息失败',
@@ -83,18 +83,21 @@ Page({
       });
       return
     }
-    // 成功将数据 赋值到data里面
-    const List = data.data.data
-    // 根据其中的买家id  获取用户的信息 头像和昵称
-    List.forEach(async item => {
-      const buyerInfo = await this.getUserInfoById(item.buyerId)
-      item.buyerInfo = buyerInfo
-      evaluateList.push(item)
-      // console.log(List);
-      this.setData({
-        evaluateList
-      })
+
+    this.setData({
+      evaluateList: data.data.data
     })
+    // 成功将数据 赋值到data里面
+    // 根据其中的买家id  获取用户的信息 头像和昵称
+    // List.forEach(async item => {
+    //   const buyerInfo = await this.getUserInfoById(item.buyerId)
+    //   item.buyerInfo = buyerInfo
+    //   evaluateList.push(item)
+    //   // console.log(List);
+    //   this.setData({
+    //     evaluateList
+    //   })
+    // })
 
   },
   // 根据用户id获得用户信息
