@@ -5,155 +5,19 @@
     <view class="deleteBtn" bind:tap="deleteAll">清空</view>
   </view>
 </view>
-<view class="container">
+<view class="container" wx:for="{{recordList}}"  wx:key="id" wx:for-index="id" wx:for-item="it" >
   <view class="item_b" >
-    <view class="time_title">2020-04-28</view>
+    <view class="time_title">{{it.browseDate}}</view>
     <view class="content_b">
       <view class="item" bind:longpress="longPressFunc">
         <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item" bind:longpress="longPressFunc">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item" bind:longpress="longPressFunc">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item" bind:longpress="longPressFunc">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-    </view>
-  </view>
-  <view class="item_b">
-    <view class="time_title">2020-04-28</view>
-    <view class="content_b">
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-    </view>
-  </view>
-  <view class="item_b">
-    <view class="time_title">2020-04-28</view>
-    <view class="content_b">
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-    </view>
-  </view>
-  <view class="item_b">
-    <view class="time_title">2020-04-28</view>
-    <view class="content_b">
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-    </view>
-  </view>
-  <view class="item_b">
-    <view class="time_title">2020-04-28</view>
-    <view class="content_b">
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
-      </view>
-      <view class="item">
-        <view class="image">
-          <image class="" src="https://pic.images.ac.cn/image/5e9cdf6f228f7.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="price">￥ 550</view>
+        <view class="price">{{it.salePrice}}</view>
       </view>
     </view>
   </view>
 </view>
-
-
 
 <!-- 删除浏览记录的弹框  删除单个和删除全部公用一个 -->
 <van-dialog id="van-dialog" />

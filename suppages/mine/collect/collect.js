@@ -6,7 +6,11 @@ Page({
    */
   data: {
     //  是否已经收藏了
-    isCollect:false
+    isCollect:false,
+    collectList:[],
+    pageSize: 10,
+    currentPage: 1,
+    totalCount: 0
   },
   // 点击收藏按钮
   collectFunc () {
@@ -15,12 +19,15 @@ Page({
       isCollect:collect
     })
   },
+  async getCollectList(){
+      const{ data } = await getMyProductCollectList(this.data.pageSize, this.data.currentPage)
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.getCollectList()
   },
 
   /**

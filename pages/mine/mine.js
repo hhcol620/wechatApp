@@ -1,11 +1,14 @@
 // pages/mine/mine.js
+import { getSystemInfoSync } from "../../miniprogram_npm/vant-weapp/common/utils";
+import { getMyInfo } from '../../request/api/store_api.js'
+import regeneratorRuntime from '../../lib/runtime/runtime.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo:{}
   },
 
   // 联系客服
@@ -20,7 +23,7 @@ Page({
     console.log(e);
   },
   // 进入我的页面立即判断本地是否有token 如果没有的话就重定向到登陆页页面
-  redirectToLogin () {
+  async redirectToLogin () {
     const token = wx.getStorageSync('token'); 
     if (!token) {
       // 获取不到就跳转到登陆页
@@ -33,6 +36,12 @@ Page({
     //     fail: () => {},
     //     complete: () => {}
     //   }); 
+    }else{
+      const { data } = await getMyInfo()
+      if(data.code !== 200) return
+      this.setData({
+        userInfo: data.data
+      })
     }
   },
   /**

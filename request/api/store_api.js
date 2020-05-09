@@ -11,10 +11,18 @@ export const getUserInfo = (userId) => {
   return getData(`/user/user/${userId}`)
 }
 
+export const getUserRecodrByPage = (pageSize, currentPage) => {
+  return getData(`/goods/record/${pageSize}/${currentPage}`)
+}
 
 // 分页查看自己发布的需求
 export const get_demandList = (pageSize,currentPage) => {
   return getData(`/goods/goods/demand/list/${pageSize}/${currentPage}`)
+}
+
+//获得自己的收藏列表
+export const getMyProductCollectList = (pageSize, currentPage) => {
+  //return getData()
 }
 
 // 发布需求

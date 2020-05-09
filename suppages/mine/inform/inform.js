@@ -1,6 +1,7 @@
 // suppages/store/inform/inform.js
-import { getSystemInfoSync, getSystemNews} from "../../../miniprogram_npm/vant-weapp/common/utils";
-
+import { getSystemInfoSync} from "../../../miniprogram_npm/vant-weapp/common/utils";
+import { getSystemNews } from '../../../request/api/store_api.js'
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 Page({
 
   /**
@@ -9,20 +10,23 @@ Page({
   data: {
       pageSize: 10,
       currentPage: 1,
+      totalCount: 0,
       evaluateList:[]
   },
 
   async getSystemInfo(){
-    console.log("进入");
-    const { data } = await getSystemNews()
-    console.log("系统通知:" + JSON.stringify(data));
+    const { data } = await getSystemNews(this.data.pageSize, this.data.currentPage)
+    if (data.code !== 200) return;
+    this.data.totalCount = data.data.totalCount;
+    this.setData({
+        evaluateList: data.data.data
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("系统通知:");
     this.getSystemInfo()
   },
 

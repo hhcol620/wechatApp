@@ -16,7 +16,9 @@ Page({
     if(data.code !== 200){
       return
     }
-    this.userInfo = data.data
+    this.setData({
+      userInfo: data.data
+    })
   },
 
   // 选择图片

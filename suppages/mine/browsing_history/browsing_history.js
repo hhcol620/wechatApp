@@ -1,4 +1,7 @@
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+import { getUserRecodrByPage } from '../../../request/api/store_api.js'
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
 // suppages/store/browsing_history/browsing_history.js
 Page({
 
@@ -6,7 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      pageSize: 10,
+      currentPage: 1,
+      recordList:[],
+      totalCount: 0
   },
   // 长按  => 弹框提示用户
   longPressFunc (e) {
@@ -30,12 +36,20 @@ Page({
       // on cancel
     });
   },
+  async getBrowseHistory(){
+    const { data } = await getUserRecodrByPage(this.data.pageSize, this.data.currentPage)
+    if (data.code !== 200) return
+    this.setData({
+      recordList: data.data.data,
+      totalCount: data.data.totalCount
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getBrowseHistory()
   },
 
   /**
