@@ -9,6 +9,10 @@
         <view class="nickName">张三李四张三李四张三李四张三李四张三李四张三李四</view>
         <view class="real">申请认证</view>
       </view>
+      <view class="stu_mess">
+        <view class="it">学校: 内蒙古科技大学</view>
+        <view class="it">学院: 信息工程学院</view>
+      </view>
       <view class="sign">个性签名: 努力让自己每天开心努力让自己每天开心 努力让自己每天开心努力让自己每天开心</view>
     </view>
   </view>

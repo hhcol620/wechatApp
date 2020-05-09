@@ -46,6 +46,13 @@ page {
   font-size: 26rpx;
   font-weight: 400;
 }
+.head .card .nickName_real_sign .stu_mess {
+  font-size: 26rpx;
+  line-height: 34rpx;
+  color: #fff;
+  font-style: normal;
+  font-weight: 500;
+}
 .head .card .nickName_real_sign .sign {
   margin-top: 20rpx;
   color: #fff;
