@@ -10,6 +10,11 @@
         <view class="real">申请认证</view>
       </view>
       <view class="sign">{{userInfo.signature}}</view>
+      <view class="stu_mess">
+        <view class="it">{{userInfo.schoolName}}</view>
+        <view class="it">{{userInfo.academyName}}</view>
+      </view>
+      <view class="sign">{{userInfo.signature}}</view>
     </view>
   </view>
 </view>
