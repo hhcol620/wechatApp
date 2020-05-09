@@ -38,6 +38,7 @@ Page({
   },
   async getBrowseHistory(){
     const { data } = await getUserRecodrByPage(this.data.pageSize, this.data.currentPage)
+    console.log(data);
     if (data.code !== 200) return
     this.setData({
       recordList: data.data.data,

@@ -62,7 +62,7 @@ export const get_leave_message_first = (pageSize,currentPage,goodsId,parentId,fi
   return getData(`/goods/goods/msg/${pageSize}/${currentPage}/${goodsId}/${parentId}/${firstClassId}`)
 }
 
-//获得自己的基本信息
+// 获得自己的基本信息
 export const getMyInfo = () => {
   return getData("/user/user/detail")
 }

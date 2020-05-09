@@ -1,23 +1,6 @@
 page {
   background-color: #f6f6f6;
 }
-.isreal {
-  background-color: #fff;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.isreal .desc {
-  font-size: 30rpx;
-  line-height: 80rpx;
-  height: 80rpx;
-  padding: 0 20rpx;
-  border-radius: 6rpx;
-  color: #fff;
-  background-color: var(--themeColor);
-}
 .noreal {
   position: relative;
   height: 100vh;
@@ -84,16 +67,6 @@ page {
 }
 .noreal view.form .van-cell::after {
   margin-right: 30rpx;
-}
-.noreal .noStudentTip {
-  margin-top: 20rpx;
-  background-color: #fff;
-  padding: 20rpx;
-  display: flex;
-}
-.noreal .noStudentTip .navigator_to_realname_other {
-  margin-left: 20rpx;
-  color: #3498db;
 }
 .noreal .submit {
   position: absolute;

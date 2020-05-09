@@ -129,13 +129,6 @@
 				},
 				{
 					"id": -1,
-					"name": "浏览历史",
-					"pathName": "suppages/store/browsing_history/browsing_history",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "消息通知",
 					"pathName": "suppages/store/inform/inform",
 					"query": "",
@@ -150,13 +143,6 @@
 				},
 				{
 					"id": -1,
-					"name": "收藏",
-					"pathName": "suppages/store/collect/collect",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "标签页",
 					"pathName": "suppages/store/mytags/mytags",
 					"query": "",
@@ -166,13 +152,6 @@
 					"id": -1,
 					"name": "我的信息页",
 					"pathName": "suppages/store/my_info/my_info",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "实名页面",
-					"pathName": "suppages/store/real_name/real_name",
 					"query": "",
 					"scene": null
 				},
@@ -324,10 +303,31 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 38,
 					"name": "订单详情页",
 					"pathName": "suppages/mine/store_orders_detail/store_orders_detail",
-					"query": "keyword=东方风格豆腐干",
+					"query": "orderid=9",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "实名认证",
+					"pathName": "suppages/mine/real_name/real_name",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "实名认证_其他非学生",
+					"pathName": "suppages/mine/real_name_other/real_name_other",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "浏览历史",
+					"pathName": "suppages/mine/browsing_history/browsing_history",
+					"query": "",
 					"scene": null
 				}
 			]
