@@ -1,11 +1,11 @@
 <!-- 这是 实名认证页面  如果用户已经实名认证 提示用户已经实名 否则进入实名页面 -->
 <!-- 未实名 -->
-<view class="noreal" wx:if="{{isreal}}">
+<view class="noreal">
   <view class="form">
     <van-cell-group>
-      <van-field value="{{ username3 }}" label="姓名:" placeholder="请填写姓名" input-align="right" />
-      <van-field value="{{ username3 }}" label="身份证号:" placeholder="请输入您本人身份证号" input-align="right" />
-      <van-field value="{{ username3 }}" label="手机号:" placeholder="请输入您本人手机号" input-align="right" />
+      <van-field value="{{ name }}" label="姓名:" placeholder="请填写姓名" input-align="right" data-name="name" bind:input="getInputData" />
+      <van-field value="{{ cardNum }}" label="身份证号:" placeholder="请输入您本人身份证号" input-align="right" data-name="cardNum" bind:input="getInputData" />
+      <van-field value="{{ telNum }}" label="手机号:" placeholder="请输入您本人手机号" input-align="right" data-name="telNum" bind:input="getInputData" />
     </van-cell-group>
   </view>
   <!-- 上传证件区域 -->
@@ -14,13 +14,13 @@
     <view class="left item">
       <view class="upbox" bind:tap="upCard">
         <!-- 未上传之前图片 -->
-        <view wx:if="{{!studentCardImg}}" class="beforeUpload">
+        <view wx:if="{{!cardImg}}" class="beforeUpload">
           <view class="icon">
             <view class="col"></view>
             <view class="row"></view>
           </view>
         </view>
-        <image class="" src="{{studentCardImg}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" wx:else></image>
+        <image class="" src="{{imgURL}}{{cardImg}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" wx:else></image>
       </view>
       <view class="title">身份证正面</view>
     </view>

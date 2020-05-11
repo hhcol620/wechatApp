@@ -46,7 +46,7 @@ view.container view.item view.main {
   margin-bottom: 20rpx;
 }
 view.container view.item view.main view.images image {
-  width: 80vw;
+  width: 100%;
 }
 view.container view.item view.main view.desc {
   font-size: 30rpx;

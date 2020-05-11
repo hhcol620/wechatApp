@@ -1,3 +1,21 @@
+// 如果使用  async  await 这个es7 的将异步的请求
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 引入  用来发送请求的方法  需要将路径补全
+import {
+  
+} from '../../../request/api/store_api.js'
+//index.js
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
+
+
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 
 
@@ -24,7 +42,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      imgURL
+    })
   },
 
   /**

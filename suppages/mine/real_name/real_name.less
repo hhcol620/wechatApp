@@ -27,20 +27,20 @@ page{
   view.uploadImg{
     margin-top: 20rpx;
     padding: 0 30rpx;
-    height: 340rpx;
+    height: 380rpx;
     background-color: #fff;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    .item{
-      width: 100%;
+    .left.item{
+      width: calc(~"100vw - 60rpx");
       display: flex;
       flex-direction: column;
       justify-content: center;
       .upbox{
-        width: 100%;
+        width: calc(~"100vw - 60rpx");
         box-sizing: border-box;
         border: 2rpx dashed #999;
+        height: 260rpx;
         .beforeUpload{
           .icon{
             position: relative;
@@ -66,7 +66,7 @@ page{
           }
         }
         image{
-          width: 100%;
+          width: calc(~"100vw - 60rpx");
           height: 100%;
         }
       }

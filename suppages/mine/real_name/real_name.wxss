@@ -25,28 +25,28 @@ page {
 .noreal view.uploadImg {
   margin-top: 20rpx;
   padding: 0 30rpx;
-  height: 340rpx;
+  height: 380rpx;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
-.noreal view.uploadImg .item {
-  width: 100%;
+.noreal view.uploadImg .left.item {
+  width: calc(100vw - 60rpx);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.noreal view.uploadImg .item .upbox {
-  width: 100%;
+.noreal view.uploadImg .left.item .upbox {
+  width: calc(100vw - 60rpx);
   box-sizing: border-box;
   border: 2rpx dashed #999;
+  height: 260rpx;
 }
-.noreal view.uploadImg .item .upbox .beforeUpload .icon {
+.noreal view.uploadImg .left.item .upbox .beforeUpload .icon {
   position: relative;
   height: 240rpx;
 }
-.noreal view.uploadImg .item .upbox .beforeUpload .icon .col {
+.noreal view.uploadImg .left.item .upbox .beforeUpload .icon .col {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -55,7 +55,7 @@ page {
   height: 10rpx;
   background-color: #999;
 }
-.noreal view.uploadImg .item .upbox .beforeUpload .icon .row {
+.noreal view.uploadImg .left.item .upbox .beforeUpload .icon .row {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -64,11 +64,11 @@ page {
   height: 100rpx;
   background-color: #999;
 }
-.noreal view.uploadImg .item .upbox image {
-  width: 100%;
+.noreal view.uploadImg .left.item .upbox image {
+  width: calc(100vw - 60rpx);
   height: 100%;
 }
-.noreal view.uploadImg .item .title {
+.noreal view.uploadImg .left.item .title {
   margin-top: 10rpx;
   line-height: 40rpx;
   font-size: 26rxp;

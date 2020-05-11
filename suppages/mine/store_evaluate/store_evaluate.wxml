@@ -1,14 +1,12 @@
 <!-- 这是我的评价页面 每一条数据上半部分应该是我评论的内容 下半部分是商品的一个简介 和 卖家的信息 -->
 <view class="container">
-  <view class="item" wx:for="{{evaluateList}}" wx:for-index="index" wx:for-item="item" wx:key="id" bind:tap="navigator_order_detail" data-orderId="{{item.orderId}}">
+  <view class="item" wx:for="{{evaluateList}}" wx:for-index="index" wx:for-item="item" wx:key="id" bind:tap="navigator_order_detail" data-orderId="{{item.orderId}}" bind:longpress="more_btn">
     <!-- 评价的信息 -->
-    <view class="content">{{item.content}}</view>
-    <view class="right">
-      <view class="more" bind:tap="more_btn" data-id="{{item.id}}">
-        <text class="iconfont icon-more"></text>
+    <view class="header">
+      <view class="left">
+        <view class="content">{{item.content}}</view>
       </view>
     </view>
-
     <!-- 商品的信息 -->
     <view class="commdity_desc">
       <view class="left mainImage">

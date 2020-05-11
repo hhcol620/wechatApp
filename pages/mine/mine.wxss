@@ -62,7 +62,6 @@ page {
   font-weight: 500;
   border-radius: 21rpx;
   padding: 6rpx 10rpx;
-  border: 1px solid #fff;
 }
 .main {
   margin-top: 20rpx;

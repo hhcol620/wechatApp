@@ -1,3 +1,21 @@
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { getMyInfo } from '../../../request/api/store_api.js'
+// 引入上传文件方法 参数就是本地的路径
+import {
+  upLoadImages
+} from '../../../utils/uploadImg.js'
+//index.js
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
+
+
 import Notify from '../../../miniprogram_npm/vant-weapp/notify/notify';
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 
@@ -10,68 +28,65 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 是否已经实名
-    isreal: true,
-    // 一卡通正面地址
-    studentCardImg: '',
-    // 备用审核图片
-    otherImg: ''
+    // 身份证正面地址
+    cardImg: '',
+    // 姓名
+    name: '',
+    // 身份证号
+    cardNum: '',
+    // 手机号
+    telNum:'',
+    // 图片加载基地址
+    imgURL:''
+  },
+  // 输入框中输入内容触发 获取其中的值
+  // 获取输入框中的数据
+  getInputData(e) {
+    const name = e.currentTarget.dataset.name
+    const value = e.detail
+    // console.log(name, value);
+
+    this.setData({
+      [name]: value
+    })
+    // console.log(e);
   },
 
-  // 点击上传一卡通
-  upStudentCard(e) {
+  // 点击身份证
+  upCard(e) {
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: (result) => {
-        console.log(result)
-        // 上传成功
+      success: async (result) => {
+        const res = await upLoadImages(result.tempFilePaths[0])
+        const geturl = JSON.parse(res.data)
+        // console.log();
         this.setData({
-          studentCardImg: result.tempFilePaths[0]
+          cardImg: `${geturl.text}`
         })
       },
       fail: () => {},
       complete: () => {}
     });
 
-  },
-  // 上传其他的图片
-  upOtherImg(e) {
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: (result) => {
-        console.log(result)
-        // 上传成功
-        this.setData({
-          otherImg: result.tempFilePaths[0]
-        })
-      },
-      fail: () => {},
-      complete: () => {}
-    });
   },
   // 用户点击了提交
   submitFunc() {
 
+    const {cardImg,name,cardNum,telNum} = this.data
+    if (!name.trim()||!cardNum.trim()||!telNum.trim()||!cardImg.trim()) {
+      // 有空值   提示用户输入不合法
+      Notify({ type: 'warning', message: '输入不合法,请检查后重试' });
+      return
+    }
+    // 发起提交请求*********************
 
-    // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待3秒 退到上一页
-    // 成功通知
-    // Dialog.alert({
-    //   message: '您的实名认证申请我们已经收到,请耐心等待我们的审核'
-    // }).then(() => {
-    //   this.navigateBackFunc()
-    //   // on close
-    // }).then(() => {
-    //   this.navigateBackFunc()
-    //   // on close
-    // });
+    // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页
 
     Dialog.confirm({
-        title: '标题',
-        message: '弹窗内容',
+        title: '提示',
+        message: '您的提交我们已经收到',
         asyncClose: true
       })
       .then(() => {
@@ -83,9 +98,6 @@ Page({
       .catch(() => {
         Dialog.close();
       });
-    // 失败通知
-    // Notify({ type: 'warning', message: '提交失败,请稍后重试' });
-
   },
   // 跳转到上一个页面
   navigateBackFunc() {
@@ -97,7 +109,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    this.setData({
+      imgURL
+    })
   },
 
   /**

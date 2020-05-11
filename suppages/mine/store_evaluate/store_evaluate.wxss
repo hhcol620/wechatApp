@@ -10,7 +10,6 @@ view.container view.item {
 view.container view.item view.header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 view.container view.item view.header view.left {
   display: flex;
@@ -30,9 +29,13 @@ view.container view.item view.header view.left view.nickName {
   color: #333;
   font-style: normal;
 }
+view.container view.item view.header view.right {
+  display: flex;
+  align-items: flex-start;
+}
 view.container view.item view.header view.right view.more {
   font-size: 26rpx;
-  line-height: 36rpx;
+  line-height: 56rpx;
   font-style: normal;
   color: #4d4d4d;
 }

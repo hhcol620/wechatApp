@@ -1,3 +1,19 @@
+// 如果使用  async  await 这个es7 的将异步的请求
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 引入  用来发送请求的方法  需要将路径补全
+import {
+  getMyProductCollectList
+} from '../../../request/api/store_api.js'
+//index.js
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
 // suppages/store/collect/collect.js
 Page({
 
@@ -19,15 +35,21 @@ Page({
       isCollect:collect
     })
   },
-  async getCollectList(){
-      const{ data } = await getMyProductCollectList(this.data.pageSize, this.data.currentPage)
+  async getCollectList () {
+    const { pageSize,currentPage } = this.data
+    const res = await getMyProductCollectList(pageSize, currentPage)
+    console.log(res);
+    console.log('ok');
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.getCollectList()
+    this.getCollectList()
+    this.setData({
+      imgURL
+    })
   },
 
   /**

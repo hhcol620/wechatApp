@@ -18,8 +18,7 @@ const app = getApp()
 const {
   showLoading,
   hideLoading,
-  imgURL,
-  uploadImgURL
+  imgURL
 } = app.globalData
 
 

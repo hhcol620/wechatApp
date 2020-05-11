@@ -16,6 +16,8 @@ Page({
 
   async getSystemInfo(){
     const { data } = await getSystemNews(this.data.pageSize, this.data.currentPage)
+    console.log(data.data.data);
+
     if (data.code !== 200) return;
     this.data.totalCount = data.data.totalCount;
     this.setData({

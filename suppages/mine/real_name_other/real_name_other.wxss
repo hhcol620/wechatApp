@@ -8,10 +8,9 @@ page {
 .noreal view.uploadImg {
   margin-top: 20rpx;
   padding: 0 30rpx;
-  height: 340rpx;
+  height: 380rpx;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .noreal view.uploadImg .item {
@@ -22,6 +21,7 @@ page {
 }
 .noreal view.uploadImg .item .upbox {
   width: 100%;
+  height: 260rpx;
   box-sizing: border-box;
   border: 2rpx dashed #999;
 }

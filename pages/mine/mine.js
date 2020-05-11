@@ -16,7 +16,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{}
+    userInfo: {},
+    // 加载图片基地址
+    imgURL:''
   },
   // 联系客服
   handleContact1 (e) {
@@ -32,11 +34,6 @@ Page({
   // 进入我的页面立即判断本地是否有token 如果没有的话就重定向到登陆页页面
   async redirectToLogin () {
     const token = wx.getStorageSync('token'); 
-    const { data } = await getMyInfo()
-    if (data.code !== 200) return
-    this.setData({
-      userInfo: data.data
-    })
     if (!token) {
       // 获取不到就跳转到登陆页
     // console.log('获取不到');
@@ -56,11 +53,32 @@ Page({
       // })
     }
   },
+  // 登陆成功获取我的个人信息
+  async getmyinfo () {
+    const { data } = await getMyInfo()
+    if (data.code !== 200) return
+    this.setData({
+      userInfo: data.data
+    })
+  },
+  // 图片预览
+  priviewImg (e) {
+    const imgUrl = e.currentTarget.dataset.img
+    // console.log(imgUrl);
+    wx.previewImage({
+      current: `${imgUrl}`, // 当前显示图片的http链接
+      urls: [`${imgUrl}`] // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.redirectToLogin()
+    this.getmyinfo()
+    this.setData({
+      imgURL
+    })
   },
 
   /**

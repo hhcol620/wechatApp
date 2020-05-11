@@ -2,18 +2,18 @@
 <view class="head">
   <view class="card">
     <view class="headImg">
-      <image class="" src="{{imgURL}}/{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      <image class="" src="{{imgURL}}{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" bind:tap="priviewImg" data-img="{{imgURL}}{{userInfo.portrait}}" />
     </view>
     <view class="nickName_real_sign">
       <view class="nickName_real">
         <view class="nickName">{{userInfo.nickname}}</view>
         <view class="real">申请认证</view>
       </view>
-      <view class="sign">{{userInfo.signature}}</view>
-      <view class="stu_mess">
+      <!-- <view class="sign">{{userInfo.signature}}</view> -->
+      <!-- <view class="stu_mess">
         <view class="it">{{userInfo.schoolName}}</view>
         <view class="it">{{userInfo.academyName}}</view>
-      </view>
+      </view> -->
       <view class="sign">{{userInfo.signature}}</view>
     </view>
   </view>

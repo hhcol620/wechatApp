@@ -11,6 +11,7 @@ export const getUserInfo = (userId) => {
   return getData(`/user/user/${userId}`)
 }
 
+// 获取用户浏览记录
 export const getUserRecodrByPage = (pageSize, currentPage) => {
   return getData(`/goods/record/${pageSize}/${currentPage}`)
 }
@@ -22,7 +23,7 @@ export const get_demandList = (pageSize,currentPage) => {
 
 //获得自己的收藏列表
 export const getMyProductCollectList = (pageSize, currentPage) => {
-  //return getData()
+  return getData(`/goods/goods/demand/list/${pageSize}/${currentPage}`)
 }
 
 // 发布需求
@@ -72,6 +73,7 @@ export const getMyInfo = () => {
   return getData("/user/user/detail")
 }
 
+// 获取消息通知
 export const getSystemNews = (pageSize, currentPage) => {
   return getData(`/message/msg/systemNews/${pageSize}/${currentPage}`)
 }
