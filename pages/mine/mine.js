@@ -56,6 +56,7 @@ Page({
   // 登陆成功获取我的个人信息
   async getmyinfo () {
     const { data } = await getMyInfo()
+    console.log('ok');
     if (data.code !== 200) return
     this.setData({
       userInfo: data.data

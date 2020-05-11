@@ -46,6 +46,11 @@ export const getMyOrderList = (pageSize,currentPage, type) => {
   return getData(`/order/order/es/list/${type}/${pageSize}/${currentPage}`)
 }
 
+export const getOrderDetail = (id) =>{
+  //todo  没测
+  return getData(`/order/order/es/${id}`)
+}
+
 // 分页查看自己发布商品
 export const get_goodsList = (pageSize,currentPage) => {
   return getData(`/goods/goods/es/list/${pageSize}/${currentPage}`)
@@ -78,7 +83,6 @@ export const getSystemNews = (pageSize, currentPage) => {
   return getData(`/message/msg/systemNews/${pageSize}/${currentPage}`)
 }
 
-
 //根据索引删除
 export const deleteCollectByInde = (index) => {
   return deleteData(`/goods/record/${index}`)
@@ -107,7 +111,77 @@ export const post_evaluate = (orderId) => {
 
 // 搜索 参数 页面大小 当前页
 export const get_search_content = (pageSize, currentPage, keyword) => {
-  return getData(`goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
+  return getData(`search/goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
 }
+
+
+//根据类型查看所有的跑腿列表   typ取值:1-时间降序  2-金额降序
+export const getAllErrandList = (pageSize, currentPage, typ) => {
+  return getData(`/goods/errand/${typ}/${pageSize}/${currentPage}`)
+}
+
+//获得自己发布的跑腿列表
+export const getOwnerErrandList = (pageSize, currentPage) => {
+  return getData(`/goods/errand/list/${pageSize}/${currentPage}`)
+}
+
+//发布跑腿
+export const releaseErrand = (info) => {
+  return postData("/goods/errand", info)
+}
+
+//接跑腿订单 接单成功之后会返回一个订单编号
+export const receiveErrand = (id, version) => {
+  return getData(`/order/order/errand/${id}/${version}`)
+}
+
+//根据上面这个接口返回的订单id过几秒钟访问该接口查看是否接单成功
+export const getOrderState = (code)=> {
+  return getData(`/order/order/errand/state/${code}`)
+}
+
+//删除跑腿订单  typ取值 5-删除发布的(作为卖家) 6-删除接单(作为买家)
+export const deleteErrandOrder = (typ, id) => {
+  return deleteData(`/order/order/errand/${typ}/${id}`)
+}
+
+//查看跑腿订单list type(1-自己发布的  2-自己接的跑腿订单)  state取值:3-未完成  4-已完成
+export const getErrandOrderById = (typ, state)=> {
+  return getData(`/order/order/errand/list/${typ}/${state}`)
+}
+
+//获得已经转账的公益基金申请
+export const getFinishDonation = (pageSize, currentPage)=> {
+  return getData(`/order/donation/finish/${pageSize}/${currentPage}`)
+}
+
+//获得没有转账正在审核的公益基金申请
+export const getUnfinishDonation = (pageSize, currentPage)=> {
+  return getData(`/order/donation/unfinish/${pageSize}/${currentPage}`)
+}
+
+//typ取值5-标识查看的申请已经完成，返回的信息中需要包含使用了哪些人的订单   2-标识查看正在审核的或者审核通过但是未转账的
+export const getDonationDetailById = (id, typ) => {
+  return getData(`/order/donation/detail/${typ}/${id}`)
+}
+
+//获得用户的兴趣标签
+export const getUserTag = () => {
+  return getData("/user/interest")
+}
+
+//身份证认证   该请求必须是表单提交   并且图片参数名为file，填写的姓名参数为realName
+export const userIdCardAuthen = (param) => {
+  return postData("/security/identityCard", param)
+}
+
+//一卡通认证 要求同上
+export const oneCardAuthen = (param) => {
+  return postData("/security/oneCard", param)
+}
+
+
+
+
 
 
