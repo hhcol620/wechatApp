@@ -1,14 +1,14 @@
 <!-- 我卖出的订单 -->
 <view class="container">
-  <view class="item">
-     <view class="header">
+  <view class="item" wx:for="{{myOrderList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+    <view class="header">
       <view class="headImg">
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        <view class="nickName">kchuj2020</view>
+        <image class="" src="{{imgURL}}{{item.salerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="nickName">{{item.salerInfo.nickname}}</view>
       </view>
       <view class="orders_desc">交易成功</view>
     </view>
-    <view class="main">
+    <view class="main" bind:tap="jumpPageDetail">
       <view class="mainImg">
         <image class="" src="https://pics.images.ac.cn/image/5e9e31c399d55.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>

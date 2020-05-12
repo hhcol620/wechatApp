@@ -5,13 +5,13 @@
     <view class="deleteBtn" bind:tap="deleteAll">清空</view>
   </view>
 </view>
-<view class="container" wx:for="{{recordList}}" wx:key="id">
-  <view class="item_b">
-    <view class="time_title" >{{item.browseDate}}</view>
+<view class="container">
+  <view class="item_b" wx:for="{{recordList}}" wx:key="id">
+    <view class="time_title">{{item.browseDate}}</view>
     <view class="content_b">
-      <view class="item" bind:longpress="longPressFunc">
+      <view class="item" bind:longpress="longPressFunc" data-inx="{{index}}">
         <view class="image left">
-          <image class="" src="{{imgURL}}/{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="right">
           <view class="desc">{{item.title}}</view>

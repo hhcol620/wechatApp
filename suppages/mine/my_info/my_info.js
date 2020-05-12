@@ -1,7 +1,14 @@
-// suppages/store/my_info/my_info.js
-import { getMyInfo } from '../../../request/api/store_api.js'
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
+
+// suppages/store/my_info/my_info.js
+import { getMyInfo,checkData } from '../../../request/api/store_api.js'
+
+import Notify from '../../../miniprogram_npm/vant-weapp/notify/notify';
+// 上传图片
+import {
+  upLoadImages
+} from '../../../utils/uploadImg.js'
+
 const app = getApp()
 // 引入全局  请求加载动画方法
 const {
@@ -16,8 +23,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 被选中的头像图片路径
-    chooseImgs:["https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg"],
+    // 用户信息
     userInfo: {}
   },
 
@@ -28,6 +34,16 @@ Page({
     }
     this.setData({
       userInfo: data.data
+    })
+  },
+  // 获取输入框中的数据
+  getInputData (e) {
+    // console.log(e);
+    const { name } = e.currentTarget.dataset
+    const val = e.detail
+    // console.log(name, val);
+    this.setData({
+      [name]: val
     })
   },
 
@@ -41,16 +57,65 @@ Page({
       sizeType: ['original', 'compressed'],
       // 图片的来源 相册 照相机 
       sourceType: ['album','camera'],
-      success: (result)=>{
-        // console.log(result);
+      success: async (result)=>{
+        const res = await upLoadImages(result.tempFilePaths[0])
+        const geturl = JSON.parse(res.data)
+        console.log(geturl);
         this.setData({
-          chooseImgs:result.tempFilePaths
+          ['userInfo.portrait']:`${geturl.text}`
         })
       },
       fail: ()=>{},
       complete: ()=>{}
     });
   },
+  // 检测输入的用户名和手机号是否唯一
+  async checkName (e) {
+    // 
+    // 脱焦  调用这个方法  发起请求
+    const { nickname } = this.data.userInfo
+    // console.log(nickname);
+    const checkObj = {
+      type: 'nickname',
+      validValue:nickname
+    }
+    const { data } = await checkData(checkObj)
+    // 
+    console.log(data);
+
+    if (data.code !== 200) {
+      Notify({ type: 'warning', message: `${data.text},请重新输入` });
+      this.setData({
+        ['userInfo.nickname']:''
+      })
+      return 
+    }
+    
+
+  },
+  async checkphone () {
+    const { phoneNum } = this.data.userInfo
+    const checkObj = {
+      type: 'phoneNum',
+      validValue:phoneNum
+    }
+    const { data } = await checkData(checkObj)
+    console.log(data);
+
+    // 
+    if (data.code !== 200) {
+      Notify({ type: 'warning', message: `${data.text},请重新输入` });
+      this.setData({ 
+        ['userInfo.phoneNum']:''
+      })
+      return 
+    }
+  },
+  // 提交  这个提交当页面退出 提交
+  submit_userInfo () {
+    
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -76,7 +141,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.submit_userInfo()
   },
 
   /**

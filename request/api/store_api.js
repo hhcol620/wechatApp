@@ -45,10 +45,10 @@ export const get_demandMessage = (id) => {
 export const getMyOrderList = (pageSize,currentPage, type) => {
   return getData(`/order/order/es/list/${type}/${pageSize}/${currentPage}`)
 }
-
-export const getOrderDetail = (id) =>{
+// 根据订单号查询订单的详情 type  1-作为卖家  2-作为买家 
+export const getOrderDetail = (type,id) =>{
   //todo  没测
-  return getData(`/order/order/es/${id}`)
+  return getData(`/order/order/es/${type}/${id}`)
 }
 
 // 分页查看自己发布商品
@@ -82,14 +82,18 @@ export const getMyInfo = () => {
 export const getSystemNews = (pageSize, currentPage) => {
   return getData(`/message/msg/systemNews/${pageSize}/${currentPage}`)
 }
+// 获取@我的消息
+export const reply_to_me = (pageSize, currentPage) => {
+  return getData(`/message/msg/atMe/${pageSize}/${currentPage}`)
+}
 
-//根据索引删除
-export const deleteCollectByInde = (index) => {
+//根据索引删除浏览 记录
+export const deleteBrowsingByIndex = (index) => {
   return deleteData(`/goods/record/${index}`)
 }
 
 //清空自己的浏览记录
-export const deleteOwnAllCollect = () => {
+export const deleteOwnAllBrowsing = () => {
   return deleteData("/goods/record")
 }
 
@@ -178,6 +182,11 @@ export const userIdCardAuthen = (param) => {
 //一卡通认证 要求同上
 export const oneCardAuthen = (param) => {
   return postData("/security/oneCard", param)
+}
+
+// 判断用户的用户名和手机号是否唯一   params {type:"email",validValue:'1111@qq.com' }  还可以phoneNum,nickname,alipayNum 
+export const checkData = (param) => {
+  return postData("/user/user/check", param)
 }
 
 

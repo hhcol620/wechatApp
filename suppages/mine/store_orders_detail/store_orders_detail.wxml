@@ -43,21 +43,21 @@
         <view class="item">
           <view class="item_title">宝贝质量</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
         <!-- 对卖家服务的评价 -->
         <view class="item">
           <view class="item_title">卖家服务</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
         <!-- 整体评价 -->
         <view class="item">
           <view class="item_title">整体体验</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
       </view>

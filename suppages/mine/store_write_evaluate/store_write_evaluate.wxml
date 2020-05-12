@@ -26,5 +26,31 @@
   <view class="main_item">
     <!-- 这个区域加一个文本域 自动获得焦点 -->
     <textarea placeholder="请根据此次交易输入您对商品和卖家最真实的描述吧" auto-focus />
+    <view class="evaluate_grade">
+      <!-- 对质量的评价 -->
+      <view class="item">
+        <view class="item_title">宝贝质量</view>
+        <view class="box">
+          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+        </view>
+      </view>
+      <!-- 对卖家服务的评价 -->
+      <view class="item">
+        <view class="item_title">卖家服务</view>
+        <view class="box">
+          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+        </view>
+      </view>
+      <!-- 整体评价 -->
+      <view class="item">
+        <view class="item_title">整体体验</view>
+        <view class="box">
+          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer_item">
+    <van-button type="primary">提交</van-button>
   </view>
 </view>

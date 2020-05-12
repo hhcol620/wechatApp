@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  
+  reply_to_me
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -27,7 +27,7 @@ Page({
   data: {
 
   },
-
+  // 删除
   deleteFunc (e) {
     console.log(e);
     Dialog.confirm({
@@ -38,10 +38,16 @@ Page({
       // on cancel
     });
   },
+  // 页面加载获取回复我的 列表
+  async getReplyToMe () {
+    const res = await reply_to_me(10, 1)
+    console.log(res);
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    this.getReplyToMe()
     this.setData({
       imgURL
     })

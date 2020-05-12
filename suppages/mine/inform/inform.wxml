@@ -1,12 +1,14 @@
+<!-- 消息格式化 -->
+<wxs src="../../../utils/newstype.wxs" module="newsType"></wxs>
 <view class="container">
-  <view class="item" wx:for="{{evaluateList}}"  wx:key="id" wx:for-index="id" wx:for-item="it">
+  <view class="item" wx:for="{{evaluateList}}" wx:key="id" wx:for-index="id" wx:for-item="it">
     <view class="time">
       <text class="" selectable="false" space="false" decode="false">{{it.createTime}}</text>
     </view>
     <view class="content">
-      <view class="title">系统通知</view>
+      <view class="title">{{newsType.newsType(it.newsType)}}</view>
       <view class="desc">{{it.content}}</view>
-      <view class="more">查看更多</view>
+      <view class="more" bind:tap="view_more" data-newstype="{{it.newsType}}">查看更多</view>
     </view>
   </view>
 </view>

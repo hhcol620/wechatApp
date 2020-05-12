@@ -2,7 +2,8 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  getMyProductCollectList
+  getMyProductCollectList,
+  getUserInfo
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -22,30 +23,68 @@ Page({
    */
   data: {
     //  是否已经收藏了
-    isCollect:false,
-    collectList:[],
+    isCollect: false,
+    collectList: [],
     pageSize: 10,
     currentPage: 1,
-    totalCount: 0
+    totalCount: 0,
+    imgURL: ''
   },
   // 点击收藏按钮
-  collectFunc () {
+  collectFunc() {
     const collect = !this.data.isCollect
     this.setData({
-      isCollect:collect
+      isCollect: collect
     })
   },
-  async getCollectList () {
-    const { pageSize,currentPage } = this.data
-    const res = await getMyProductCollectList(pageSize, currentPage)
-    console.log(res);
-    console.log('ok');
+  // 获取收藏列表
+  async getCollectList() {
+    const {
+      pageSize,
+      currentPage,
+      collectList
+    } = this.data
+    const {
+      data
+    } = await getMyProductCollectList(pageSize, currentPage)
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '获取信息失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return
+    }
+    const arrList = data.data.data
+    arrList.forEach(async (item) => {
+      // item.consumerId
+      const res = await this.get_user_info(item.consumerId)
+      item.consumerInfo = res
+      console.log(item);
+      collectList.push(item)
+      this.setData({
+        collectList
+      })
+    })
+
+
+  },
+  // 根据用户id  consumerId  获取用户信息
+  async get_user_info(consumerId) {
+    const {
+      data
+    } = await getUserInfo(consumerId)
+    // console.log(data.data);
+    const result = data.data
+    return result
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.getCollectList()
     this.setData({
       imgURL
@@ -55,49 +94,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

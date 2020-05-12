@@ -24,6 +24,15 @@ Page({
         evaluateList: data.data.data
     })
   },
+  // 查看更多 
+  /* 
+    10-商城留言  20-论坛留言  30-跑腿订单通知  40-商城订单通知 50-商城公益基金 60-商城评价  70-其他系统通知
+  */
+  view_more (e) {
+    // console.log(e.currentTarget.dataset);
+    const { newstype } = e.currentTarget.dataset
+    console.log(newstype);
+  },
 
   /**
    * 生命周期函数--监听页面加载

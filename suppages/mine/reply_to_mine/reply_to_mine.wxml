@@ -1,3 +1,5 @@
+<!-- 消息格式化 -->
+<wxs src="../../../utils/newstype.wxs" module="newsType"></wxs>
 <view class="container">
   <view class="item">
     <view class="left">
@@ -75,7 +77,5 @@
     <view slot="right" class="delete_btn" bind:tap="deleteFunc">删除</view>
   </van-swipe-cell>
 </view>
-
-
 <!-- 删除的弹框提示 -->
 <van-dialog id="van-dialog" />

@@ -1,8 +1,23 @@
-import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
-import { getUserRecodrByPage, deleteOwnAllCollect, deleteCollectByInde } from '../../../request/api/store_api.js'
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-import { getSystemInfoSync } from "../../../miniprogram_npm/vant-weapp/common/utils";
-// suppages/store/browsing_history/browsing_history.js
+
+import { getUserRecodrByPage, deleteOwnAllBrowsing, deleteBrowsingByIndex } from '../../../request/api/store_api.js'
+
+
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+
+
+
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
+
+
+
 Page({
 
   /**
@@ -12,22 +27,26 @@ Page({
       pageSize: 10,
       currentPage: 1,
       recordList:[],
-      totalCount: 0
+      totalCount: 0,
+      // 图片加载基地址
+      imgURL:''
+      
   },
   // 长按  => 弹框提示用户
   longPressFunc (e) {
-    console.log(e);
+    // console.log(e);
+    const { inx } = e.currentTarget.dataset
+    console.log(inx);
     Dialog.confirm({
       message: '确定删除本条浏览记录吗'
     }).then(() => {
-      //this.deleteCollectByIndex(ind);
+      this.deleteBrowsingByIndex(inx);
     }).catch(() => {
       // on cancel
     });
   },
   // 删除全部
   deleteAll (e) {
-    console.log(e);
     Dialog.confirm({
       message: '确定删除全部的浏览记录吗'
     }).then(() => {
@@ -36,16 +55,44 @@ Page({
       // on cancel
     });
   },
-  async deleteCollectByIndex(index){
-    const { data } = await deleteCollectByInde(index)
+  // 根据索引删除浏览记录
+  async deleteBrowsingByIndex (inx) {
+    const { recordList } = this.data
+    // console.log(recordList);
+    const { data } = await deleteBrowsingByIndex(inx)
+    console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '删除失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+    // console.log(data);
+    recordList.forEach((item, index) => {
+      if (inx == index) {
+        // 这一项不要
+        recordList.splice(index, 1)
+        console.log('ok');
+      }
+    })
+    this.setData({
+      recordList
+    })
   },
-  async deleteAllCollect(){
-    const{ data } = await deleteOwnAllCollect();
+  // 删除全部
+  async deleteAllBrowsing(){
+    const{ data } = await deleteOwnAllBrowsing();
     if(data.code !== 200) return
     this.setData({
       recordList: []
     })
   },
+  // 获得浏览历史列表
   async getBrowseHistory () {
     const { pageSize,currentPage} = this.data
     const { data } = await getUserRecodrByPage(pageSize, currentPage)
@@ -62,6 +109,9 @@ Page({
    */
   onLoad: function (options) {
     this.getBrowseHistory()
+    this.setData({
+      imgURL
+    })
   },
 
   /**

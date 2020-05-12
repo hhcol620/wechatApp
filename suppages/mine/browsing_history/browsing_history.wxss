@@ -22,6 +22,7 @@ page {
   padding-top: 100rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
+  padding-bottom: 20rpx;
 }
 .container view.item_b view.time_title {
   margin-left: 6rpx;

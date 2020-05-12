@@ -1,14 +1,15 @@
 <!-- 这是买到商品的订单 -->
 <view class="container">
-  <view class="item">
+  <view class="item" wx:for="{{myOrderList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
     <view class="header">
       <view class="headImg">
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        <view class="nickName">{{}}</view>
+        <image class="" src="{{imgURL}}{{item.salerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="nickName">{{item.salerInfo.nickname}}</view>
       </view>
       <view class="orders_desc">交易成功</view>
     </view>
-    <view class="main">
+    <!-- 点击中间区域  跳转到订单详情页 -->
+    <view class="main" bind:tap="jumpPageDetail">
       <view class="mainImg">
         <image class="" src="https://pics.images.ac.cn/image/5e9e31c399d55.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
@@ -29,48 +30,8 @@
       <view class="right">
         <!-- 查看评价 查看是否已经评价 如果是未评价的 这里应该显示点击评价 如果已经评价 不能更改 -->
         <view class="evaluation">
-          <van-button type="default" round size="small" bind:click="write_evaluation">
+          <van-button type="default" round size="small" bind:click="write_evaluation" data-orderid="{{item.id}}">
             点击评价
-          </van-button>
-        </view>
-        <!-- 更多 点击这个可以打开一个弹框 -->
-        <view class="more" bind:tap="more_btn">
-          <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
-        </view>
-      </view>
-    </view>
-  </view>
-  <view class="item">
-    <view class="header">
-      <view class="headImg">
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        <view class="nickName">kchuj2020</view>
-      </view>
-      <view class="orders_desc">交易成功</view>
-    </view>
-    <view class="main">
-      <view class="mainImg">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31c399d55.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </view>
-      <view class="commodity_desc">
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-      </view>
-    </view>
-    <view class="footer">
-      <!-- 联系卖家 -->
-      <view class="contact_seller" bind:tap="contact_seller">
-        <van-icon name="chat-o" size="1.6em" color="#4d4d4d" />
-        联系卖家
-      </view>
-      <view class="right">
-        <!-- 查看评价 -->
-        <view class="evaluation">
-          <van-button type="default" round size="small" bind:click="review_evaluation">
-            查看评价
           </van-button>
         </view>
         <!-- 更多 点击这个可以打开一个弹框 -->

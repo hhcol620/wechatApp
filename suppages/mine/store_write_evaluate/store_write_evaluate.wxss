@@ -70,3 +70,20 @@ view.container view.main_item {
   background-color: #fff;
   border-radius: 16rpx;
 }
+view.container view.main_item .evaluate_grade {
+  margin-top: 20rpx;
+}
+view.container view.main_item .evaluate_grade .item .item_title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.container view.footer_item {
+  margin: 30rpx;
+  width: calc(100vw - 60rpx);
+}
+view.container view.footer_item button {
+  width: calc(100vw - 60rpx);
+}

@@ -5,7 +5,7 @@ view.container view.item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   background-color: #fff;
   height: 120rpx;
 }

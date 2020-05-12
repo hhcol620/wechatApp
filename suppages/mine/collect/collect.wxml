@@ -1,26 +1,26 @@
+<wxs src="../../../utils/timeFormat.wxs" module="timeFor"></wxs>
+<!-- time_for -->
 <view class="container">
-  <view class="item">
+  <view class="item" wx:for="{{collectList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
     <view class="header">
       <view class="left">
         <view class="headImage">
-          <image class="" src="https://pic.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="{{imgURL}}{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="nick_t">
-          <view class="nickName">水晶之恋</view>
-          <view class="time">两天前来过</view>
+          <view class="nickName">{{item.consumerInfo.nickname}}</view>
+          <view class="time">{{timeFor.time_for(item.createTime)}}发布</view>
         </view>
       </view>
       <view class="right">
-        <view class="price">￥ 1199</view>
+        <!-- <view class="price">￥ 1199</view> -->
       </view>
     </view>
     <view class="main">
       <view class="images">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31c3095e8.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
       </view>
-      <view class="desc">
-        戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新 戴尔设计师专用显示器 99新
-      </view>
+      <view class="desc">{{item.topic}}</view>
     </view>
     <view class="footer">
       <view class="address">来自内蒙古科技大学</view>
