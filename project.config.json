@@ -282,10 +282,10 @@
 					"scene": null
 				},
 				{
-					"id": 38,
-					"name": "订单详情页",
+					"id": 32,
+					"name": "订单详情页orderid=7&type=2",
 					"pathName": "suppages/mine/store_orders_detail/store_orders_detail",
-					"query": "orderid=9",
+					"query": "orderid=7&type=2",
 					"scene": null
 				},
 				{

@@ -1,6 +1,6 @@
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
-import { getMyOrderList,getUserInfo } from '../../request/api/store_api.js'
+import { getMyOrderList,getUserInfo,get_goodsInfo } from '../../request/api/store_api.js'
 
 
 const app = getApp()
@@ -52,6 +52,8 @@ Component({
       console.log(List);
       List.forEach(async item => {
         const res = await this.getbuyerInfo(item.salerId)
+        const goodsInfo = await this.getGoodsInfo(item.productId)
+        item.goodsInfo = goodsInfo
         item.salerInfo = res
         myOrderList.push(item)
         this.setData({
@@ -69,9 +71,23 @@ Component({
       // console.log(res.data.data);
       return res.data.data 
     },
+    // 根据商品id 获取商品信息
+    async getGoodsInfo(goodsId) {
+      const {
+        data
+      } = await get_goodsInfo(goodsId)
+      return data.data
+    },
     // 跳转订单详情页
-    jumpPageDetail () { 
-      this.triggerEvent('detail')     
+    jumpPageDetail (e) { 
+      const { orderid } = e.currentTarget.dataset
+      const obj = {
+        orderId: orderid,
+        type:2
+      }
+      // console.log(orderid);
+      this.triggerEvent('detail',obj)     
+
     },
     // 联系卖家
     contact_seller () {

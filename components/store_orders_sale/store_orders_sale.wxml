@@ -8,16 +8,13 @@
       </view>
       <view class="orders_desc">交易成功</view>
     </view>
-    <view class="main" bind:tap="jumpPageDetail">
+    <view class="main" bind:tap="jumpPageDetail" data-orderid="{{item.id}}">
       <view class="mainImg">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31c399d55.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}{{item.goodsInfo.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
       <view class="commodity_desc">
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
-        魅族手机  99新  显示器支架  显示器
+        <view class="desc">{{item.goodsInfo.productDesc}}</view>
+        <view class="price">￥ {{item.goodsInfo.salePrice}}</view>
       </view>
     </view>
     <view class="footer">

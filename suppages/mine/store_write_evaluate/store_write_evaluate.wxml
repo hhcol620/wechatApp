@@ -5,52 +5,50 @@
     <view class="header">
       <view class="left">
         <view class="headImg">
-          <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="{{imgURL}}{{orderObj.salerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
-        <view class="nickName">张三李四</view>
+        <view class="nickName">{{orderObj.salerInfo.nickname}}</view>
       </view>
     </view>
     <!-- 商品的信息 -->
     <view class="commdity_desc">
       <view class="left mainImage">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        <image class="" src="{{imgURL}}{{orderObj.goodsInfo.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
       </view>
       <view class="right desc_price">
-        <view class="desc">
-          高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p高清显示器 1080p
-        </view>
-        <view class="price">￥ 998</view>
+        <view class="desc">{{orderObj.goodsInfo.productDesc}}</view>
+        <view class="price">￥ {{orderObj.goodsInfo.salePrice}}</view>
       </view>
     </view>
   </view>
   <view class="main_item">
     <!-- 这个区域加一个文本域 自动获得焦点 -->
-    <textarea placeholder="请根据此次交易输入您对商品和卖家最真实的描述吧" auto-focus />
+    <textarea placeholder="请根据此次交易输入您对商品和卖家最真实的描述吧" auto-focus bindinput="getInputData" value="{{evaluate_content}}" />
     <view class="evaluate_grade">
       <!-- 对质量的评价 -->
       <view class="item">
         <view class="item_title">宝贝质量</view>
         <view class="box">
-          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          <van-rate value="{{ rate.quality }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" data-name="rate.quality" />
         </view>
       </view>
       <!-- 对卖家服务的评价 -->
       <view class="item">
         <view class="item_title">卖家服务</view>
         <view class="box">
-          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          <van-rate value="{{ rate.service }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" data-name="rate.service" />
         </view>
       </view>
       <!-- 整体评价 -->
       <view class="item">
         <view class="item_title">整体体验</view>
         <view class="box">
-          <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" />
+          <van-rate value="{{ rate.experience }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" data-name="rate.experience" />
         </view>
       </view>
     </view>
   </view>
   <view class="footer_item">
-    <van-button type="primary">提交</van-button>
+    <van-button type="primary" bind:click="submit_btn">提交</van-button>
   </view>
 </view>

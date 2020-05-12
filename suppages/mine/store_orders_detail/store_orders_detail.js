@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  get_evaluate_by_orderId
+  getOrderDetail,getUserInfo,get_goodsInfo,getEvaluateByOrderId
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -22,26 +22,93 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: 3.5
+    value: 3.5,
+    // 订单信息
+    order_detail: {},
+    // 加载图片基地址
+    imgURL:''
   },
-  // 评价星
-  onChange(event) {
+
+ 
+  // 根据订单id获取订单的详情
+  async getOrder_detail (type,orderid) {
+    const { data } = await getOrderDetail(type,orderid)
+    if (data.code !== 200) {
+      // 获取订单信息失败
+      return 
+    }
+    // console.log(data);
+    const orderObj = data.data
+    const goodsInfo = await this.getGoodsInfo(orderObj.productId)
+    const buyerInfo = await this.getUserInfoById(orderObj.buyerId)
+    const salerInfo = await this.getUserInfoById(orderObj.salerId)
+    const evaluateInfo = await this.getEvaluateByOrderId(orderObj.id)
+    orderObj.goodsInfo = goodsInfo
+    orderObj.buyerInfo = buyerInfo
+    orderObj.salerInfo = salerInfo
+    orderObj.evaluateInfo = evaluateInfo
     this.setData({
-      value: event.detail
-    });
+      order_detail: orderObj
+    })
   },
-
-  // 根据订单id获取评价信息
+  // 根据productId  获取商品信息
+  async getGoodsInfo (goodsId) {
+    const { data } = await get_goodsInfo(goodsId)
+    if (data.code !== 200) {
+      wx.showToast({
+        title: `${data.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });  
+      return 
+    }
+    return data.data
+  },
+  // 根据buyerId 获取买家 卖家信息
+  async getUserInfoById(Id) {
+    const {
+      data
+    } = await getUserInfo(Id)
+    // console.log(data.data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: `${data.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });  
+      return 
+    }
+    return data.data
+  },
+  // 根据订单id获取评价
+   // 根据订单id获取评价信息
   async getEvaluateByOrderId (orderId) {
-    const res = await get_evaluate_by_orderId(orderId)
-    console.log(res);
+    const { data } = await getEvaluateByOrderId(orderId)
+    // console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: `${data.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });  
+      return 
+    }
+    return data.data
   },
-
   // 如果需要快速复制单号 在单号后面设置一个按钮 调用这个api wx.setClipboardData(Object object) 
 
-  copy_orderCode(){
+  copy_orderCode (e) {
+    // console.log(e.currentTarget.dataset);
+    // 订单号
+    const {code} = e.currentTarget.dataset
     wx.setClipboardData({
-      data: '11111',
+      data: `${code}`,
       success: (result) => {
         
       },
@@ -53,11 +120,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    this.setData({
+      imgURL
+    })
     // console.log(options.orderid);
-    // 这个就是订单id
-    const { orderid } = options
-    this.getEvaluateByOrderId(orderid)
+    // 这个就是订单id  这个里面的type  主要用于区分 自己是卖家 还是买家  1-作为卖家  2-作为买家 
+    const { orderid, type } = options
+    this.getOrder_detail(type,orderid)
   },
 
   /**

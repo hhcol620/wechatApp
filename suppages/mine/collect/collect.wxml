@@ -2,33 +2,26 @@
 <!-- time_for -->
 <view class="container">
   <view class="item" wx:for="{{collectList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
-    <view class="header">
-      <view class="left">
-        <view class="headImage">
-          <image class="" src="{{imgURL}}{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-        </view>
-        <view class="nick_t">
-          <view class="nickName">{{item.consumerInfo.nickname}}</view>
-          <view class="time">{{timeFor.time_for(item.createTime)}}发布</view>
-        </view>
-      </view>
-      <view class="right">
-        <!-- <view class="price">￥ 1199</view> -->
-      </view>
-    </view>
-    <view class="main">
+    <view class="main" bind:tap="toCommodity" data-id="{{item.id}}">
       <view class="images">
         <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
       </view>
-      <view class="desc">{{item.topic}}</view>
+      <view class="desc">
+        <view class="title">
+          {{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}
+        </view>
+        <view class="item_b" wx:if="{{item.type===1}}">宝贝</view>
+        <view class="item_b" wx:if="{{item.type===2}}">需求</view>
+      </view>
     </view>
     <view class="footer">
-      <view class="address">来自内蒙古科技大学</view>
+      <!-- <view class="address">来自内蒙古科技大学</view> -->
+      <view class="browsing">浏览{{item.browseTimes}}</view>
       <view class="button_b">
-        <van-button icon="star" color="#f7b731" type="default" size="small" wx:if="{{isCollect}}" bind:click="collectFunc">
+        <van-button icon="star" color="#f7b731" type="default" size="small" wx:if="{{item.isCollect===1}}" bind:click="collectFunc" data-id="{{item.id}}" data-type="{{item.type}}">
           取消收藏
         </van-button>
-        <van-button icon="star-o" type="default" size="small" wx:else bind:click="collectFunc">
+        <van-button icon="star-o" type="default" size="small" wx:else bind:click="collectFunc" data-id="{{item.id}}" data-type="{{item.type}}">
           收藏
         </van-button>
       </view>

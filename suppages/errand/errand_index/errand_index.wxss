@@ -34,3 +34,6 @@ page {
   justify-content: center;
   align-items: center;
 }
+.van-tabs__nav {
+  padding-right: 100rpx;
+}

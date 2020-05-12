@@ -25,11 +25,12 @@ Page({
     imgURL:''
   },
   // 跳转订单详情页
-  toOrdersDetail () {
-    //
-    console.log('触发了');
+  toOrdersDetail (e) {
+    // 订单id
+    const {orderId,type} = e.detail
+    // console.log('触发了',orderId,type);
     wx.navigateTo({
-      url: '../../../suppages/mine/store_orders_detail/store_orders_detail',
+      url: `../../../suppages/mine/store_orders_detail/store_orders_detail?orderid=${orderId}&type=${type}`,
       success: (result) => {
         
       },

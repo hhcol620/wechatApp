@@ -8,18 +8,18 @@
     <!-- 商品信息 -->
     <view class="top">
       <view class="left mainImg">
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742571214112551.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}{{order_detail.goodsInfo.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
       <view class="right">
-        <view class="desc">这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述这是商品的描述</view>
-        <view class="price">￥ 999.00</view>
+        <view class="desc">{{order_detail.goodsInfo.productDesc}}</view>
+        <view class="price">￥ {{order_detail.goodsInfo.salePrice}}</view>
       </view>
     </view>
     <view class="bottom">
       <!-- 支付金额 钱款去向 -->
       <view class="item">
         <view class="title">商品总价</view>
-        <view class="price">￥ 999.00</view>
+        <view class="price">￥  {{order_detail.goodsInfo.salePrice}}</view>
       </view>
       <view class="item">
         <view class="title">钱款去向</view>
@@ -31,33 +31,33 @@
     <!-- 这里放我的收货信息  和 评价的信息 -->
     <view class="top">
       <!-- 收货地址 -->
-      <view class="title">收货地址: 张三 1777777777</view>
-      <view class="other_mess">内蒙古科技大学23号宿舍楼 922 宿舍内蒙古科技大学23号宿舍楼 922 宿舍内蒙古科技大学23号宿舍楼 922</view>
+      <view class="title">收货地址: 张三 1777777</view>
+      <view class="other_mess">{{order_detail.address}}</view>
     </view>
     <view class="bottom">
       <!-- 评价的详细信息 -->
       <view class="title">买家评价</view>
-      <view class="evaluate_container">卖家人不错，宝贝和照片一样，感觉还是比较新的，质量还可以</view>
+      <view class="evaluate_container">{{order_detail.evaluateInfo.content}}</view>
       <view class="evaluate_grade">
         <!-- 对质量的评价 -->
         <view class="item">
           <view class="item_title">宝贝质量</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
+            <van-rate value="{{ order_detail.evaluateInfo.productQualityEvaluate/2 }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
         <!-- 对卖家服务的评价 -->
         <view class="item">
           <view class="item_title">卖家服务</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
+            <van-rate value="{{ order_detail.evaluateInfo.salerServiceEvaluate/2 }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
         <!-- 整体评价 -->
         <view class="item">
           <view class="item_title">整体体验</view>
           <view class="box">
-            <van-rate value="{{ value }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
+            <van-rate value="{{ order_detail.evaluateInfo.wholeEvaluate/2 }}" size="{{ 20 }}" allow-half void-color="#eee" void-icon="star" bind:change="onChange" readonly />
           </view>
         </view>
       </view>
@@ -67,12 +67,14 @@
     <!-- 订单的信息 -->
     <view class="title">订单信息</view>
     <view class="order_container">
-      <view class="item">卖家昵称: 内蒙古科技大学</view>
+      <view class="item">卖家昵称: {{order_detail.salerInfo.nickname}}</view>
       <view class="item">
-        订单编号: 29999999381289
-        <view class="copy_btn" bind:tap="copy_orderCode">复制</view>
+        订单编号: {{order_detail.orderCode}}
+        <view class="copy_btn" bind:tap="copy_orderCode" data-code="{{order_detail.orderCode}}">
+          复制
+        </view>
       </view>
-      <view class="item">交易时间: 2020-11-09 12:00:00</view>
+      <view class="item">交易时间: {{order_detail.createTime}}</view>
     </view>
   </view>
 </view>

@@ -23,7 +23,7 @@ export const get_demandList = (pageSize,currentPage) => {
 
 //获得自己的收藏列表
 export const getMyProductCollectList = (pageSize, currentPage) => {
-  return getData(`/goods/goods/demand/list/${pageSize}/${currentPage}`)
+  return getData(`/goods/collect/list/${pageSize}/${currentPage}`)
 }
 
 // 发布需求
@@ -50,6 +50,13 @@ export const getOrderDetail = (type,id) =>{
   //todo  没测
   return getData(`/order/order/es/${type}/${id}`)
 }
+
+// 根据订单id查询评价
+export const getEvaluateByOrderId = (orderId) =>{
+  //todo  没测
+  return getData(`/order/evaluate/byOrderId/${orderId}`)
+}
+
 
 // 分页查看自己发布商品
 export const get_goodsList = (pageSize,currentPage) => {
@@ -100,19 +107,36 @@ export const deleteOwnAllBrowsing = () => {
 
 // 分页查看自己评价  type 传 1
 export const get_evaluate = (pageSize,currentPage) => {
-  return getData(`/goods/goods/evaluate/list/${pageSize}/${currentPage}/1`)
+  return getData(`/order/evaluate/list/${pageSize}/${currentPage}/1`)
 }
 
 // 根据评论的id删除自己的评价
-export const delete_evaluate = (id) => {
-  return deleteData(`/goods/goods/evaluate/${id}`)
+export const delete_evaluate = (orderId) => {
+  return deleteData(`/order/evaluate/${orderId}
+  `)
 }
 
 // 根据订单的id发布评价 入口在我的订单里面
-export const post_evaluate = (orderId) => {
-  return postData(`/goods/goods/evaluate/${orderId}`)
+export const post_evaluate = (orderId,params) => {
+  return postData(`/order/evaluate/${orderId}`,params)
 }
 
+// 收藏
+export const get_collect = (type,id) => {
+  return getData(`/goods/collect/${type}/${id}`)
+}
+//  取消收藏
+export const delete_collect = (id) => {
+  return deleteData(`/goods/collect/${id}`)
+}
+// 取消收藏全部
+export const delete_collect_all = () => {
+  return deleteData(`/goods/collect/all`)
+}
+// 查看是否收藏  data的1标识收藏了，0标识没有收藏
+export const  isCollect = (type,id) => {
+  return getData(`/goods/collect/state/${type}/${id}`)
+}
 // 搜索 参数 页面大小 当前页
 export const get_search_content = (pageSize, currentPage, keyword) => {
   return getData(`search/goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
@@ -175,18 +199,18 @@ export const getUserTag = () => {
 }
 
 //身份证认证   该请求必须是表单提交   并且图片参数名为file，填写的姓名参数为realName
-export const userIdCardAuthen = (param) => {
-  return postData("/security/identityCard", param)
+export const userIdCardAuthen = (params) => {
+  return postData("/security/identityCard", params)
 }
 
 //一卡通认证 要求同上
-export const oneCardAuthen = (param) => {
-  return postData("/security/oneCard", param)
+export const oneCardAuthen = (params) => {
+  return postData("/security/oneCard", params)
 }
 
 // 判断用户的用户名和手机号是否唯一   params {type:"email",validValue:'1111@qq.com' }  还可以phoneNum,nickname,alipayNum 
-export const checkData = (param) => {
-  return postData("/user/user/check", param)
+export const checkData = (params) => {
+  return postData("/user/user/check", params)
 }
 
 

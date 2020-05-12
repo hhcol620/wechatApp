@@ -2,7 +2,11 @@ import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
 
 
-import { getMyOrderList,getUserInfo } from '../../request/api/store_api.js'
+import {
+  getMyOrderList,
+  getUserInfo,
+  get_goodsInfo
+} from '../../request/api/store_api.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -18,7 +22,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    
+
   },
 
   /**
@@ -26,7 +30,7 @@ Component({
    */
   data: {
     // 加载图片基地址
-    imgURL:'',
+    imgURL: '',
     // 控制遮罩是否显示
     isShow: false,
     // 存储订单列表
@@ -45,16 +49,22 @@ Component({
   methods: {
 
     // 获取列表 这里面获取了列表之后 需要触发一下父页面的值将值传到页面上
-    async getOrderList () {
-      const { myOrderList } = this.data
-      const{ data } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
+    async getOrderList() {
+      const {
+        myOrderList
+      } = this.data
+      const {
+        data
+      } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
       if (data.code !== 200) return;
       const res = data.data
       const List = res.data
       console.log(List);
       List.forEach(async item => {
         const res = await this.getbuyerInfo(item.salerId)
+        const goodsInfo = await this.getGoodsInfo(item.productId)
         item.salerInfo = res
+        item.goodsInfo = goodsInfo
         myOrderList.push(item)
         this.setData({
           myOrderList
@@ -66,18 +76,32 @@ Component({
       })
     },
     // 根据卖家id 查询卖家信息
-    async getbuyerInfo (userId) {
+    async getbuyerInfo(userId) {
       const res = await getUserInfo(userId)
       // console.log(res.data.data);
-      return res.data.data 
+      return res.data.data
+    },
+    // 根据商品id 获取商品信息
+    async getGoodsInfo(goodsId) {
+      const {
+        data
+      } = await get_goodsInfo(goodsId)
+      return data.data
     },
     // 跳转订单详情页
-    jumpPageDetail () { 
-      this.triggerEvent('detail')     
+    jumpPageDetail (e) { 
+      const { orderid } = e.currentTarget.dataset
+      const obj = {
+        orderId: orderid,
+        type:2
+      }
+      // console.log(orderid);
+      this.triggerEvent('detail',obj)     
+
     },
 
     // 联系卖家
-    contact_seller () {
+    contact_seller() {
       wx.makePhoneCall({
         // 手机号
         phoneNumber: '17796761085',
@@ -88,22 +112,24 @@ Component({
       })
     },
     // 点击评价  这个后面需要做一个页面 跳转 评价页面
-    write_evaluation (e) {
+    write_evaluation(e) {
       console.log(e);
-      const { orderid } = e.currentTarget.dataset
+      const {
+        orderid
+      } = e.currentTarget.dataset
       console.log(orderid);
       wx.navigateTo({
         url: `/suppages/mine/store_write_evaluate/store_write_evaluate?orderid=${orderid}`,
         success: (result) => {
-          
+
         },
         fail: () => {},
         complete: () => {}
       });
-        
+
     },
     // 点击了更多  打开一个弹框
-    more_btn () {
+    more_btn() {
       this.setData({
         isShow: true
       })
@@ -115,15 +141,15 @@ Component({
       });
     },
     // 查看物流
-    review_logistics () {
+    review_logistics() {
       console.log('您点击了查看物流');
     },
     // 查看订单信息
-    order_detail (){
+    order_detail() {
       console.log('查看订单');
     },
     // 查看钱款去向
-    where_monery () {
+    where_monery() {
       console.log('查看钱款去向');
     }
   },

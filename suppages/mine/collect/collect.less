@@ -7,53 +7,7 @@ view.container {
     padding: 30rpx;
     padding-bottom: 0;
     background-color: #fff;
-    view.header {
-      display: flex;
-      justify-content: space-between;
-
-      view.left {
-        display: flex;
-
-        view.headImage {
-          image {
-            height: 100rpx;
-            width: 100rpx;
-            border-radius: 4rpx;
-          }
-        }
-
-        view.nick_t {
-          margin-left: 20rpx;
-          view.nickName {
-            font-size: 28rpx;
-            line-height: 40rpx;
-            font-weight: 600;
-            color: #4d4d4d;
-            font-style: normal;
-          }
-
-          view.time {
-            font-style: normal;
-            font-size: 24rpx;
-            line-height: 36rpx;
-            color: #666;
-          }
-        }
-
-
-      }
-
-      view.right {
-        view.price {
-          font-size: 30rpx;
-          color: #ff3f34;
-          font-weight: 600;
-          line-height: 60prx;
-          font-style: normal;
-        }
-      }
-    }
-
+    margin: 20rpx 0;
     view.main {
       margin-top: 20rpx;
       margin-bottom: 20rpx;
@@ -65,10 +19,27 @@ view.container {
     
       view.desc {
         font-size: 30rpx;
-        line-height: 46rpx;
+        line-height: 40rpx;
         font-weight: 500;
         color: #333;
         font-style: normal;
+        view.title{
+          word-wrap: break-word;
+          word-break: break-all;
+          white-space: pre-line;
+        }
+        .item_b{
+          padding: 0 10rpx;
+          background-color: #fd79a8;
+          color: #fff;
+          border-radius: 4rpx;
+          height: 40rpx;
+          line-height: 40rpx;
+          font-size: 26rpx;
+          text-align: center;
+          margin: 10rpx 0;
+          width: 80rpx;
+        }
       }
     }
 
@@ -78,7 +49,7 @@ view.container {
       align-items: center;
       border-top: 1rpx solid var(--borderColor);
       padding: 20rpx 0;
-      view.address {
+      view.browsing {
         font-size: 26rpx;
         color: #2d98da;
         font-weight: 500;
