@@ -9,7 +9,7 @@
   <view class="item_b" wx:for="{{recordList}}" wx:key="id">
     <view class="time_title">{{item.browseDate}}</view>
     <view class="content_b">
-      <view class="item" bind:longpress="longPressFunc" data-inx="{{index}}">
+      <view class="item" bind:longpress="longPressFunc" bind:tap="to_commodity" data-id="{{item.id}}" data-inx="{{index}}">
         <view class="image left">
           <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>

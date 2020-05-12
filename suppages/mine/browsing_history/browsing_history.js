@@ -45,6 +45,20 @@ Page({
       // on cancel
     });
   },
+  // 点击跳转
+  to_commodity (e) {
+    const { id } = e.currentTarget.dataset
+    console.log(id);
+    wx.navigateTo({
+      url: `../../store/commodity/commodity?id=${id}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
   // 删除全部
   deleteAll (e) {
     Dialog.confirm({
