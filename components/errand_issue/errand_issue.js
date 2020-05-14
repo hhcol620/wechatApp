@@ -35,10 +35,15 @@ Component({
         
     },
     // 点击编辑按钮
-    edit (e) {
+    delete (e) {
       const { id } = e.currentTarget.dataset
       this.triggerEvent('deleteFunc',id)
       // console.log(id);
+    },
+    // 点击完成
+    finish (e) {
+      const { id } = e.currentTarget.dataset
+      this.triggerEvent('finishFunc',id)
     }
   }
 })

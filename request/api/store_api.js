@@ -174,6 +174,10 @@ export const getOrderState = (code)=> {
 export const deleteErrandOrder = (typ, id) => {
   return deleteData(`/order/order/errand/${typ}/${id}`)
 }
+// 完成跑腿订单
+export const finishErrandOrder = (id) => {
+  return getData(`/order/order/errand/finish/${id}`)
+}
 
 //查看跑腿订单信息 我发布的 list state 2 没有被接单的 3已经被接单 4 已完成
 export const getMyErrandOrder = (pageSize,currentPage, state)=> {

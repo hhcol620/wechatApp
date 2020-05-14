@@ -8,7 +8,7 @@
     <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
   </van-tab>
   <van-tab title="正在完成">
-    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
+    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" bind:finishFunc="finishErrand" />
   </van-tab>
   <van-tab title="已经完成">
     <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />

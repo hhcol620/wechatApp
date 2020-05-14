@@ -33,15 +33,12 @@ view.container view.item view.main view.receiverMessage {
 }
 view.container view.item view.footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: 20rpx;
   padding-top: 20rpx;
   border-top: 1rpx solid var(--borderColor);
 }
-view.container view.item view.footer view.left {
-  display: flex;
-}
-view.container view.item view.footer view.left view.contactReceiver {
-  margin-right: 20rpx;
+view.container view.item view.footer view.edit button {
+  margin-left: 20rpx;
 }

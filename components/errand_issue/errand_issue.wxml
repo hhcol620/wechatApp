@@ -5,7 +5,9 @@
       <view class="left">
         <view class="creatTime">发布时间 {{item.createTime}}</view>
       </view>
-      <view class="right">还没有人接单</view>
+      <view class="right" wx:if="{{item.state === 2}}">还没有人接单</view>
+      <view class="right" wx:if="{{item.state === 3}}">正在送达</view>
+      <view class="right" wx:if="{{item.state === 4}}">已送达</view>
     </view>
     <view class="main">
       <view class="content">
@@ -19,17 +21,18 @@
       <view class="receiverMessage" wx:if="{{item.phoneNum}}">接单人手机号: {{item.phoneNum}}</view>
     </view>
     <view class="footer">
-      <view class="left">
-        <view class="contactReceiver">
-          <van-button plain type="primary" round size="small" bind:click="contactReceiver" wx:if="{{item.phoneNum}}" data-phoneNum="{{item.phoneNum}}">
-            联系接单人
-          </van-button>
-        </view>
-        <view class="edit">
-          <van-button plain type="primary" round size="small" bind:click="edit" data-id="{{item.id}}">
-            删除
-          </van-button>
-        </view>
+      <view class="contactReceiver">
+        <van-button plain type="primary" round size="small" bind:click="contactReceiver" wx:if="{{item.state === 3}}" data-phoneNum="{{item.phoneNum}}">
+          联系接单人
+        </van-button>
+      </view>
+      <view class="edit">
+        <van-button plain type="primary" round size="small" bind:click="finish" data-id="{{item.id}}" wx:if="{{item.state === 3}}">
+          完成
+        </van-button>
+        <van-button plain type="primary" round size="small" bind:click="delete" data-id="{{item.id}}">
+          删除
+        </van-button>
       </view>
     </view>
   </view>
