@@ -1,5 +1,5 @@
 // 引入  用来发送请求的方法  需要将路径补全
-import { getData, postData, deleteData, putData } from '../index.js'
+import { getData, postData, deleteData, putData,postDataRealName } from '../index.js'
 
 // 暴露接口  将接口集中管理
 // 获取分类数据
@@ -84,6 +84,10 @@ export const get_leave_message_first = (pageSize,currentPage,goodsId,parentId,fi
 export const getMyInfo = () => {
   return getData("/user/user/detail")
 }
+//修改用户信息
+export const editUserInfo =  (params) =>{
+  return request("post", "/user/user/edit", params)
+} 
 
 // 获取消息通知
 export const getSystemNews = (pageSize, currentPage) => {
@@ -154,8 +158,8 @@ export const getOwnerErrandList = (pageSize, currentPage) => {
 }
 
 //发布跑腿
-export const releaseErrand = (info) => {
-  return postData("/goods/errand", info)
+export const releaseErrand = (params) => {
+  return postData("/goods/errand", params)
 }
 
 //接跑腿订单 接单成功之后会返回一个订单编号
@@ -173,9 +177,9 @@ export const deleteErrandOrder = (typ, id) => {
   return deleteData(`/order/order/errand/${typ}/${id}`)
 }
 
-//查看跑腿订单list type(1-自己发布的  2-自己接的跑腿订单)  state取值:3-未完成  4-已完成
-export const getErrandOrderById = (typ, state)=> {
-  return getData(`/order/order/errand/list/${typ}/${state}`)
+//查看跑腿订单list state 2 没有被接单的 3已经被接单 4 已完成
+export const getMyErrandOrder = (typ, state)=> {
+  return getData(`/goods/errand/list/${pageSize}/${currentPage}/${state}`)
 }
 
 //获得已经转账的公益基金申请
@@ -198,14 +202,20 @@ export const getUserTag = () => {
   return getData("/user/interest")
 }
 
+//关注和取关兴趣标签  type:1-取关  2-关注
+export const followInterestTag = (type ,id) => {
+  return getData(`/user/interest/follow/${type}/${id}`)
+}
+
+
 //身份证认证   该请求必须是表单提交   并且图片参数名为file，填写的姓名参数为realName
 export const userIdCardAuthen = (params) => {
-  return postData("/security/identityCard", params)
+  return postDataRealName("/security/identityCard", params)
 }
 
 //一卡通认证 要求同上
 export const oneCardAuthen = (params) => {
-  return postData("/security/oneCard", params)
+  return postDataRealName("/security/oneCard", params)
 }
 
 // 判断用户的用户名和手机号是否唯一   params {type:"email",validValue:'1111@qq.com' }  还可以phoneNum,nickname,alipayNum 

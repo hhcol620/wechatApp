@@ -8,11 +8,11 @@
       </view>
     </view>
     <view class="right">
-      <van-button plain hairline type="primary" size="small" wx:if="{{item.avaliable !== 1}}" bind:click="click_concern" class="top">
+      <van-button plain hairline type="primary" size="small" wx:if="{{item.avaliable !== 1}}" bind:click="click_concern" data-avaliable="{{item.avaliable}}" data-id="{{item.id}}" class="top">
         + 关注
       </van-button>
       <van-button loading size="small" type="primary" loading-text="加载中..." class="bottom" />
-      <van-button type="primary" size="small" wx:if="{{item.avaliable === 1}}" bind:click="click_noconcern" class="top">
+      <van-button type="primary" size="small" wx:if="{{item.avaliable === 1}}" bind:click="click_noconcern" data-avaliable="{{item.avaliable}}" data-id="{{item.id}}" class="top">
         取消关注
       </van-button>
     </view>

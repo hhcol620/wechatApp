@@ -124,10 +124,10 @@
         <van-grid-item text="发布跑腿" link-type="navigateTo" url="/suppages/release/errand/errand">
           <text class="iconfont icon-shangpin" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item text="正在进行订单" link-type="navigateTo" url="/suppages/mine/errand_completing_orders/errand_completing_orders">
+        <van-grid-item text="我发布的" link-type="navigateTo" url="/suppages/mine/errand_mine_issue/errand_mine_issue">
           <text class="iconfont icon-RectangleCopy" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item text="已完成的订单" link-type="navigateTo" url="/suppages/mine/errand_completed_orders/errand_completed_orders">
+        <van-grid-item text="我接到的" link-type="navigateTo" url="/suppages/mine/errand_mine_receive/errand_mine_receive">
           <text class="iconfont icon-dingdan2" slot="icon"></text>
         </van-grid-item>
       </van-grid>

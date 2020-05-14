@@ -4,8 +4,6 @@
   <view class="form">
     <van-cell-group>
       <van-field value="{{ name }}" label="姓名:" placeholder="请填写姓名" input-align="right" data-name="name" bind:input="getInputData" />
-      <van-field value="{{ school }}" label="学校:" placeholder="请输入学校" input-align="right" data-name="school" bind:input="getInputData" />
-      <van-field value="{{ academy }}" label="学院:" placeholder="请输入学院" input-align="right" data-name="academy" bind:input="getInputData" />
       <van-field value="{{ studentNum }}" label="学号:" placeholder="请输入学号" input-align="right" data-name="studentNum" bind:input="getInputData" />
     </van-cell-group>
   </view>

@@ -1,12 +1,11 @@
-// suppages/mine/errand_completing_orders/errand_completing_orders.js
+// suppages/mine/errand_mine_receive/errand_mine_receive.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // tab默认所在位置
-    active:0
+
   },
 
   /**

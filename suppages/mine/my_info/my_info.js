@@ -1,7 +1,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
 // suppages/store/my_info/my_info.js
-import { getMyInfo,checkData } from '../../../request/api/store_api.js'
+import { getMyInfo,checkData,editUserInfo } from '../../../request/api/store_api.js'
 
 import Notify from '../../../miniprogram_npm/vant-weapp/notify/notify';
 // 上传图片
@@ -24,7 +24,9 @@ Page({
    */
   data: {
     // 用户信息
-    userInfo: {}
+    userInfo: {},
+    // 加载图片基地址
+    imgURL:''
   },
 
   async getMyInfo(){
@@ -112,8 +114,19 @@ Page({
     }
   },
   // 提交  这个提交当页面退出 提交
-  submit_userInfo () {
-    
+  async submit_userInfo () {
+    const { userInfo } = this.data
+    const { data } = await editUserInfo(userInfo)
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '编辑信息失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return 
+    }
   },
   
   /**
@@ -121,6 +134,9 @@ Page({
    */
   onLoad: function (options) {
     this.getMyInfo()
+    this.setData({
+      imgURL
+    })
   },
 
   /**

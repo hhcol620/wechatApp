@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-import { getMyInfo } from '../../../request/api/store_api.js'
+import { oneCardAuthen } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
   upLoadImages
@@ -35,10 +35,10 @@ Page({
     studentCardImg: '',
     // 姓名
     name: '',
-    // 学校
-    school: '',
-    // 学院
-    academy: '',
+    // // 学校
+    // school: '',
+    // // 学院
+    // academy: '',
     // 学号
     studentNum:''
   },
@@ -64,7 +64,6 @@ Page({
       success: async (result) => {
         const res = await upLoadImages(result.tempFilePaths[0])
         const geturl = JSON.parse(res.data)
-        // console.log();
         this.setData({
           studentCardImg: `${geturl.text}`
         })
@@ -75,18 +74,32 @@ Page({
 
   },
   // 用户点击了提交
-  submitFunc() {
+  async submitFunc() {
 
-    const {studentCardImg,name,school,academy,studentNum} = this.data
-    if (!name.trim()||!school.trim()||!academy.trim()||!studentNum.trim()||!studentCardImg.trim()) {
+    const {studentCardImg,name,studentNum} = this.data
+    if (!name.trim()||!studentNum.trim()||!studentCardImg.trim()) {
       // 有空值   提示用户输入不合法
       Notify({ type: 'warning', message: '输入不合法,请检查后重试' });
       return
     }
     // 发起提交请求*********************
-
+    // const { name, school, academy, studentNum, studentCardImg } = this.data
+    const studentObj = {
+      fileUri:studentCardImg,
+      realName: name,
+      inputCardNo:studentNum
+    }
+    const { data } = await oneCardAuthen(studentObj)
+    
+    console.log(data);
     // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页
-
+    if (data.code !== 200) {
+      // 提交失败
+      Notify({ type: 'warning', message: '提交失败,请稍后重试' });
+      return
+    }
+    Notify({ type: 'success', message: `${data.text}` });
+    // 提交成功   提示用户 然后回退上一页面
     Dialog.confirm({
         title: '提示',
         message: '您的提交我们已经收到',
@@ -101,8 +114,7 @@ Page({
       .catch(() => {
         Dialog.close();
       });
-    // 失败通知
-    // Notify({ type: 'warning', message: '提交失败,请稍后重试' });
+   
 
   },
   // 跳转到上一个页面

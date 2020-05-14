@@ -1,20 +1,15 @@
 <!-- 跑腿正在进行的订单 -->
 <!-- 这上面应该有一个tab栏目  选择自己发布的还是自己接到的 -->
-
-
-<!-- 自己发布的应该有一个发布的时间 距离自动关闭设置时间  -->
+<!-- 自己发布的应该有一个发布的时间 距离自动关闭设置时间 -->
 <!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
 <!-- 订单的简略信息 物品描述 起始地点 收货地点 -->
-
 <!-- 查看详情 这个使用弹框 将收货人信息展示  或者将跑腿人信息展示出来 -->
-
 <!-- 点击位置 可以出现发货地 和收货地的信息 最好可以开启实时导航 -->
-
 <van-tabs active="{{ active }}" bind:change="onChange" color="var(--themeColor)">
-  <van-tab title="我发布的">
+  <van-tab title="正在进行的">
     <errand_completing_orders_release></errand_completing_orders_release>
   </van-tab>
-  <van-tab title="我接到的">
+  <van-tab title="已完成的">
     <errand_completing_orders_receive></errand_completing_orders_receive>
   </van-tab>
 </van-tabs>

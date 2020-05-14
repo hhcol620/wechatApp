@@ -129,13 +129,6 @@
 				},
 				{
 					"id": -1,
-					"name": "标签页",
-					"pathName": "suppages/store/mytags/mytags",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "商城中我的订单",
 					"pathName": "suppages/mine/store_orders/store_orders",
 					"query": "",
@@ -349,6 +342,20 @@
 					"name": "根据订单id填写评价",
 					"pathName": "suppages/mine/store_write_evaluate/store_write_evaluate",
 					"query": "orderid=7",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "标签页",
+					"pathName": "suppages/mine/mytags/mytags",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的信息",
+					"pathName": "suppages/mine/my_info/my_info",
+					"query": "",
 					"scene": null
 				}
 			]

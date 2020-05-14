@@ -5,5 +5,5 @@
     "errand_completing_orders_receive":"/components/errand_completing_orders_receive/errand_completing_orders_receive",
     "errand_completing_orders_release":"/components/errand_completing_orders_release/errand_completing_orders_release"
   },
-  "navigationBarTitleText":"正在进行的订单"
+  "navigationBarTitleText":"我接到的订单"
 }

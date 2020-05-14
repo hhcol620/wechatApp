@@ -1,7 +1,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
 // suppages/store/my_info/my_info.js
-import { getUserTag } from '../../../request/api/store_api.js'
+import { getUserTag,followInterestTag } from '../../../request/api/store_api.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -57,6 +57,47 @@ Page({
     this.setData({
       likeTags,
       allTags:List
+    })
+  },
+  // 切换 标签是否关注
+  async change_concern (e) {
+    // console.log(e);
+    // console.log(e);
+    // e.detail   avaliable  当为1 的时候表示已经关注的状态 
+    const type = e.detail.avaliable||2
+    const id = e.detail.id
+    // 因为切换关注接口 type值 跟这个avaliable对应 
+    const { data } = await followInterestTag(type, id)
+    // console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: `${data.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return 
+    }
+    // 根据id 值去切换对应的avaliable
+    const { allTags } = this.data
+    allTags.forEach(item => {
+      if (id == item.id) {
+        if (item.avaliable == 1) {
+          item.avaliable = 2
+        }else {
+          item.avaliable = 1
+          console.log(id);
+        }
+      }
+    })
+    const likeTags = allTags.filter(item => {
+      return item.avaliable === 1
+    })
+    this.setData({
+      likeTags,
+      allTags
     })
   },
   /**

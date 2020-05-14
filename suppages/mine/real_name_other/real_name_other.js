@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-import { getMyInfo } from '../../../request/api/store_api.js'
+import { getMyInfo,oneCardAuthen } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
   upLoadImages
@@ -75,11 +75,11 @@ Page({
   submitFunc() {
 
     const {cardImg,name,cardNum,telNum} = this.data
-    if (!name.trim()||!cardNum.trim()||!telNum.trim()||!cardImg.trim()) {
-      // 有空值   提示用户输入不合法
-      Notify({ type: 'warning', message: '输入不合法,请检查后重试' });
-      return
-    }
+    // if (!name.trim()||!cardNum.trim()||!telNum.trim()||!cardImg.trim()) {
+    //   // 有空值   提示用户输入不合法
+    //   Notify({ type: 'warning', message: '输入不合法,请检查后重试' });
+    //   return
+    // }
     // 发起提交请求*********************
 
     // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页

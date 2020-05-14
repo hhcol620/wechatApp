@@ -24,19 +24,23 @@ Component({
   methods: {
     // 点击关注
     click_concern (e) {
-      console.log(e);
-      console.log('您关注了');
-      this.setData({
-        isConcern:!this.data.isConcern
-      })
+      // console.log(e);
+      const { avaliable, id } = e.currentTarget.dataset
+      const avaliObj = {
+        avaliable,
+        id
+      }
+      // console.log(avaliable);
+      this.triggerEvent('changeConcern',avaliObj) 
     },
     // 取消关注
     click_noconcern (e) {
-      console.log(e);
-      console.log('您取消关注了');
-      this.setData({
-        isConcern:!this.data.isConcern
-      })
+      const { avaliable, id } = e.currentTarget.dataset
+      const avaliObj = {
+        avaliable,
+        id
+      }
+      this.triggerEvent('changeConcern',avaliObj) 
     }
   }
 })

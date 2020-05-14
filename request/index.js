@@ -31,7 +31,11 @@
 //   })
 // }
 // 配置基地址
-const baseUrl = "https://222.186.174.9:13163/api"
+const app = getApp()
+// 引入全局  请求加载动画方法
+const { baseUrl } = app.globalData
+
+// const baseUrl = "https://222.186.174.9:13163/api"
 // const baseUrl = "https://www.imuster.top/api"
 // get请求
 const getData = (url, params) => {
@@ -118,9 +122,33 @@ const putData = (url, params) => {
   })
 }
 
+
+// // post 请求  实名认证
+const postDataRealName = (url, params) => {
+  return new Promise((reslove, reject) => {
+    var reqTask = wx.request({
+      url:baseUrl + url,
+      data: params || {},
+      header: {'content-type':'application/x-www-form-urlencoded'},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        reslove(result)
+      },
+      fail: (err) => {
+        reject(err)
+      },
+      complete: () => {}
+    });
+      
+  })
+}
+
 module.exports = {
   getData,
   postData,
   deleteData,
-  putData
+  putData,
+  postDataRealName
 }

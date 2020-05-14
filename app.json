@@ -30,7 +30,7 @@
         "mine/browsing_history/browsing_history",
         "mine/inform/inform",
         "mine/reply_to_mine/reply_to_mine",
-        "mine/collect/collect",
+        "mine/collect/collect", 
         "mine/mytags/mytags",
         "mine/my_info/my_info",
         "mine/real_name/real_name",
@@ -41,8 +41,8 @@
         "mine/store_demand/store_demand",
         "mine/store_leave_message/store_leave_message",
         "mine/store_evaluate/store_evaluate", 
-        "mine/errand_completing_orders/errand_completing_orders",
-        "mine/errand_completed_orders/errand_completed_orders",
+        "mine/errand_mine_issue/errand_mine_issue",
+        "mine/errand_mine_receive/errand_mine_receive",
         "mine/store_write_evaluate/store_write_evaluate",
         "errorPage/errorPage/errorPage"
       ]

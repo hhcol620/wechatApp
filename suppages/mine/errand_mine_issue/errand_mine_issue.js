@@ -1,12 +1,11 @@
-// suppages/mine/errand_completed_orders/errand_completed_orders.js
+// suppages/mine/errand_mine_issue/errand_mine_issue.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // tab栏默认激活项
-    active: 0
+
   },
 
   /**

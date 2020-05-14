@@ -1,14 +1,13 @@
-<!-- tab标签  选择我发布的 和我接的单子  -->
-<!-- 自己发布的应该有一个发布的时间 距离自动关闭设置时间  -->
+<!-- tab标签  选择我发布的 和我接的单子 -->
+<!-- 自己发布的应该有一个发布的时间 距离自动关闭设置时间 -->
 <!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
 <!-- 订单的简略信息 物品描述 起始地点 收货地点 -->
-
 <!-- 查看详情 这个使用弹框 将收货人信息展示  或者将跑腿人信息展示出来 -->
 <van-tabs active="{{ active }}" color="var(--themeColor)">
-  <van-tab title="我发布的">
+  <van-tab title="正在完成">
     <errand_completed_orders_release />
   </van-tab>
-  <van-tab title="我接到的">
+  <van-tab title="已经完成">
     <errand_completed_orders_receive />
   </van-tab>
 </van-tabs>

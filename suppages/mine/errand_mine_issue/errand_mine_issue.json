@@ -6,5 +6,5 @@
     "errand_completed_orders_receive":"/components/errand_completed_orders_receive/errand_completed_orders_receive"
 
   },
-  "navigationBarTitleText": "已完成订单"
+  "navigationBarTitleText": "我发布的"
 }
