@@ -151,7 +151,10 @@ export const get_search_content = (pageSize, currentPage, keyword) => {
 export const getAllErrandList = (pageSize, currentPage, typ) => {
   return getData(`/goods/errand/${typ}/${pageSize}/${currentPage}`)
 }
-
+//根据跑腿id查详细信息
+export const getErrand_detail = (id) => {
+  return getData(`/goods/errand/detail/${id}`)
+}
 //发布跑腿
 export const releaseErrand = (params) => {
   return postData("/goods/errand", params)

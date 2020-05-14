@@ -1,1 +1,44 @@
-<errandDetail />
+<view class="container" hover-class="none" hover-stop-propagation="false">
+  <view class="head" hover-class="none" hover-stop-propagation="false">
+    <view class="headImg">
+      <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742571669954841.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+    </view>
+    <view class="nickName_time">
+      <view class="nickName">{{public_mess.publisherInfo.nickname}}</view>
+      <view class="time">发布于 {{public_mess.createTime}}</view>
+    </view>
+  </view>
+  <view class="main">
+    <view class="desc">{{public_mess.content}}</view>
+    <view class="require">要求: {{public_mess.requirement}}</view>
+    <view class="address">地址: {{public_mess.address}}</view>
+    <view class="privacy_message" hover-class="none" hover-stop-propagation="false">
+      隐私信息 : 确认接单之后会提供发布者详细信息
+    </view>
+  </view>
+</view>
+<view class="footer">
+  <!-- <van-goods-action-button text="立即接单" bind:click="receive_order" /> -->
+  <van-button color="linear-gradient(to right, #4bb0ff, #6149f6)" round size="normal" bind:click="receive_order">
+    立即接单
+  </van-button>
+</view>
+<view class="overlay" hover-class="none" hover-stop-propagation="false">
+  <van-overlay show="{{ isShow }}">
+    <!-- 抢单中 -->
+    <view class="loading" wx:if="{{isloading}}">
+      <Loading />
+      <view class="desc">正在抢单 ...</view>
+    </view>
+    <!-- 插槽 数据请求回来了 且已经抢单成功 -->
+    <view class="wraper" wx:else>
+      <view class="privacy_mess">
+        <!-- 隐私信息 -->
+        <view class="name">姓名: {{privacy_mess.name}}</view>
+        <view class="tel">手机号: {{privacy_mess.phoneNum}}</view>
+        <view class="remark">备注信息: {{privacy_mess.cypher}}</view>
+      </view>
+    </view>
+  </van-overlay>
+</view>
+<van-dialog id="van-dialog" />

@@ -374,16 +374,16 @@
 				},
 				{
 					"id": -1,
-					"name": "跑腿帮详情页",
-					"pathName": "suppages/errand/errand_detail/errand_detail",
+					"name": "自己接到的跑腿订单",
+					"pathName": "suppages/mine/errand_mine_receive/errand_mine_receive",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "自己接到的跑腿订单",
-					"pathName": "suppages/mine/errand_mine_receive/errand_mine_receive",
-					"query": "",
+					"id": 46,
+					"name": "跑腿帮详情页id =2",
+					"pathName": "suppages/errand/errand_detail/errand_detail",
+					"query": "id=6",
 					"scene": null
 				}
 			]

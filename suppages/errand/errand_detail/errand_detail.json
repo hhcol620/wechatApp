@@ -1,5 +1,9 @@
 {
   "usingComponents": {
-    "errandDetail":"/components/errand_detail/errand_detail"
-  }
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index",
+    "Loading":"/components/loading/loading",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+  },
+  "navigationBarTitleText":"跑腿服务"
 }

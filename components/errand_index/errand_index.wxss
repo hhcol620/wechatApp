@@ -10,7 +10,7 @@ view.container view.item {
 view.container view.item view.head {
   display: flex;
   justify-content: space-between;
-  font-size: 20rpx;
+  font-size: 24rpx;
   color: #666;
 }
 view.container view.item view.head view.countDown {
