@@ -152,11 +152,6 @@ export const getAllErrandList = (pageSize, currentPage, typ) => {
   return getData(`/goods/errand/${typ}/${pageSize}/${currentPage}`)
 }
 
-//获得自己发布的跑腿列表
-export const getOwnerErrandList = (pageSize, currentPage) => {
-  return getData(`/goods/errand/list/${pageSize}/${currentPage}`)
-}
-
 //发布跑腿
 export const releaseErrand = (params) => {
   return postData("/goods/errand", params)
@@ -177,9 +172,13 @@ export const deleteErrandOrder = (typ, id) => {
   return deleteData(`/order/order/errand/${typ}/${id}`)
 }
 
-//查看跑腿订单list state 2 没有被接单的 3已经被接单 4 已完成
-export const getMyErrandOrder = (typ, state)=> {
+//查看跑腿订单信息 我发布的 list state 2 没有被接单的 3已经被接单 4 已完成
+export const getMyErrandOrder = (pageSize,currentPage, state)=> {
   return getData(`/goods/errand/list/${pageSize}/${currentPage}/${state}`)
+}
+// 查看订单列表 跑腿    type 1 自己发布的  2自己接的  state 3未完成 4 已完成  
+export const getErrandOrder = (pageSize, currentPage, type, state) => {
+  return getData(`/order/order/errand/list/${pageSize}/${currentPage}/${type}/${state}`)
 }
 
 //获得已经转账的公益基金申请

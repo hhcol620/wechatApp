@@ -2,8 +2,7 @@
   "usingComponents": {
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
-    "errand_completing_orders_receive":"/components/errand_completing_orders_receive/errand_completing_orders_receive",
-    "errand_completing_orders_release":"/components/errand_completing_orders_release/errand_completing_orders_release"
+    "errand_receive":"/components/errand_receive/errand_receive"
   },
   "navigationBarTitleText":"我接到的订单"
 }

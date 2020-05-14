@@ -28,6 +28,12 @@ view.container view.item view.main view.desc {
   line-height: 30rpx;
   color: #4d4d4d;
 }
+view.container view.item view.main view.desc view.price_box {
+  display: flex;
+}
+view.container view.item view.main view.desc view.price_box view.price {
+  color: #ff3f34;
+}
 view.container view.item view.footer view.viewDetail {
   display: flex;
   justify-content: flex-end;

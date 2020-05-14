@@ -1,0 +1,36 @@
+<!-- 这是正在进行的订单 我发布的跑腿服务 -->
+<view class="container">
+  <view class="item" wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+    <view class="header">
+      <view class="left">
+        <view class="creatTime">发布时间 {{item.createTime}}</view>
+      </view>
+      <view class="right">还没有人接单</view>
+    </view>
+    <view class="main">
+      <view class="content">
+        <view class="it">商品描述: {{item.content}}</view>
+        <view class="it">地址: {{item.address}}</view>
+        <view class="it">要求: {{item.requirement}}</view>
+        <view class="it">价格: {{item.money}}</view>
+        <!-- <view class="it">收货地点: 内蒙古科技大学23号宿舍</view> -->
+      </view>
+      <!-- 接单人信息 -->
+      <view class="receiverMessage" wx:if="{{item.phoneNum}}">接单人手机号: {{item.phoneNum}}</view>
+    </view>
+    <view class="footer">
+      <view class="left">
+        <view class="contactReceiver">
+          <van-button plain type="primary" round size="small" bind:click="contactReceiver" wx:if="{{item.phoneNum}}" data-phoneNum="{{item.phoneNum}}">
+            联系接单人
+          </van-button>
+        </view>
+        <view class="edit">
+          <van-button plain type="primary" round size="small" bind:click="edit" data-id="{{item.id}}">
+            删除
+          </van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

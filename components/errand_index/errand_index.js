@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    arrList: {
+      type: Array,
+      value:[]
+    }
   },
 
   /**
@@ -19,9 +22,10 @@ Component({
    */
   methods: {
     // 查看详情
-    To_errand_detail () {
+    To_errand_detail (e) {
+      const { id } = e.currentTarget.dataset
       wx.navigateTo({
-        url: '/suppages/errand/errand_detail/errand_detail',
+        url: `/suppages/errand/errand_detail/errand_detail?id=${id}`,
         success: (result)=>{
           
         },

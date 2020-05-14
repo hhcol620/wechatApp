@@ -7,9 +7,9 @@
 <!-- 点击位置 可以出现发货地 和收货地的信息 最好可以开启实时导航 -->
 <van-tabs active="{{ active }}" bind:change="onChange" color="var(--themeColor)">
   <van-tab title="正在进行的">
-    <errand_completing_orders_release></errand_completing_orders_release>
+    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand"></errand_receive>
   </van-tab>
   <van-tab title="已完成的">
-    <errand_completing_orders_receive></errand_completing_orders_receive>
+    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand"></errand_receive>
   </van-tab>
 </van-tabs>

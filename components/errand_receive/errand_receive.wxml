@@ -1,0 +1,41 @@
+<!-- 自己接到的应该有一个发布的时间 -->
+<!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
+<!-- 订单的简略信息 物品描述 起始地点 收货地点 价格 -->
+<!-- 查看详情 这个使用弹框 跑腿人信息展示出来 -->
+<view class="container">
+  <view class="item" wx:for="{{arrList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+    <view class="header">
+      <!-- 下单时间 -->
+      <view class="creatTime">接单时间:{{item.createTime}}</view>
+      <!-- 交易类型 订单是否完成 -->
+      <view class="transactionType">交易完成</view>
+    </view>
+    <view class="orderId">订单编号: {{item.orderCode}}</view>
+    <view class="main">
+      <view class="errand_desc">
+        <view class="toAddress">地址: {{item.address}}</view>
+      </view>
+      <!-- 单子信息 -->
+      <view class="price">
+        悬赏价格:
+        <view class="p_b">￥ {{item.payMoney}}</view>
+      </view>
+      <!-- 发布人信息 -->
+      <view class="receiverMessage">发布人手机号: {{item.phoneNum}}</view>
+    </view>
+    <view class="footer">
+      <view class="left">
+        <view class="contactIssue">
+          <van-button plain type="primary" round size="small" bind:click="contactIssure" wx:if="{{item.phoneNum}}" data-phoneNum="{{item.phoneNum}}">
+            联系发布者
+          </van-button>
+        </view>
+        <view class="edit">
+          <van-button plain type="primary" round size="small" bind:click="edit" data-id="{{item.id}}">
+            删除
+          </van-button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

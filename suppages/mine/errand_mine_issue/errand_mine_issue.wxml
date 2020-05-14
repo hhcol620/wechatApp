@@ -3,11 +3,16 @@
 <!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
 <!-- 订单的简略信息 物品描述 起始地点 收货地点 -->
 <!-- 查看详情 这个使用弹框 将收货人信息展示  或者将跑腿人信息展示出来 -->
-<van-tabs active="{{ active }}" color="var(--themeColor)">
+<van-tabs active="{{ active }}" color="var(--themeColor)" bind:click="clickTabs">
+  <van-tab title="没被接单">
+    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
+  </van-tab>
   <van-tab title="正在完成">
-    <errand_completed_orders_release />
+    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
   </van-tab>
   <van-tab title="已经完成">
-    <errand_completed_orders_receive />
+    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
   </van-tab>
 </van-tabs>
+<!-- 删除订单  删除单个 -->
+<van-dialog id="van-dialog" />

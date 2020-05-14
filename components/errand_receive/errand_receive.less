@@ -53,15 +53,33 @@ view.container {
       }
 
       view.price {
-
+        display: flex;
+        view.p_b{
+          color: #ff3f34;
+        }
       }
 
       view.receiverMessage {
 
       }
     }
-    view.footer{
-      
+    view.footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 20rpx;
+      padding-top: 20rpx;
+      border-top: 1rpx solid var(--borderColor);
+      view.left {
+        display: flex;
+        view.contactIssue {
+          margin-right: 20rpx;
+        }
+
+        view.edit {
+
+        }
+      }
     }
   }
 }

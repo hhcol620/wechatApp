@@ -1,10 +1,13 @@
-// components/errand_completing_orders_release/errand_completing_orders_release.js
+// components/errand_no_receive/errand_no_receive.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    arrList: {
+      type: Array,
+      value:[]
+    }
   },
 
   /**
@@ -18,10 +21,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 点击联系发布者
-    contactReleaser () {
+    // 点击联系接单人
+    contactReceiver (e) {
+      const {phoneNum} = e.currentTarget.dataset
       wx.makePhoneCall({
-        phoneNumber: '17796761085',
+        phoneNumber: phoneNum,
         success: (result) => {
           
         },
@@ -31,8 +35,10 @@ Component({
         
     },
     // 点击编辑按钮
-    edit () {
-      console.log('您点击了编辑');
+    edit (e) {
+      const { id } = e.currentTarget.dataset
+      this.triggerEvent('deleteFunc',id)
+      // console.log(id);
     }
   }
 })

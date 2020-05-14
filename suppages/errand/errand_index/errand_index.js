@@ -33,11 +33,18 @@ Page({
     const {
       data
     } = await getAllErrandList(pageSize, currentPage, typ)
-    console.log(data);
+    // console.log(data);
+    if (data.code !== 200) {
+      // 失败
+      return 
+    }
+    // 成功
+    this.setData({
+      errandList: data.data.data
+    })
   },
   // tab 切换
   tabChange (e) {
-    const { pageSize, currentPage } = this.data
     this.setData({
       errandList: [],
       // 页面大小  
@@ -45,7 +52,8 @@ Page({
       // 当前页
       currentPage: 1
     })
-    console.log(e);
+    const { pageSize, currentPage } = this.data
+    // console.log(e);
     // 获取标识符 如果根据标识符发起不同的请求
     const {
       name
@@ -58,6 +66,18 @@ Page({
       // typ设置为2
     this.getErrandList(pageSize, currentPage,2)
     }
+  },
+  // 跳转发布页
+  releaseFunc () {
+    wx.navigateTo({
+      url: '../../release/errand/errand',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
   /**
    * 生命周期函数--监听页面加载
