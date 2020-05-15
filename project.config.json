@@ -219,10 +219,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 23,
 					"name": "公益榜详情页",
 					"pathName": "suppages/public_service/public_service_detail/public_service_detail",
-					"query": "",
+					"query": "id=1&type=5",
 					"scene": null
 				},
 				{
@@ -384,6 +384,13 @@
 					"name": "跑腿帮详情页id =2",
 					"pathName": "suppages/errand/errand_detail/errand_detail",
 					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "回复我的",
+					"pathName": "suppages/mine/reply_to_mine/reply_to_mine",
+					"query": "id=1&type=5",
 					"scene": null
 				}
 			]

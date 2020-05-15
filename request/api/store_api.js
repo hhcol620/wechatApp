@@ -1,5 +1,5 @@
 // 引入  用来发送请求的方法  需要将路径补全
-import { getData, postData, deleteData, putData,postDataRealName } from '../index.js'
+import { getData, postData, deleteData, putData } from '../index.js'
 
 // 暴露接口  将接口集中管理
 // 获取分类数据
@@ -194,10 +194,17 @@ export const getFinishDonation = (pageSize, currentPage)=> {
 }
 
 //获得没有转账正在审核的公益基金申请
-export const getUnfinishDonation = (pageSize, currentPage)=> {
+export const getFinishingDonation = (pageSize, currentPage)=> {
   return getData(`/order/donation/unfinish/${pageSize}/${currentPage}`)
 }
-
+// 根据id查询公益详情  type 5 申请已完成  2 正在审核
+export const getDonationDetail = (type, id)=> {
+  return getData(`/order/donation/detail/${type}/${id}`)
+}
+// 用户给公益提供自己的态度 type 1 不同意 2 同意
+export const getDonationDetail_attribute = (type, targetId)=> {
+  return getData(`/order/donation/attribute/${type}/${targetId}`)
+}
 //typ取值5-标识查看的申请已经完成，返回的信息中需要包含使用了哪些人的订单   2-标识查看正在审核的或者审核通过但是未转账的
 export const getDonationDetailById = (id, typ) => {
   return getData(`/order/donation/detail/${typ}/${id}`)
@@ -216,12 +223,12 @@ export const followInterestTag = (type ,id) => {
 
 //身份证认证   该请求必须是表单提交   并且图片参数名为file，填写的姓名参数为realName
 export const userIdCardAuthen = (params) => {
-  return postDataRealName("/security/identityCard", params)
+  return postData("/security/identityCard", params)
 }
 
 //一卡通认证 要求同上
 export const oneCardAuthen = (params) => {
-  return postDataRealName("/security/oneCard", params)
+  return postData("/security/oneCard", params)
 }
 
 // 判断用户的用户名和手机号是否唯一   params {type:"email",validValue:'1111@qq.com' }  还可以phoneNum,nickname,alipayNum 

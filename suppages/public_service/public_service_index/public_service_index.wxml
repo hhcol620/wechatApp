@@ -1,11 +1,11 @@
 <!-- 这应该是一个列表区域 不加搜索不加分页  采用下拉自动加载更新 -->
 <view class="container">
-  <van-tabs active="{{ active }}" color="var(--themeColor)">
-  <van-tab title="正在审核">
-    <public_service_list></public_service_list>
-  </van-tab>
-  <van-tab title="审核成功">
-    <public_service_list></public_service_list>
-  </van-tab>
-</van-tabs>
+  <van-tabs active="{{ active }}" color="var(--themeColor)" bind:click="tabsClick">
+    <van-tab title="正在审核">
+      <public_service_list arrList="{{donationList}}"></public_service_list>
+    </van-tab>
+    <van-tab title="审核成功">
+      <public_service_list arrList="{{donationList}}"></public_service_list>
+    </van-tab>
+  </van-tabs>
 </view>

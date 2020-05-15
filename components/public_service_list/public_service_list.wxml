@@ -1,7 +1,7 @@
 <!-- 这应该是一个列表区域 不加搜索不加分页  采用下拉自动加载更新 -->
 <view class="container">
-  <view class="item">
-    <navigator class="" target="" url="/suppages/public_service/public_service_detail/public_service_detail" hover-class="navigator-hover" open-type="navigate">
+  <view class="item" wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+    <navigator class="" target="" url="/suppages/public_service/public_service_detail/public_service_detail?id={{item.id}}&type={{item.state}}" hover-class="navigator-hover" open-type="navigate">
       <!-- 活动主题 或者名字 -->
       <view class="title">活动主题 : 资助贫困山区儿童</view>
       <!-- 申请方 活动主办方 -->

@@ -16,6 +16,6 @@ App({
     // uploadImgURL: 'https://222.186.174.9:13163/api/file/file',
     // 请求基地址
     baseUrl: "https://222.186.174.9:13163/api"
-    // const baseUrl = "https://www.imuster.top/api"
+    // baseUrl: "https://www.imuster.top/api"
   }
 })

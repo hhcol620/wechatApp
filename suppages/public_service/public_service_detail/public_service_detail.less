@@ -55,6 +55,25 @@ view.container {
       }
     }
   }
+  view.feedback{
+    margin-top: 50rpx;
+    border-top: 1rpx solid var(--borderColor);
+    view.tip {
+      margin-top: 10rpx;
+      font-size: 30rpx;
+      line-height: 50rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+    view.desc {
+      font-size: 28rpx;
+      line-height: 36rpx;
+      color: #333;
+      font-weight: 500;
+      font-style: normal;
+    }
+  }
   view.participators{
     margin-top: 20rpx;
     .title{
@@ -76,6 +95,7 @@ view.container {
         overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+        text-align: center;
         &:last-child{
           border-right: 1rpx solid #999;
         }
@@ -87,10 +107,10 @@ view.container {
         width: 30%;
       }
       .item_col:nth-child(3){
-        width: 45%;
+        width: 30%;
       }
       .item_col:nth-child(4){
-        width: 15%;
+        width: 30%;
       }
     }
     .item_row:last-child{

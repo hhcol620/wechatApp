@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  reply_to_me
+  reply_to_me,getUserInfo
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -25,7 +25,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pageSize: 10,
+    currentPage: 1,
+    totalCount: 0,
+    // 回复我的列表
+    replyToMe: [],
+    // 加载图片基地址
+    imgURL:''
   },
   // 删除
   deleteFunc (e) {
@@ -40,8 +46,32 @@ Page({
   },
   // 页面加载获取回复我的 列表
   async getReplyToMe () {
-    const res = await reply_to_me(10, 1)
-    console.log(res);
+    const { pageSize,currentPage,replyToMe } = this.data
+    const { data } = await reply_to_me(pageSize, currentPage)
+    if (data.code !== 200) {
+      return 
+    }
+    const current_page = currentPage + 1
+    const List = data.data.data
+    console.log(List);
+    // 遍历循环根据发送者id 获取发送者信息
+    List.forEach(async item => {
+      const senderInfo = await this.get_userInfo(item.senderId)
+      item.senderInfo = senderInfo
+      replyToMe.push(item)
+      this.setData({
+        replyToMe
+      })
+    })
+    this.setData({
+      currentPage: current_page,
+      totalCount: data.totalCount,
+    })
+  },
+  // 根据用户id获取用户的信息
+  async get_userInfo (userId) {
+    const { data } = await getUserInfo(userId)
+    return data.data
   },
   /**
    * 生命周期函数--监听页面加载

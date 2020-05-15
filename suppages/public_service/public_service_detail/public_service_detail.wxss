@@ -40,6 +40,25 @@ view.container view.materials view.images view.item image {
   width: calc(100vw - 40rpx);
   border-radius: 6rpx;
 }
+view.container view.feedback {
+  margin-top: 50rpx;
+  border-top: 1rpx solid var(--borderColor);
+}
+view.container view.feedback view.tip {
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+}
+view.container view.feedback view.desc {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color: #333;
+  font-weight: 500;
+  font-style: normal;
+}
 view.container view.participators {
   margin-top: 20rpx;
 }
@@ -63,6 +82,7 @@ view.container view.participators .item_row .item_col {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  text-align: center;
 }
 view.container view.participators .item_row .item_col:last-child {
   border-right: 1rpx solid #999;
@@ -74,10 +94,10 @@ view.container view.participators .item_row .item_col:nth-child(2) {
   width: 30%;
 }
 view.container view.participators .item_row .item_col:nth-child(3) {
-  width: 45%;
+  width: 30%;
 }
 view.container view.participators .item_row .item_col:nth-child(4) {
-  width: 15%;
+  width: 30%;
 }
 view.container view.participators .item_row:last-child {
   border-bottom: 1rpx solid #999;

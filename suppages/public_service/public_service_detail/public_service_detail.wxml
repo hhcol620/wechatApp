@@ -3,60 +3,64 @@
   <!-- 这是申请方的一些简介信息 -->
   <view class="sponsor_desc">
     <view class="tip">申请方:</view>
-    <view class="desc">内蒙古科技大学青年志愿者协会,1982年成立,多次参与献爱心活动</view>
+    <view class="desc">
+      {{donationDetailObj.applyUserInfo.nickname}} {{donationDetailObj.applyUserInfo.signature}}
+    </view>
   </view>
   <!-- 活动的描述 -->
   <view class="activity_desc">
     <view class="tip">活动主题:</view>
-    <view class="desc">内蒙古科技大学青年志愿者协会,1982年成立,多次参与献爱心活动</view>
+    <view class="desc">{{donationDetailObj.title}}  {{donationDetailObj.reason}}</view>
+  </view>
+  <view class="activity_desc">
+    <view class="tip">申请金额:</view>
+    <view class="desc">{{donationDetailObj.applyAmount}}</view>
   </view>
   <!-- 申请的材料信息 -->
   <view class="materials">
     <view class="title">申请材料</view>
     <view class="images">
       <view class="item">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-      </view>
-      <view class="item">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-      </view>
-      <view class="item">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
-      </view>
-      <view class="item">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}{{donationDetailObj.reasonPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
       </view>
     </view>
   </view>
   <!-- 申请情况 如果成功下面这一块显示 否则不显示 -->
+  <!-- 发布者反馈信息 -->
   <!-- 公布一些参与者信息 -->
-  <view class="participators">
+  <view class="feedback" wx:if="{{donationDetailObj.feedback}}">
+    <view class="tip">审批反馈:</view>
+    <view class="desc">{{donationDetailObj.feedback}}</view>
+  </view>
+  <view class="materials" wx:if="{{donationDetailObj.feedback}}">
+    <view class="title">反馈材料</view>
+    <view class="images">
+      <view class="item">
+        <image class="" src="{{imgURL}}{{donationDetailObj.feedbackPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+      </view>
+    </view>
+  </view>
+  <view class="participators" wx:if="{{donationDetailObj.feedback}}">
     <view class="title">参与活动名单公布</view>
     <!-- 这里弄一个表格 用户昵称 qq邮箱 金额 -->
     <view class="item_row">
       <view class="item_col">#</view>
       <view class="item_col">用户昵称</view>
-      <view class="item_col">邮箱</view>
+      <view class="item_col">Id</view>
       <view class="item_col">金额</view>
     </view>
-    <view class="item_row">
+    <view class="item_row" wx:for="{{donationDetailObj.userOrders}}" wx:key="salerId">
       <view class="item_col">1</view>
-      <view class="item_col">张三</view>
-      <view class="item_col">2838990077@qq.com</view>
-      <view class="item_col">12</view>
-    </view>
-    <view class="item_row">
-      <view class="item_col">1</view>
-      <view class="item_col">张三</view>
-      <view class="item_col">2838990077@qq.com</view>
-      <view class="item_col">12</view>
+      <view class="item_col">{{item.salerNickname}}</view>
+      <view class="item_col">{{item.salerId}}</view>
+      <view class="item_col">{{item.paymentMoney}}</view>
     </view>
   </view>
 </view>
 <view class="footerFixed">
   <van-goods-action>
-    <van-goods-action-button color="#e84118" text="点赞支持 998" type="warning" />
-    <van-goods-action-button color="#9b59b6" text="保持中立 28" />
-    <van-goods-action-button color="#bdc3c7" text="不支持 00" />
+    <van-goods-action-button color="#e84118" text="点赞支持 998" type="warning" bind:click="attribute_Support" data-id="{{donationDetailObj.id}}" />
+    <van-goods-action-button color="#bdc3c7" text="不支持 00" bind:click="attribute_noSupport" data-id="{{donationDetailObj.id}}" />
   </van-goods-action>
 </view>
+<van-dialog id="van-dialog" />
