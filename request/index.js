@@ -122,10 +122,32 @@ const putData = (url, params) => {
   })
 }
 
+// 表单提交
+const postFormData = (url, params) => {
+  return new Promise((reslove, reject) => {
+    var reqTask = wx.request({
+      url:baseUrl + url,
+      data: params || {},
+      header: {'content-type':'application/x-www-form-urlencoded'},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        reslove(result)
+      },
+      fail: (err) => {
+        reject(err)
+      },
+      complete: () => {}
+    });
+      
+  })
+}
 
 module.exports = {
   getData,
   postData,
   deleteData,
-  putData
+  putData,
+  postFormData
 }

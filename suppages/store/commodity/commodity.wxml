@@ -106,7 +106,7 @@
     猜你喜欢
     <text class="iconfont icon-xihuan3" />
   </view>
-  <StoreList />
+  <StoreList arrList="{{recommend_byId}}" />
 </view>
 <!-- 底部栏目 需要固定到底部 -->
 <view class="fixed_bottom">

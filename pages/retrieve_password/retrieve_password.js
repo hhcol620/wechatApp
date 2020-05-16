@@ -23,7 +23,10 @@ Page({
     password: '',
     secPassword: '',
     // 邮箱验证码
-    code:''
+    code: '',
+    // 本地判断是否显示密码输入框  默认不显示   确认验证码无误再显示密码框输入
+    
+    isPasswordInput:false
   },
   // 获取输入框中数据 到data中
   getInputData (e) {
@@ -88,6 +91,17 @@ Page({
     this.setData({
       time:''
     })
+  },
+  // 点击确定 提交验证码 是否和传到邮箱里面里面的一致
+  submit_email_code () {
+    // 如果验证码正确
+    this.setData({
+      isPasswordInput:true
+    })
+  },
+  // 点击提交  将新的密码提交
+  submit_password () {
+    
   },
   /**
    * 生命周期函数--监听页面加载

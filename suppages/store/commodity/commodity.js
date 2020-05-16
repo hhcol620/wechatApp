@@ -6,7 +6,10 @@ import {
   get_leave_message_first,getUserInfo
 } from '../../../request/api/store_api.js'
 
-import { getData } from '../../../request/index.js'
+import {
+  get_recommend_byProductId
+} from '../../../request/api/store_front_api.js'
+
 //index.js
 //获取应用实例
 const app = getApp()
@@ -37,12 +40,9 @@ Page({
     // 控制查找更多按钮是否显示
     isShowMore: true,
     // 加载图片基地址
-    imgURL:''
-  },
-  // 方法
-  // 点赞
-  upFunc() {
-    console.log('点击了点赞');
+    imgURL: '',
+    // 根据商品的id推荐喜欢
+    recommend_byId:[]
   },
   // 回复
   replyFunc() {
@@ -155,7 +155,7 @@ Page({
     first_lea_messs.map(async (v, i) => {
       //  根据一级留言的consumerId 查询用户信息
       const consumerInfo = await this.getUserInfoById(v.consumerId)
-      console.log(consumerInfo);
+      // console.log(consumerInfo);
       // 第一个参数商品 id 第二个参数为一级留言id 第二个参数需要循环迭代一级留言
       const sec = await this.get_leave_message_second(id, v.id)
       // 给一级留言对象添加一个二级留言对象
@@ -217,6 +217,11 @@ Page({
     // console.log(data.data);
     return data.data
   },
+  // 根据商品的id 获得推荐的内容
+  async get_recommend_byProductId (productId) {
+    const { data } = await get_recommend_byProductId(productId)
+    console.log(data);
+  },
   // 页面开始加载 就会触发
   onLoad: function(option) {
     // 这个就是上个页面传过来的商品id 根据这个id值获取商品的详细信息和商品的发布者信息 留言板信息
@@ -225,7 +230,11 @@ Page({
       id: option.id,
       imgURL
     })
+    // 获得商品信息
     this.getGoodsInfo(option.id)
+    // 获得留言信息
     this.get_leave_message(option.id)
+    // 获得推荐信息
+    this.get_recommend_byProductId(option.id)
   }
 })

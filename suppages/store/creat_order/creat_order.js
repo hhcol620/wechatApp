@@ -55,6 +55,24 @@ Page({
     const radio = this.data.radio
     if (radio==1) {
       // 微信支付 调用微信的支付接口
+      // wx.requestPayment({
+      //   timeStamp: '',
+      //   nonceStr: '',
+      //   package: '',
+      //   signType: 'MD5',
+      //   paySign: '',
+      //   success (res) { },
+      //   fail (res) { }
+      // })
+      wx.navigateTo({
+        url: '/suppages/errorPage/errorPage/errorPage',
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
     } else if (radio == 2) {
       // 支付宝的话直接跳转
       wx.navigateTo({

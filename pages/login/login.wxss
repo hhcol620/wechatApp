@@ -101,9 +101,11 @@
   height: 72rpx;
   border-radius: 36rpx;
   padding: 10rpx 20rpx;
-  background-color: var(--themeColor);
+  background-color: #686868;
   color: #fff;
   z-index: 99;
+  width: 120rpx;
+  text-align: center;
 }
 .container .card .tip {
   font-size: 26rpx;
@@ -116,6 +118,18 @@
 .container .card .tip navigator {
   margin: 0 10rpx;
   color: #3498db;
+}
+.container .card .login {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  line-height: 52rpx;
+  font-weight: 500;
+  font-style: normal;
+  color: #3498db;
+}
+.container .card .login > view {
+  padding: 20rpx;
 }
 .container .card .submit_btn {
   position: absolute;

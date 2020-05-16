@@ -1,25 +1,29 @@
-.container{
+.container {
   background-color: #fff;
   height: 100vh;
   position: relative;
-  .bg{
+
+  .bg {
     width: 100vw;
     height: 100vh;
     position: relative;
-    .item{
+
+    .item {
       position: absolute;
       border-radius: 50%;
     }
-    .first{
+
+    .first {
       height: 500rpx;
       width: 500rpx;
       background-color: #4A69FF;
       right: 0;
       top: 0;
-      transform: translate(36%,-20%);
+      transform: translate(36%, -20%);
       z-index: 10;
     }
-    .second{
+
+    .second {
       height: 200rpx;
       width: 200rpx;
       background-color: #FBBE25;
@@ -27,7 +31,8 @@
       top: 80rpx;
       z-index: 0;
     }
-    .three{
+
+    .three {
       height: 660rpx;
       width: 660rpx;
       background-color: #DBF6E7;
@@ -35,20 +40,22 @@
       bottom: -160rpx;
     }
   }
-  .card{
+
+  .card {
     position: absolute;
     height: 68vh;
     width: 76vw;
     top: 50%;
     left: 50%;
     background-color: #fff;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     box-shadow: 1rpx 2rpx 16rpx #00000020;
     z-index: 99;
     display: flex;
     flex-direction: column;
     align-items: center;
-    .title{
+
+    .title {
       margin: 46rpx;
       width: 30%;
       text-align: center;
@@ -60,11 +67,13 @@
       color: #fff;
       background-color: var(--themeColor);
     }
-    .input_box{
+
+    .input_box {
       display: flex;
       flex-direction: column;
       align-items: center;
-      .item{
+
+      .item {
         display: flex;
         align-items: center;
         font-size: 28rpx;
@@ -79,16 +88,20 @@
         padding: 10rpx 20rpx;
         border-radius: 36rpx;
         position: relative;
-        .leftdesc{
+
+        .leftdesc {
           min-width: 90rpx;
         }
-        .input{
+
+        .input {
           padding: 0 10rpx;
         }
-        .code{
+
+        .code {
           width: 180rpx;
         }
-        .right{
+
+        .right {
           font-size: 24rpx;
           line-height: 52rpx;
           position: absolute;
@@ -97,32 +110,50 @@
           height: 72rpx;
           border-radius: 36rpx;
           padding: 10rpx 20rpx;
-          background-color: var(--themeColor);
+          background-color: #686868;
           color: #fff;
           z-index: 99;
+          width: 120rpx;
+          text-align: center;
         }
       }
-      
+
     }
+
     // 提示
-    .tip{
+    .tip {
       font-size: 26rpx;
       line-height: 52rpx;
       font-weight: 500;
       color: #4d4d4d;
       font-style: normal;
       display: flex;
-      navigator{
+
+      navigator {
         margin: 0 10rpx;
         color: #3498db;
       }
     }
+
+    .login {
+      display: flex;
+      justify-content: space-between;
+      font-size: 26rpx;
+      line-height: 52rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #3498db;
+      >view{
+        padding: 20rpx;
+      }
+    }
+
     // 登陆按钮
-    .submit_btn{
+    .submit_btn {
       position: absolute;
       bottom: 0;
       left: 50%;
-      transform: translate(-50%,50%);
+      transform: translate(-50%, 50%);
       font-size: 46rpx;
       line-height: 80rpx;
       font-weight: 500;

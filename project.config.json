@@ -392,6 +392,27 @@
 					"pathName": "suppages/mine/reply_to_mine/reply_to_mine",
 					"query": "id=1&type=5",
 					"scene": null
+				},
+				{
+					"id": 48,
+					"name": "账号密码-登陆页",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册页",
+					"pathName": "pages/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "找回密码",
+					"pathName": "pages/retrieve_password/retrieve_password",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

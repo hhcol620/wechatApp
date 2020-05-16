@@ -6,7 +6,8 @@
     "pages/service/service",
     "pages/mine/mine",
     "pages/register/register",
-    "pages/login/login" 
+    "pages/login/login",
+    "pages/retrieve_password/retrieve_password" 
   ],
   "subPackages": [ 
     { 

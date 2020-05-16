@@ -37,20 +37,20 @@ Page({
     if (!token) {
       // 获取不到就跳转到登陆页
     // console.log('获取不到');
-    //   wx.redirectTo({
-    //     url: '/pages/login/login',
-    //     success: (result) => {
+      wx.redirectTo({
+        url: '/pages/login/login',
+        success: (result) => {
           
-    //     },
-    //     fail: () => {},
-    //     complete: () => {}
-    //   }); 
+        },
+        fail: () => {},
+        complete: () => {}
+      }); 
     }else{
-      // const { data } = await getMyInfo()
-      // if(data.code !== 200) return
-      // this.setData({
-      //   userInfo: data.data
-      // })
+      const { data } = await getMyInfo()
+      if(data.code !== 200) return
+      this.setData({
+        userInfo: data.data
+      })
     }
   },
   // 登陆成功获取我的个人信息
