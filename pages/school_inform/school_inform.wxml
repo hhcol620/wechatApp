@@ -1,0 +1,34 @@
+<!-- wxs 格式化时间 微信小程序里面的过滤器  写在wxs文件里面 -->
+<wxs src="../../utils/timeFormat.wxs" module="timeFormat"></wxs>
+<!-- <view>{{timeFormat.time_for('2020-05-05 15:09:31')}}</view> -->
+<!-- suppages/store/commodity/commodity.wxml -->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+  <!-- 发布者信息 -->
+  <view class="title">
+    <view class="title_text">这是标题</view>
+    <view class="footer">
+      <view class="time">2020-11-20 18:00</view>
+      <view class="browsing">浏览998</view>
+    </view>
+    <view class="author_msg">
+      <view class="left headImg">
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="right">
+        <view class="nickname">这是昵称</view>
+      </view>
+    </view>
+  </view>
+  <view class="comm_desc" hover-class="none" hover-stop-propagation="false">
+    <view class="desc_box">
+      <view class="desc_box_text">
+        描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述
+      </view>
+      <view class="desc_images" hover-class="none" hover-stop-propagation="false">
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="widthFix" lazy-load="false" />
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="widthFix" lazy-load="false" />
+      </view>
+    </view>
+  </view>
+</view>

@@ -28,6 +28,10 @@ page {
   line-height: 50rpx;
   font-weight: 500;
   font-style: normal;
+  width: 500rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
 .reply_fir .reply_mess_box .van-row .reply_container .creatTime {
   color: #666;
@@ -79,6 +83,10 @@ page {
   line-height: 50rpx;
   font-weight: 500;
   font-style: normal;
+  width: 500rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
 .reply_second .reply_mess_box .van-row .reply_container .creatTime {
   color: #666;

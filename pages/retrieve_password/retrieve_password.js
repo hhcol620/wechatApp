@@ -1,6 +1,6 @@
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
-import { post_ToEmailCode } from '../../request/api/store_front_api.js'
+import { post_ToEmailCode,post_resetPwd } from '../../request/api/store_front_api.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -53,7 +53,6 @@ Page({
       return 
     }
     var emreg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
-    17
     if (emreg.test(email) == false) {
       // 不符合条件
       wx.showToast({
@@ -67,8 +66,8 @@ Page({
       return 
     }
     // 符合条件
-    // 发起请求获取验证码 type传`1`  第一个参数传`2`
-    const { data } = await post_ToEmailCode(1,email)
+    // 发起请求获取验证码 type传3 
+    const { data } = await post_ToEmailCode(3,email)
     console.log(data);
     if (data.code !== 200) {
       return 
@@ -100,8 +99,58 @@ Page({
     })
   },
   // 点击提交  将新的密码提交
-  submit_password () {
-    
+  async submit_password () {
+    const { email, password, secPassword, code } = this.data
+    if (!password.trim()) {
+      wx.showToast({
+        title: '密码不能为空',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return   
+    }
+    if (password !== secPassword) {
+      wx.showToast({
+        title: '密码不一致',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return
+    }
+    const obj = {
+      code,
+      password,
+      email
+    }
+    const { data } = await post_resetPwd(obj)
+    console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '修改密码失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+    // 修改密码成功
+    wx.showToast({
+      title: '修改密码成功',
+      icon: 'none',
+      image: '',
+      duration: 1500,
+      mask: true
+    });
+    wx.navigateBack({
+      delta: 1
+    });
+      
   },
   /**
    * 生命周期函数--监听页面加载

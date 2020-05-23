@@ -59,8 +59,8 @@
 </view>
 <view class="footerFixed">
   <van-goods-action>
-    <van-goods-action-button color="#e84118" text="点赞支持 998" type="warning" bind:click="attribute_Support" data-id="{{donationDetailObj.id}}" />
-    <van-goods-action-button color="#bdc3c7" text="不支持 00" bind:click="attribute_noSupport" data-id="{{donationDetailObj.id}}" />
+    <van-goods-action-button color="#e84118" text="点赞支持 {{donationDetailObj.userUpTotal}}" type="warning" bind:click="attribute_Support" data-id="{{donationDetailObj.id}}" />
+    <van-goods-action-button color="#bdc3c7" text="不支持 {{donationDetailObj.userDownTotal}}" bind:click="attribute_noSupport" data-id="{{donationDetailObj.id}}" />
   </van-goods-action>
 </view>
 <van-dialog id="van-dialog" />

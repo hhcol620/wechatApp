@@ -1,13 +1,15 @@
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
-import { post_login,get_login_code,post_emailCodeLogin } from '../../request/api/store_front_api.js'
+import { post_login,get_login_code,post_emailCodeLogin,post_ToEmailCode,post_login_WX } from '../../request/api/store_front_api.js'
+import { getMyInfo } from '../../request/api/store_api.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
 const {
   showLoading,
   hideLoading,
-  imgURL
+  imgURL,
+  access_token
 } = app.globalData
 
 
@@ -28,7 +30,9 @@ Page({
     code: '',
     // 控制是密码登陆还是邮箱验证码登陆
     // passwordlogin
-    isPasswordLogin: true
+    isPasswordLogin: true,
+    // 倒计时
+    time: '',
   },
   // 获取输入框中数据 到data中
   getInputData (e) {
@@ -58,6 +62,7 @@ Page({
         
       return 
     }
+    let res;
     if (isPasswordLogin == true) {
       // 表示为账号密码登陆
       // 发起请求之前再判断code是否一致
@@ -77,36 +82,65 @@ Page({
           
         return
       }
-      const res = await login_password(email, password,inputCode)
+      res = await this.login_password(email, password,inputCode)
     } else {
       if (!email.trim() || !inputCode.trim()) {
         // 判断都不能为空
         return
       }
       // 不为空 再发起请求
-      const res = await login_password(email, inputCode)
+      res = await this.login_email_code(email, inputCode)
     }
-    
-    
+    console.log(res);
+    if (res.code !== 200) {
+      wx.showToast({
+        title: `${res.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return 
+    }
+    // 登陆成功 
+    // 本地存储accessToken 并设置全局的access_token
+    // 本地存储cookie 并设置全局的cookie
+
+    // 设置全局的access_token
+    wx.setStorageSync('access_token', res.data.access_token);
+    wx.setStorageSync('userAccessToken', res.data.jti);
+    const accessToken = wx.getStorageSync('access_token');
+    const userAccessToken = wx.getStorageSync('userAccessToken');
+    app.globalData.access_token = 'bearer ' +  accessToken
+    app.globalData.userAccessToken = userAccessToken
+    // 获取登陆信息
+    await this.getmyinfo()
+    // 存储成功之后 返回上一页
+    wx.navigateBack({
+      delta: 1
+    });    
   },
   // 账号密码登陆 请求
   async login_password (email, password,inputCode) {
     const obj = {
-      email,
+      loginName:email,
       password,
-      code: inputCode
+      webCode: inputCode
     }
     const { data } = await post_login(obj)
     console.log(data);
+    return data
   },
   // 验证码登陆 请求
   async login_email_code (email, inputCode) {
     const obj = {
-      email,
-      code: inputCode
+      loginName:email,
+      emailVerifyCode: inputCode
     }
     const { data } = await post_emailCodeLogin(obj)
-    console.log(data);
+    return data
+
   },
   // 获取验证 登陆验证   发送请求  点击发送请求
   async getCode () {
@@ -123,7 +157,6 @@ Page({
       return 
     }
     var emreg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
-    17
     if (emreg.test(email) == false) {
       // 不符合条件
       wx.showToast({
@@ -170,6 +203,113 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+      
+  },
+  // 
+  // 获取验证码 发送到邮箱中  验证码登陆
+  async getEmailCode () {
+    const { email } = this.data
+    if (!email.trim()) {
+      wx.showToast({
+        title: '邮箱不合法',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return 
+    }
+    var emreg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+    17
+    if (emreg.test(email) == false) {
+      // 不符合条件
+      wx.showToast({
+        title: '邮箱不合法',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return 
+    }
+    // 符合条件
+    // 发起请求获取验证码 type传`2`  第一个参数传`2`
+    const { data } = await post_ToEmailCode(2,email)
+    console.log(data);
+    if (data.code !== 200) {
+      return 
+    }
+    wx.showToast({
+      title: '发送成功',
+      icon: 'none',
+      image: '',
+      duration: 1500,
+      mask: true
+    });
+      
+    const time = 3 * 60 * 1000
+    this.setData({
+      time
+    })
+  },
+  // 倒计时结束
+  finishDown () {
+    this.setData({
+      time:''
+    })
+  },
+  // 微信登陆
+  async wechat_login () {
+    // 在这个位置 直接登录  如果已经绑定 则不用跳转 登陆成功直接返回   否则跳转进行绑定
+    const {code} = await wx.login()
+    console.log(code)
+    const obj = {
+      code
+    }
+    const { data } = await post_login_WX(obj)
+    console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: `${data.text}`,
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return 
+    }
+    // 设置全局的access_token
+    wx.setStorageSync('access_token', data.data.access_token);
+    wx.setStorageSync('userAccessToken', data.data.jti);
+    const accessToken = wx.getStorageSync('access_token');
+    const userAccessToken = wx.getStorageSync('userAccessToken');
+    app.globalData.access_token = 'bearer ' +  accessToken
+    app.globalData.userAccessToken = userAccessToken
+    // 获取登陆信息
+    await this.getmyinfo()
+    // 存储成功之后 返回上一页
+    wx.navigateBack({
+      delta: 1
+    });
+  },
+  // 登陆成功获取我的个人信息
+  async getmyinfo () {
+    const { data } = await getMyInfo()
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '身份已过期',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+    wx.setStorageSync('userInfo', data.data);
       
   },
 

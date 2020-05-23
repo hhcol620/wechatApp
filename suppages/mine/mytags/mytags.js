@@ -25,6 +25,7 @@ Page({
     active: 0,
     pageSize: 10,
     currentPage: 1,
+    totalCount: 0,
     // 已关注标签
     likeTags:[],
     // 所有的标签
@@ -48,6 +49,7 @@ Page({
       return 
     }
     // 成功  对总体进行一个过滤筛选   筛选出来是否已经关注
+    console.log(data);
     const List = data.data
     const likeTags = List.filter(item => {
       return item.avaliable === 1
@@ -58,6 +60,8 @@ Page({
       likeTags,
       allTags:List
     })
+    wx.stopPullDownRefresh()
+      
   },
   // 切换 标签是否关注
   async change_concern (e) {
@@ -99,6 +103,19 @@ Page({
       likeTags,
       allTags
     })
+  },
+  // 页面下拉刷新
+  PullDownRefresh () {
+    this.setData({
+      pageSize: 10,
+      currentPage: 1,
+      // 已关注标签
+      likeTags:[],
+      // 所有的标签
+      allTags: []
+    })
+    // 然后重新请求 获取tags
+    this.getTag()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -142,14 +159,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.PullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    const { currentPage } = this.data
+    this.setData({
+      currentPage:currentPage+1
+    })
+    this.getTag()
+    // 
+    console.log('触发了');
   },
 
   /**

@@ -7,7 +7,7 @@
     <view class="nickName_real_sign">
       <view class="nickName_real">
         <view class="nickName">{{userInfo.nickname}}</view>
-        <view class="real">申请认证</view>
+        <view class="binding_wechat" bind:tap="to_binding_wechat">绑定微信</view>
       </view>
       <view class="sign">{{userInfo.signature}}</view>
     </view>
@@ -23,7 +23,10 @@
         <view class="item_i">
           <navigator class="item_nav" target="" url="/suppages/mine/inform/inform" hover-class="navigator-hover" open-type="navigate">
             <view>
-              <view class="iconfont icon-xiaoxitongzhi"></view>
+              <view class="iconfont icon-xiaoxitongzhi">
+                <view wx:if="{{inform_no_read>0&&inform_no_read<=99}}">{{inform_no_read}}</view>
+                <view wx:if="{{inform_no_read>99}}">99+</view>
+              </view>
               <view class="textdesc">消息通知</view>
             </view>
           </navigator>
@@ -31,7 +34,10 @@
         <view class="item_i">
           <navigator class="item_nav" target="" url="/suppages/mine/reply_to_mine/reply_to_mine" hover-class="navigator-hover" open-type="navigate">
             <view>
-              <view class="iconfont  icon--weiguanzhurenxinxisixinxiaoxizhongxin"></view>
+              <view class="iconfont  icon--weiguanzhurenxinxisixinxiaoxizhongxin">
+                <view wx:if="{{atMe_no_read>0&&atMe_no_read<=99}}">{{atMe_no_read}}</view>
+                <view wx:if="{{atMe_no_read>99}}">99+</view>
+              </view>
               <view class="textdesc">@我的</view>
             </view>
           </navigator>
@@ -111,9 +117,9 @@
         <van-grid-item text="我的评价" link-type="navigateTo" url="/suppages/mine/store_evaluate/store_evaluate">
           <text class="iconfont icon-pingjia" slot="icon"></text>
         </van-grid-item>
-        <van-grid-item text="错误页" link-type="navigateTo" url="/suppages/errorPage/errorPage/errorPage">
+        <!-- <van-grid-item text="错误页" link-type="navigateTo" url="/suppages/errorPage/errorPage/errorPage">
           <text class="iconfont icon-liuyan-duandian" slot="icon"></text>
-        </van-grid-item>
+        </van-grid-item> -->
       </van-grid>
     </view>
   </view>

@@ -25,7 +25,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pageSize: 10,
+    pageSize: 6,
     currentPage: 1,
     totalCount: 0,
     // 回复我的列表
@@ -51,7 +51,7 @@ Page({
     if (data.code !== 200) {
       return 
     }
-    const current_page = currentPage + 1
+    let current_page = currentPage + 1
     const List = data.data.data
     console.log(List);
     // 遍历循环根据发送者id 获取发送者信息
@@ -63,15 +63,31 @@ Page({
         replyToMe
       })
     })
+    // console.log(data.data.totalCount);
+    wx.stopPullDownRefresh()
     this.setData({
       currentPage: current_page,
-      totalCount: data.totalCount,
+      totalCount: data.data.totalCount,
     })
   },
   // 根据用户id获取用户的信息
   async get_userInfo (userId) {
     const { data } = await getUserInfo(userId)
     return data.data
+  },
+  // 点击跳转到 商品的详情页
+  to_commodity (e) {
+    const { targetid } = e.currentTarget.dataset
+    console.log(targetid);
+    wx.navigateTo({
+      url: `/suppages/store/commodity/commodity?id=${targetid}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
   },
   /**
    * 生命周期函数--监听页面加载
@@ -114,15 +130,40 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh: function() {
+    this.setData({
+      currentPage: 1,
+      totalCount: 0,
+      replyToMe: []
+    })
+    this.getReplyToMe()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // 页面触底进行判断 是否还有下一页 有下一页的话则请求  无则提示
+    const { pageSize, currentPage, totalCount } = this.data
+    let num = Math.ceil((totalCount / pageSize))
+    if (currentPage <= num) {
+      // 可以请求
+      this.getReplyToMe()
+    } else {
+      wx.showToast({
+        title: '客官,没有更多了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
+    }
   },
 
   /**

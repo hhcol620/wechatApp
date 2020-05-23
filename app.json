@@ -1,13 +1,16 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/index/index", 
     "pages/search/search",
     "pages/search_store/search_store",
     "pages/service/service",
     "pages/mine/mine",
     "pages/register/register",
     "pages/login/login",
-    "pages/retrieve_password/retrieve_password" 
+    "pages/retrieve_password/retrieve_password",
+    "pages/wechat_binding/wechat_binding",
+    "pages/school_inform/school_inform",
+    "pages/advertising/advertising"
   ],
   "subPackages": [ 
     { 
@@ -18,7 +21,10 @@
         "store/store_index/store_index",
         "store/creat_order/creat_order",
         "store/payment/payment",
+        "store/wx_payment/wx_payment",
         "store/lea_Message_detail/lea_Message_detail",
+        "store/commodity_report/commodity_report",
+        "store/lea_msg_report/lea_msg_report",
         "errand/errand_index/errand_index",
         "errand/errand_detail/errand_detail",
         "demand/demand_detail/demand_detail",
@@ -44,6 +50,7 @@
         "mine/store_evaluate/store_evaluate", 
         "mine/errand_mine_issue/errand_mine_issue",
         "mine/errand_mine_receive/errand_mine_receive",
+        "mine/errand_order_detail/errand_order_detail",
         "mine/store_write_evaluate/store_write_evaluate",
         "errorPage/errorPage/errorPage"
       ]
@@ -53,7 +60,7 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2ecc71",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white" 
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#333",

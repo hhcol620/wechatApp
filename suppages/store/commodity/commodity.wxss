@@ -160,6 +160,10 @@ page {
   line-height: 50rpx;
   font-weight: 500;
   font-style: normal;
+  width: 500rpx;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
 }
 .reply_all .reply_mess_box .container > .van-row .reply_container .creatTime {
   color: #666;
@@ -182,9 +186,14 @@ page {
 .reply_all .reply_mess_box .container > .van-row .reply_box {
   color: #666;
   font-size: 24rpx;
-  line-height: 40rpx;
+  line-height: 36rpx;
   padding: 20rpx;
   background-color: #f3f3f3;
+  width: 500rpx;
+}
+.reply_all .reply_mess_box .container > .van-row .reply_box .item {
+  padding-bottom: 10rpx;
+  padding-left: 10rpx;
 }
 .reply_all .reply_mess_box .container > .van-row .reply_box .color {
   color: var(--iconPETColor);
@@ -232,4 +241,7 @@ page {
 }
 .van-goods-action-button {
   width: 36vw;
+}
+.van-icon-star {
+  color: #FFDC00;
 }

@@ -4,5 +4,6 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "selectTags":"/components/selectTags/selectTags"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText":"标签"
 }

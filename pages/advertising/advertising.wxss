@@ -1,0 +1,91 @@
+page {
+  background-color: #fff;
+}
+.container {
+  padding: 0 20rpx;
+  background-color: #fff;
+}
+.container .title {
+  background-color: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid var(--borderColor);
+}
+.container .title .title_text {
+  font-size: 46rpx;
+  line-height: 80rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+.container .title .footer {
+  font-size: 24rpx;
+  line-height: 30rpx;
+  font-weight: 500;
+  color: #666;
+  font-style: normal;
+  display: flex;
+}
+.container .title .footer > view:not(:last-child) {
+  border-right: 2rpx solid #f6f6f6;
+  margin-right: 20rpx;
+  padding-right: 20rpx;
+}
+.container .title .author_msg {
+  display: flex;
+  line-height: 30rpx;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 30rpx;
+}
+.container .title .author_msg .left.headImg {
+  width: 60rpx;
+  height: 60rpx;
+}
+.container .title .author_msg .left.headImg image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.container .title .author_msg .right {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.container .title .author_msg .right .nickname {
+  font-size: 28rpx;
+  color: #333;
+}
+.container .title .author_msg .right .time {
+  font-size: 24rpx;
+  color: #666;
+}
+.container .comm_desc {
+  background-color: #fff;
+}
+.container .comm_desc .desc_box {
+  font-size: 32rpx;
+  line-height: 46rpx;
+  color: #333;
+}
+.container .comm_desc .desc_box .desc_box_text {
+  margin: 20rpx 0;
+  color: #4d4d4d;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  font-style: normal;
+}
+.container .comm_desc .desc_box .desc_images {
+  border-radius: 30rpx;
+  overflow: hidden;
+  width: 100%;
+}
+.container .comm_desc .desc_box .desc_images image {
+  width: 100%;
+}
+.container .comm_desc .desc_box .desc_images image:last-child {
+  border-bottom-left-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+}

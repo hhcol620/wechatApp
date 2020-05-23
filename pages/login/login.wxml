@@ -26,8 +26,16 @@
         <view class="input code">
           <input class="weui-input" placeholder="验证码" bindinput="getInputData" data-name="inputCode" />
         </view>
-        <view class="right" wx:if="{{!code}}" bind:tap="getCode">验证码</view>
-        <view class="right" wx:else bind:tap="getCode">{{code}}</view>
+        <view wx:if="{{isPasswordLogin}}">
+          <view class="right" wx:if="{{!code}}" bind:tap="getCode">获取验证码</view>
+          <view class="right" wx:else bind:tap="getCode">{{code}}</view>
+        </view>
+        <view wx:else>
+          <view class="right" wx:if="{{!time}}" bind:tap="getEmailCode">获取验证码</view>
+          <view class="right" wx:else>
+            <van-count-down millisecond time="{{ time }}" format="ss" bind:finish="finishDown" />
+          </view>
+        </view>
       </view>
     </view>
     <view class="login">
@@ -35,12 +43,21 @@
       <view class="password_login" wx:else bind:tap="passwordLogin">密码登陆</view>
       <view class="found_pass" bind:tap="to_found_password">找回密码</view>
     </view>
+    <view class="other_login">
+      <view class="tip">
+        <view>其他登录方式</view>
+      </view>
+      <view class="other_login_box">
+        <text class="iconfont icon-weixin" selectable="false" space="false" decode="false" bind:tap="wechat_login"></text>
+      </view>
+    </view>
     <view class="tip">
       没有账号?点击
       <navigator class="" target="" url="/pages/register/register" hover-class="navigator-hover" open-type="navigate">
         注册
       </navigator>
     </view>
+    <view class="submit_btn" bind:tap="post_login_password">登陆</view>
     <view class="submit_btn" bind:tap="post_login_password">登陆</view>
   </view>
 </view>

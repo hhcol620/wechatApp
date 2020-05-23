@@ -1,0 +1,62 @@
+page {
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+.container view.title {
+  text-align: center;
+  padding: 40rpx 100rpx 10rpx;
+  font-size: 28rpx;
+  line-height: 42rpx;
+  font-weight: 600;
+  color: #333;
+  font-style: normal;
+}
+.container view.price {
+  text-align: center;
+  font-size: 60rpx;
+  line-height: 80rpx;
+  font-weight: 600;
+  font-style: normal;
+  color: #333;
+}
+.container view.payee {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  width: 100vw;
+  height: 100rpx;
+  padding: 0 50rpx;
+  border-top: 2rpx solid #e4e4e4;
+  border-bottom: 2rpx solid #e4e4e4;
+}
+.container view.payee view.item_l {
+  font-size: 26rpx;
+  color: #666666;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 30rpx;
+}
+.container view.payee view.item_r {
+  font-size: 26rpx;
+  color: #000;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 30rpx;
+}
+.container view.submit_pay {
+  margin: 50rpx 30rpx;
+}
+.tip {
+  text-align: center;
+  color: #666666;
+  font-size: 22rpx;
+  line-height: 38rpx;
+  font-weight: 500;
+  font-style: normal;
+  padding: 50rpx;
+}

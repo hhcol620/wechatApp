@@ -3,13 +3,17 @@
 <view class="container">
   <!-- 滚动显示其他的功能 -->
   <van-swipe-cell right-width="{{ 65 }}" wx:for="{{replyToMe}}" wx:for-index="index" wx:for-item="item" wx:key="id">
-    <view class="item">
+    <view class="item" bind:tap="to_commodity" data-targetid="{{item.targetId}}">
       <view class="left">
         <view class="headImage">
           <image class="" src="{{imgURL}}{{item.senderInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="n_c_t">
-          <view class="nickName">{{item.senderInfo.nickname}} 给您留言了</view>
+          <view class="nickName">
+            {{item.senderInfo.nickname}}
+            <block wx:if="{{item.repeatTotal>1}}">等{{item.repeatTotal}}人</block>
+            给您留言了
+          </view>
           <view class="content">{{item.content}}</view>
           <view class="time">{{timeFormat.time_for(item.createTime)}}</view>
         </view>

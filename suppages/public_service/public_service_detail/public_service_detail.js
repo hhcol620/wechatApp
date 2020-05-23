@@ -25,8 +25,7 @@ Page({
     // 存公益详情
     donationDetailObj: {},
     // 加载图片基地址
-    imgURL:''
-
+    imgURL: '',
   },
   // 根据type 和id 获得公益详情
   async get_donation_detail (type,id) {
@@ -65,6 +64,19 @@ Page({
       duration: 1500,
       mask: true
     });
+    const { donationDetailObj } = this.data
+
+    if (type == 2) {
+      let num = donationDetailObj.userUpTotal+1
+      this.setData({
+        ['donationDetailObj.userUpTotal']:num
+      })
+    } else {
+      let num = donationDetailObj.userDownTotal+1
+      this.setData({
+        ['donationDetailObj.userDownTotal']:num
+      })
+    }
       
   },
   // 点击支持

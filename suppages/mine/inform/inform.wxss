@@ -46,4 +46,6 @@ page {
   color: var(--iconPETColor);
   border-top: 1rpx solid var(--borderColor);
   margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
 }

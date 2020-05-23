@@ -4,24 +4,24 @@
   <view class="left" hover-class="none" hover-stop-propagation="false">
     <ul>
       <!-- 这个li表示一条数据 -->
-      <li wx:for="{{imgObjs}}" wx:for-item="item" wx:for-index="index" wx:key="*this" wx:if="{{index%2===0}}">
-        <navigator class="" target="self" url="/suppages/store/commodity/commodity" hover-class="navigator-hover" open-type="navigate">
+      <li wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id" wx:if="{{index%2===0}}">
+        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
           <view class="header" hover-class="none" hover-stop-propagation="false">
             <view class="main_img">
-              <image class="" src="{{item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+              <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
             </view>
           </view>
           <view class="footer" hover-class="none" hover-stop-propagation="false">
             <view class="desc">
-              <text>82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡</text>
+              <text>{{item.title}}</text>
             </view>
             <view class="foot">
               <view class="item">
-                <text class="price">￥{{item.price}}</text>
+                <text class="price">￥{{item.salePrice}}</text>
                 <text class="tag">平台交易</text>
               </view>
               <view class="item">
-                <text class="userName">内蒙古科技大学</text>
+                <text class="userName">{{item.consumerInfo.nickname}}</text>
               </view>
             </view>
           </view>
@@ -32,24 +32,24 @@
   <view class="right" hover-class="none" hover-stop-propagation="false">
     <ul>
       <!-- 这个li表示一条数据 -->
-      <li wx:for="{{imgObjs}}" wx:for-item="item" wx:for-index="index" wx:key="*this" wx:if="{{index%2===1}}">
-        <navigator class="" target="self" url="/suppages/store/commodity/commodity" hover-class="navigator-hover" open-type="navigate">
+      <li wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id" wx:if="{{index%2===1}}">
+        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
           <view class="header" hover-class="none" hover-stop-propagation="false">
             <view class="main_img">
-              <image class="" src="{{item.img}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+              <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
             </view>
           </view>
           <view class="footer" hover-class="none" hover-stop-propagation="false">
             <view class="desc">
-              <text>82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡82年可乐清末民初回流烙印胡</text>
+              <text>{{item.title}}</text>
             </view>
             <view class="foot">
               <view class="item">
-                <text class="price">￥{{item.price}}</text>
+                <text class="price">￥{{item.salePrice}}</text>
                 <text class="tag">平台交易</text>
               </view>
               <view class="item">
-                <text class="userName">内蒙古科技大学</text>
+                <text class="userName">{{item.consumerInfo.nickname}}</text>
               </view>
             </view>
           </view>

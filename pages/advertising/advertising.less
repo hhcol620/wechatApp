@@ -1,0 +1,101 @@
+page {
+  background-color: #fff;
+}
+
+.container {
+  padding: 0 20rpx;
+  background-color: #fff;
+
+  .title {
+    background-color: #fff;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 1rpx solid var(--borderColor);
+    .title_text{
+      font-size: 46rpx;
+      line-height: 80rpx;
+      font-weight: 500;
+      color: #333;
+      font-style: normal;
+    }
+    .footer{
+      font-size: 24rpx;
+      line-height: 30rpx;
+      font-weight: 500;
+      color: #666;
+      font-style: normal;
+      display: flex;
+      >view:not(:last-child){
+        border-right: 2rpx solid #f6f6f6;
+        margin-right: 20rpx;
+        padding-right: 20rpx;
+      }
+    }
+    .author_msg{
+      display: flex;
+      line-height: 30rpx;
+      font-weight: 500;
+      font-style: normal;
+      margin-top: 30rpx;
+      .left.headImg{
+        width: 60rpx;
+        height: 60rpx;
+        image{
+          width: 60rpx;
+          height: 60rpx;
+          border-radius: 50%;
+        }
+      }
+      .right{
+        margin-left: 20rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .nickname{
+          font-size: 28rpx;
+          color: #333;
+        }
+        .time{
+          font-size: 24rpx;
+          color: #666;
+        }
+      }
+    }
+  }
+
+
+  .comm_desc {
+    background-color: #fff;
+
+    .desc_box {
+      font-size: 32rpx;
+      line-height: 46rpx;
+      color: #333;
+      .desc_box_text{
+        margin: 20rpx 0;
+        color: #4d4d4d;
+        font-size: 28rpx;
+        line-height: 36rpx;
+        font-weight: 500;
+        font-style: normal;
+      }
+
+      .desc_images {
+        border-radius: 30rpx;
+        overflow: hidden;
+        width: 100%;
+
+        image {
+          width: 100%;
+        }
+
+        image:last-child {
+          border-bottom-left-radius: 30rpx;
+          border-bottom-right-radius: 30rpx;
+        }
+      }
+    }
+
+  }
+}
+

@@ -10,6 +10,12 @@
     <view class="title">注册</view>
     <view class="input_box">
       <view class="item">
+        <view class="leftdesc">昵称</view>
+        <view class="input">
+          <input class="weui-input" auto-focus placeholder="请输入昵称" bindinput="getInputData" data-name="nickName" />
+        </view>
+      </view>
+      <view class="item">
         <view class="leftdesc">邮箱</view>
         <view class="input">
           <input class="weui-input" auto-focus placeholder="请输入邮箱" bindinput="getInputData" data-name="email" />
@@ -38,6 +44,6 @@
         </view>
       </view>
     </view>
-    <view class="submit_btn">注册</view>
+    <view class="submit_btn" bind:tap="post_registerEmailCode">注册</view>
   </view>
 </view>

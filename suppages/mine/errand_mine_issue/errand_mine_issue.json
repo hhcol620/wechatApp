@@ -5,5 +5,6 @@
     "errand_issue":"/components/errand_issue/errand_issue",
     "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "我发布的"
 }

@@ -197,6 +197,10 @@ page {
             line-height: 50rpx;
             font-weight: 500;
             font-style: normal;
+            width: 500rpx;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: pre-line;
           }
 
           .creatTime {
@@ -226,10 +230,14 @@ page {
         .reply_box {
           color: #666;
           font-size: 24rpx;
-          line-height: 40rpx;
+          line-height: 36rpx;
           padding: 20rpx;
           background-color: #f3f3f3;
-
+          width: 500rpx;
+          .item{
+            padding-bottom: 10rpx;
+            padding-left: 10rpx;
+          }
           .color {
             color: var(--iconPETColor);
           }
@@ -289,4 +297,8 @@ page {
 // 立即购买
 .van-goods-action-button{
   width:36vw;
+}
+// 收藏高亮
+.van-icon-star{
+  color: #FFDC00;
 }

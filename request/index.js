@@ -34,16 +34,13 @@
 const app = getApp()
 // 引入全局  请求加载动画方法
 const { baseUrl } = app.globalData
-
-// const baseUrl = "https://222.186.174.9:13163/api"
-// const baseUrl = "https://www.imuster.top/api"
 // get请求
 const getData = (url, params) => {
   return new Promise((reslove, reject) => {
     var reqTask = wx.request({
       url:baseUrl + url,
       data: params || {},
-      header: {'content-type':'application/json'},
+      header: {'content-type':'application/json','Authorization':app.globalData.access_token,'userAccessToken':app.globalData.userAccessToken},
       method: 'GET',
       dataType: 'json',
       responseType: 'text',
@@ -53,7 +50,19 @@ const getData = (url, params) => {
       fail: (err) => {
         reject(err)
       },
-      complete: () => {}
+      complete: (e) => {
+        if (e.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+            success: (result) => {
+              
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
+      }
     });
       
   })
@@ -64,7 +73,7 @@ const postData = (url, params) => {
     var reqTask = wx.request({
       url:baseUrl + url,
       data: params || {},
-      header: {'content-type':'application/json'},
+      header: {'content-type':'application/json','Authorization':app.globalData.access_token,'userAccessToken':app.globalData.userAccessToken},
       method: 'POST',
       dataType: 'json',
       responseType: 'text',
@@ -74,7 +83,19 @@ const postData = (url, params) => {
       fail: (err) => {
         reject(err)
       },
-      complete: () => {}
+      complete: (e) => {
+        if (e.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+            success: (result) => {
+              
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
+      }
     });
       
   })
@@ -85,7 +106,7 @@ const deleteData = (url, params) => {
     var reqTask = wx.request({
       url:baseUrl + url,
       data: params || {},
-      header: {'content-type':'application/json'},
+      header: {'content-type':'application/json','Authorization':app.globalData.access_token,'userAccessToken':app.globalData.userAccessToken},
       method: 'DELETE',
       dataType: 'json',
       responseType: 'text',
@@ -95,7 +116,19 @@ const deleteData = (url, params) => {
       fail: (err) => {
         reject(err)
       },
-      complete: () => {}
+      complete: (e) => {
+        if (e.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+            success: (result) => {
+              
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
+      }
     });
       
   })
@@ -106,7 +139,7 @@ const putData = (url, params) => {
     var reqTask = wx.request({
       url:baseUrl + url,
       data: params || {},
-      header: {'content-type':'application/json'},
+      header: {'content-type':'application/json','Authorization':app.globalData.access_token,'userAccessToken':app.globalData.userAccessToken},
       method: 'PUT',
       dataType: 'json',
       responseType: 'text',
@@ -116,7 +149,19 @@ const putData = (url, params) => {
       fail: (err) => {
         reject(err)
       },
-      complete: () => {}
+      complete: (e) => {
+        if (e.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+            success: (result) => {
+              
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
+      }
     });
       
   })
@@ -128,7 +173,7 @@ const postFormData = (url, params) => {
     var reqTask = wx.request({
       url:baseUrl + url,
       data: params || {},
-      header: {'content-type':'application/x-www-form-urlencoded'},
+      header: {'content-type':'application/x-www-form-urlencoded','Authorization':app.globalData.access_token,'userAccessToken':app.globalData.userAccessToken},
       method: 'POST',
       dataType: 'json',
       responseType: 'text',
@@ -138,7 +183,19 @@ const postFormData = (url, params) => {
       fail: (err) => {
         reject(err)
       },
-      complete: () => {}
+      complete: (e) => {
+        if (e.statusCode === 401) {
+          wx.navigateTo({
+            url: '/pages/login/login',
+            success: (result) => {
+              
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+            
+        }
+      }
     });
       
   })

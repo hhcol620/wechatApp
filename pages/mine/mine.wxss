@@ -42,7 +42,7 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.head .card .nickName_real_sign .nickName_real .real {
+.head .card .nickName_real_sign .nickName_real .binding_wechat {
   font-size: 26rpx;
   font-weight: 400;
 }
@@ -111,6 +111,19 @@ page {
 .main .itemList .item_i .iconfont {
   font-size: 40rpx;
   line-height: 60rpx;
+  position: relative;
+}
+.main .itemList .item_i .iconfont > view {
+  position: absolute;
+  height: 34rpx;
+  border-radius: 17rpx;
+  font-size: 24rpx;
+  padding: 0 12rpx;
+  line-height: 34rpx;
+  background-color: #ff3f34;
+  color: #fff;
+  top: 0;
+  left: 70%;
 }
 .main .itemList .item_i .textdesc {
   font-size: 22rpx;

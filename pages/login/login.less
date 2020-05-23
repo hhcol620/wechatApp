@@ -43,7 +43,7 @@
 
   .card {
     position: absolute;
-    height: 68vh;
+    height: 76vh;
     width: 76vw;
     top: 50%;
     left: 50%;
@@ -113,7 +113,7 @@
           background-color: #686868;
           color: #fff;
           z-index: 99;
-          width: 120rpx;
+          width: 160rpx;
           text-align: center;
         }
       }
@@ -145,6 +145,36 @@
       color: #3498db;
       >view{
         padding: 20rpx;
+      }
+    }
+    .other_login {
+      width: 100%;
+      padding: 20rpx;
+      .tip{
+        height: 2rpx;
+        width: 100%;
+        background-color: #f9f9f9;
+        position: relative;
+        >view{
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translate(-50%,-50%);
+          padding: 10rpx 20rpx;
+          background-color: #fff;
+        }
+      }
+      .other_login_box{
+        // margin-top: 30rpx;
+        display: flex;
+        justify-content: center;
+        .iconfont{
+          font-size: 50rpx;
+          padding: 30rpx  30rpx 10rpx;
+        }
+        .icon-weixin{
+          color: #4CBF00;
+        }
       }
     }
 

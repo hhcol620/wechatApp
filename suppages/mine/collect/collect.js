@@ -96,8 +96,7 @@ Page({
         collectList
       })
     })
-
-
+    wx.stopPullDownRefresh()
   },
   // 根据用户id  consumerId  获取用户信息
   async get_user_info (consumerId) {
@@ -148,6 +147,16 @@ Page({
       complete: () => {}
     });  
   },
+  // 下拉刷新 重新加载
+  PullDownRefresh () {
+    this.setData({
+      collectList: [],
+      pageSize: 10,
+      currentPage: 1,
+      totalCount: 0
+    })
+    this.getCollectList()
+  },
   
 
   /**
@@ -193,7 +202,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.PullDownRefresh()
   },
 
   /**

@@ -66,32 +66,23 @@
       <van-col span="4" class="headeImg">
         <image class="" src="{{imgURL}}/{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
-      <van-col span="15" class="reply_container">
+      <van-col span="15" class="reply_container" bindtap="to_reply_detail" data-classId="{{item.id}}">
         <view class="userName">{{item.consumerInfo.nickname}}</view>
         <view class="content">{{item.content}}</view>
         <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
       </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-      <navigator url="../lea_Message_detail/lea_Message_detail" hover-class="navigator-hover" open-type="navigate">
-        <van-row>
-          <van-col offset="4" span="20">
-            <view class="reply_box" wx:if="{{replyTotal}}">
-              <view class="item" wx:for="{{item.second_lea_mess}}" wx:for-index="second_index" wx:for-item="second_item" wx:key="id">
-                {{second_item.content}}
-              </view>
-              <!-- <view class="item">测试人1: 你知道也太多了吧</view> -->
-              <view class="item color" wx:if="{{second_item.replyTotal>3}}">
-                全部{{second_item.replyTotal}}条回复>
-              </view>
+      <van-row>
+        <van-col offset="4" span="20">
+          <view class="reply_box" wx:if="{{item.second_lea_mess.total>0}}" bindtap="to_reply_detail" data-classId="{{item.id}}">
+            <view class="item" wx:for="{{item.second_lea_mess.list}}" wx:for-index="second_index" wx:for-item="second_item" wx:key="id">
+              {{second_item.content}}
             </view>
-          </van-col>
-        </van-row>
-      </navigator>
+            <view class="item color" wx:if="{{item.second_lea_mess.total>3}}">
+              全部{{item.second_lea_mess.total}}条回复>
+            </view>
+          </view>
+        </van-col>
+      </van-row>
     </van-row>
     <view class="reply_mess_box_footer" wx:if="{{isShowMore}}" bind:tap="get_more" data-id="{{id}}">
       <!-- 查看更多 -->
@@ -106,14 +97,14 @@
     猜你喜欢
     <text class="iconfont icon-xihuan3" />
   </view>
-  <StoreList arrList="{{recommend_byId}}" />
+  <StoreList arrList="{{recommend_byId}}" imgURL="{{imgURL}}" />
 </view>
 <!-- 底部栏目 需要固定到底部 -->
 <view class="fixed_bottom">
   <van-goods-action>
     <view>
       <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
-      <van-goods-action-icon icon="star-o" text="收藏" bind:click="collectFunc" />
+      <van-goods-action-icon icon="{{isCollect?'star':'star-o'}}" text="收藏" bind:click="collectFunc" data-id="{{goodsInfo.id}}" />
     </view>
     <view>
       <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />
@@ -123,8 +114,8 @@
 <!-- 底部输入框 -->
 <view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
   <van-cell-group>
-    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}">
-      <van-button slot="button" size="small" type="primary" bind:click="send">发送</van-button>
+    <van-field value="{{ msg_content }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
+      <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
     </van-field>
   </van-cell-group>
 </view>

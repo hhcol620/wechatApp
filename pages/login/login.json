@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "van-count-down": "/miniprogram_npm/vant-weapp/count-down/index"
+  },
   "navigationBarTitleText":"登陆"
 }

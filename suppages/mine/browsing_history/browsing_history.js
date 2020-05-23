@@ -116,6 +116,18 @@ Page({
       recordList: data.data.data,
       totalCount: data.data.totalCount
     })
+    wx.stopPullDownRefresh()
+  },
+
+  // 下拉刷新
+  PullDownRefresh () {
+    this.setData({
+      pageSize: 10,
+      currentPage: 1,
+      recordList:[],
+      totalCount: 0,
+    })
+    this.getBrowseHistory()
   },
 
   /**
@@ -160,7 +172,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.PullDownRefresh()
   },
 
   /**

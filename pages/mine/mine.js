@@ -1,7 +1,9 @@
+import regeneratorRuntime from '../../lib/runtime/runtime.js'
+
 // pages/mine/mine.js
 import { getSystemInfoSync } from "../../miniprogram_npm/vant-weapp/common/utils";
-import { getMyInfo } from '../../request/api/store_api.js'
-import regeneratorRuntime from '../../lib/runtime/runtime.js'
+import { getMyInfo,get_no_read } from '../../request/api/store_api.js'
+
 const app = getApp()
 // 引入全局  请求加载动画方法
 const {
@@ -18,7 +20,11 @@ Page({
   data: {
     userInfo: {},
     // 加载图片基地址
-    imgURL:''
+    imgURL: '',
+    // 系统通知 未读
+    inform_no_read: 0,
+    // at我的未读
+    atMe_no_read: 0
   },
   // 联系客服
   handleContact1 (e) {
@@ -33,11 +39,11 @@ Page({
   },
   // 进入我的页面立即判断本地是否有token 如果没有的话就重定向到登陆页页面
   async redirectToLogin () {
-    const token = wx.getStorageSync('token'); 
+    const token = wx.getStorageSync('access_token'); 
     if (!token) {
       // 获取不到就跳转到登陆页
     // console.log('获取不到');
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/login/login',
         success: (result) => {
           
@@ -56,12 +62,62 @@ Page({
   // 登陆成功获取我的个人信息
   async getmyinfo () {
     const { data } = await getMyInfo()
-    console.log('ok');
-    if (data.code !== 200) return
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '身份已过期',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result) => {
+          if (data.code === 402) {
+            wx.navigateTo({
+              url: '/pages/login/login',
+              success: (result) => {
+                
+              },
+              fail: () => {},
+              complete: () => {}
+            });
+              
+          }
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
+      return
+    }
     this.setData({
       userInfo: data.data
     })
   },
+  // 登陆成功获取未读消息
+  async getUnRead () {
+    const { data } = await get_no_read()
+    // console.log(data);
+    if (data.code !== 200) {
+      if (data.code === 402) {
+        wx.navigateTo({
+          url: '/pages/login/login',
+          success: (result) => {
+            
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+          
+      }
+      return 
+    }
+    const arr = data.text.split('|')
+    console.log(arr);
+    this.setData({
+      inform_no_read: arr[0],
+      atMe_no_read:arr[1]
+    })
+  },
+
   // 图片预览
   priviewImg (e) {
     const imgUrl = e.currentTarget.dataset.img
@@ -71,12 +127,26 @@ Page({
       urls: [`${imgUrl}`] // 需要预览的图片http链接列表
     })
   },
+  // 绑定微信
+  to_binding_wechat () {
+    const { id } = this.data.userInfo
+    wx.navigateTo({
+      url: `/pages/wechat_binding/wechat_binding?userid=${id}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.redirectToLogin()
     this.getmyinfo()
+    this.getUnRead()
     this.setData({
       imgURL
     })
@@ -92,8 +162,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function() {
+    this.getmyinfo()
   },
 
   /**

@@ -38,7 +38,7 @@
 }
 .container .card {
   position: absolute;
-  height: 68vh;
+  height: 76vh;
   width: 76vw;
   top: 50%;
   left: 50%;
@@ -104,7 +104,7 @@
   background-color: #686868;
   color: #fff;
   z-index: 99;
-  width: 120rpx;
+  width: 160rpx;
   text-align: center;
 }
 .container .card .tip {
@@ -130,6 +130,35 @@
 }
 .container .card .login > view {
   padding: 20rpx;
+}
+.container .card .other_login {
+  width: 100%;
+  padding: 20rpx;
+}
+.container .card .other_login .tip {
+  height: 2rpx;
+  width: 100%;
+  background-color: #f9f9f9;
+  position: relative;
+}
+.container .card .other_login .tip > view {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+  padding: 10rpx 20rpx;
+  background-color: #fff;
+}
+.container .card .other_login .other_login_box {
+  display: flex;
+  justify-content: center;
+}
+.container .card .other_login .other_login_box .iconfont {
+  font-size: 50rpx;
+  padding: 30rpx  30rpx 10rpx;
+}
+.container .card .other_login .other_login_box .icon-weixin {
+  color: #4CBF00;
 }
 .container .card .submit_btn {
   position: absolute;

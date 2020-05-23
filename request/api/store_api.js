@@ -41,14 +41,18 @@ export const get_demandMessage = (id) => {
   return getData(`/goods/goods/demand/${id}`)
 }
 
-//获得自己的订单列表
+//获得自己的商品订单列表
 export const getMyOrderList = (pageSize,currentPage, type) => {
   return getData(`/order/order/es/list/${type}/${pageSize}/${currentPage}`)
 }
 // 根据订单号查询订单的详情 type  1-作为卖家  2-作为买家 
-export const getOrderDetail = (type,id) =>{
+export const getOrderDetail = (type,id) => {
   //todo  没测
   return getData(`/order/order/es/${type}/${id}`)
+}
+// 根据订单号查询订单的详情 
+export const get_product_order_detail = (id) => {
+  return getData(`/order/order/es/detail/${id}`)
 }
 
 // 根据订单id查询评价
@@ -86,8 +90,12 @@ export const getMyInfo = () => {
 }
 //修改用户信息
 export const editUserInfo =  (params) =>{
-  return request("post", "/user/user/edit", params)
+  return postData("/user/user/edit", params)
 } 
+// 获取未读消息
+export const get_no_read = (params) => {
+  return getData(`/message/msg/unread`,params)
+}
 
 // 获取消息通知
 export const getSystemNews = (pageSize, currentPage) => {
@@ -141,10 +149,6 @@ export const delete_collect_all = () => {
 export const  isCollect = (type,id) => {
   return getData(`/goods/collect/state/${type}/${id}`)
 }
-// 搜索 参数 页面大小 当前页
-export const get_search_content = (pageSize, currentPage, keyword) => {
-  return getData(`search/goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
-}
 
 
 //根据类型查看所有的跑腿列表   typ取值:1-时间降序  2-金额降序
@@ -187,9 +191,13 @@ export const getMyErrandOrder = (pageSize,currentPage, state)=> {
 export const getErrandOrder = (pageSize, currentPage, type, state) => {
   return getData(`/order/order/errand/list/${pageSize}/${currentPage}/${type}/${state}`)
 }
+// 根据跑腿订单id查询详情
+export const getErrandOrder_detail = (id) => {
+  return getData(`/order/order/errand/detail/${id}`)
+}
 
 //获得已经转账的公益基金申请
-export const getFinishDonation = (pageSize, currentPage)=> {
+export const getFinishDonation = (pageSize, currentPage) => {
   return getData(`/order/donation/finish/${pageSize}/${currentPage}`)
 }
 

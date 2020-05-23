@@ -1,0 +1,46 @@
+<!-- 这个是订单详情页 -->
+<!-- 头部显示商品的一个简介信息 价格 钱款去向 -->
+<!-- 中间写收货地址 收货人信息 -->
+<!-- 评价 -->
+<!-- 底部写订单的信息  包括订单信息 卖家信息 联系卖家 交易时间 -->
+<view class="container">
+  <view class="header">
+    <!-- 商品信息 -->
+    <view class="top">
+      <view class="right">
+        <view class="desc">描述 : {{order_detail.detailInfo.content}}</view>
+        <view class="require">要求 : {{order_detail.detailInfo.requirement}}</view>
+        <view class="price">悬赏价格 : ￥ {{order_detail.payMoney}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="main">
+    <!-- 这里放我的收货信息  和 评价的信息 -->
+    <view class="top">
+      <!-- 收货地址 -->
+      <view class="title">收货地址:</view>
+      <view class="other_mess">{{order_detail.address}}---手机{{order_detail.phoneNum}}</view>
+    </view>
+    <view class="bottom">
+      <!-- 这里放备注信息 -->
+      <view class="remark">
+        <view class="title">备注:</view>
+        <view class="content">{{order_detail.detailInfo.cypher}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <!-- 订单的信息 -->
+    <view class="title">订单信息</view>
+    <view class="order_container">
+      <view class="item">发布人昵称: {{order_detail.publisherInfo.nickname}}</view>
+      <view class="item">
+        订单编号: {{order_detail.orderCode}}
+        <view class="copy_btn" bind:tap="copy_orderCode" data-code="{{order_detail.orderCode}}">
+          复制
+        </view>
+      </view>
+      <view class="item">交易时间: {{order_detail.createTime}}</view>
+    </view>
+  </view>
+</view>

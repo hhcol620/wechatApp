@@ -51,6 +51,7 @@ page {
 }
 .commity_b .van-card {
   background-color: #fff;
+  padding-top: 30rpx;
 }
 .commity_b .van-card .van-card__thumb {
   background-color: #f5f5f5;
@@ -95,4 +96,16 @@ page {
   text-align: center;
   background-color: var(--iconORAColor);
   box-shadow: 1rpx 4rpx 10rpx var(--iconORAColor);
+}
+.van-card__desc {
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 26rpx !important;
+}
+.van-card__bottom {
+  margin-top: 20rpx;
 }

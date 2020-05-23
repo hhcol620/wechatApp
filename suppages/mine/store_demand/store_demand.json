@@ -4,5 +4,6 @@
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText":"我的需求"
 }

@@ -73,13 +73,6 @@
 				},
 				{
 					"id": -1,
-					"name": "商品详情",
-					"pathName": "suppages/store/commodity/commodity",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "商城首页",
 					"pathName": "suppages/store/store_index/store_index",
 					"query": "",
@@ -122,13 +115,6 @@
 				},
 				{
 					"id": -1,
-					"name": "跑腿订单详情页",
-					"pathName": "suppages/errand/errand_detail/errand_detail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "商城中我的订单",
 					"pathName": "suppages/mine/store_orders/store_orders",
 					"query": "",
@@ -159,20 +145,6 @@
 					"id": -1,
 					"name": "我的评价",
 					"pathName": "suppages/mine/store_evaluate/store_evaluate",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "跑腿正在进行的订单",
-					"pathName": "suppages/mine/errand_completing_orders/errand_completing_orders",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "跑腿已完成订单",
-					"pathName": "suppages/mine/errand_completed_orders/errand_completed_orders",
 					"query": "",
 					"scene": null
 				},
@@ -247,10 +219,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 27,
 					"name": "商品详情页 id =1",
 					"pathName": "suppages/store/commodity/commodity",
-					"query": "id=1",
+					"query": "id=3",
 					"scene": null
 				},
 				{
@@ -275,7 +247,7 @@
 					"scene": null
 				},
 				{
-					"id": 32,
+					"id": 28,
 					"name": "订单详情页orderid=7&type=2",
 					"pathName": "suppages/mine/store_orders_detail/store_orders_detail",
 					"query": "orderid=7&type=2",
@@ -306,13 +278,6 @@
 					"id": -1,
 					"name": "通知",
 					"pathName": "suppages/mine/inform/inform",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "回复我的",
-					"pathName": "suppages/mine/reply_to_mine/reply_to_mine",
 					"query": "",
 					"scene": null
 				},
@@ -412,6 +377,55 @@
 					"name": "找回密码",
 					"pathName": "pages/retrieve_password/retrieve_password",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 51,
+					"name": "微信绑定",
+					"pathName": "pages/wechat_binding/wechat_binding",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "微信支付",
+					"pathName": "suppages/store/wx_payment/wx_payment",
+					"query": "id=5",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "留言详情",
+					"pathName": "suppages/store/lea_Message_detail/lea_Message_detail",
+					"query": "id=1&classid=45",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "校园通知详情",
+					"pathName": "pages/school_inform/school_inform",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 55,
+					"name": "确认订单",
+					"pathName": "suppages/store/creat_order/creat_order",
+					"query": "id=1&version=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息通知",
+					"pathName": "suppages/mine/inform/inform",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 53,
+					"name": "跑腿订单详情",
+					"pathName": "suppages/mine/errand_order_detail/errand_order_detail",
+					"query": "id=2",
 					"scene": null
 				}
 			]

@@ -44,6 +44,18 @@ Component({
     finish (e) {
       const { id } = e.currentTarget.dataset
       this.triggerEvent('finishFunc',id)
+    },
+    toDetail(e){
+      const { id } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/suppages/mine/errand_order_detail/errand_order_detail?id=${id}`,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
     }
   }
 })

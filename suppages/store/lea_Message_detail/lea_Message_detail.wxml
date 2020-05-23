@@ -1,23 +1,19 @@
 <!-- 留言详情  点击任意二级一个留言会跳转过来 上面一栏展示一级留言 下面的都是二级留言 -->
+<!-- wxs 格式化时间 微信小程序里面的过滤器  写在wxs文件里面 -->
+<wxs src="../../../utils/timeFormat.wxs" module="timeFormat"></wxs>
 <!-- 留言板 -->
 <!-- 一级留言 -->
 <view class="reply_fir" hover-class="none" hover-stop-propagation="false">
   <!-- 留言面板 -->
   <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
-    <van-row bindtap="replyFunc">
+    <van-row bindtap="reply_fir">
       <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}{{first_lea_msg.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
       <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
+        <view class="userName">{{first_lea_msg.consumerInfo.nickname}}</view>
+        <view class="content">{{first_lea_msg.content}}</view>
+        <view class="creatTime">{{timeFormat.time_for(first_lea_msg.createTime)}}</view>
       </van-col>
     </van-row>
   </view>
@@ -25,145 +21,25 @@
 <!-- 二级留言板 -->
 <view class="reply_second" hover-class="none" hover-stop-propagation="false">
   <!-- 留言面板 -->
-  <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
-    <van-row bindtap="replyFunc">
+  <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false" wx:for="{{sec_msg}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+    <van-row bindtap="replyFunc" data-id="{{item.id}}" data-firclassid="{{item.firstClassId}}">
       <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
       <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
-      </van-col>
-    </van-row>
-    <van-row bindtap="replyFunc">
-      <van-col span="4" class="headeImg">
-        <image class="" src="https://pic.images.ac.cn/image/5e9e31afe2eda.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-      </van-col>
-      <van-col span="15" class="reply_container">
-        <view class="userName">一路向西</view>
-        <view class="content">到底怎么样,好吗</view>
-        <view class="creatTime">两天前</view>
-      </van-col>
-      <van-col span="5" class="like">
-        <view class="box" hover-class="none" hover-stop-propagation="false">
-          <text class="iconfont icon-dianzan" />
-          <text class="" selectable="false" space="false" decode="false">997</text>
-        </view>
+        <view class="userName">{{item.consumerInfo.nickname}}</view>
+        <view class="content">{{item.content}}</view>
+        <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
       </van-col>
     </van-row>
   </view>
 </view>
-
-
 <!-- 回复输入框 -->
 <!-- 底部输入框 -->
 <view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
   <van-cell-group>
-    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}">
-      <van-button slot="button" size="small" type="primary" bind:click="send">发送</van-button>
+    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
+      <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
     </van-field>
   </van-cell-group>
 </view>

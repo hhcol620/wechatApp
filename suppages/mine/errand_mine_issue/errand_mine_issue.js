@@ -144,8 +144,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const { active } = options
+    if (active) {
+      // 将字符转为数字
+      let num = active - 0
+      console.log(num);
+      this.setData({
+        active:num
+      })
+    }
     // 默认传进去 2 
     this.getStateErrandList(2)
+    
   },
 
   /**

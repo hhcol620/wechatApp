@@ -2,30 +2,22 @@
   <!-- 首页 -->
   <!-- 轮播图  start -->
   <view class="index_swiper" hover-class="none" hover-stop-propagation="false">
-  <!-- 
-
-    swiper 标签存在默认的宽度和高度  100% * 150px 
+    <!-- swiper 标签存在默认的宽度和高度  100% * 150px 
     image 标签也存在 默认的宽度和高度   320px * 240px
 
-    原图宽高  750* 340
+    原图宽高  750 * 340
     让图片高度自适应  宽度  等于100%
 
     4 图片标签    
     mode 属性   渲染模式
-    widthFix 让图片的标签宽高 和  图片标签的内容的宽高都等比例的发生变化
-
-   -->
+    widthFix 让图片的标签宽高 和  图片标签的内容的宽高都等比例的发生变化 -->
     <swiper class="" autoplay indicator-dots circular>
       <swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
         <navigator class="">
-          <image class="" src="{{item.image_src}}" mode="widthFix">
-            
-          </image>
+          <image class="" src="{{item.image_src}}" mode="widthFix"></image>
         </navigator>
-          
       </swiper-item>
     </swiper>
-      
   </view>
   <!-- 轮播图 end -->
   <!-- 导航 start -->
@@ -34,38 +26,30 @@
       <li>
         <navigator class="" target="" url="/suppages/store/store_index/store_index" hover-class="navigator-hover" open-type="navigate">
           <view class="icon">
-          <text selectable="false" space="false" decode="false">商城</text>
+            <text selectable="false" space="false" decode="false">商城</text>
           </view>
           <view class="text">
-            <text class="">
-            商城首页
-            </text>
-          </view> 
-        </navigator>  
+            <text class="">商城首页</text>
+          </view>
+        </navigator>
       </li>
       <li>
-        <navigator class="" target="" url="/suppages/errand/errand_index/errand_index" 
-        hover-class="navigator-hover" open-type="navigate">
+        <navigator class="" target="" url="/suppages/errand/errand_index/errand_index" hover-class="navigator-hover" open-type="navigate">
           <view class="icon">
             <text selectable="false" space="false" decode="false">跑腿</text>
           </view>
           <view class="text">
-            <text class="">
-            跑腿帮
-            </text>
+            <text class="">跑腿帮</text>
           </view>
-        </navigator>  
+        </navigator>
       </li>
       <li>
-       <navigator class="" target="" url="/suppages/public_service/public_service_index/public_service_index" 
-        hover-class="navigator-hover" open-type="navigate">
+        <navigator class="" target="" url="/suppages/public_service/public_service_index/public_service_index" hover-class="navigator-hover" open-type="navigate">
           <view class="icon">
             <text selectable="false" space="false" decode="false">公益</text>
           </view>
           <view class="text">
-            <text class="">
-              公益榜
-            </text>
+            <text class="">公益榜</text>
           </view>
         </navigator>
       </li>
@@ -73,12 +57,73 @@
   </view>
   <!-- 导航 end -->
   <!-- 板块展示 start -->
-  <view class="plate" hover-class="none" hover-stop-propagation="false">
-    
+  <view class="inform_plate" hover-class="none" hover-stop-propagation="false">
+    <view class="title">校园通知</view>
+    <view class="item" bind:tap="to_school_inform">
+      <view class="headline">计算机设计大赛报名统计</view>
+      <view class="image_b">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="footer">
+        <view class="tip">置顶</view>
+        <view class="browse">浏览998</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="headline">计算机设计大赛报名统计</view>
+      <view class="image_b">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="footer">
+        <view class="tip">置顶</view>
+        <view class="browse">浏览998</view>
+      </view>
+    </view>
+    <view class="item">
+      <view class="headline">计算机设计大赛报名统计</view>
+      <view class="image_b">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="footer">
+        <view class="tip">置顶</view>
+        <view class="browse">浏览998</view>
+      </view>
+    </view>
   </view>
   <!-- 板块展示 end -->
-
-
-  <!-- 加载loading -->
-  <!-- <Loading /> -->
+  <view class="advertising">
+    <view class="title">广告</view>
+    <view class="advertising_b">
+      <view class="item" bind:tap="to_advertising">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+      <view class="item">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31b4c7580.html" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="desc">新鲜出炉的考研资料</view>
+        <view class="view_more">查看更多></view>
+      </view>
+    </view>
+  </view>
 </view>

@@ -29,6 +29,29 @@ Page({
     // console.log('信息',res);
     hideLoading()
   },
+  // 跳转到通知页
+  to_school_inform () {
+    wx.navigateTo({
+      url: '/pages/school_inform/school_inform',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    }); 
+  },
+  // 跳转到广告页
+  to_advertising () {
+    wx.navigateTo({
+      url: '/pages/advertising/advertising',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
    // 页面开始加载 就会触发
   onLoad: function() { 
     this.getSwiper();

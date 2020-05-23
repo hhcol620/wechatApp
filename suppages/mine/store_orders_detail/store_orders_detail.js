@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  getOrderDetail,getUserInfo,get_goodsInfo,getEvaluateByOrderId
+  getOrderDetail,getUserInfo,get_goodsInfo,getEvaluateByOrderId,get_product_order_detail
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -50,6 +50,28 @@ Page({
     this.setData({
       order_detail: orderObj
     })
+  },
+  // 根据订单id获取订单详情 不需要type
+  async get_Order_Detail (id) {
+    const { data } = await get_product_order_detail(id)
+    if (data.code !== 200) {
+      // 获取订单信息失败
+      return 
+    }
+    // console.log(data);
+    const orderObj = data.data
+    const goodsInfo = await this.getGoodsInfo(orderObj.productId)
+    const buyerInfo = await this.getUserInfoById(orderObj.buyerId)
+    const salerInfo = await this.getUserInfoById(orderObj.salerId)
+    const evaluateInfo = await this.getEvaluateByOrderId(orderObj.id)
+    orderObj.goodsInfo = goodsInfo
+    orderObj.buyerInfo = buyerInfo
+    orderObj.salerInfo = salerInfo
+    orderObj.evaluateInfo = evaluateInfo
+    this.setData({
+      order_detail: orderObj
+    })
+
   },
   // 根据productId  获取商品信息
   async getGoodsInfo (goodsId) {
@@ -127,7 +149,12 @@ Page({
     // console.log(options.orderid);
     // 这个就是订单id  这个里面的type  主要用于区分 自己是卖家 还是买家  1-作为卖家  2-作为买家 
     const { orderid, type } = options
-    this.getOrder_detail(type,orderid)
+    if (type) {
+      this.getOrder_detail(type,orderid)
+    } else {
+      this.get_Order_Detail(orderid)
+    }
+    
   },
 
   /**
