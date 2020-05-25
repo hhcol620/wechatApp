@@ -1,9 +1,9 @@
 <!-- <view class="header"></view> -->
 <van-sticky>
-  <van-search value="{{ searchContent }}" shape="round" background="var(--themeColor)" placeholder="请输入搜索关键词" bind:search="search_submit" bind:change="getInputData" data-name="searchContent" />
+  <van-search value="{{ searchContent }}" shape="round" background="var(--themeColor)" placeholder="请输入搜索关键词" value="{{searchContent}}" bind:search="search_submit" bind:focus="toPrevious" />
   <view class="sx_box">
-    <van-dropdown-menu>
-      <van-dropdown-item value="{{ selectValue }}" options="{{ option }}" />
+    <van-dropdown-menu active-color="#000">
+      <van-dropdown-item value="{{ selectValue }}" options="{{ option }}" bind:change="dropdown_getChange" />
     </van-dropdown-menu>
     <view class="sx" bind:tap="openSider">
       <text class="iconfont icon-shaixuan"></text>
@@ -23,15 +23,7 @@
       <!-- 这个可以多选 -->
       <view class="container">
         <!-- 自定义多选框 -->
-        <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
-      </view>
-    </view>
-    <view class="item">
-      <view class="title">新旧程度</view>
-      <!-- 单选 7成新及以上 8成新及以上 9成新及以上 其他 -->
-      <view class="container">
-        <!-- 自定义单选框 -->
-        <Radio_self list="{{type_ridio_items}}" bind:handleItemChange="handleItemChange"></Radio_self>
+        <Radio_self list="{{way_radio_items}}" bind:handleItemChange="handleItemChange"></Radio_self>
       </view>
     </view>
     <view class="item">
@@ -39,17 +31,17 @@
       <!-- 这里可以上输入两端价格 -->
       <view class="container price">
         <view class="leftInput">
-          <input class="weui-input" placeholder="最低价" />
+          <input class="weui-input" placeholder="最低价" bind:input="getInputData" data-name="priceMin" value="{{priceMin}}" />
         </view>
         <view class="middle"></view>
         <view class="rightInput">
-          <input class="weui-input" placeholder="最高价" />
+          <input class="weui-input" placeholder="最高价" bind:input="getInputData" data-name="priceMax" value="{{priceMax}}" />
         </view>
       </view>
     </view>
   </view>
   <view class="footer">
-    <view class="reset_btn">重置</view>
-    <view class="submit_btn">确定</view>
+    <view class="reset_btn" bind:tap="resetFunc">重置</view>
+    <view class="submit_btn" bind:tap="submitFunc">确定</view>
   </view>
 </van-popup>

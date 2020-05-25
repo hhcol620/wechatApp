@@ -111,7 +111,7 @@ Page({
       return 
     }
     const arr = data.text.split('|')
-    console.log(arr);
+    // console.log(arr);
     this.setData({
       inform_no_read: arr[0],
       atMe_no_read:arr[1]
@@ -156,7 +156,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -164,6 +164,7 @@ Page({
    */
   onShow: function() {
     this.getmyinfo()
+    this.getUnRead()
   },
 
   /**

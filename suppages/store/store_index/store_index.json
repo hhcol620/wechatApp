@@ -1,6 +1,10 @@
 {
   "usingComponents": {
     "SearchInput" : "../../components/SearchInput/SearchInput",
-    "Swiper_num":"/components/Swiper_num/Swiper_num"
-  }
+    "Swiper_num":"/components/Swiper_num/Swiper_num",
+    "StoreList":"/components/storeList/storeList",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index"
+  },
+  "navigationBarTitleText":"IRH商城首页"
 }

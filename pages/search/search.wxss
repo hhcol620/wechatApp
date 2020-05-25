@@ -3,6 +3,7 @@ view view.selectInputContainer {
   background-color: var(--themeColor);
 }
 view view.historyContainer {
+  margin: 20rpx;
   padding: 20rpx;
 }
 view view.historyContainer view.titleCon text {
@@ -12,11 +13,11 @@ view view.historyContainer view.titleCon text {
   color: #4d4d4d;
 }
 view view.historyContainer view.tags {
-  margin-top: 30rpx;
+  margin-top: 20rpx;
   display: flex;
   flex-wrap: wrap;
 }
-view view.historyContainer view.tags text.tag {
+view view.historyContainer view.tags view.tag {
   font-size: 26rpx;
   line-height: 38rpx;
   padding: 6rpx 10rpx;

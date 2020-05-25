@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/vant-weapp/cell-group/index",
+    "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
+    "van-uploader": "/miniprogram_npm/vant-weapp/uploader/index",
+    "van-button": "/miniprogram_npm/vant-weapp/button/index"
+  },
+  "navigationBarTitleText":"举报原因"
 }

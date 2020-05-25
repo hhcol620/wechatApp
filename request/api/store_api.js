@@ -243,6 +243,11 @@ export const oneCardAuthen = (params) => {
 export const checkData = (params) => {
   return postData("/user/user/check", params)
 }
+// 通知和at我 全部已读  type 1 系统通知   2 at我的
+export const get_read_all = (type) => {
+  return getData(`/message/msg/readAll/${type}`)
+}
+
 
 
 

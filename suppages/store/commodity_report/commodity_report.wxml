@@ -1,2 +1,21 @@
-<!--suppages/store/commodity_report/commodity_report.wxml-->
-<text>suppages/store/commodity_report/commodity_report.wxml</text>
+<van-checkbox-group value="{{ result }}" bind:change="onChange">
+  <van-cell-group>
+    <van-cell wx:for="{{ list }}" wx:key="index" title="{{ item.name }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="toggle">
+      <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.id }}" checked-color="#FFDC00" />
+    </van-cell>
+  </van-cell-group>
+</van-checkbox-group>
+<view class="text_area">
+  <textarea auto-height maxlength="{{-1}}" placeholder="请具体描述违规位置" bind:input="getInputData" data-name="textValue" />
+</view>
+<!-- 上传文件 -->
+<view class="upload_img">
+  <view class="title">上传图片</view>
+  <view class="desc_images_box">
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" bind:delete="deleteItem" />
+  </view>
+</view>
+<!-- 点击提交 -->
+<view class="submit_btn">
+  <van-button type="primary" size="normal" bind:click="submitFunc">提交</van-button>
+</view>

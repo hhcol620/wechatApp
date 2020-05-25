@@ -19,7 +19,7 @@
       </view>
     </view>
     <view class="com-search" hover-class="none" hover-stop-propagation="false">
-      <input class="searchInput" value="{{inputValue}}" type="text" placeholder="请输入关键词" placeholder-class="input-placeholder" maxlength="140" focus="true" bindconfirm="searchInput" bindinput="bInput"></input>
+      <input class="searchInput" value="{{inputValue}}" type="text" placeholder="请输入关键词" placeholder-class="input-placeholder" maxlength="140" auto-focus bindconfirm="searchInput" bindinput="bInput"></input>
     </view>
   </view>
 </view>

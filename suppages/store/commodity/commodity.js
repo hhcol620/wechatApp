@@ -1,5 +1,6 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   get_goodsInfo,
@@ -57,7 +58,11 @@ Page({
     // 用户是否收藏了商品
     isCollect: false,
     // 留言输入内容 
-    msg_content: ''
+    msg_content: '',
+    // 举报商品弹出层是否显示
+    overlay_show_comm: false,
+    // 举报留言弹出层是否显示
+    overlay_show_lea:false
   },
   // 回复
   replyFunc() {
@@ -299,7 +304,8 @@ Page({
     } = arrList
     // console.log(arrList);
     // 将以|分割的字符串转为数组
-    const strArr = tagNames.split('|')
+    // const strArr = tagNames.split('|')||[]
+    const strArr = tagNames ? tagNames.split('|') : []
     // console.log(str);
     const otherImgs = otherImgUrl ? otherImgUrl.split(',') : []
     // 附图测试
@@ -430,6 +436,9 @@ Page({
     const {
       data
     } = await get_recommend_byProductId(pageSize, currentPage, productId)
+    if (data.code !== 200) {
+      return 
+    }
     // console.log(data);
     const List = data.data.data || []
     List.map(async (v, i) => {
@@ -497,6 +506,54 @@ Page({
     });
 
   },
+  // 点击更多
+  click_more () {
+    // 打开弹框 
+    this.setData({
+      overlay_show_comm:true
+    })
+  },
+  // 隐藏弹出层
+  onClickHide_comm() {
+    this.setData({ overlay_show_comm: false });
+  },
+  // 跳转到举报页 商品id
+  to_report_comm () {
+    const { id } = this.data
+    wx.navigateTo({
+      url: '/suppages/store/commodity_report/commodity_report',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+  // 打开举报留言弹出层
+  open_lea_report () {
+    // 打开弹框 
+    this.setData({
+      overlay_show_lea:true
+    })
+  },
+  // 隐藏弹出层
+  onClickHide_lea() {
+    this.setData({ overlay_show_lea: false });
+  },
+  // 跳到举报留言的弹出层
+  to_report_lea () {
+    wx.navigateTo({
+      url: '/suppages/store/lea_msg_report/lea_msg_report',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
+
+
   // 页面开始加载 就会触发
   onLoad: function(option) {
     // 这个就是上个页面传过来的商品id 根据这个id值获取商品的详细信息和商品的发布者信息 留言板信息

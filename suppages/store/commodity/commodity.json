@@ -9,7 +9,8 @@
     "van-goods-action-button": "/miniprogram_npm/vant-weapp/goods-action-button/index",
     "van-field": "/miniprogram_npm/vant-weapp/field/index",
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
-    "van-transition": "/miniprogram_npm/vant-weapp/transition/index"
+    "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
+    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
   },
   "navigationBarTitleText":"商品详情"
 }

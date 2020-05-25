@@ -3,7 +3,7 @@ import {
   getSystemInfoSync
 } from "../../../miniprogram_npm/vant-weapp/common/utils";
 import {
-  getSystemNews
+  getSystemNews,get_read_all
 } from '../../../request/api/store_api.js'
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 Page({
@@ -113,11 +113,28 @@ Page({
     }
   },
 
+  // 进入这个页面  全部标记已读  系统通知传1
+  async sign_read_all () {
+    const { data } = await get_read_all(1)
+    console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '未知错误',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.getSystemInfo()
+    this.sign_read_all()
   },
 
   /**

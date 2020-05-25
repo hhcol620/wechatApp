@@ -11,26 +11,45 @@
 <view class="plate">
   <view class="title">校园专供</view>
   <view class="box">
-    <view class="left">
-      <navigator class="" target="" url="/pages/search/search" hover-class="navigator-hover" open-type="navigate">
-        <view class="item"></view>
+    <view class="top">
+      <navigator class="" target="" url="/pages/search_store/search_store?keyword={{item.keywords}}" hover-class="navigator-hover" open-type="navigate" wx:for="{{topPic}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
+        <view class="item">
+          <image class="" src="{{item.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        </view>
       </navigator>
-      <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate">
-        <view class="item"></view>
-      </navigator>
-    </view>
-    <view class="right">
-      <view class="item"></view>
-      <view class="item"></view>
     </view>
   </view>
   <view class="box">
-    <view class="left">
-      <view class="itemL"></view>
-    </view>
-    <view class="right">
-      <view class="item"></view>
-      <view class="item"></view>
+    <view class="bottom">
+      <navigator class="" target="" url="/pages/search_store/search_store?keyword={{longPic.keywords}}" hover-class="navigator-hover" open-type="navigate">
+        <view class="itemL">
+          <image class="" src="{{longPic.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        </view>
+      </navigator>
+      <view class="right">
+        <navigator class="" target="" url="/pages/search_store/search_store?keyword={{item.keywords}}" hover-class="navigator-hover" open-type="navigate" wx:for="{{bottomPic}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}">
+          <view class="item">
+            <image class="" src="{{item.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+          </view>
+        </navigator>
+      </view>
     </view>
   </view>
+</view>
+<!-- <view class="recommend_box" hover-class="none" hover-stop-propagation="false">
+  <view class="title" hover-class="none" hover-stop-propagation="false">
+    猜你喜欢
+    <text class="iconfont icon-xihuan3" />
+  </view>
+  
+</view> -->
+<view class="tab_offline">
+  <van-tabs bind:click="onClick" type="card">
+    <van-tab title="便宜好货">
+      <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
+    </van-tab>
+    <van-tab title="真心求购">
+      <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
+    </van-tab>
+  </van-tabs>
 </view>

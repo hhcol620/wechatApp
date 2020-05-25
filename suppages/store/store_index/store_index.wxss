@@ -19,20 +19,53 @@ page {
   display: flex;
   justify-content: space-between;
 }
-.plate .box .left,
-.plate .box .right {
-  width: 50%;
-  padding: 0 5rpx;
+.plate .box .top {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
-.plate .box .left .item,
-.plate .box .right .item {
-  margin: 10rpx 0;
+.plate .box .top .item {
+  margin: 10rpx;
+  width: calc(50vw - 40rpx);
   height: 300rpx;
   background-color: #F5F5F5;
 }
-.plate .box .left .itemL,
-.plate .box .right .itemL {
-  margin: 10rpx 0;
-  height: 610rpx;
+.plate .box .top .item image {
+  height: 100%;
+  width: 100%;
+}
+.plate .box .bottom {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.plate .box .bottom .itemL:first-child {
+  margin: 10rpx;
+  height: 620rpx;
+  width: calc(50vw - 40rpx);
   background-color: #F5F5F5;
+}
+.plate .box .bottom .itemL:first-child image {
+  height: 100%;
+  width: 100%;
+}
+.plate .box .bottom .right {
+  display: flex;
+  flex-direction: column;
+}
+.plate .box .bottom .right .item {
+  margin: 10rpx;
+  width: calc(50vw - 40rpx);
+  height: 300rpx;
+  background-color: #F5F5F5;
+}
+.plate .box .bottom .right .item image {
+  height: 100%;
+  width: 100%;
+}
+.tab_offline {
+  padding-top: 20rpx;
+}
+.tab_offline .storeList {
+  margin-top: 20rpx;
 }

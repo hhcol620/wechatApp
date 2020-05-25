@@ -1,3 +1,30 @@
+// 如果使用  async  await 这个es7 的将异步的请求
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 引入  用来发送请求的方法  需要将路径补全
+import {
+  
+} from '../../../request/api/store_api.js'
+
+import {
+  getOrderPayWx
+} from '../../../request/api/store_front_api.js'
+
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+
+import {
+  getTime
+} from '../../../utils/getTime.js'
+//index.js
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
+
 // suppages/store/wx_payment/wx_payment.js
 Page({
 
@@ -8,24 +35,24 @@ Page({
     // 订单号
     ordercode: '',
     // 支付金额
-    paymentmoney:''
+    paymentmoney: ''
   },
-  submit_pay () {
-    wx.showModal({
-      title: '付款成功,可以在我的->商城订单中查看(仅供测试环境)',
-      content: '',
-      showCancel: true,
-      cancelText: '取消',
-      cancelColor: '#000000',
-      confirmText: '确定',
-      confirmColor: '#3CC51F',
-      success: (result) => {
-        if (result.confirm) {
-          
-        }
-      },
-      fail: () => {},
-      complete: () => {}
+  async submit_pay () {
+    const { ordercode } = this.data
+    const { data } = await getOrderPayWx(ordercode)
+    console.log(data);
+    if (data.code !== 200) {
+      Dialog.alert({
+        message: `${data.text}`,
+      }).then(() => {
+        // on close
+      });
+      return 
+    }
+    Dialog.alert({
+      message: '付款成功,可以在我的->商城订单中查看(仅供测试环境)',
+    }).then(() => {
+      // on close
     });
       
   },
@@ -34,7 +61,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const {ordercode,paymentmoney } = options
+    const { ordercode,paymentmoney } = options
     this.setData({
       ordercode,
       paymentmoney

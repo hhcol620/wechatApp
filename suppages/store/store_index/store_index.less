@@ -17,19 +17,74 @@ page{
     padding-top: 10rpx;
     display: flex;
     justify-content: space-between;
-    .left,.right{
-      width: 50%;
-      padding: 0 5rpx;
+    .top{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
       .item{
-        margin: 10rpx 0;
+        margin: 10rpx;
+        width: calc(~"50vw - 40rpx");
         height: 300rpx;
         background-color: #F5F5F5;
-      }
-      .itemL{
-        margin: 10rpx 0;
-        height: 610rpx;
-        background-color: #F5F5F5;
+        image{
+          height: 100%;
+          width: 100%;
+        }
       }
     }
+    .bottom{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      .itemL:first-child{
+        margin: 10rpx;
+        height: 620rpx;
+        width: calc(~"50vw - 40rpx");
+        background-color: #F5F5F5;
+        image{
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .right{
+        display: flex;
+        flex-direction: column;
+        .item{
+          margin: 10rpx;
+          width: calc(~"50vw - 40rpx");
+          height: 300rpx;
+          background-color: #F5F5F5;
+          image{
+            height: 100%;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+// .recommend_box {
+//   margin-top: 20rpx;
+//   width: 100%;
+
+//   .title {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: var(--iconALIColor);
+//     font-size: 30rpx;
+//     line-height: 60rpx;
+//     font-style: normal;
+//     font-weight: 400;
+
+//     text.iconfont {
+//       line-height: 80rpx;
+//     }
+//   }
+// }
+.tab_offline{
+  padding-top: 20rpx;
+  .storeList{
+    margin-top: 20rpx;
   }
 }

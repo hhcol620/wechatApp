@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  reply_to_me,getUserInfo
+  reply_to_me,getUserInfo,get_read_all
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -53,7 +53,7 @@ Page({
     }
     let current_page = currentPage + 1
     const List = data.data.data
-    console.log(List);
+    // console.log(List);
     // 遍历循环根据发送者id 获取发送者信息
     List.forEach(async item => {
       const senderInfo = await this.get_userInfo(item.senderId)
@@ -89,11 +89,28 @@ Page({
     });
       
   },
+  // 进入这个页面  全部标记已读  at我传2
+  async sign_read_all () {
+    const { data } = await get_read_all(2)
+    // console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '未知错误',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.getReplyToMe()
+    this.sign_read_all()
     this.setData({
       imgURL
     })

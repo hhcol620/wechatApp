@@ -19,7 +19,7 @@ App({
     // 加载图片 基地址
     imgURL: 'http://39.105.0.169:8080/',
     // 上传文件夹的 url
-    uploadImgURL: 'https://www.imuster.top/api/file/file',
+    uploadImgURL: 'https://www.imuster.top:13163/api/file/file',
     // uploadImgURL: 'https://222.186.174.9:13163/api/file/file',
     // 请求基地址
     // baseUrl: "https://222.186.174.9:13163/api",

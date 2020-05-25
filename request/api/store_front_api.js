@@ -81,13 +81,21 @@ export const  getOrderCode = (params) => {
 export const  postCreateOrder = (id,params) => {
   return putData(`/order/order/es/create/${id}`,params)
 }
+// 支付的最后一步
+export const getOrderPayWx = (orderCode) => {
+  return getData(`/order/pay/wx/${orderCode}`)
+}
 
 // 回复留言    productId       content    回复商品的时候   firstClassId parentId 这两个设置为-1
 export const write_msg = (params) => {
   return postData(`/goods/goods/msg/write`,params)
 }
 
-// 搜索 参数 页面大小 当前页
-export const get_search_content = (pageSize, currentPage, keyword) => {
-  return getData(`/message/search/goods/list/${pageSize}/${currentPage}?keyword=${keyword}`)
+// 搜索 参数 页面大小 当前页  priceorder 2升序 1降序 timeOrder 2升序 1降序
+export const get_search_content = (pageSize, currentPage, keyword, priceMin, priceMax,tradeType,priceOrder,timeOrder) => {
+  return getData(`/message/search/goods/list/${pageSize}/${currentPage}?keyword=${keyword}&priceMin=${priceMin}&priceMax=${priceMax}&tradeType=${tradeType}&priceOrder=${priceOrder}&timeOrder=${timeOrder}`)
+}
+// 商城首页的推荐 离线推荐
+export const get_goods_recommend_offline = (pageSize, currentPage) => {
+  return getData(`/goods/recommend/offline/${pageSize}/${currentPage}`)
 }

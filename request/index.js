@@ -51,7 +51,7 @@ const getData = (url, params) => {
         reject(err)
       },
       complete: (e) => {
-        if (e.statusCode === 401) {
+        if (e.statusCode === 401||e.statusCode === 500) {
           wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
@@ -84,7 +84,7 @@ const postData = (url, params) => {
         reject(err)
       },
       complete: (e) => {
-        if (e.statusCode === 401) {
+        if (e.statusCode === 401||e.statusCode === 500) {
           wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
@@ -117,7 +117,7 @@ const deleteData = (url, params) => {
         reject(err)
       },
       complete: (e) => {
-        if (e.statusCode === 401) {
+        if (e.statusCode === 401||e.statusCode === 500) {
           wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
@@ -150,7 +150,7 @@ const putData = (url, params) => {
         reject(err)
       },
       complete: (e) => {
-        if (e.statusCode === 401) {
+        if (e.statusCode === 401||e.statusCode === 500) {
           wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
@@ -184,7 +184,7 @@ const postFormData = (url, params) => {
         reject(err)
       },
       complete: (e) => {
-        if (e.statusCode === 401) {
+        if (e.statusCode === 401||e.statusCode === 500) {
           wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {

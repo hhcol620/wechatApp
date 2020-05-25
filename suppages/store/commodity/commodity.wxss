@@ -5,34 +5,44 @@ page {
   padding: 0 20rpx;
   background-color: #fff;
 }
-.container .author {
-  background-color: #fff;
-  padding-top: 20rpx;
+.container .header {
   display: flex;
+  justify-content: space-between;
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid var(--borderColor);
 }
-.container .author .head_img image {
+.container .header .author {
+  background-color: #fff;
+  padding-top: 20rpx;
+  display: flex;
+}
+.container .header .author .head_img image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 6rpx;
 }
-.container .author .author_mess {
+.container .header .author .author_mess {
   padding-left: 20rpx;
 }
-.container .author .author_mess .nickName {
+.container .header .author .author_mess .nickName {
   color: #333;
   font-size: 30rpx;
   line-height: 60rpx;
   font-weight: 800;
   font-style: normal;
 }
-.container .author .author_mess .creatTime {
+.container .header .author .author_mess .creatTime {
   font-size: 24rpx;
   line-height: 40rpx;
   font-style: normal;
   color: #666;
   font-weight: 500;
+}
+.container .header .more {
+  width: 60rpx;
+  padding-top: 30rpx;
+  display: flex;
+  justify-content: center;
 }
 .container .comm_desc {
   background-color: #fff;
@@ -244,4 +254,29 @@ page {
 }
 .van-icon-star {
   color: #FFDC00;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.report {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-style: normal;
+  font-weight: 500;
+}
+.report:first-child {
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.report:last-child {
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
 }

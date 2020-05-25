@@ -2,5 +2,6 @@
   "usingComponents": {
     "SearchSelect":"../../components/SearchSelect/SearchSelect",
     "ForumList":"../../components/forumList/forumList"
-  }
+  },
+  "navigationBarTitleText":"搜索"
 }

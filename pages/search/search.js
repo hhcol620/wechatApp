@@ -13,13 +13,15 @@ Page({
     // 搜索内容  控制列表组件  对应的数组里面的value
     selectValue: 1,
     // 输入框输入的内容
-    Inputvalue:''
+    Inputvalue: '',
+    // 搜索历史
+    history_search: []
   },
 
 
-  getDate: function(e) {
+  getData: function(e) {
     console.log(e.detail)
-    const { selectValue,Inputvalue} = e.detail
+    const { selectValue,Inputvalue } = e.detail
     // 通过控制回传回来的搜索数据将显示不同的组件 selectIndex 0表示商城  Inputvalue发起不同的列表请求
     // console.log(selectValue,Inputvalue);
     // 
@@ -29,6 +31,24 @@ Page({
     })
     // 首先判断这两个值是否合法 这里判断是否为空
     if (selectValue.trim() && Inputvalue.trim()) {
+      const obj = { selectValue, Inputvalue }
+      // debugger
+      let arr = this.data.history_search
+      console.log(arr);
+      arr.push(obj)
+      this.setData({
+        history_search:arr
+      })
+      wx.setStorage({
+        key: 'history_search',
+        data: arr,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
       // 两个都合法进行跳转
       wx.navigateTo({
         url: `/pages/search_store/search_store?keyword=${Inputvalue}`,
@@ -40,6 +60,19 @@ Page({
       });
         
     }
+  },
+  // 点击历史记录 跳到商品列表页
+  to_store_search (e) {
+    const { inputvalue } = e.currentTarget.dataset
+     // 两个都合法进行跳转
+     wx.navigateTo({
+      url: `/pages/search_store/search_store?keyword=${inputvalue}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
   },
   // 点击空白关闭
   close () {
@@ -57,7 +90,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    const history_search = wx.getStorageSync('history_search')||[];
+    this.setData({
+      history_search
+    })
+      
   },
 
   /**

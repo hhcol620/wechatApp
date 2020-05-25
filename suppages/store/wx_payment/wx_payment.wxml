@@ -10,3 +10,4 @@
   </view>
 </view>
 <view class="tip">支付仅供测试使用,并无实际支付功能</view>
+<van-dialog id="van-dialog" />

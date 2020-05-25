@@ -168,7 +168,10 @@ Page({
       return
     }
     let obj = data.data
-    let tagName_List = (obj.tagNames).split('|')
+    let tagName_List = (obj.tagNames || '').split('|')
+    if (tagName_List[0] == '') {
+      tagName_List = []
+    }
     // console.log(tagName_List);
     obj.tagName_List = tagName_List
     this.setData({

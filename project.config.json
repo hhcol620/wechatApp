@@ -219,8 +219,8 @@
 					"scene": null
 				},
 				{
-					"id": 27,
-					"name": "商品详情页 id =1",
+					"id": 23,
+					"name": "商品详情页 id =24",
 					"pathName": "suppages/store/commodity/commodity",
 					"query": "id=3",
 					"scene": null
@@ -237,13 +237,6 @@
 					"name": "错误页",
 					"pathName": "suppages/errorPage/errorPage/errorPage",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": 37,
-					"name": "商城搜索页",
-					"pathName": "pages/search_store/search_store",
-					"query": "keyword=东方风格豆腐干",
 					"scene": null
 				},
 				{
@@ -387,10 +380,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 46,
 					"name": "微信支付",
 					"pathName": "suppages/store/wx_payment/wx_payment",
-					"query": "id=5",
+					"query": "ordercode=1223&paymentmoney=99.00",
 					"scene": null
 				},
 				{
@@ -426,6 +419,27 @@
 					"name": "跑腿订单详情",
 					"pathName": "suppages/mine/errand_order_detail/errand_order_detail",
 					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "举报商品",
+					"pathName": "suppages/store/commodity_report/commodity_report",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "举报留言",
+					"pathName": "suppages/store/lea_msg_report/lea_msg_report",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 54,
+					"name": "商城搜索",
+					"pathName": "pages/search_store/search_store",
+					"query": "keyword=11",
 					"scene": null
 				}
 			]
