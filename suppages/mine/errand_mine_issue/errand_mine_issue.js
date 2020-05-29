@@ -30,7 +30,7 @@ Page({
     active: 0,
     // 这三个都是请求的参数
     stateObj: {
-      pageSize: 10,
+      pageSize: 5,
       currentPage: 1,
       totalCount: 0
     },
@@ -39,26 +39,32 @@ Page({
   },
   // 获取我发布的跑腿订单   state  2 没有被接单的  3 已经被接单   4已完成
   async getStateErrandList (state) {
-    const { pageSize,currentPage} = this.data.stateObj
+    const { pageSize, currentPage } = this.data.stateObj
+    const { errandList } = this.data
     const { data } = await getMyErrandOrder(pageSize, currentPage, state)
     // console.log(data);
     if (data.code !== 200) {
       return
     }
+    wx.stopPullDownRefresh()
+    const list = data.data.data
+    errandList.push(...list)
     this.setData({
       ['stateObj.totalCount']:data.data.totalCount,
-      errandList:data.data.data
+      errandList
     })
   },
   // 切换clickTabs
   async clickTabs (e) {
     // console.log(e);
+    const { index } = e.detail
     this.setData({
       ['stateObj.totalCount']: 0,
       ['stateObj.currentPage']: 1,
-      errandList:[]
+      errandList: [],
+      active:index
     })
-    const { index } = e.detail
+    
     if (index === 0) {
       await this.getStateErrandList(2)
     } else if (index === 1) {
@@ -140,6 +146,36 @@ Page({
     const { data } = await deleteErrandOrder(5, id)
     return data
   },
+  // 下拉刷新
+  async pullDownRefresh () {
+    this.setData({
+      ['stateObj.totalCount']: 0,
+      ['stateObj.currentPage']: 1,
+      errandList:[]
+    })
+    const index = this.data.active
+    if (index === 0) {
+      await this.getStateErrandList(2)
+    } else if (index === 1) {
+      await this.getStateErrandList(3) 
+    } else if (index == 2) {
+      await this.getStateErrandList(4)
+    }
+  },
+  // 触底加载下一页
+  async reachBottom () {
+    const { pageSize,currentPage,totalCount } = this.data.stateObj
+    const index = this.data.active
+    if (currentPage <= Math.ceil(totalCount / pageSize)) {
+      if (index === 0) {
+        await this.getStateErrandList(2)
+      } else if (index === 1) {
+        await this.getStateErrandList(3) 
+      } else if (index == 2) {
+        await this.getStateErrandList(4)
+      }
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -190,14 +226,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.pullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.reachBottom()
   },
 
   /**

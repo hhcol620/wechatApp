@@ -13,7 +13,8 @@ import {
   get_collect,
   delete_collect,
   isCollect,
-  write_msg
+  write_msg,
+  get_add_history
 } from '../../../request/api/store_front_api.js'
 
 
@@ -62,7 +63,11 @@ Page({
     // 举报商品弹出层是否显示
     overlay_show_comm: false,
     // 举报留言弹出层是否显示
-    overlay_show_lea:false
+    overlay_show_lea: false,
+    // 被长按点击的留言id
+    lea_msg_id: '',
+    // 被长按点击的留言的作者id
+    lea_msg_customerId:''
   },
   // 回复
   replyFunc() {
@@ -519,9 +524,11 @@ Page({
   },
   // 跳转到举报页 商品id
   to_report_comm () {
-    const { id } = this.data
+    const { id, goodsInfo } = this.data
+    const customerId = goodsInfo.consumerInfo.userId
+    // console.log(customerId);
     wx.navigateTo({
-      url: '/suppages/store/commodity_report/commodity_report',
+      url: `/suppages/store/commodity_report/commodity_report?type=1&targetid=${id}&customerid=${customerId}`,
       success: (result) => {
         
       },
@@ -531,10 +538,14 @@ Page({
       
   },
   // 打开举报留言弹出层
-  open_lea_report () {
+  open_lea_report (e) {
+    // console.log(e);
+    const { tarid,tarcustomerid } = e.currentTarget.dataset  
     // 打开弹框 
     this.setData({
-      overlay_show_lea:true
+      overlay_show_lea: true,
+      lea_msg_id: tarid,
+      lea_msg_customerId:tarcustomerid
     })
   },
   // 隐藏弹出层
@@ -543,14 +554,39 @@ Page({
   },
   // 跳到举报留言的弹出层
   to_report_lea () {
+    const { lea_msg_id,lea_msg_customerId } = this.data
     wx.navigateTo({
-      url: '/suppages/store/lea_msg_report/lea_msg_report',
+      url: `/suppages/store/commodity_report/commodity_report?type=2&targetid=${lea_msg_id}&customerid=${lea_msg_customerId}`,
       success: (result) => {
         
       },
       fail: () => {},
       complete: () => {}
     });
+  },
+  // 跳转到其他的用户页面
+  toOtherInfoPage (e) {
+    const { userid } = e.currentTarget.dataset
+    // console.log(userid);
+    wx.navigateTo({
+      url: `/suppages/store/other_userInfo_page/other_userInfo_page?userid=${userid}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+  // 定义一个方法  用于记录历史记录  
+  // 进入这个页面发送请求
+  async addHistory (targetId) {
+    const { data } = await get_add_history(targetId)
+    // console.log(data);
+    if (data.code !== 200) {
+      // 记录历史失败
+      return
+    }
   },
 
 
@@ -570,5 +606,6 @@ Page({
     this.get_recommend_byProductId(option.id)
     // 获取是否已经收藏
     this.getIsCollect(option.id)
+    this.addHistory(option.id)
   }
 })

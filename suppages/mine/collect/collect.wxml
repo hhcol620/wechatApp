@@ -7,9 +7,7 @@
         <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
       </view>
       <view class="desc">
-        <view class="title">
-          {{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}{{item.title}}
-        </view>
+        <view class="title">{{item.title}}</view>
         <view class="item_b" wx:if="{{item.type===1}}">宝贝</view>
         <view class="item_b" wx:if="{{item.type===2}}">需求</view>
       </view>
@@ -18,7 +16,7 @@
       <!-- <view class="address">来自内蒙古科技大学</view> -->
       <view class="browsing">浏览{{item.browseTimes}}</view>
       <view class="button_b">
-        <van-button icon="star" color="#f7b731" type="default" size="small" wx:if="{{item.isCollect===1}}" bind:click="collectFunc" data-id="{{item.id}}" data-type="{{item.type}}">
+        <van-button icon="star" color="#f7b731" type="default" size="small" wx:if="{{item.isCollect!==0}}" bind:click="collectFunc" data-id="{{item.id}}" data-type="{{item.type}}">
           取消收藏
         </van-button>
         <van-button icon="star-o" type="default" size="small" wx:else bind:click="collectFunc" data-id="{{item.id}}" data-type="{{item.type}}">

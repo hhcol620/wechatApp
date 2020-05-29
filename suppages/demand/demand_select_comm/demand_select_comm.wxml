@@ -1,0 +1,22 @@
+<!-- 这个是我发布的商品信息 -->
+<view class="container">
+  <view class="item {{item.id === id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key="id" data-goodsid="{{item.id}}" bind:tap="selectGoods">
+    <view class="main">
+      <view class="left mainImg">
+        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+      </view>
+      <view class="right">
+        <view class="desc">{{item.productDesc}}</view>
+        <view class="price">￥ {{item.salePrice}}</view>
+        <view class="other">
+          <text>留言0</text>
+          <text>浏览{{item.browserTimes}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 这是点击确定 -->
+<view class="btn">
+  <van-button type="primary" size="normal" bind:tap="submitFunc">确定</van-button>
+</view>

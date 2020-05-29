@@ -4,10 +4,15 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 import {
  
 } from '../../../request/api/store_api.js'
+import {
+  get_report_list,post_report
+} from '../../../request/api/store_front_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
   upLoadImages
 } from '../../../utils/uploadImg.js'
+
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 //index.js
 //获取应用实例
 const app = getApp()
@@ -20,8 +25,6 @@ const {
 
 
 
-
-
 Page({
 
   /**
@@ -29,35 +32,47 @@ Page({
    */
   data: {
     // list: ['a', 'b', 'c'],
-    list: [
-      {
-        name: '禁售物品',
-        id:1
-      },
-      {
-        name: '假冒品牌',
-        id:2
-      },
-      {
-        name: '疑似欺诈',
-        id:3
-      },
-      {
-        name: '泄露隐私',
-        id:4
-      },
-      {
-        name: '人身攻击',
-        id:5
-      },
-      {
-        name: '垃圾广告',
-        id:6
-      }
-    ],
+    // list: [
+    //   {
+    //     name: '禁售物品',
+    //     id:1
+    //   },
+    //   {
+    //     name: '假冒品牌',
+    //     id:2
+    //   },
+    //   {
+    //     name: '疑似欺诈',
+    //     id:3
+    //   },
+    //   {
+    //     name: '泄露隐私',
+    //     id:4
+    //   },
+    //   {
+    //     name: '人身攻击',
+    //     id:5
+    //   },
+    //   {
+    //     name: '垃圾广告',
+    //     id:6
+    //   }
+    // ],
+    // 这个是举报的列表
+    list:[],
     result: [],
     // 富文本编辑器输入文本域
-    textValue:''
+    textValue: '',
+    // 举报类型
+    type: '',
+    // 举报对象id
+    targetid: '',
+    // 被举报对象的人的id
+    customerId:'',
+    // 显示的图片
+    fileList: [],
+    // 要上传的图片
+    fileListaddress:[]
   },
 
   onChange(event) {
@@ -76,7 +91,7 @@ Page({
   getInputData (e) {
     const { name } = e.currentTarget.dataset
     const {value} = e.detail 
-    console.log(value, name);
+    // console.log(value, name);
     this.setData({
       [name]:value
     })
@@ -125,17 +140,75 @@ Page({
 
   },
   // 提交
-  submitFunc () {
-    console.log('您点击了提交');
+  async submitFunc () {
+    // console.log('您点击了提交');
+    /* 
+      检测用户是否有选择项  如果没有的话 提示用户
+
+    */
+    const { result, textValue, type, targetid, fileListaddress,customerId } = this.data
+    if (result.length <= 0) {
+      Dialog.alert({
+        message: '请选择举报类型',
+      }).then(() => {
+        // on close
+      });
+    }
+    let reportTypeIds = result.join(',')
+    let pics = fileListaddress.join(',')
+    let reason = textValue
+    const obj = {
+      type,
+      targetId: targetid,
+      customerId: customerId,
+      reason,
+      reportTypeIds,
+      pics
+    }
+    const { data } = await post_report(obj)
+    // console.log(data);
+    if (data.code !== 200) {
+      Dialog.alert({
+        message: `${data.text}`,
+      }).then(() => {
+        // on close
+      });
+      return 
+    }
+    Dialog.alert({
+      message: `${data.text}`,
+    }).then(() => {
+      wx.navigateBack({
+        delta: 1
+      }); 
+    });
+  },
+  // 页面加载获取页面上的举报列表
+  async getReportList () {
+    const { data } = await get_report_list()
+    // console.log(data);
+    if (data.code !== 200) {
+      return 
+    }
+    const list = data.data.data
+    this.setData({
+      list
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    // type值用于提交
+    const { type,targetid,customerid } = options 
     this.setData({
-      imgURL
+      imgURL,
+      type,
+      targetid,
+      customerId:customerid
     })
+    this.getReportList()
   },
 
   /**

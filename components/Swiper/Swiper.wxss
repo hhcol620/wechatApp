@@ -9,13 +9,13 @@ view.container .swiper .swiperItem {
 }
 view.container .swiper .swiperItem image {
   width: 100%;
+  border-radius: 12rpx;
 }
 swiper-item.swiperItem image {
   transition: all 0.2s linear;
 }
 .side image {
-  padding: 20rpx;
-  border-radius: 80rpx;
+  transform: scale(0.9, 0.9);
 }
 /*用来包裹所有的小圆点 */
 .dots {

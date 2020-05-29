@@ -10,11 +10,13 @@
           <!-- 这个位置放标题 -->
           <view class="title">{{item.topic}}</view>
           <view class="tags">
-            <!-- <view class="tagItem">数位板</view> -->
+            <view class="tagItem" wx:for="{{item.tgNameArr}}" wx:for-index="i" wx:for-item="v" wx:key="*this">
+              {{v}}
+            </view>
           </view>
           <view class="other">
             <text>留言0</text>
-            <text>浏览10</text>
+            <text>浏览{{item.browserTimes}}</text>
           </view>
         </view>
       </view>

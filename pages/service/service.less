@@ -8,7 +8,7 @@ view.container {
     height: 200rpx;
     background-color: var(--themeColor);
     text-align: center;
-    text {
+    view {
       font-size: 30rpx;
       line-height: 60rpx;
       font-weight: 500;
@@ -28,15 +28,26 @@ view.container {
   }
 }
 .pub_benefit{
-  
   padding-top: 50rpx;
-  .title{
-    margin-left: 20rpx;
-    font-size: 30rpx;
-    line-height: 40rpx;
-    font-weight: 600;
-    color: #333333;
+  .title_b{
+    display: flex;
+    justify-content: space-between;
+    margin: 20rpx;
+    // border-bottom: 1rpx solid #d1d1d1;
+    .title{
+      font-size: 30rpx;
+      line-height: 40rpx;
+      font-weight: 600;
+      color: #333333;
+    }
+    .more{
+      font-size: 26rpx;
+      line-height: 40rpx;
+      font-weight: 500;
+      color: #666;
+    }
   }
+  
   .scroll_box{
   }
   // 滑动
@@ -49,7 +60,7 @@ view.container {
   .scroll-view-item_H{
     display: inline-block;
     width: 65%;
-    height: 300rpx;
+    // height: 300rpx;
     border-radius: 10rpx;
     margin: 20rpx;
     background-color: #fff;
@@ -68,10 +79,10 @@ view.container {
       }
     }
     .ben_contain{
+      margin-top: 10rpx;
       display: flex;
       justify-content: space-between;
       .ben_contain_img{
-        margin-top: 30rpx;
         width: 160rpx;
         height: 160rpx;
         image{
@@ -82,7 +93,7 @@ view.container {
       } 
       .ben_contain_desc{
         flex: 1;
-        padding: 20rpx;
+        margin-left: 20rpx;
         color: #4d4d4d;
         font-size: 24rpx;
         line-height: 36rpx;
@@ -95,7 +106,6 @@ view.container {
     
   }
 }
-
 
 
 // 隐藏滚动条

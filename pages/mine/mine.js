@@ -140,6 +140,17 @@ Page({
     });
       
   },
+  // 跳转登陆页
+  toLogin () {
+    wx.navigateTo({
+      url: '/pages/login/login',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    }); 
+  },
   /**
    * 生命周期函数--监听页面加载
    */

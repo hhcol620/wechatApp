@@ -1,0 +1,77 @@
+view.header_content {
+  height: 480rpx;
+  width: 100%;
+  position: relative;
+}
+view.header_content view.bgi {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+view.header_content view.bgi image {
+  height: 480rpx;
+  width: 100vw;
+  transform: scale(1.2);
+  -webkit-filter: blur(10px) brightness(50%);
+  filter: blur(10px) brightness(80%);
+}
+view.header_content view.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+}
+view.header_content view.content view.top_c {
+  z-index: 99;
+  display: flex;
+  margin: 50rpx 50rpx 30rpx;
+}
+view.header_content view.content view.top_c view.img image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 6rpx;
+  border: 6rpx solid #fff;
+}
+view.header_content view.content view.top_c view.user .item {
+  margin-left: 20rpx;
+  line-height: 40rpx;
+  font-style: normal;
+}
+view.header_content view.content view.top_c view.user view.userid {
+  font-size: 30rpx;
+  font-weight: 600;
+}
+view.header_content view.content view.top_c view.user view.nickname {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+view.header_content view.content view.top_c view.user view.school {
+  margin-left: 20rpx;
+  display: flex;
+}
+view.header_content view.content view.top_c view.user view.isrealname {
+  font-size: 28rpx;
+  font-weight: 500;
+}
+view.header_content view.content view.bottom_c {
+  z-index: 99;
+  display: flex;
+  margin: 30rpx 50rpx;
+}
+view.header_content view.content view.user_desc {
+  z-index: 99;
+  margin: 50rpx;
+  display: flex;
+  font-weight: 600;
+  flex-wrap: wrap;
+}
+view.header_content view.content view.user_desc view.item {
+  min-width: 30%;
+  margin-right: 20rpx;
+}
+.van-tab__pane--active {
+  padding-top: 20rpx;
+}
+.van-tab__pane--active .van-tabs__content {
+  margin-top: 20rpx;
+}

@@ -48,13 +48,12 @@
     <view class="cateTitle" bind:tap="openCateShow">{{cateValue}}</view>
   </view>
   <!-- 交易方式 -->
-  <view class="transactionWay">
+  <!-- <view class="transactionWay">
     <view class="tip">交易方式</view>
     <view class="transactionWay_box">
-      <!-- 自定义多选框 -->
       <Checkbox_self list="{{way_checkbox_items}}" bind:handleItemChange="checkboxItemChange"></Checkbox_self>
     </view>
-  </view>
+  </view> -->
   <!-- 交易类型 -->
   <view class="transactionType">
     <view class="tip">交易类型</view>

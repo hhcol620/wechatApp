@@ -139,6 +139,18 @@ Page({
     });
       
   },
+  // 举报评价  跳转举报页  需要参数  type=3&targetid=举报id&customerId=举报的用户id
+  evaluate_report (e) {
+    const {  salerid,evaluateid } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/suppages/store/commodity_report/commodity_report?type=3&targetid=${evaluateid}&customerid=${salerid}`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

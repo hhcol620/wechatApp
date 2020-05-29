@@ -83,6 +83,8 @@ view.main view.bottom .evaluate_container {
   line-height: 28rpx;
   font-weight: 500;
   font-style: normal;
+  display: flex;
+  justify-content: space-between;
 }
 view.main view.bottom .evaluate_grade {
   margin-top: 20rpx;

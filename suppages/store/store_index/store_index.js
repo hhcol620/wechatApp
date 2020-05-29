@@ -7,7 +7,7 @@ import {
 } from '../../../request/api/store_api.js'
 
 import {
-  get_goods_recommend_offline
+  get_goods_recommend_offline,get_demand_recommendOffline
 } from '../../../request/api/store_front_api.js'
 
 //index.js
@@ -68,12 +68,33 @@ Page({
     // 请求推荐的分页 
     pageSize: 10,
     currentPage: 1,
-    totalCount: 0
+    totalCount: 0,
+    // tab默认激活项
+    active: 0
   },
-  // 首页的推荐 猜你喜欢
+  // 首页的推荐 商品的推荐
   async get_recommend_offline () {
     const { pageSize,currentPage,totalCount,recommend_offline } = this.data
     const { data } = await get_goods_recommend_offline(pageSize,currentPage)
+    console.log(data);
+    if (data.code !== 200) {
+      // 获取推荐列表失败
+      return 
+    }
+    let list = data.data.data
+    list.forEach(async item => {
+      const consumerInfo = await this.getUserInfoById(item.consumerId)
+      item.consumerInfo = consumerInfo
+      recommend_offline.push(item)
+      this.setData({
+        recommend_offline
+      })
+    })
+  },
+  // 首页的推荐  需求的推荐
+  async get_demand_recommend_offline () {
+    const { pageSize,currentPage,totalCount,recommend_offline } = this.data
+    const { data } = await get_demand_recommendOffline(pageSize,currentPage)
     console.log(data);
     if (data.code !== 200) {
       // 获取推荐列表失败
@@ -96,6 +117,26 @@ Page({
     } = await getUserInfo(consumerId)
     // console.log(data.data);
     return data.data
+  },
+  // 用户点击tab
+  async tabChange (e) {
+    // console.log(e);
+    const { index } = e.detail
+    console.log(index);
+    // 将index 赋值给active 保存一下
+    this.setData({
+      active: index,
+      pageSize: 10,
+      currentPage: 1,
+      totalCount: 0,
+      recommend_offline: [],
+    })
+    if (index == 0) {
+      await this.get_recommend_offline()
+    } else if (index == 1) {
+      await this.get_demand_recommend_offline()
+    }
+
   },
 
   /**

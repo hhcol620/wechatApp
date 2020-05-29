@@ -6,7 +6,7 @@
   </van-cell-group>
 </van-checkbox-group>
 <view class="text_area">
-  <textarea auto-height maxlength="{{-1}}" placeholder="请具体描述违规位置" bind:input="getInputData" data-name="textValue" />
+  <textarea auto-height maxlength="{{-1}}" placeholder="请具体描述" bind:input="getInputData" data-name="textValue" />
 </view>
 <!-- 上传文件 -->
 <view class="upload_img">
@@ -19,3 +19,4 @@
 <view class="submit_btn">
   <van-button type="primary" size="normal" bind:click="submitFunc">提交</van-button>
 </view>
+<van-dialog id="van-dialog" />

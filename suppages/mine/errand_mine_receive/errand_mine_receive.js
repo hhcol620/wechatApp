@@ -31,7 +31,7 @@ Page({
     active: 0,
     // 这三个都是请求的参数
     stateObj: {
-      pageSize: 10,
+      pageSize:5,
       currentPage: 1,
       totalCount: 0
     },
@@ -40,26 +40,33 @@ Page({
   },
   // 获取我发布的跑腿订单   state  3 未完成  4已完成
   async getStateErrandList (state) {
-    const { pageSize,currentPage} = this.data.stateObj
+    const { pageSize, currentPage } = this.data.stateObj
+    const { errandList } = this.data
     const { data } = await getErrandOrder(pageSize, currentPage,2, state)
     console.log(data);
     if (data.code !== 200) {
       return
     }
+    const list = data.data.data
+    errandList.push(...list)
+    // 关闭顶部加载loading
+    wx.stopPullDownRefresh()
     this.setData({
       ['stateObj.totalCount']:data.data.totalCount,
-      errandList:data.data.data
+      errandList
     })
   },
   // 切换clickTabs  根据不同的tab选项  重新发起请求
   clickTabs (e) {
-    console.log(e);
+    // console.log(e);
+    const { index } = e.detail
     this.setData({
       ['stateObj.totalCount']: 0,
       ['stateObj.currentPage']: 1,
-      errandList:[]
+      errandList: [],
+      active:index
     })
-    const { index } = e.detail
+    
     if (index === 0) {
       this.getStateErrandList(3)
     } else if (index === 1) {
@@ -98,6 +105,33 @@ Page({
   async deleteErrandOrders (id) {
     const { data } = await deleteErrandOrder(6, id)
     console.log(data);
+  },
+  // 下拉刷新
+  pullDownRefresh () {
+    const index = this.data.active
+    this.setData({
+      ['stateObj.totalCount']: 0,
+      ['stateObj.currentPage']: 1,
+      errandList: []
+    })
+    
+    if (index === 0) {
+      this.getStateErrandList(3)
+    } else if (index === 1) {
+      this.getStateErrandList(4) 
+    }
+  },
+  // 触底加载 
+  reachBottom () {
+    const index = this.data.active
+    const { pageSize,currentPage,totalCount } = this.data.stateObj
+    if (currentPage <= Math.ceil(totalCount / pageSize)) {
+      if (index === 0) {
+        this.getStateErrandList(3)
+      } else if (index === 1) {
+        this.getStateErrandList(4) 
+      }
+    }
   },
 
   /**
@@ -140,14 +174,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.pullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.reachBottom()
   },
 
   /**

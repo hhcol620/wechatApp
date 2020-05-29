@@ -32,7 +32,7 @@
           </van-button>
         </view>
         <!-- 更多 点击这个可以打开一个弹框 -->
-        <view class="more" bind:tap="more_btn">
+        <view class="more" bind:tap="more_btn" data-orderid="{{item.id}}">
           <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
         </view>
       </view>
@@ -43,12 +43,8 @@
 <van-overlay show="{{ isShow }}" bind:click="onClickHide">
   <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
     <view class="block">
-      <!-- 查看物流 -->
-      <view class="review_logistics item" bind:tap="review_logistics">查看物流</view>
       <!-- 查看订单信息 -->
       <view class="order_detail item" bind:tap="order_detail">查看订单信息</view>
-      <!-- 查看钱款去向 这个可以使用弹框告诉用户 -->
-      <view class="where_monery item" bind:tap="where_monery">查看钱款去向</view>
     </view>
   </view>
 </van-overlay>

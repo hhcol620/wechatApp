@@ -1,16 +1,17 @@
 <!-- 头部信息 -->
 <view class="head">
   <view class="card">
-    <view class="headImg">
+    <view class="headImg" wx:if="{{userInfo.portrait}}">
       <image class="" src="{{imgURL}}{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" bind:tap="priviewImg" data-img="{{imgURL}}{{userInfo.portrait}}" />
     </view>
-    <view class="nickName_real_sign">
+    <view class="nickName_real_sign" wx:if="{{userInfo.nickname}}">
       <view class="nickName_real">
         <view class="nickName">{{userInfo.nickname}}</view>
         <view class="binding_wechat" bind:tap="to_binding_wechat">绑定微信</view>
       </view>
       <view class="sign">{{userInfo.signature}}</view>
     </view>
+    <view class="noLogin" wx:else bind:tap="toLogin">您还未登录,点击登陆</view>
   </view>
 </view>
 <!-- 主体区域 -->

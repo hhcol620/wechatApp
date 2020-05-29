@@ -22,11 +22,13 @@ Page({
     // 存储我的需求列表
     demandList: [],
     // 点击更多的项的id值
-    id:''
+    id: '',
+    // 请求需求的列表参数
+    pageSize: 5,
+    currentPage: 1,
+    totalCount: 0
     
   },
-  // 记录停留在这个页面的时间
-  time: 0,
 
   // 点击了更多  打开一个弹框
   more_btn (e) {
@@ -46,10 +48,10 @@ Page({
   },
   // 页面加载 发起请求 获取分页需求列表
   async get_demand_List () {
+    const { pageSize,currentPage,demandList } = this.data
     showLoading()
-    const { data } = await get_demandList(1, 1)
+    const { data } = await get_demandList(pageSize,currentPage)
     hideLoading()
-    // console.log(data);
     if (data.code !== 200) {
       // 请求失败 提示用户获取信息失败
       wx.showToast({
@@ -62,23 +64,14 @@ Page({
     }
     // 获取成功
     const list = data.data.data
-    console.log(list);
-    // 将需要填充到页面上的数据 放到一起
-    const l = list.map((v) => {
-      const content = v.content
-      const mainImg = v.mainPic
-      const topic = v.topic
-      const id = v.id
-      return {
-        content,
-        mainImg,
-        topic,
-        id
-      }
+    list.forEach((v,i) => {
+      v.tgNameArr = v.tagNames.split('|')||[]
     })
+    demandList.push(...list)
     this.setData({
-      demandList:l
+      demandList
     })
+    wx.stopPullDownRefresh()
       
   },
   // 点击了删除需求
@@ -125,14 +118,29 @@ Page({
       complete: () => {}
     });
   },
+  // 下拉刷新
+  pullDownRefresh () {
+    this.setData({
+      demandList: [],
+      pageSize: 5,
+      currentPage: 1,
+      totalCount: 0
+    })
+    this.get_demand_List()
+  },
+  // 上拉触底
+  reachBottom () {
+    const { pageSize, currentPage, totalCount } = this.data
+    if (currentPage <= Math.ceil(pageSize / currentPage)) {
+      this.get_demand_List()
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.get_demand_List()
-    this.time = (new Date()).valueOf()
-    // (new Date()).valueOf()
-    // console.log(this.time);
   },
 
   /**
@@ -160,15 +168,14 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    let time_after = (new Date()).valueOf()
-    console.log(time_after - this.time);
+    
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.pullDownRefresh()
   },
 
   /**

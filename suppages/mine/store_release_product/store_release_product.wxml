@@ -31,34 +31,6 @@
       </view>
     </view>
   </view>
-  <view class="item">
-    <view class="main">
-      <view class="left mainImg">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
-      </view>
-      <view class="right">
-        <view class="desc">数位板手绘板数位板手绘板数位板手绘板数位板手绘板数位板手绘板数位板手绘板</view>
-        <view class="price">￥ 999999</view>
-        <view class="other">
-          <text>留言0</text>
-          <text>浏览10</text>
-          <text>收藏998</text>
-        </view>
-      </view>
-    </view>
-    <view class="footer">
-      <view class="right">
-        <!-- 点击编辑 进入发布页面 -->
-        <view class="edit">
-          <van-button type="default" round size="small" bind:click="editFunc">编辑</van-button>
-        </view>
-        <!-- 更多 点击这个可以打开一个弹框 -->
-        <view class="more" bind:tap="more_btn">
-          <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
-        </view>
-      </view>
-    </view>
-  </view>
 </view>
 <view class="bottomBtn">
   <view class="release_product" bind:tap="release_product">

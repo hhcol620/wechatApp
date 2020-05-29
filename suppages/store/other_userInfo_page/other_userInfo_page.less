@@ -1,0 +1,90 @@
+view.header_content {
+  height: 480rpx;
+  width: 100%;
+  position: relative;
+  view.bgi {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    image{
+      height: 480rpx;
+      width: 100vw;
+      transform: scale(1.2); // 放大为原来的1.2倍
+      -webkit-filter: blur(10px) brightness(50%);
+      filter: blur(10px) brightness(80%);
+    }
+  }
+
+  view.content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    view.top_c {
+      z-index: 99;
+      display: flex;
+      margin: 50rpx 50rpx 30rpx;
+      view.img {
+        image {
+          height: 120rpx;
+          width: 120rpx;
+          border-radius: 6rpx;
+          border: 6rpx solid #fff;
+        }
+      }
+  
+      view.user {
+        .item{
+          margin-left: 20rpx;
+          line-height: 40rpx;
+          font-style: normal;
+        }
+        view.userid {
+          font-size: 30rpx;
+          font-weight: 600;
+        }
+  
+        view.nickname {
+          font-size: 28rpx;
+          font-weight: 500;
+        }
+        view.school{
+          margin-left: 20rpx;
+          display: flex;
+        }
+  
+        view.isrealname {
+          font-size: 28rpx;
+          font-weight: 500;
+        }
+      }
+    }
+  
+    view.bottom_c {
+      z-index: 99;
+      display: flex;
+      margin: 30rpx 50rpx;
+      view.user_sign {
+  
+      }
+    }
+    view.user_desc {
+      z-index: 99;
+      margin: 50rpx;
+      display: flex;
+      font-weight: 600;
+      flex-wrap: wrap;
+      view.item {
+        min-width: 30%;
+        margin-right: 20rpx;
+      }
+    }
+  }
+  
+}
+.van-tab__pane--active{
+  padding-top: 20rpx;
+  .van-tabs__content{
+    margin-top: 20rpx;
+  }
+}

@@ -3,7 +3,6 @@
     "pages/index/index", 
     "pages/search/search",
     "pages/search_store/search_store",
-    "pages/service/service",
     "pages/mine/mine",
     "pages/register/register",
     "pages/login/login",
@@ -24,11 +23,11 @@
         "store/wx_payment/wx_payment",
         "store/lea_Message_detail/lea_Message_detail",
         "store/commodity_report/commodity_report",
-        "store/lea_msg_report/lea_msg_report",
+        "store/other_userInfo_page/other_userInfo_page",
         "errand/errand_index/errand_index",
         "errand/errand_detail/errand_detail",
         "demand/demand_detail/demand_detail",
-        "demand/lea_Message_detail/lea_Message_detail",
+        "demand/demand_select_comm/demand_select_comm",
         "release/release_product/release_product",
         "release/release_demand/release_demand",
         "release/errand/errand",
@@ -74,13 +73,7 @@
         "text": "首页",
         "iconPath": "./icons/icon_font_img/shouye.png",
         "selectedIconPath": "./icons/icon_font_img/shouye-select.png"
-      },
-      {
-        "pagePath": "pages/service/service",
-        "text": "服务",
-        "iconPath": "./icons/icon_font_img/fenlei.png",
-        "selectedIconPath": "./icons/icon_font_img/fenlei-select.png"
-      },
+      }, 
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",

@@ -12,6 +12,7 @@ page {
   border-radius: 10rpx;
   background-color: var(--themeColor);
   display: flex;
+  position: relative;
 }
 .head .card .headImg {
   width: 150rpx;
@@ -62,6 +63,21 @@ page {
   font-weight: 500;
   border-radius: 21rpx;
   padding: 6rpx 10rpx;
+}
+.head .card .noLogin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 400rpx;
+  height: 60rpx;
+  padding: 10rpx 20rpx;
+  border: 2rpx solid #fff;
+  border-radius: 6rpx;
+  color: #fff;
+  font-weight: 600;
+  font-size: 30rpx;
 }
 .main {
   margin-top: 20rpx;

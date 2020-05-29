@@ -1,10 +1,3 @@
-.index_swiper swiper {
-  width: 750rpx;
-  height: 340rpx;
-}
-.index_swiper swiper image {
-  width: 100%;
-}
 view.submenu {
   margin-top: 30rpx;
 }
@@ -22,17 +15,31 @@ view.submenu ul li {
   list-style: none;
 }
 view.submenu ul li view.icon {
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
   background-color: var(--iconALIColor);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 view.submenu ul li view.icon text {
+  font-size: 30rpx;
   text-align: center;
   color: #fff;
+  height: 100%;
+  align-items: flex-start;
+  padding-top: 20rpx;
+}
+view.submenu ul li view.icon text.textTitle {
+  padding: 10rpx;
+}
+view.submenu ul li view.icon .iconfont {
+  height: 100%;
+  font-size: 80rpx;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
 }
 view.submenu ul li view.text {
   margin-top: 20rpx;
@@ -59,6 +66,82 @@ view.submenu ul li:nth-child(4) view.icon {
 }
 view.submenu ul li:nth-child(5) view.icon {
   background-color: var(--iconTURColor);
+}
+.pub_benefit {
+  margin: 50rpx;
+}
+.pub_benefit .title_b .title {
+  line-height: 50rpx;
+  font-size: 38rpx;
+  color: #333;
+  font-weight: 500;
+  padding-left: 10rpx;
+  border-left: 6rpx solid var(--themeColor);
+}
+.pub_benefit swiper {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 160rpx;
+  background-color: #f1f1f1;
+}
+.pub_benefit .item {
+  display: inline-block;
+  width: 100%;
+  border-radius: 10rpx;
+  background-color: #fff;
+  padding: 12rpx;
+}
+.pub_benefit .item .ben_contain {
+  display: flex;
+}
+.pub_benefit .item .ben_contain .ben_contain_img {
+  width: 140rpx;
+  height: 140rpx;
+}
+.pub_benefit .item .ben_contain .ben_contain_img image {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 6rpx;
+}
+.pub_benefit .item .ben_contain .right_i {
+  margin-left: 20rpx;
+}
+.pub_benefit .item .ben_contain .right_i .ben_tit {
+  display: flex;
+  justify-content: space-between;
+}
+.pub_benefit .item .ben_contain .right_i .ben_tit > text {
+  display: block;
+}
+.pub_benefit .item .ben_contain .right_i .ben_tit > text:nth-child(1) {
+  font-size: 26rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #333;
+}
+.pub_benefit .item .ben_contain .right_i .ben_contain_desc {
+  flex: 1;
+  color: #4d4d4d;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-line;
+}
+.hidescrollBar::-webkit-scrollbar {
+  width: 0rpx;
+  height: 0rpx;
+  border-width: 0;
+  outline-width: 0;
+  color: transparent;
+}
+.hidescrollBar::-webkit-scrollbar-thumb {
+  width: 0rpx;
+  height: 0rpx;
+  border-width: 0;
+  outline-width: 0;
+  color: transparent;
 }
 view.inform_plate {
   margin: 50rpx;
@@ -107,6 +190,10 @@ view.inform_plate view.item view.footer > view {
 view.inform_plate view.item view.footer .tip {
   margin-right: 20rpx;
   color: var(--iconALIColor);
+}
+view.inform_plate view.item view.footer view:not(:first-child):not(:last-child)::after {
+  content: '·';
+  margin: 0 0.5em;
 }
 view.advertising {
   margin: 50rpx;
@@ -158,4 +245,18 @@ view.advertising .advertising_b .item .view_more {
   font-weight: 500;
   color: #0984e3;
   font-style: normal;
+}
+.swipers {
+  margin: 50rpx;
+}
+.swipers swiper {
+  height: 160rpx;
+}
+.swipers swiper swiper-item {
+  height: 160rpx;
+}
+.swipers swiper swiper-item image {
+  width: 100%;
+  height: 160rpx;
+  border-radius: 6rpx;
 }

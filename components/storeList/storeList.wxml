@@ -5,7 +5,7 @@
     <ul>
       <!-- 这个li表示一条数据 -->
       <li wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id" wx:if="{{index%2===0}}">
-        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate" wx:if="{{item.salePrice}}">
           <view class="header" hover-class="none" hover-stop-propagation="false">
             <view class="main_img">
               <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -17,10 +17,29 @@
             </view>
             <view class="foot">
               <view class="item">
-                <text class="price" wx:if="{{item.salePrice}}">￥{{item.salePrice}}</text>
-                <text class="price" wx:else></text>
-                <text class="tag" wx:if="{{item.salePrice}}">二手商品</text>
-                <text class="tag" wx:else>求购</text>
+                <text class="price">￥{{item.salePrice}}</text>
+                <text class="tag">二手商品</text>
+              </view>
+              <view class="item">
+                <text class="userName">{{item.consumerInfo.nickname}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+        <navigator class="" target="self" url="/suppages/demand/demand_detail/demand_detail?id={{item.id}}" hover-class="navigator-hover" open-type="navigate" wx:if="{{!item.salePrice}}">
+          <view class="header" hover-class="none" hover-stop-propagation="false">
+            <view class="main_img">
+              <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+            </view>
+          </view>
+          <view class="footer" hover-class="none" hover-stop-propagation="false">
+            <view class="desc">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="foot">
+              <view class="item">
+                <text class="price"></text>
+                <text class="tag">求购</text>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>
@@ -35,7 +54,7 @@
     <ul>
       <!-- 这个li表示一条数据 -->
       <li wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id" wx:if="{{index%2===1}}">
-        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
+        <navigator class="" target="self" url="/suppages/store/commodity/commodity?id={{item.id}}" hover-class="navigator-hover" open-type="navigate" wx:if="{{item.salePrice}}">
           <view class="header" hover-class="none" hover-stop-propagation="false">
             <view class="main_img">
               <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
@@ -47,10 +66,29 @@
             </view>
             <view class="foot">
               <view class="item">
-                <text class="price" wx:if="{{item.salePrice}}">￥{{item.salePrice}}</text>
-                <text class="price" wx:else></text>
-                <text class="tag" wx:if="{{item.salePrice}}">二手商品</text>
-                <text class="tag" wx:else>求购</text>
+                <text class="price">￥{{item.salePrice}}</text>
+                <text class="tag">二手商品</text>
+              </view>
+              <view class="item">
+                <text class="userName">{{item.consumerInfo.nickname}}</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+        <navigator class="" target="self" url="/suppages/demand/demand_detail/demand_detail?id={{item.id}}" hover-class="navigator-hover" open-type="navigate" wx:if="{{!item.salePrice}}">
+          <view class="header" hover-class="none" hover-stop-propagation="false">
+            <view class="main_img">
+              <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+            </view>
+          </view>
+          <view class="footer" hover-class="none" hover-stop-propagation="false">
+            <view class="desc">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="foot">
+              <view class="item">
+                <text class="price"></text>
+                <text class="tag">求购</text>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>

@@ -7,7 +7,7 @@
     <!-- 发布者信息 -->
     <view class="author" hover-class="none" hover-stop-propagation="false">
       <view class="head_img" hover-class="none" hover-stop-propagation="false">
-        <image class="" src="{{imgURL}}/{{goodsInfo.consumerInfo.pic}}" lazy-load="false" binderror="" bindload="" data-userId="{{goodsInfo.consumerInfo.userId}}" bind:tap="" />
+        <image class="" src="{{imgURL}}/{{goodsInfo.consumerInfo.pic}}" lazy-load="false" binderror="" bindload="" data-userid="{{goodsInfo.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
       </view>
       <view class="author_mess" hover-class="none" hover-stop-propagation="false">
         <view class="nickName">{{goodsInfo.consumerInfo.nickname}}</view>
@@ -60,7 +60,7 @@
     实名认证已通过
   </view>
 </view>
-<!-- 留言板 -->
+<!-- 留言板 其中包括商品的详情的留言板和需求里面的留言板 -->
 <view class="reply_all" hover-class="none" hover-stop-propagation="false">
   <view class="title" hover-class="none" hover-stop-propagation="false">
     全部留言 {{first_lea_mess_TotalCount}}
@@ -69,9 +69,9 @@
   <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
     <van-row class="container" wx:for="{{first_lea_mess}}" wx:for-item="item" wx:for-index="index" wx:key="id">
       <van-col span="4" class="headeImg">
-        <image class="" src="{{imgURL}}/{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}/{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" data-userid="{{item.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
       </van-col>
-      <van-col span="15" class="reply_container" bind:tap="to_reply_detail" bind:longpress="open_lea_report" data-classId="{{item.id}}">
+      <van-col span="15" class="reply_container" bind:tap="to_reply_detail" bind:longpress="open_lea_report" data-tarid="{{item.id}}" data-tarcustomerid="{{item.consumerId}}" data-classId="{{item.id}}">
         <view class="userName">{{item.consumerInfo.nickname}}</view>
         <view class="content">{{item.content}}</view>
         <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>

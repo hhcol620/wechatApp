@@ -27,7 +27,7 @@ Page({
     // 自己发布的二手商品列表
     goodsList: [],
     // pageSize
-    pageSize: 10,
+    pageSize: 5,
     // 当前页
     currrentPage: 1,
     // 数据总条数
@@ -36,10 +36,15 @@ Page({
     id: ''
   },
   // 页面加载 请求方法 获取自己发布的二手商品列表
-  async getGoodsList() {
+  async getGoodsList () {
+    const {
+      pageSize,
+      currrentPage,
+      goodsList
+    } = this.data
     const {
       data
-    } = await get_goodsList(1, 1)
+    } = await get_goodsList(pageSize,currrentPage)
     // console.log(data.code);
     if (data.code !== 200) {
       // 提醒用户获取信息失败
@@ -54,18 +59,9 @@ Page({
     // 获取信息成功  将数据渲染到页面上
     console.log(data);
     // 将页面大小和数据总条数和当前页记录一下 
-    const {
-      pageSize,
-      currrentPage,
-      totalCount
-    } = data.data
-    this.setData({
-      pageSize,
-      currrentPage,
-      totalCount
-    })
+    
     const list = data.data.data
-    console.log(list);
+    // console.log(list);
     const l = list.map((v) => {
       const title = v.title
       const productDesc = v.productDesc
@@ -82,9 +78,11 @@ Page({
         id
       }
     })
-    console.log(l);
+    let c_page = currrentPage+1
+    goodsList.push(...l)
     this.setData({
-      goodsList: l
+      goodsList: goodsList,
+      currrentPage:c_page
     })
     wx.stopPullDownRefresh()
   },
@@ -129,6 +127,14 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+  },
+  // 触底加载下一页
+  reachBottom () {
+    const { currrentPage,totalCount,pageSize } = this.data
+    if (currrentPage <= Math.ceil(totalCount / pageSize)) {
+      // 
+      this.getGoodsList()
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -184,7 +190,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.reachBottom()
   },
 
   /**

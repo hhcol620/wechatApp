@@ -80,7 +80,7 @@ Page({
     upTags: '',
     // 标题
     title: '',
-    // 交易方式
+    // 交易类型
     tradeType: '',
     // 描述
     productDesc: '',
@@ -416,6 +416,7 @@ Page({
         i = v.value
       }
     })
+    console.log(i);
     // 获得附图的字符串形式
     const {
       fileListaddress
@@ -433,9 +434,10 @@ Page({
       id
     } = this.data
     // 如果这里面的id存在 则表示是正在编辑  走编辑的接口  否则走提交的接口
+    let res;
     if (id) {
       // 编辑接口
-      const res = await put_goods_edit({
+      res = await put_goods_edit({
         categoryId: cateId,
         mainPicUrl: mainImgaddress,
         otherImgUrl: fileListStr,
@@ -447,10 +449,9 @@ Page({
         productDesc: productDesc,
         unit: 1
       })
-      console.log(res);
     } else {
       // 发布接口
-      const res = await put_goods({
+      res = await put_goods({
         categoryId: cateId,
         mainPicUrl: mainImgaddress,
         otherImgUrl: fileListStr,
@@ -462,8 +463,8 @@ Page({
         productDesc: productDesc,
         unit: 1
       })
-      console.log(res);
     }
+    console.log(res);
 
   },
   /**

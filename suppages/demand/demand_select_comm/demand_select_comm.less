@@ -1,0 +1,73 @@
+page{
+  background-color: #f6f6f6;
+}
+
+.container {
+  .item {
+    background-color: #fff;
+    margin: 20rpx;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    view.main{
+      display: flex;
+      .left{
+        image{
+          width: 160rpx;
+          height: 160rpx;
+          border-radius: 6rpx;
+        }
+      }
+      .right{
+        margin-left: 20rpx;
+        .desc{
+          font-size: 28rpx;
+          line-height: 38rpx;
+          font-weight: 600;
+          color: #333;
+          font-style: normal;
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+        .price{
+          font-size: 26rpx;
+          line-height: 60rpx;
+          font-weight: 600;
+          color: #ff3f34;
+          font-style: normal;
+        }
+        .other{
+          font-size: 24rpx;
+          color: #666;
+          line-height: 30rpx;
+          font-style: normal;
+          font-weight: 500;
+          text{
+            margin-right: 10rpx;
+          }
+        }
+      }
+    }
+  }
+  padding-bottom: 120rpx;
+}
+
+.btn{
+  background-color: #f6f6f6;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 30rpx 30rpx;
+  .van-button{
+    width: 100%;
+  }
+}
+
+
+// 被选中激活选项
+.active{
+  border: 4rpx solid var(--themeColor);
+  box-sizing: border-box;
+}

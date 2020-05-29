@@ -1,16 +1,16 @@
-<!--components/Swiper/Swiper.wxml-->
+<!-- components/Swiper/Swiper.wxml -->
 <view class="container" hover-class="none" hover-stop-propagation="false">
-  <swiper class="swiper" autoplay  circular  previous-margin="100rpx" next-margin="100rpx" bindchange="getCurrent">
+  <swiper class="swiper" autoplay circular previous-margin="100rpx" next-margin="100rpx" bindchange="getCurrent">
     <swiper-item class="swiperItem {{current==index ? '': 'side'}}" item-id="" wx:for="{{imgList}}" wx:for-index="index" wx:for-item="item" wx:key="img" current="">
-       <navigator class="" target="self" url="{{item.toUrl}}" open-type="navigate">
-          <image class="" src="{{item.img}}" mode="aspectFill"></image>
-        </navigator>
+      <navigator class="" target="self" url="{{item.toUrl}}" open-type="navigate">
+        <image class="" src="{{item.img}}" mode="aspectFill"></image>
+      </navigator>
     </swiper-item>
   </swiper>
-  <!--重置小圆点的样式 -->
-  <view class="dots"> 
-    <block wx:for="{{imgList}}"> 
-    <view class="dot{{index == current ? ' active' : ''}}"></view> 
-    </block> 
-  </view> 
+  <!-- 重置小圆点的样式 -->
+  <view class="dots">
+    <block wx:for="{{imgList}}">
+      <view class="dot{{index == current ? ' active' : ''}}"></view>
+    </block>
+  </view>
 </view>

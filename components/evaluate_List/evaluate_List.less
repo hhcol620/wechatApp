@@ -1,0 +1,80 @@
+view.container {
+  margin: 30rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  view.item {
+    padding: 20rpx;
+    view.header {
+      display: flex;
+      view.image {
+        image {
+          height: 100rpx;
+          width: 100rpx;
+          border-radius: 10rpx;
+
+        }
+      }
+
+      view.right {
+        margin-left: 10rpx;
+        color: #333;
+        font-weight: 500;
+        line-height: 36rpx;
+        font-size: 28rpx;
+        font-style: normal;
+        
+        .niakname{
+          font-size: 30rpx;
+          font-weight: 600;
+        }
+        .desc{
+          margin-top: 10rpx;
+          .whole_e{
+            margin: 10rpx 0;
+            width: 80rpx;
+            text-align: center;
+            line-height: 30rpx;
+            border: 1rpx solid var(--themeColor);
+            padding: 4rpx 10rpx;
+            border-radius: 22rpx;
+          }
+        }
+        .createTime{
+          margin-top: 10rpx;
+          font-size: 22rpx;
+          color: #666;
+        }
+      }
+    }
+    view.footer {
+      background-color: #f1f1f1;
+      padding: 20rpx;
+      border-radius: 10rpx;
+      margin-top: 10rpx;
+      display: flex;
+      view.left {
+        image {
+          height: 120rpx;
+          width: 120rpx;
+          border-radius: 10rpx;
+        }
+      }
+
+      view.right {
+        margin-left: 10rpx;
+        font-style: normal;
+        line-height: 36rpx;
+        font-weight: 500;
+        color: #333;
+        view.topic {
+          font-size: 28rpx;
+        }
+
+        view.price {
+          margin-top: 10rpx;
+          font-size: 30rpx;
+        }
+      }
+    }
+  }
+}

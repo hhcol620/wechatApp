@@ -6,7 +6,6 @@ import {
   getUserInfo,
   get_collect,
   delete_collect,
-  delete_collect_all,
   isCollect
 } from '../../../request/api/store_api.js'
 //index.js
@@ -37,30 +36,35 @@ Page({
   // 点击收藏按钮
   collectFunc(e) {
     // const collect = !this.data.isCollect
-    const { collectList } = this.data
+    const {
+      collectList
+    } = this.data
     // 通过item.id 查找那一项的
-    const { id,type } = e.currentTarget.dataset
+    const {
+      id,
+      type
+    } = e.currentTarget.dataset
     console.log(id, type);
     collectList.forEach(async item => {
       if (id === item.id) {
-        if (item.isCollect === 1) {
+        if (item.isCollect !== 0) {
           // 发起取消收藏的请求
+          const r = await this.cancelCollect(type, id)
+          if (r) {
+            item.isCollect = 0
+          }
+        } else if (item.isCollect === 0) {
+          // 发起收藏的请求
           const r = await this.toCollect(type, id)
           if (r) {
             // 操作成功
-            item.isCollect = 0
-          }
-        } else {
-          // 发起收藏的请求
-          const r = await this.cancelCollect(id)
-          if (r) {
             item.isCollect = 1
           }
         }
-        this.setData({
-          collectList
-        })
       }
+      this.setData({
+        collectList
+      })
     })
   },
   // 获取收藏列表
@@ -99,9 +103,9 @@ Page({
     wx.stopPullDownRefresh()
   },
   // 根据用户id  consumerId  获取用户信息
-  async get_user_info (consumerId) {
+  async get_user_info(consumerId) {
     if (!consumerId) {
-      return 
+      return
     }
     const {
       data
@@ -111,44 +115,53 @@ Page({
     return result
   },
   // 收藏
-  async toCollect (type,id) {
-    const { data } = await get_collect(type, id)
+  async toCollect(type, id) {
+    const {
+      data
+    } = await get_collect(type, id)
     console.log(data);
     if (data.code !== 200) {
-      return 
+      return
     }
     return true
   },
   // 取消收藏  参数type 和id
-  async cancelCollect (id) {
-    const { data } = await delete_collect(id)
+  async cancelCollect (type, id) {
+    console.log('取消收藏',type, id);
+    const {
+      data
+    } = await delete_collect(type,id)
     if (data.code !== 200) {
-      return 
+      return
     }
     return true
   },
   // 取消收藏全部   感觉这个一般不用
   // 判断是否收藏
-  async is_Collect (type,id) {
-    const { data } = await isCollect(type, id)
+  async is_Collect(type, id) {
+    const {
+      data
+    } = await isCollect(type, id)
     console.log(data);
     return data.data
   },
   // 跳转商品详情页
-  toCommodity (e) {
-    const { id } = e.currentTarget.dataset 
+  toCommodity(e) {
+    const {
+      id
+    } = e.currentTarget.dataset
     console.log(id);
     wx.navigateTo({
       url: `../../store/commodity/commodity?id=${id}`,
       success: (result) => {
-        
+
       },
       fail: () => {},
       complete: () => {}
-    });  
+    });
   },
   // 下拉刷新 重新加载
-  PullDownRefresh () {
+  PullDownRefresh() {
     this.setData({
       collectList: [],
       pageSize: 10,
@@ -157,7 +170,7 @@ Page({
     })
     this.getCollectList()
   },
-  
+
 
   /**
    * 生命周期函数--监听页面加载

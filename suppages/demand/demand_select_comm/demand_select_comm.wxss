@@ -1,0 +1,66 @@
+page {
+  background-color: #f6f6f6;
+}
+.container {
+  padding-bottom: 120rpx;
+}
+.container .item {
+  background-color: #fff;
+  margin: 20rpx;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+.container .item view.main {
+  display: flex;
+}
+.container .item view.main .left image {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 6rpx;
+}
+.container .item view.main .right {
+  margin-left: 20rpx;
+}
+.container .item view.main .right .desc {
+  font-size: 28rpx;
+  line-height: 38rpx;
+  font-weight: 600;
+  color: #333;
+  font-style: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.container .item view.main .right .price {
+  font-size: 26rpx;
+  line-height: 60rpx;
+  font-weight: 600;
+  color: #ff3f34;
+  font-style: normal;
+}
+.container .item view.main .right .other {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 30rpx;
+  font-style: normal;
+  font-weight: 500;
+}
+.container .item view.main .right .other text {
+  margin-right: 10rpx;
+}
+.btn {
+  background-color: #f6f6f6;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 30rpx 30rpx;
+}
+.btn .van-button {
+  width: 100%;
+}
+.active {
+  border: 4rpx solid var(--themeColor);
+  box-sizing: border-box;
+}

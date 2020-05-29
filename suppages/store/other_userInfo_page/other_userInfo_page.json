@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "StoreList":"/components/storeList/storeList",
+    "EvaList":"/components/evaluate_List/evaluate_List",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+  },
+  "navigationBarTitleText":"用户信息"
+}

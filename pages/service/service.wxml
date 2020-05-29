@@ -1,79 +1,33 @@
-<!--pages/service/service.wxml-->
+<!-- pages/service/service.wxml -->
 <view class="container">
   <view class="title">
-    <text>累计为在校大学生提供<text class="strong">9999</text>次服务</text> 
+    <view>
+      累计为在校大学生提供
+      <text class="strong">9999</text>
+      次服务
+    </view>
   </view>
-    <!-- 这个位置可以放一些推荐的图片什么的 -->   
+  <!-- 这个位置可以放一些推荐的图片什么的 -->
   <view class="swipers">
     <Swiper></Swiper>
   </view>
 </view>
-
 <view class="pub_benefit" hover-class="none" hover-stop-propagation="false">
-  <text class="title">我在做公益</text>
+  <view class="title_b">
+    <view class="title" bind:tap="to_donation_list">我在做公益 ></view>
+    <!-- <view class="more">更多</view> -->
+  </view>
   <scroll-view scroll-view class="scroll-view_H scroll_box hidescrollBar" scroll-x="true" bindscroll="scroll" style="width: 100%">
-          <view class="scroll-view-item_H item">
-            <view class="ben_tit">
-              <text>献爱心活动</text>
-            </view>
-            <view class="ben_contain">
-              <view class="ben_contain_img">
-                <image src="https://image.suning.cn/uimg/ZR/share_order/158742571804805312.jpg" mode="aspectFill"/>
-                  
-              </view>
-              <view class="ben_contain_desc">
-                截止到现在已有 999 位参与截止到现在已有 999 位参与
-              </view>
-            </view>
-          </view>
-          <view class="scroll-view-item_H item">
-            <view class="ben_tit">
-              <text>献爱心活动</text>
-            </view>
-            <view class="ben_contain">
-              <view class="ben_contain_img">
-                <image src="https://image.suning.cn/uimg/ZR/share_order/158742571804805312.jpg" mode="aspectFill"/>
-                  
-              </view>
-              <view class="ben_contain_desc">
-                截止到现在已有 999 位参与截止到现在已有 999 位参与
-              </view>
-            </view>
-          </view>
-          <view class="scroll-view-item_H item">
-            <view class="ben_tit">
-              <text>献爱心活动</text>
-            </view>
-            <view class="ben_contain">
-              <view class="ben_contain_img">
-                <image src="https://image.suning.cn/uimg/ZR/share_order/158742571804805312.jpg" mode="aspectFill"/>
-                  
-              </view>
-              <view class="ben_contain_desc">
-                截止到现在已有 999 位参与截止到现在已有 999 位参与
-              </view>
-            </view>
-          </view>
-          <view class="scroll-view-item_H item">
-            <view class="ben_tit">
-              <text>献爱心活动</text>
-            </view>
-            <view class="ben_contain">
-              <view class="ben_contain_img">
-                <image src="https://image.suning.cn/uimg/ZR/share_order/158742571804805312.jpg" mode="aspectFill"/>
-                  
-              </view>
-              <view class="ben_contain_desc">
-                截止到现在已有 999 位参与截止到现在已有 999 位参与
-              </view>
-            </view>
-          </view>    
+    <view class="scroll-view-item_H item" wx:for="{{donationList}}" wx:for-index="index" wx:for-item="item" wx:key="id" bind:tap="to_donation_detail" data-id="{{item.id}}">
+      <view class="ben_tit">
+        <text>{{item.detailInfo.title}}</text>
+      </view>
+      <view class="ben_contain">
+        <view class="ben_contain_img">
+          <image src="{{imgURL}}{{item.detailInfo.feedbackPicUrl}}" mode="aspectFill" />
+        </view>
+        <view class="ben_contain_desc">获得捐助金额{{item.detailInfo.paymentAmount}}</view>
+      </view>
+    </view>
   </scroll-view>
 </view>
-<view class="recommend" hover-class="none" hover-stop-propagation="false">
-  <view class="recommend_title" hover-class="none" hover-stop-propagation="false">
-    为您推荐
-  </view>
-  <StoreList></StoreList>
-</view>
-  

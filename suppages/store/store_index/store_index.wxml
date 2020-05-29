@@ -44,7 +44,7 @@
   
 </view> -->
 <view class="tab_offline">
-  <van-tabs bind:click="onClick" type="card">
+  <van-tabs bind:change="tabChange" type="card" sticky="{{true}}">
     <van-tab title="便宜好货">
       <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
     </van-tab>

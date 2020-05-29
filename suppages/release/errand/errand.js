@@ -84,7 +84,7 @@ Page({
     // 提交成功   提示用户 然后回退上一页面
     Dialog.confirm({
       title: '提示',
-      message: '您的提交我们已经收到',
+      message: '您已成功发布跑腿,很快就会有人联系您呢,请保持手机畅通',
       asyncClose: true
     })
       .then(() => {

@@ -1,5 +1,5 @@
 // 引入  用来发送请求的方法  需要将路径补全
-import { getData, postData, deleteData, putData } from '../index.js'
+import { getData, postData, deleteData, putData, postFormData } from '../index.js'
 
 // 暴露接口  将接口集中管理
 // 获取分类数据
@@ -70,6 +70,10 @@ export const get_goodsList = (pageSize,currentPage) => {
 export const get_goodsInfo = (id) => {
   return getData(`/goods/goods/es/${id}`)
 }
+// 根据id查看需求的信息
+export const get_demandsInfo = (id) => {
+  return getData(`/goods/goods/demand/${id}`)
+}
 // 发布商品
 export const put_goods = (params) => {
   return putData('/goods/goods/es',params)
@@ -138,8 +142,8 @@ export const get_collect = (type,id) => {
   return getData(`/goods/collect/${type}/${id}`)
 }
 //  取消收藏
-export const delete_collect = (id) => {
-  return deleteData(`/goods/collect/${id}`)
+export const delete_collect = (type,id) => {
+  return deleteData(`/goods/collect/${type}/${id}`)
 }
 // 取消收藏全部
 export const delete_collect_all = () => {
@@ -243,9 +247,23 @@ export const oneCardAuthen = (params) => {
 export const checkData = (params) => {
   return postData("/user/user/check", params)
 }
+// 检测上传的头像是否合法
+export const checkDataPic = (params) => {
+  return postFormData("/user/user/checkPic", params)
+}
 // 通知和at我 全部已读  type 1 系统通知   2 at我的
 export const get_read_all = (type) => {
   return getData(`/message/msg/readAll/${type}`)
+}
+
+// 根据需求id获取留言
+export const get_demand_reply_lea_msg = (pageSize,currentPage,demandId) => {
+  return getData(`/goods/demand/reply/${pageSize}/${currentPage}/${demandId}`)
+}
+
+// 需求下面的留言  提交留言  可以提交商品  demandId   targetId content
+export const post_demand_reply_lea_msg = (params) => {
+  return postData("/goods/demand/reply", params)
 }
 
 

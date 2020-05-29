@@ -6,41 +6,53 @@ page {
   padding: 0 20rpx;
   background-color: #fff;
 
-  .author {
-    background-color: #fff;
-    padding-top: 20rpx;
+  .header {
     display: flex;
+    justify-content: space-between;
     padding-bottom: 20rpx;
     border-bottom: 1rpx solid var(--borderColor);
+    .author {
+      background-color: #fff;
+      padding-top: 20rpx;
+      display: flex;
+      
 
-    .head_img {
-      image {
-        width: 100rpx;
-        height: 100rpx;
-        border-radius: 6rpx;
+      .head_img {
+        image {
+          width: 100rpx;
+          height: 100rpx;
+          border-radius: 6rpx;
+        }
+      }
+
+      .author_mess {
+        padding-left: 20rpx;
+
+        .nickName {
+          color: #333;
+          font-size: 30rpx;
+          line-height: 60rpx;
+          font-weight: 800;
+          font-style: normal;
+        }
+
+        .creatTime {
+          font-size: 24rpx;
+          line-height: 40rpx;
+          font-style: normal;
+          color: #666;
+          font-weight: 500;
+        }
       }
     }
-
-    .author_mess {
-      padding-left: 20rpx;
-
-      .nickName {
-        color: #333;
-        font-size: 30rpx;
-        line-height: 60rpx;
-        font-weight: 800;
-        font-style: normal;
-      }
-
-      .creatTime {
-        font-size: 24rpx;
-        line-height: 40rpx;
-        font-style: normal;
-        color: #666;
-        font-weight: 500;
-      }
+    .more{
+      width: 60rpx;
+      padding-top: 30rpx;
+      display: flex;
+      justify-content: center;
     }
   }
+
 
   .comm_desc {
     background-color: #fff;
@@ -171,16 +183,17 @@ page {
       >.van-row {
         padding-bottom: 30rpx;
         border-bottom: 1rpx solid var(--borderColor);
+
         .headeImg {
           height: 100rpx;
-    
+
           image {
             width: 100rpx;
             height: 100rpx;
             border-radius: 10rpx;
           }
         }
-    
+
         .reply_container {
           .userName {
             color: #333;
@@ -189,15 +202,44 @@ page {
             font-weight: 800;
             font-style: normal;
           }
-    
+
           .content {
             color: #333;
             font-size: 30rpx;
             line-height: 50rpx;
             font-weight: 500;
             font-style: normal;
+            width: 500rpx;
+            word-wrap: break-word;
+            word-break: break-all;
+            white-space: pre-line;
+
           }
-    
+          view.comm_content {
+            background-color: #f6f6f6;
+            padding: 10rpx;
+            display: flex;
+            color: #333;
+            view.left {
+              image {
+                width: 100rpx;
+                height: 100rpx;
+                border-radius: 6rpx;
+              }
+            }
+          
+            view.right {
+              margin-left: 10rpx;
+              view.topic {
+          
+              }
+          
+              view.price {
+          
+              }
+            }
+          }
+
           .creatTime {
             color: #666;
             font-size: 26rpx;
@@ -206,7 +248,7 @@ page {
             font-style: normal;
           }
         }
-    
+
         .like {
           .box {
             display: flex;
@@ -215,20 +257,26 @@ page {
             color: #666;
             font-size: 26rpx;
             line-height: 60rpx;
-    
+
             text {
               margin-right: 10rpx;
             }
           }
         }
-    
+
         .reply_box {
           color: #666;
           font-size: 24rpx;
-          line-height: 40rpx;
+          line-height: 36rpx;
           padding: 20rpx;
           background-color: #f3f3f3;
-    
+          width: 500rpx;
+
+          .item {
+            padding-bottom: 10rpx;
+            padding-left: 10rpx;
+          }
+
           .color {
             color: var(--iconPETColor);
           }
@@ -236,7 +284,18 @@ page {
       }
     }
 
-    
+    .reply_mess_box_footer {
+      font-size: 26rpx;
+      line-height: 40rpx;
+      padding-bottom: 30rpx;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--iconPETColor);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }
 
@@ -266,4 +325,55 @@ page {
   left: 0;
   z-index: 999;
   width: 100%;
+}
+
+// 底部样式
+.van-goods-action {
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+// 立即购买
+.van-goods-action-button {
+  width: 36vw;
+}
+
+// 收藏高亮
+.van-icon-star {
+  color: #FFDC00;
+}
+
+
+// 更多的弹框
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.report {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-style: normal;
+  font-weight: 500;
+  &:first-child{
+    border-top-left-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+  }
+  &:last-child{
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+  }
+}
+
+// 商品已经卖出的样式
+.gary{
+  filter: grayscale(100%);
 }

@@ -9,10 +9,10 @@
   </view>
   <view class="cellgroup">
     <van-cell-group>
-      <van-field value="{{ userInfo.nickname }}" data-name="userInfo.nickname" bind:input="getInputData" bind:blur="checkName" label="用户名" placeholder="请输入用户名" input-align="right" />
+      <van-field value="{{ userInfo.nickname }}" data-name="userInfo.nickname" bind:input="getInputData" bind:change="checkNameDebounce" label="用户名" placeholder="请输入用户名" input-align="right" />
       <van-field value="{{ userInfo.schoolName }}" data-name="userInfo.schoolName" bind:input="getInputData" label="学校" placeholder="请输入所在学校" input-align="right" />
       <van-field value="{{ userInfo.academyName }}" data-name="userInfo.academyName" bind:input="getInputData" label="学院" placeholder="请输入所在学院" input-align="right" />
-      <van-field value="{{ userInfo.phoneNum }}" data-name="userInfo.phoneNum" bind:input="getInputData" bind:blur="checkphone" label="电话号" placeholder="请输入手机号" input-align="right" />
+      <van-field value="{{ userInfo.phoneNum }}" data-name="userInfo.phoneNum" bind:input="getInputData" bind:change="checkPhoneDebounce" label="电话号" placeholder="请输入手机号" input-align="right" />
       <van-field value="{{ userInfo.address }}" data-name="userInfo.address" bind:input="getInputData" label="地址" placeholder="请输入地址" input-align="right" />
       <van-field value="{{ userInfo.signature }}" data-name="userInfo.signature" bind:input="getInputData" label="简介" placeholder="个人介绍" input-align="right" />
     </van-cell-group>

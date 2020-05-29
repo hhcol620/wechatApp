@@ -37,7 +37,12 @@
     <view class="bottom">
       <!-- 评价的详细信息 -->
       <view class="title">买家评价</view>
-      <view class="evaluate_container">{{order_detail.evaluateInfo.content}}</view>
+      <view class="evaluate_container">
+        <view class="evaluate_content">{{order_detail.evaluateInfo.content}}</view>
+        <view class="evaluate_report" bind:tap="evaluate_report" data-salerid="{{order_detail.buyerId}}" data-evaluateid="{{order_detail.evaluateInfo.id}}">
+          举报
+        </view>
+      </view>
       <view class="evaluate_grade">
         <!-- 对质量的评价 -->
         <view class="item">

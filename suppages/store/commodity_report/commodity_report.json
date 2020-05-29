@@ -5,7 +5,8 @@
     "van-checkbox": "/miniprogram_npm/vant-weapp/checkbox/index",
     "van-checkbox-group": "/miniprogram_npm/vant-weapp/checkbox-group/index",
     "van-uploader": "/miniprogram_npm/vant-weapp/uploader/index",
-    "van-button": "/miniprogram_npm/vant-weapp/button/index"
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
   "navigationBarTitleText":"举报原因"
 }

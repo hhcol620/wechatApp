@@ -220,9 +220,9 @@
 				},
 				{
 					"id": 23,
-					"name": "商品详情页 id =24",
+					"name": "商品详情页 id =1",
 					"pathName": "suppages/store/commodity/commodity",
-					"query": "id=3",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -422,17 +422,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 52,
 					"name": "举报商品",
 					"pathName": "suppages/store/commodity_report/commodity_report",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "举报留言",
-					"pathName": "suppages/store/lea_msg_report/lea_msg_report",
-					"query": "",
+					"query": "type=1&targetid=1&customerId=5",
 					"scene": null
 				},
 				{
@@ -440,6 +433,41 @@
 					"name": "商城搜索",
 					"pathName": "pages/search_store/search_store",
 					"query": "keyword=11",
+					"scene": null
+				},
+				{
+					"id": 55,
+					"name": "其他人的用户信息",
+					"pathName": "suppages/store/other_userInfo_page/other_userInfo_page",
+					"query": "userid=5",
+					"scene": null
+				},
+				{
+					"id": 55,
+					"name": "需求详情",
+					"pathName": "suppages/demand/demand_detail/demand_detail",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择商品页",
+					"pathName": "suppages/demand/demand_select_comm/demand_select_comm",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 57,
+					"name": "学校通知页",
+					"pathName": "pages/school_inform/school_inform",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "广告详情页",
+					"pathName": "pages/advertising/advertising",
+					"query": "id=1",
 					"scene": null
 				}
 			]

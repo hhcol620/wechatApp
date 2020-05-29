@@ -10,14 +10,14 @@ view.container view.title {
   background-color: var(--themeColor);
   text-align: center;
 }
-view.container view.title text {
+view.container view.title view {
   font-size: 30rpx;
   line-height: 60rpx;
   font-weight: 500;
   color: #fff;
   text-align: center;
 }
-view.container view.title text text.strong {
+view.container view.title view text.strong {
   padding: 0 10rpx;
   font-size: 46rpx;
   font-weight: 600;
@@ -30,12 +30,22 @@ view.container view.swipers {
 .pub_benefit {
   padding-top: 50rpx;
 }
-.pub_benefit .title {
-  margin-left: 20rpx;
+.pub_benefit .title_b {
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx;
+}
+.pub_benefit .title_b .title {
   font-size: 30rpx;
   line-height: 40rpx;
   font-weight: 600;
   color: #333333;
+}
+.pub_benefit .title_b .more {
+  font-size: 26rpx;
+  line-height: 40rpx;
+  font-weight: 500;
+  color: #666;
 }
 .pub_benefit .page-section-spacing {
   margin-top: 60rpx;
@@ -46,7 +56,6 @@ view.container view.swipers {
 .pub_benefit .scroll-view-item_H {
   display: inline-block;
   width: 65%;
-  height: 300rpx;
   border-radius: 10rpx;
   margin: 20rpx;
   background-color: #fff;
@@ -66,11 +75,11 @@ view.container view.swipers {
   color: #333;
 }
 .pub_benefit .scroll-view-item_H .ben_contain {
+  margin-top: 10rpx;
   display: flex;
   justify-content: space-between;
 }
 .pub_benefit .scroll-view-item_H .ben_contain .ben_contain_img {
-  margin-top: 30rpx;
   width: 160rpx;
   height: 160rpx;
 }
@@ -81,7 +90,7 @@ view.container view.swipers {
 }
 .pub_benefit .scroll-view-item_H .ben_contain .ben_contain_desc {
   flex: 1;
-  padding: 20rpx;
+  margin-left: 20rpx;
   color: #4d4d4d;
   font-size: 24rpx;
   line-height: 36rpx;

@@ -5,23 +5,22 @@
 <view class="container" hover-class="none" hover-stop-propagation="false">
   <!-- 发布者信息 -->
   <view class="title">
-    <view class="title_text">这是标题</view>
+    <view class="title_text">{{informDetail.title}}</view>
     <view class="footer">
-      <view class="time">2020-11-20 18:00</view>
-      <view class="browsing">浏览998</view>
+      <view class="time">{{informDetail.createTime}}</view>
+      <view class="browsing">浏览{{informDetail.browseTimes}}</view>
     </view>
     <view class="author_msg">
-      <view class="left headImg">
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573251195633.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      <view class="left headImg" data-userid="{{informDetail.publisherId}}" bind:tap="toUserCenter">
+        <image class="" src="{{imgURL}}{{informDetail.publisherInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
       <view class="right">
-        <view class="nickname">这是昵称</view>
-        <view class="time">来平台1936天了</view>
+        <view class="nickname">{{informDetail.publisherInfo.nickname}}</view>
       </view>
     </view>
   </view>
   <view class="comm_desc" hover-class="none" hover-stop-propagation="false">
-    <view class="desc_box">
+    <!-- <view class="desc_box">
       <view class="desc_box_text">
         描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述描述这是描述
       </view>
@@ -30,6 +29,7 @@
         <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="widthFix" lazy-load="false" />
         <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573131221711.jpg" mode="widthFix" lazy-load="false" />
       </view>
-    </view>
+    </view> -->
+    <rich-text nodes="{{informDetail.content}}"></rich-text>
   </view>
 </view>

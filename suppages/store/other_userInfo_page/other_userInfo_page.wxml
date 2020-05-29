@@ -1,0 +1,44 @@
+<view class="header_content">
+  <view class="bgi">
+    <image class="" src="{{imgURL}}{{UserInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+  </view>
+  <view class="content">
+    <view class="top_c">
+      <view class="img">
+        <image class="" src="{{imgURL}}{{UserInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="user">
+        <!-- <view class="item userid">用户ID: 983248</view> -->
+        <view class="item nickname">{{UserInfo.nickname}}</view>
+        <view class="school">
+          <!-- 学校  学院 -->
+          <view class="item_b"></view>
+          <view class="item_b">{{UserInfo.academyName}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom_c">
+      <view class="user_sign">{{UserInfo.signature}}</view>
+    </view>
+    <view class="user_desc">
+      <view class="item">浏览 {{personMsg.browseTotal}}</view>
+      <view class="item">收藏 {{personMsg.collectTotal}}</view>
+      <view class="item">卖出 {{personMsg.saleTotal}}</view>
+      <view class="item">宝贝 {{personMsg.goodsTotal}}</view>
+      <view class="item">捐款金额 {{personMsg.donationTotal}}</view>
+    </view>
+  </view>
+</view>
+<van-tabs sticky color="var(--themeColor)" bind:change="TabsChange" active="{{index}}">
+  <van-tab title="宝贝">
+    <StoreList arrList="{{esList}}" imgURL="{{imgURL}}" />
+  </van-tab>
+  <van-tab title="求购">
+    <!--  -->
+    <StoreList arrList="{{demandList}}" imgURL="{{imgURL}}" />
+  </van-tab>
+  <van-tab title="评价">
+    <EvaList arrList="{{evaluateList}}" imgURL="{{imgURL}}"></EvaList>
+  </van-tab>
+</van-tabs>
+<van-dialog id="van-dialog" />
