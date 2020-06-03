@@ -1,6 +1,6 @@
 <wxs src="../../../utils/timeFormat.wxs" module="timeFor"></wxs>
 <!-- time_for -->
-<view class="container">
+<view class="container" wx:if="{{is_show}}">
   <view class="item" wx:for="{{collectList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
     <view class="main" bind:tap="toCommodity" data-id="{{item.id}}">
       <view class="images">
@@ -26,4 +26,8 @@
     </view>
   </view>
 </view>
+<view wx:else>
+  <no_more str="没有数据哦"></no_more>
+</view>
 <van-transition name="fade-up">版本不支持</van-transition>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

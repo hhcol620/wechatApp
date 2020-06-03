@@ -8,10 +8,11 @@
       <!-- 下单时间 -->
       <view class="creatTime">接单时间:{{item.createTime}}</view>
       <!-- 交易类型 订单是否完成 -->
-      <view class="transactionType">交易完成</view>
+      <view class="transactionType" wx:if="{{item.state===4}}">交易完成</view>
+      <view class="transactionType" wx:if="{{item.state===3}}">正在送达</view>
     </view>
     <view class="orderId">订单编号: {{item.orderCode}}</view>
-    <view class="main">
+    <view class="main" bind:tap="toDetail" data-id="{{item.id}}">
       <view class="errand_desc">
         <view class="toAddress">地址: {{item.address}}</view>
       </view>
@@ -30,7 +31,7 @@
             联系发布者
           </van-button>
         </view>
-        <view class="edit">
+        <view class="edit" wx:if="{{item.state!==3}}">
           <van-button plain type="primary" round size="small" bind:click="edit" data-id="{{item.id}}">
             删除
           </van-button>

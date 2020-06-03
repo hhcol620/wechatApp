@@ -7,7 +7,7 @@ import {
 } from '../../../request/api/store_api.js'
 
 import {
-  get_goods_recommend_offline,get_demand_recommendOffline
+  get_goods_recommend_offline,get_demand_recommendOffline,get_swipers,get_add_swipers_history
 } from '../../../request/api/store_front_api.js'
 
 //index.js
@@ -22,45 +22,13 @@ const {
 
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    // 以下三个初始化页面上的数据 可以不跟后台交互显示
-    longPic: {
-      url: 'https://ae01.alicdn.com/kf/Hbbc29ecf96d2418cb5d2c4e010364d60M.jpg',
-      keywords:'二手商品'
-    },
-    topPic: [
-      {
-        url: 'https://ae01.alicdn.com/kf/Hb5799a13a2a644e6977399a7460033f6o.jpg',
-        keywords: '二手书'
-      },
-      {
-        url: 'https://ae01.alicdn.com/kf/Hffaced681cd94fc282c6f5e425cf62abg.jpg',
-        keywords: '二手笔记本'
-      },
-      {
-        url: 'https://ae01.alicdn.com/kf/H963e8ded4418479cabbc5a6d73c1adf3q.jpg',
-        keywords: '数码电子'
-      },
-      {
-        url: 'https://ae01.alicdn.com/kf/Hdb25033d90534cf6a610ef978f1e9eae3.jpg',
-        keywords: '手机平板'
-      }
-
-    ],
-    bottomPic: [
-      {
-        url: 'https://ae01.alicdn.com/kf/Ha6b2c57f35c449499b2bc1904c64e920W.jpg',
-        keywords: '墨菲定律'
-      },
-      {
-        url: 'https://ae01.alicdn.com/kf/H6d9faab2920945ffbd1812603343c385q.jpg',
-        keywords: '别在吃苦的年纪选择安逸'
-      },
-    ],
+    // 轮播图跳转基地址
+    to_base_url:'/pages/search_store/search_store?keyword=',
+    swiperImgs: [],
     // 加载图片基地址
     imgURL: '',
     // 推荐的列表
@@ -74,13 +42,21 @@ Page({
   },
   // 首页的推荐 商品的推荐
   async get_recommend_offline () {
-    const { pageSize,currentPage,totalCount,recommend_offline } = this.data
+    showLoading(this)
+    const { pageSize,currentPage,recommend_offline } = this.data
     const { data } = await get_goods_recommend_offline(pageSize,currentPage)
     console.log(data);
     if (data.code !== 200) {
+      hideLoading(this)
       // 获取推荐列表失败
       return 
     }
+    let c_page = currentPage + 1
+    let total = data.data.totalCount
+    this.setData({
+      currentPage: c_page,
+      totalCount:total
+    })
     let list = data.data.data
     list.forEach(async item => {
       const consumerInfo = await this.getUserInfoById(item.consumerId)
@@ -90,25 +66,34 @@ Page({
         recommend_offline
       })
     })
+    hideLoading(this)
   },
   // 首页的推荐  需求的推荐
   async get_demand_recommend_offline () {
+    showLoading(this)
     const { pageSize,currentPage,totalCount,recommend_offline } = this.data
     const { data } = await get_demand_recommendOffline(pageSize,currentPage)
     console.log(data);
     if (data.code !== 200) {
+      hideLoading(this)
       // 获取推荐列表失败
       return 
     }
+    let c_page = currentPage+1
+    this.setData({
+      currentPage:c_page
+    })
     let list = data.data.data
     list.forEach(async item => {
       const consumerInfo = await this.getUserInfoById(item.consumerId)
       item.consumerInfo = consumerInfo
+      item.mainPicUrl = item.mainPic
       recommend_offline.push(item)
       this.setData({
         recommend_offline
       })
     })
+    hideLoading(this)
   },
   // 根据用户id获得用户信息
   async getUserInfoById(consumerId) {
@@ -136,7 +121,57 @@ Page({
     } else if (index == 1) {
       await this.get_demand_recommend_offline()
     }
+  },
+  // 获取轮播图
+  async getSwipers () {
+    let pageSize = 6, currentPage = 1
+    
+    const { data } = await get_swipers(pageSize,currentPage)
+    // console.log(data);
 
+    if (data.code !== 200) {
+      return 
+    }
+    let list = data.data.data
+    console.log(list);
+    let arr = list.map((v, i) => {
+      let id = v.id
+      let image_src = v.imgUrl
+      let keywords = v.param
+      return {id,image_src,keywords}
+    })
+    // console.log(arr);
+    this.setData({
+      swiperImgs:arr
+    })
+  },
+  // 记录轮播图点击
+  async swiper_record_click (e) {
+    // console.log('e',e);
+
+    const id = e.detail
+    const { data } = await get_add_swipers_history(id)
+    console.log('data',data);
+  },
+  // 触底加载下一页
+  async reachBottom () {
+    const index = this.data.active
+    const { pageSize, currentPage, totalCount } = this.data
+    if (currentPage > Math.ceil(totalCount / pageSize)) {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return
+    }
+    if (index == 0) {
+      await this.get_recommend_offline()
+    } else if (index == 1) {
+      await this.get_demand_recommend_offline()
+    }
   },
 
   /**
@@ -147,6 +182,7 @@ Page({
       imgURL
     })
     this.get_recommend_offline()
+    this.getSwipers()
   },
 
   /**
@@ -188,7 +224,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.reachBottom()
   },
 
   /**

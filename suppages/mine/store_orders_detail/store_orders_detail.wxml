@@ -83,3 +83,4 @@
     </view>
   </view>
 </view>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

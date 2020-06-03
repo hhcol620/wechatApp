@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
-    "selectTags":"/components/selectTags/selectTags"
+    "selectTags":"/components/selectTags/selectTags",
+    "no_more":"/components/no_more/no_more"
   },
   "enablePullDownRefresh": true,
   "navigationBarTitleText":"标签"

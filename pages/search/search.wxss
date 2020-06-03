@@ -6,11 +6,22 @@ view view.historyContainer {
   margin: 20rpx;
   padding: 20rpx;
 }
-view view.historyContainer view.titleCon text {
-  font-size: 30rpx;
-  font-weight: 600;
+view view.historyContainer view.titleCon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view view.historyContainer view.titleCon view {
+  font-size: 26rpx;
+  font-weight: 500;
   line-height: 45rpx;
-  color: #4d4d4d;
+  color: #666;
+}
+view view.historyContainer view.titleCon view.iconfont {
+  font-size: 40rpx;
+  font-weight: 500;
+  line-height: 45rpx;
+  color: #666;
 }
 view view.historyContainer view.tags {
   margin-top: 20rpx;

@@ -43,7 +43,21 @@ Page({
     remark: '',
   },
   // 点击立即发布 
-  /* 需要进行的  获取每一项中的数据 判断合法性 然后提交 */
+/* 需要进行的  获取每一项中的数据 判断合法性 然后提交 */
+  // 先提示用户不可修改
+  async Dia_user () {
+    Dialog.confirm({
+      title: '提示',
+      message: '跑腿发布不可修改,确认发布吗',
+    })
+      .then(() => {
+        // on confirm
+        this.submit_btn()
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
   async submit_btn() {
     const {
       mian_desc,

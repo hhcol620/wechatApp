@@ -20,3 +20,5 @@
 </view>
 <!--  -->
 <van-notify id="van-notify" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>
+<van-toast id="van-toast" />

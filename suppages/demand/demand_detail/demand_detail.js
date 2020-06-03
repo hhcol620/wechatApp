@@ -1,5 +1,6 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { createComparisonFunction } from '../../../utils/sort_self.js'
 
 // 引入  用来发送请求的方法  需要将路径补全
 import {
@@ -65,7 +66,9 @@ Page({
     // 被长按点击的留言id
     lea_msg_id: '',
     // 被长按点击的留言的作者id
-    lea_msg_customerId:''
+    lea_msg_customerId: '',
+    // 是否显示主要的内容
+    is_show:true
   },
   // 回复
   replyFunc() {
@@ -73,92 +76,6 @@ Page({
     this.setData({
       inputShow: !this.data.inputShow
     })
-
-  },
-  // 点击收藏
-  async collectFunc(e) {
-    const access_token = wx.getStorageSync('access_token');
-    if (!access_token) {
-      // 未登录
-      wx.showToast({
-        title: '您还未登录',
-        icon: 'none',
-        image: '',
-        duration: 1500,
-        mask: true
-      });
-
-      return
-    }
-
-    // console.log();
-    const {
-      id
-    } = e.currentTarget.dataset
-    // console.log(id);
-    const {
-      isCollect
-    } = this.data
-    if (isCollect) {
-      // 已经收藏了
-      // 取消收藏
-      const {
-        data
-      } = await delete_collect(1, id)
-      console.log(data);
-      if (data.code !== 200) {
-        wx.showToast({
-          title: '取消收藏失败',
-          icon: 'none',
-          image: '',
-          duration: 1500,
-          mask: true
-        });
-
-        return
-      }
-      wx.showToast({
-        title: '取消收藏成功',
-        icon: 'success',
-        image: '',
-        duration: 1500,
-        mask: true
-      });
-      this.setData({
-        isCollect: false
-      })
-
-    } else {
-      // 未收藏  走收藏接口
-      const {
-        data
-      } = await get_collect(1, id)
-      if (data.code !== 200) {
-        wx.showToast({
-          title: '收藏失败',
-          icon: 'none',
-          image: '',
-          duration: 1500,
-          mask: true
-        });
-
-        return
-      }
-      wx.showToast({
-        title: '收藏成功',
-        icon: 'success',
-        image: '',
-        duration: 1500,
-        mask: true
-      });
-      this.setData({
-        isCollect: true
-      })
-    }
-  },
-  // 选择商品回复
-  toSelect_comm () {
-    
   },
   // 输入框获得焦点
   inputFocus(e) {
@@ -214,10 +131,13 @@ Page({
   },
 
   // 页面加载  立即根据需求的id获取需求的信息
-  async getDemandInfo(id) {
+  async getDemandInfo (id) {
+    showLoading(this)
     const {
       data
     } = await get_demandsInfo(id)
+    
+    hideLoading(this)
     // console.log(data);
     if (data.code !== 200) {
       // 失败
@@ -228,28 +148,42 @@ Page({
         duration: 1500,
         mask: true
       });
+      this.setData({
+        is_show: false
+      })
       return
     }
+    // console.log('data',data);
     // 
-    const arrList = data.data
-    const {
+    let arrList = data.data
+    // console.log('arrList',arrList);
+    let {
       tagNames,
       otherPics,
-      consumerId
+      consumerId,
+      mainPic
     } = arrList
-    const strArr = tagNames ? tagNames.split('|') : []
-    const otherImgs = otherPics ? otherPics.split(',') : []
+    const strArr = tagNames.split('|')||[]
+    // console.log(tagNames);
+    
+    let otherImgs = otherPics ? (otherPics.split(',')) : []
+    otherImgs.unshift(mainPic)
+    let imgs = otherImgs.map(v => {
+      return `${imgURL}` + v
+    });
     // 根据卖家id获得卖家的信息
     const consumerInfo = await this.getUserInfoById(consumerId)
     // console.log(consumerInfo);
     arrList.consumerInfo = consumerInfo
     // 将这三个变量覆盖原来的后台传过来的
     arrList.tagNames = strArr
-    arrList.otherImgUrl = otherImgs
+    arrList.otherImgUrl = imgs
     this.setData({
       demandInfo: arrList,
       version:arrList.version
     })
+
+    this.get_leave_message(id)
   },
   // 根据需求的id  查询需求的留言信息  
   async get_leave_message(id) {
@@ -262,34 +196,37 @@ Page({
     const {
       data
     } = await get_demand_reply_lea_msg(pageSize, currentPage, id)
+    // console.log(first_lea_messs);
     // 一级留言
-    const first_lea_messs = JSON.parse(JSON.stringify(data.data.data)) || []
-    first_lea_messs.map(async (v, i) => {
+    const first_lea_messs = data.data.data || []
+    // console.log('一级留言',first_lea_messs);
+    first_lea_messs.forEach(async (v, i) => {
       //  根据一级留言的consumerId 查询用户信息
       const consumerInfo = await this.getUserInfoById(v.userId)
-      let goodsInfo = await this.getGoodsInfo(v.targetId)
-      v.consumerInfo = consumerInfo
-      v.goodsInfo = goodsInfo
-      first_lea_mess.push(v)
-      this.setData({
-        first_lea_mess
-      })
+      let goodsInfo
+      if (v.targetId) {
+        goodsInfo = await this.getGoodsInfo(v.targetId)
+        v.consumerInfo = consumerInfo
+        v.goodsInfo = goodsInfo
+        first_lea_mess.push(v)
+        first_lea_mess.sort(createComparisonFunction('createTime'))
+        this.setData({
+          first_lea_mess
+        })
+      }
     })
-    console.log('total',data);
+    
     const totalCount = data.data.totalCount
-    console.log(totalCount);
+    const c_page = currentPage + 1
     this.setData({
       first_lea_mess_TotalCount: totalCount,
-      currentPage: currentPage + 1
+      currentPage: c_page
     })
 
     // 留言板判断当前页是否为最后一页 如果为最后一页 将最后面的那个 加载更多 按钮隐藏
     // 总页数 = 总条数/页面大小
-    // 如果当前页 >= 总页数  隐藏按钮
-    const {
-      first_lea_mess_TotalCount
-    } = this.data
-    if ((Math.ceil(first_lea_mess_TotalCount / pageSize)) <= currentPage) {
+    // 如果当前页 > 总页数  隐藏按钮
+    if (c_page>Math.ceil(totalCount/pageSize)) {
       // 已经没有了 隐藏这个按钮
       this.setData({
         isShowMore: false
@@ -315,18 +252,7 @@ Page({
       return
     }
     // 
-    const arrList = data.data
-    const {
-      tagNames,
-      mainPicUrl,
-      consumerId
-    } = arrList
-    // console.log(arrList);
-    // 将以|分割的字符串转为数组
-    // const strArr = tagNames.split('|')||[]
-    const strArr = tagNames ? tagNames.split('|') : []
-    // 将这三个变量覆盖原来的后台传过来的
-    arrList.tagNames = strArr
+    let arrList = data.data
     return arrList
   },
   // 跳转到商品的详情页
@@ -392,30 +318,6 @@ Page({
     })
     this.setData({
       recommend_byId: List
-    })
-  },
-  // 根据商品的id 判断用户是否收藏了
-  async getIsCollect(id) {
-    // 第一个参数为type 商品为1
-    const {
-      data
-    } = await isCollect(1, id)
-    console.log(data);
-    // data的1标识收藏了，0标识没有收藏
-    if (data.code !== 200) {
-      return
-    }
-    // 其中的data就是是否收藏了  data的1标识收藏了，0标识没有收藏
-    let is_Collect = false
-    if (data.data === 1) {
-      // 收藏了
-      is_Collect = true
-    } else {
-      // 未收藏
-      is_Collect = false
-    }
-    this.setData({
-      isCollect: is_Collect
     })
   },
   // 跳转到选择商品中
@@ -527,10 +429,29 @@ Page({
   async post_demand_comm (demandId,targetId) {
     const obj = { demandId,targetId }
     const { data } = await post_demand_reply_lea_msg(obj)
-    console.log(data);
+    // console.log(data);
+    this.get_leave_message(demandId)
   },
 
-
+  // 预览图片
+  previewImage (e) {
+    const { imgurl } = e.currentTarget.dataset
+    let { otherImgUrl } = this.data.demandInfo
+    let { imgURL } = this.data
+    console.log(otherImgUrl);
+    wx.previewImage({
+      current: imgurl,
+      urls: otherImgUrl,
+      success: (result) => {
+        
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+      complete: () => {}
+    }); 
+      
+  },
   // 页面开始加载 就会触发
   onLoad: function(option) {
     // 这个就是上个页面传过来的需求id 根据这个id值获取需求的详细信息和需求的发布者信息 留言板信息
@@ -542,11 +463,9 @@ Page({
     // 获得需求信息
     this.getDemandInfo(option.id)
     // 获得留言信息
-    this.get_leave_message(option.id)
+    // this.get_leave_message(option.id)
     // 获得推荐信息
     // this.get_recommend_byProductId(option.id)
-    // 获取是否已经收藏
-    // this.getIsCollect(option.id)
     
   },
   onShow: function() {
@@ -557,7 +476,7 @@ Page({
     eventChannel.on('acceptSelectComm', function(data) {
       // 选择的商品的id
       const { goodsInfo } = data
-      console.log(goodsInfo);
+      console.log('goodsInfo',goodsInfo);
       commodityId = goodsInfo.id
     })
     this.post_demand_comm(id,commodityId)
@@ -567,6 +486,6 @@ Page({
       // 一级留言
       first_lea_mess: [],
     })
-    this.get_leave_message(id)
+    
   }
 })

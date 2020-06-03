@@ -3,7 +3,8 @@
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "errand_issue":"/components/errand_issue/errand_issue",
-    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
+    "no_more":"/components/no_more/no_more"
   },
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "我发布的"

@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "no_more":"/components/no_more/no_more"
+  },
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"dark",
   "navigationBarTitleText":"消息通知"

@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
-    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
+    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index",
+    "no_more":"/components/no_more/no_more"
   },
   "enablePullDownRefresh": true,
   "navigationBarTitleText":"我的评价"

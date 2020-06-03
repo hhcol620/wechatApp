@@ -43,20 +43,43 @@ page {
   padding-top: 30rpx;
   display: flex;
   justify-content: center;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: #4d4d4d;
+  font-style: normal;
+  font-weight: 500;
 }
 .container .comm_desc {
   background-color: #fff;
 }
-.container .comm_desc .price {
+.container .comm_desc .head_box {
+  display: flex;
+  justify-content: space-between;
+}
+.container .comm_desc .head_box .price {
   font-size: 36rpx;
   line-height: 100rpx;
   font-weight: 700;
   font-style: normal;
   color: var(--iconALIColor);
 }
-.container .comm_desc .price text {
+.container .comm_desc .head_box .price text {
   font-size: 26rpx;
   font-weight: 500;
+}
+.container .comm_desc .head_box .tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .comm_desc .head_box .tag > view {
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 500;
+  color: #ff3f34;
+  line-height: 30rpx;
+  height: 30rpx;
+  background-color: #ff3f3430;
 }
 .container .comm_desc .desc_box {
   font-size: 32rpx;
@@ -202,8 +225,13 @@ page {
   width: 500rpx;
 }
 .reply_all .reply_mess_box .container > .van-row .reply_box .item {
+  width: 100%;
   padding-bottom: 10rpx;
   padding-left: 10rpx;
+  display: flex;
+  flex-wrap: wrap;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .reply_all .reply_mess_box .container > .van-row .reply_box .color {
   color: var(--iconPETColor);
@@ -279,4 +307,24 @@ page {
 .report:last-child {
   border-bottom-left-radius: 10rpx;
   border-bottom-right-radius: 10rpx;
+}
+.no_show {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no_show .box {
+  height: 80rpx;
+  border-radius: 6rpx;
+  width: 300rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  background-color: var(--themeColor);
 }

@@ -1,6 +1,6 @@
 <!-- 这是 实名认证页面  如果用户已经实名认证 提示用户已经实名 否则进入实名页面 -->
 <!-- 未实名 -->
-<view class="noreal">
+<view class="noreal" wx:if="{{!isreal}}">
   <view class="form">
     <van-cell-group>
       <van-field value="{{ name }}" label="姓名:" placeholder="请填写姓名" input-align="right" data-name="name" bind:input="getInputData" />
@@ -29,7 +29,12 @@
     <van-button type="primary" size="middle" bind:tap="submitFunc">提交</van-button>
   </view>
 </view>
+<!-- 已经实名认证 -->
+<view class="isreal" wx:if="{{isreal}}">
+  <view class="desc animated swing">您已成功实名认证!!!</view>
+</view>
 <!-- 在页面内顶部的提示 失败提示 -->
 <van-notify id="van-notify" />
 <!-- 成功提示 -->
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

@@ -43,8 +43,11 @@ Page({
   },
   // 根据订单id 获取订单的信息
   async getOrder_detail (orderid) {
+    showLoading(this)
     const { data } = await getOrderDetail(2, orderid)
+    
     if (data.code !== 200) {
+      hideLoading(this)
       wx.showToast({
         title: '获取订单信息失败',
         icon: 'none',
@@ -59,6 +62,7 @@ Page({
     // console.log(orderObj);
     const userInfo = await this.getuser_Info(orderObj.salerId)
     const goodsInfo = await this.getGoodsInfo(orderObj.productId)
+    hideLoading(this)
     console.log(goodsInfo);
     orderObj.salerInfo = userInfo
     orderObj.goodsInfo = goodsInfo
@@ -116,7 +120,9 @@ Page({
       });
       return 
     }
+    showLoading(this)
     const { data } = await post_evaluate(orderId, evaluateObj)
+    hideLoading(this)
     // console.log(res);
     if (data.code !== 200) {
       // 提交失败 请稍后重试,

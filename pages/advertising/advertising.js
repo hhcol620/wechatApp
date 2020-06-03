@@ -5,7 +5,7 @@ import {
   getUserInfo
 } from '../../request/api/store_api.js'
 import {
-  get_propagate_detail
+  get_propagate_detail,get_add_history_advertising
 } from '../../request/api/store_front_api.js'
 //index.js
 //获取应用实例
@@ -65,6 +65,16 @@ Page({
     });
       
   },
+  // 记录浏览历史
+  async add_history () {
+    const { id } = this.data
+    const {data} = await get_add_history_advertising(id)
+    console.log('浏览历史',data);
+    if (data.code !== 200) {
+      return
+    }
+    
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -76,6 +86,7 @@ Page({
       id
     })
     this.get_detail_byId(id)
+    
   },
 
   /**
@@ -103,7 +114,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.add_history()
   },
 
   /**

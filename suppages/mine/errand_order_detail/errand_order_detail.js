@@ -32,7 +32,9 @@ Page({
   },
   // 根据订单id  获取其详细信息
   async get_errand_order_detail (id) {
+    showLoading(this)
     const { data } = await getErrandOrder_detail(id)
+    hideLoading(this)
     // console.log(data);
     if (data.code !== 200) {
       return

@@ -20,9 +20,6 @@ page {
 }
 .container {
   padding-top: 100rpx;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  padding-bottom: 20rpx;
 }
 .container view.item_b view.time_title {
   margin-left: 6rpx;
@@ -36,6 +33,7 @@ page {
 .container view.item_b view.content_b {
   display: flex;
   flex-wrap: wrap;
+  margin: 20rpx;
 }
 .container view.item_b view.content_b view.item {
   margin: 6rpx;

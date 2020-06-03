@@ -5,14 +5,24 @@
 <!-- 查看详情 这个使用弹框 将收货人信息展示  或者将跑腿人信息展示出来 -->
 <van-tabs active="{{ active }}" color="var(--themeColor)" bind:click="clickTabs">
   <van-tab title="没被接单">
-    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
+    <errand_issue arrList="{{errandList}}" bind:deleteFuncNoRec="deleteErrand_noreceive" wx:if="{{is_show}}" />
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="正在完成">
-    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" bind:finishFunc="finishErrand" />
+    <errand_issue arrList="{{errandList}}" bind:finishFunc="finishErrand" wx:if="{{is_show}}" />
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="已经完成">
-    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" />
+    <errand_issue arrList="{{errandList}}" bind:deleteFunc="deleteErrand" wx:if="{{is_show}}" />
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
 </van-tabs>
 <!-- 删除订单  删除单个 -->
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

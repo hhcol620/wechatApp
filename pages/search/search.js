@@ -1,4 +1,7 @@
-// pages/search/search.js
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
+
+
+
 Page({
   /**
    * 页面的初始数据
@@ -85,6 +88,27 @@ Page({
     this.setData({
       selectValue:0
     })
+  },
+  // 删除搜索历史
+  delete_search_history () {
+    Dialog.confirm({
+      title: '提示',
+      message: '确认要删除历史记录的全部内容吗?',
+    })
+      .then(() => {
+        this.setData({
+          history_search:[]
+        })
+        try {
+          wx.removeStorageSync('history_search')
+        } catch (e) {
+          // Do something when catch error
+        }
+      })
+      .catch(() => {
+        // on cancel
+      });
+    
   },
   /**
    * 生命周期函数--监听页面加载

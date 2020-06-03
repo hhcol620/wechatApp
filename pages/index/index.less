@@ -1,4 +1,4 @@
-
+// @import "./index.skeleton.wxss";
 view.submenu {
   margin-top: 30rpx;
   ul {
@@ -182,6 +182,10 @@ view.inform_plate{
       font-weight: 500;
       color: #4d4d4d;
       font-style: normal;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
     }
   
     view.image_b {
@@ -280,16 +284,22 @@ view.advertising{
 // 广告的banner滚动
 .swipers{
   margin: 50rpx;
+  width: calc(~" 100vw - 100rpx");
   swiper {
+    width: calc(~" 100vw - 100rpx");
     height: 160rpx;
     swiper-item {
+      width: calc(~" 100vw - 100rpx");
       height: 160rpx;
-      image{
-        width: 100%;
+      .img{
+        width: calc(~" 100vw - 100rpx");
         height: 160rpx;
-        border-radius: 6rpx;
+        image{
+          width: calc(~" 100vw - 100rpx");
+          height: 160rpx;
+          border-radius: 6rpx;
+        }
       }
     }
   }
-  
 }

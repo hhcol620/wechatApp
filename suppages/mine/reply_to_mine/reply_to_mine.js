@@ -1,5 +1,7 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+import { createComparisonFunction } from '../../../utils/sort_self.js'
+
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   reply_to_me,getUserInfo,get_read_all
@@ -31,7 +33,9 @@ Page({
     // 回复我的列表
     replyToMe: [],
     // 加载图片基地址
-    imgURL:''
+    imgURL: '',
+    // 控制主要数据是否显示
+    is_show: true
   },
   // 删除
   deleteFunc (e) {
@@ -46,24 +50,30 @@ Page({
   },
   // 页面加载获取回复我的 列表
   async getReplyToMe () {
+    showLoading(this)
     const { pageSize,currentPage,replyToMe } = this.data
     const { data } = await reply_to_me(pageSize, currentPage)
+    hideLoading(this)
     if (data.code !== 200) {
       return 
     }
     let current_page = currentPage + 1
     const List = data.data.data
-    // console.log(List);
+    if (replyToMe.length <= 0 && List.length <= 0) {
+      this.setData({
+        is_show:false
+      })
+    }
     // 遍历循环根据发送者id 获取发送者信息
     List.forEach(async item => {
       const senderInfo = await this.get_userInfo(item.senderId)
       item.senderInfo = senderInfo
       replyToMe.push(item)
+      replyToMe.sort(createComparisonFunction('createTime'))
       this.setData({
         replyToMe
       })
     })
-    // console.log(data.data.totalCount);
     wx.stopPullDownRefresh()
     this.setData({
       currentPage: current_page,

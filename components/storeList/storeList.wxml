@@ -1,3 +1,4 @@
+<wxs src="../../utils/tradeType.wxs" module="trade"></wxs>
 <!-- forum  模块使用 列表行 表示一条数据 -->
 <view class="container" hover-class="none" hover-stop-propagation="false">
   <!-- 使用两列布局  flex   column  根据循环的索引奇偶判断是左列还是右列 -->
@@ -18,7 +19,12 @@
             <view class="foot">
               <view class="item">
                 <text class="price">￥{{item.salePrice}}</text>
-                <text class="tag">二手商品</text>
+                <view class="tag_box">
+                  <view class="tag">商品</view>
+                  <view class="tag" wx:if="{{item.tradeType==20}}">
+                    {{trade.tradeType(item.tradeType)}}
+                  </view>
+                </view>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>
@@ -39,7 +45,9 @@
             <view class="foot">
               <view class="item">
                 <text class="price"></text>
-                <text class="tag">求购</text>
+                <view class="tag_box">
+                  <view class="tag">求购</view>
+                </view>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>
@@ -67,7 +75,12 @@
             <view class="foot">
               <view class="item">
                 <text class="price">￥{{item.salePrice}}</text>
-                <text class="tag">二手商品</text>
+                <view class="tag_box">
+                  <view class="tag">商品</view>
+                  <view class="tag" wx:if="{{item.tradeType==20}}">
+                    {{trade.tradeType(item.tradeType)}}
+                  </view>
+                </view>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>
@@ -88,7 +101,9 @@
             <view class="foot">
               <view class="item">
                 <text class="price"></text>
-                <text class="tag">求购</text>
+                <view class="tag_box">
+                  <view class="tag">求购</view>
+                </view>
               </view>
               <view class="item">
                 <text class="userName">{{item.consumerInfo.nickname}}</text>

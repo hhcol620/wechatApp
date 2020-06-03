@@ -5,7 +5,8 @@ import {
   get_goodsInfo,
   getCategoryTree,
   put_goods,
-  put_goods_edit
+  put_goods_edit,
+  post_goods_tag_recommend
 } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
@@ -91,7 +92,9 @@ Page({
     // 页面显示的分类
     cateValue: '',
     // 分类的id   后台需要的
-    cateId: ''
+    cateId: '',
+    // 推荐的标签
+    addTags:[]
   },
   // 单选框
   handleItemChange(e) {
@@ -284,7 +287,8 @@ Page({
   },
 
   // 根据上一个页面传过来的id值获取这个商品的详细数据
-  async getGoodsInfo(id) {
+  async getGoodsInfo (id) {
+    showLoading(this)
     const {
       data
     } = await get_goodsInfo(id)
@@ -295,6 +299,7 @@ Page({
         duration: 1000,
         mask: true
       });
+      hideLoading(this)
       return
     }
     // 获取信息成功 将信息包装回显到页面上
@@ -361,6 +366,7 @@ Page({
       mainImgaddress,
       fileListaddress
     })
+    hideLoading(this)
   },
 
   // 获得商品分类树形
@@ -445,9 +451,8 @@ Page({
         oldDegree: degreeValue,
         salePrice: price,
         tagNames: upTags,
-        tradeType: i,
-        productDesc: productDesc,
-        unit: 1
+        tradeType: i-0,
+        productDesc: productDesc
       })
     } else {
       // 发布接口
@@ -459,13 +464,76 @@ Page({
         oldDegree: degreeValue,
         salePrice: price,
         tagNames: upTags,
-        tradeType: i,
-        productDesc: productDesc,
-        unit: 1
+        tradeType: i-0,
+        productDesc: productDesc
       })
     }
     console.log(res);
+    if (res.data.code !== 200) {
+      wx.showToast({
+        title: '发布失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+    wx.showToast({
+      title: '发布成功',
+      icon: 'success',
+      image: '',
+      duration: 1500,
+      mask: true,
+      success: (result) => {
+        wx.navigateBack({
+          delta: 1
+        });      
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
 
+  },
+  // 根据标题获取智能推荐的关键词
+  async getTagsRecommend () {
+    const { title,productDesc } = this.data
+    // let str = `${title},${productDesc}`
+    let arr = [];
+    arr[0] = title
+    arr[1] = productDesc
+    // console.log(arr);
+    let text = arr.join(',')
+    // console.log(text);
+    if (text.length <= 0) {
+      return
+    }
+    let obj = {text}
+    const { data } = await post_goods_tag_recommend(obj)
+    // console.log(obj);
+    if (data.code !== 200) {
+      return 
+    }
+    this.setData({
+      addTags:data.data
+    })
+  },
+  // 点击标签 添加
+  addTag (e) {
+    const { item } = e.currentTarget.dataset
+    const { tagNames,addTags } = this.data
+    addTags.forEach((v, i) => {
+      if (v === item) {
+        addTags.splice(i,1)
+      }
+    })
+    let tagNames_str = tagNames + ' ' + item
+    this.setData({
+      tagNames: tagNames_str,
+      addTags
+    })
   },
   /**
    * 生命周期函数--监听页面加载

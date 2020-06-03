@@ -1,10 +1,10 @@
 <!-- 这是我发布的需求页 -->
-<view class="container">
+<view class="container" wx:if="{{is_show}}">
   <view class="item" wx:for="{{demandList}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
     <navigator class="" target="" url="../../demand/demand_detail/demand_detail" hover-class="navigator-hover" open-type="navigate">
       <view class="main">
         <view class="left mainImg">
-          <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+          <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="right">
           <!-- 这个位置放标题 -->
@@ -37,6 +37,9 @@
     </view>
   </view>
 </view>
+<view wx:else>
+  <no_more str="没有数据哦"></no_more>
+</view>
 <view class="bottomBtn">
   <view class="release_demand" bind:tap="release_demand">
     <text class="iconfont icon-fabuxuqiu"></text>
@@ -52,3 +55,4 @@
     </view>
   </view>
 </van-overlay>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

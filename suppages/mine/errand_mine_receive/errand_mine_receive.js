@@ -18,8 +18,6 @@ const {
 } = app.globalData
 
 
-
-
 // suppages/mine/errand_mine_receive/errand_mine_receive.js
 Page({
 
@@ -36,19 +34,28 @@ Page({
       totalCount: 0
     },
     // 请求回来的数据存储
-    errandList:[],
+    errandList: [],
+    // 控制主要数据是否显示
+    is_show: true
   },
   // 获取我发布的跑腿订单   state  3 未完成  4已完成
   async getStateErrandList (state) {
     const { pageSize, currentPage } = this.data.stateObj
     const { errandList } = this.data
+    showLoading(this)
     const { data } = await getErrandOrder(pageSize, currentPage,2, state)
+    hideLoading(this)
     console.log(data);
     if (data.code !== 200) {
       return
     }
-    const list = data.data.data
+    const list = data.data.data||[]
     errandList.push(...list)
+    if (errandList.length <= 0) {
+      this.setData({
+        is_show:false
+      })
+    }
     // 关闭顶部加载loading
     wx.stopPullDownRefresh()
     this.setData({
@@ -58,13 +65,14 @@ Page({
   },
   // 切换clickTabs  根据不同的tab选项  重新发起请求
   clickTabs (e) {
-    // console.log(e);
     const { index } = e.detail
+    // console.log(e);
     this.setData({
       ['stateObj.totalCount']: 0,
       ['stateObj.currentPage']: 1,
       errandList: [],
-      active:index
+      active: index,
+      is_show: true
     })
     
     if (index === 0) {
@@ -81,7 +89,7 @@ Page({
     Dialog.confirm({
       message: '确定删除吗'
     }).then(async () => {
-      const res = this.deleteErrandOrders(id)
+      const res = await this.deleteErrandOrders(id)
       // console.log(res.code);
       if (res.code !== 200) {
         return
@@ -101,7 +109,7 @@ Page({
       // on cancel
     });
   },
-  // 传进来 作为买家  type传5 第二个参数传id
+  // 传进来 作为买家  type传6 第二个参数传id
   async deleteErrandOrders (id) {
     const { data } = await deleteErrandOrder(6, id)
     console.log(data);

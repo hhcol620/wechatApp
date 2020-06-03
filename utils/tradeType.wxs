@@ -1,0 +1,35 @@
+// 交易方式格式化
+// 10正常交易  20 公益捐赠
+// 这里写wxs代码  将消息格式化  给的数字 显示对应的文字
+/* 
+  
+*/
+var tradeType = function (num) {
+  // 根据不同的num值 返回不同的内容
+  // let n = num
+  var result = '其他';
+  // switch (str) {
+  //   case '10':
+  //     result = "正常交易"
+  //     break;
+  //     case '20':
+  //       result = "公益捐赠"
+  //     break;
+  //   default:
+  //     result = "其他"
+  //     break;
+  // }
+  // return result
+  if (num == 10) {
+    result = '正常交易'
+  } else if (num == 20) {
+    result = '公益'
+  } else {
+    result = '其他'
+  }
+  return result
+}
+
+module.exports = {
+  tradeType:tradeType
+};

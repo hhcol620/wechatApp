@@ -6,6 +6,18 @@ import {
   getSystemNews,get_read_all
 } from '../../../request/api/store_api.js'
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
+//获取应用实例
+const app = getApp()
+// 引入全局  请求加载动画方法
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
+
+
+
 Page({
 
   /**
@@ -15,7 +27,9 @@ Page({
     pageSize: 10,
     currentPage: 1,
     totalCount: 0,
-    evaluateList: []
+    evaluateList: [],
+    // 控制主要数据是否显示
+    is_show: true
   },
 
   async getSystemInfo() {
@@ -25,10 +39,12 @@ Page({
       totalCount,
       evaluateList
     } = this.data
+    showLoading(this)
     const {
       data
     } = await getSystemNews(pageSize, currentPage)
-    console.log(data.data.data);
+    hideLoading(this)
+    // console.log(data.data.data);
 
     if (data.code !== 200) return;
     wx.stopPullDownRefresh()
@@ -36,6 +52,12 @@ Page({
     let cpage = currentPage + 1
     let list = data.data.data
     evaluateList.push(...list)
+    if (evaluateList.length <= 0) {
+      this.setData({
+        is_show:false
+      })
+    }
+    
     this.setData({
       evaluateList: evaluateList,
       currentPage: cpage

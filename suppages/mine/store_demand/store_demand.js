@@ -6,7 +6,11 @@ import { get_demandList,delete_demand } from '../../../request/api/store_api.js'
 //获取应用实例
 const app = getApp()
 // 引入全局  请求加载动画方法
-const { showLoading,hideLoading } = app.globalData
+const {
+  showLoading,
+  hideLoading,
+  imgURL
+} = app.globalData
 
 
 
@@ -26,8 +30,11 @@ Page({
     // 请求需求的列表参数
     pageSize: 5,
     currentPage: 1,
-    totalCount: 0
-    
+    totalCount: 0,
+    // 控制主要数据是否显示
+    is_show: true,
+    // 加载图片基地址
+    imgURL:''
   },
 
   // 点击了更多  打开一个弹框
@@ -49,9 +56,9 @@ Page({
   // 页面加载 发起请求 获取分页需求列表
   async get_demand_List () {
     const { pageSize,currentPage,demandList } = this.data
-    showLoading()
+    showLoading(this)
     const { data } = await get_demandList(pageSize,currentPage)
-    hideLoading()
+    hideLoading(this)
     if (data.code !== 200) {
       // 请求失败 提示用户获取信息失败
       wx.showToast({
@@ -68,6 +75,11 @@ Page({
       v.tgNameArr = v.tagNames.split('|')||[]
     })
     demandList.push(...list)
+    if (demandList.length<=0) {
+      this.setData({
+        is_show:false
+      })
+    }
     this.setData({
       demandList
     })
@@ -122,9 +134,9 @@ Page({
   pullDownRefresh () {
     this.setData({
       demandList: [],
-      pageSize: 5,
       currentPage: 1,
-      totalCount: 0
+      totalCount: 0,
+      is_show: true,
     })
     this.get_demand_List()
   },
@@ -139,7 +151,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
+    this.setData({
+      imgURL
+    })
     this.get_demand_List()
   },
 

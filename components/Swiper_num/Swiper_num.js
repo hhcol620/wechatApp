@@ -20,7 +20,19 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    // 跳转基地址
+    url: {
+      type: String,
+      value:''
+    },
+    arrList: {
+      type: Array,
+      value:[]
+    },
+    imgURL: {
+      type: String,
+      value:''
+    }
   },
 
 
@@ -47,12 +59,30 @@ Component({
    * 组件的初始数据
    */
   data: {
+    currentIndex: 1
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    // 切换tab
+    changeCurrent (e) {
+      // console.log(e);
+      const { current } = e.detail
+      console.log(current);
+      let c_current = current+1
+      this.setData({
+        currentIndex:c_current
+      })
+    },
+    // 添加点击记录
+    add_record (e) {
+      // console.log(e);
+      const { id } = e.currentTarget.dataset
+      // console.log(id);
+      this.triggerEvent('addrecord',id)
+    }
   },
 
 

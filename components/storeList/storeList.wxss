@@ -59,15 +59,21 @@ view.container ul li view.footer view.foot view.item > text.price {
   color: #ff1a22;
   font-style: normal;
 }
-view.container ul li view.footer view.foot view.item > text.tag {
+view.container ul li view.footer view.foot view.item > view.tag_box {
+  display: flex;
   font-size: 22rpx;
   height: 30rpx;
   line-height: 30rpx;
   font-style: normal;
   font-weight: 500;
+}
+view.container ul li view.footer view.foot view.item > view.tag_box .tag {
   color: #ff1a22;
   background-color: #ffdddd;
   padding: 0 4rpx;
+}
+view.container ul li view.footer view.foot view.item > view.tag_box .tag:not(:last-child) {
+  border-right: 1rpx solid #fff;
 }
 view.container ul li view.footer view.foot view.item > text.userName {
   padding-top: 6rpx;

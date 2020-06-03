@@ -13,7 +13,10 @@
 </van-sticky>
 <view class="store_forum_commponents" hover-class="none" hover-stop-propagation="false">
   <!-- 商城列表 -->
-  <StoreList arrList="{{goodsList}}" imgURL="{{imgURL}}"></StoreList>
+  <StoreList arrList="{{goodsList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></StoreList>
+  <view wx:else>
+    <no_more str="没有数据哦"></no_more>
+  </view>
 </view>
 <!-- 弹出层 -->
 <van-popup show="{{ show }}" position="right" custom-style="width: 70%;height: 100%" bind:close="onClose" z-index="9999">
@@ -45,3 +48,4 @@
     <view class="submit_btn" bind:tap="submitFunc">确定</view>
   </view>
 </van-popup>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

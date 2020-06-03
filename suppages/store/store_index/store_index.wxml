@@ -1,51 +1,17 @@
 <!-- 这是商城首页展示 -->
+<!-- 骨架屏 -->
+<!-- <include src="./store_index.skeleton.wxml"></include> -->
 <!-- 顶部搜索 -->
 <view class="search">
   <SearchInput></SearchInput>
 </view>
 <!-- banner图区域 -->
 <view class="swiper_box">
-  <Swiper_num></Swiper_num>
+  <Swiper_num url="{{to_base_url}}" arrList="{{swiperImgs}}" imgURL="{{imgURL}}" bind:addrecord="swiper_record_click"></Swiper_num>
 </view>
-<!-- 板块区域 -->
-<view class="plate">
-  <view class="title">校园专供</view>
-  <view class="box">
-    <view class="top">
-      <navigator class="" target="" url="/pages/search_store/search_store?keyword={{item.keywords}}" hover-class="navigator-hover" open-type="navigate" wx:for="{{topPic}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}">
-        <view class="item">
-          <image class="" src="{{item.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        </view>
-      </navigator>
-    </view>
-  </view>
-  <view class="box">
-    <view class="bottom">
-      <navigator class="" target="" url="/pages/search_store/search_store?keyword={{longPic.keywords}}" hover-class="navigator-hover" open-type="navigate">
-        <view class="itemL">
-          <image class="" src="{{longPic.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-        </view>
-      </navigator>
-      <view class="right">
-        <navigator class="" target="" url="/pages/search_store/search_store?keyword={{item.keywords}}" hover-class="navigator-hover" open-type="navigate" wx:for="{{bottomPic}}" wx:for-item="item" wx:for-index="index" wx:key="{{index}}">
-          <view class="item">
-            <image class="" src="{{item.url}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
-          </view>
-        </navigator>
-      </view>
-    </view>
-  </view>
-</view>
-<!-- <view class="recommend_box" hover-class="none" hover-stop-propagation="false">
-  <view class="title" hover-class="none" hover-stop-propagation="false">
-    猜你喜欢
-    <text class="iconfont icon-xihuan3" />
-  </view>
-  
-</view> -->
 <view class="tab_offline">
   <van-tabs bind:change="tabChange" type="card" sticky="{{true}}">
-    <van-tab title="便宜好货">
+    <van-tab title="实时推荐">
       <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
     </van-tab>
     <van-tab title="真心求购">
@@ -53,3 +19,5 @@
     </van-tab>
   </van-tabs>
 </view>
+<van-toast id="van-toast" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

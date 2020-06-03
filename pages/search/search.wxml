@@ -6,7 +6,8 @@
   </view>
   <view class="historyContainer" hover-class="none" hover-stop-propagation="false">
     <view class="titleCon" hover-class="none" hover-stop-propagation="false">
-      <text>搜索历史</text>
+      <view>搜索历史</view>
+      <view class="iconfont icon-shanchu" bind:tap="delete_search_history"></view>
     </view>
     <view class="tags" hover-class="none" hover-stop-propagation="false">
       <!-- 搜索历史 -->
@@ -16,3 +17,4 @@
     </view>
   </view>
 </view>
+<van-dialog id="van-dialog" />

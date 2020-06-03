@@ -18,7 +18,7 @@
       <view class="item" wx:if="{{isPasswordLogin}}">
         <view class="leftdesc">密码</view>
         <view class="input">
-          <input class="weui-input" placeholder="请输入密码" bindinput="getInputData" data-name="password" bind:blur="" />
+          <input class="weui-input" password placeholder="请输入密码" bindinput="getInputData" data-name="password" bind:blur="" />
         </view>
       </view>
       <view class="item">
@@ -61,3 +61,5 @@
     <view class="submit_btn" bind:tap="post_login_password">登陆</view>
   </view>
 </view>
+<wx_loading load-text="登陆中..." id="loading"></wx_loading>
+<van-toast id="van-toast" />

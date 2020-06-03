@@ -49,6 +49,14 @@ page {
 .container .item view.main .right .other text {
   margin-right: 10rpx;
 }
+.container .item view.main .right .createTime {
+  margin-top: 10rpx;
+  font-size: 22rpx;
+  color: #666;
+  line-height: 30rpx;
+  font-style: normal;
+  font-weight: 500;
+}
 .container .item view.footer {
   display: flex;
   justify-content: flex-end;
@@ -102,6 +110,7 @@ page {
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
+  border-top: 1rpx solid var(--borderColor);
 }
 .bottomBtn .release_product {
   height: 100rpx;

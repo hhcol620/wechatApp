@@ -3,7 +3,7 @@
   <view class="desc">
     <view class="tip">描述</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" value="{{mian_desc}}" data-name="mian_desc" bindinput="getInputData" placeholder="请输入您的宝贝最全的描述"></textarea>
+      <textarea show-confirm-bar="{{false}}" value="{{mian_desc}}" data-name="mian_desc" bindinput="getInputData" placeholder="请输入你想让跑手帮忙干什么,如取快递的地址,目的地地址"></textarea>
     </view>
   </view>
   <view class="requirement">
@@ -16,7 +16,7 @@
   <view class="price">
     <view class="tip">价格</view>
     <view class="price_content">
-      <input class="weui-number" value="{{price}}" data-name="price" bindinput="getInputData" type="number" placeholder="请输入您提供佣金的金额" />
+      <input class="weui-input" value="{{price}}" data-name="price" bindinput="getInputData" type="digit" placeholder="请输入您提供佣金的金额" />
     </view>
   </view>
   <!-- 这个位置放一个小提示 提醒用户下面的信息属于隐私类信息 我们不会直接提供显示给每一个用户  只有接单的人才允许收到这部分数据 -->
@@ -24,13 +24,13 @@
   <view class="tel">
     <view class="tip">手机</view>
     <view class="tel_content">
-      <input class="weui-number" value="{{telNum}}" data-name="telNum" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手及时能联系到您" />
+      <input class="weui-input" value="{{telNum}}" data-name="telNum" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手及时能联系到您" />
     </view>
   </view>
   <view class="address">
     <view class="tip">地址</view>
     <view class="tel_content">
-      <input class="weui-number" value="{{address}}" data-name="address" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手准确送到货物" />
+      <input class="weui-input" value="{{address}}" data-name="address" bindinput="getInputData" type="text" placeholder="请如实填写,方便跑手准确送到货物" />
     </view>
   </view>
   <!-- 备注信息 -->
@@ -43,7 +43,7 @@
 </view>
 <!-- 这个提交需要跳转到支付接口   先支付才可以发布成功 -->
 <view class="submitBtn">
-  <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
+  <van-button type="primary" size="normal" bind:click="Dia_user">立即发布</van-button>
 </view>
 <!-- 在页面内顶部的提示 失败提示 -->
 <van-notify id="van-notify" />

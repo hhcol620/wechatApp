@@ -22,13 +22,18 @@
 <view class="reply_second" hover-class="none" hover-stop-propagation="false">
   <!-- 留言面板 -->
   <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false" wx:for="{{sec_msg}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-    <van-row bindtap="replyFunc" data-id="{{item.id}}" data-firclassid="{{item.firstClassId}}">
+    <van-row bindtap="replyFunc" data-id="{{item.id}}" data-firclassid="{{item.firstClassId}}" data-sendername="{{item.consumerInfo.nickname}}">
       <van-col span="4" class="headeImg">
         <image class="" src="{{imgURL}}{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </van-col>
       <van-col span="15" class="reply_container">
         <view class="userName">{{item.consumerInfo.nickname}}</view>
-        <view class="content">{{item.content}}</view>
+        <view class="content">
+          <view wx:if="{{item.parentWriterInfo.nickname}}" class="toparent">
+            回复@{{item.parentWriterInfo.nickname}}:
+          </view>
+          <view class="con">{{item.content}}</view>
+        </view>
         <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
       </van-col>
     </van-row>
@@ -38,7 +43,7 @@
 <!-- 底部输入框 -->
 <view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
   <van-cell-group>
-    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
+    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="{{placeHolder}}" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
       <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
     </van-field>
   </van-cell-group>

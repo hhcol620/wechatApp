@@ -222,7 +222,7 @@
 					"id": 23,
 					"name": "商品详情页 id =1",
 					"pathName": "suppages/store/commodity/commodity",
-					"query": "id=1",
+					"query": "id=19",
 					"scene": null
 				},
 				{
@@ -429,10 +429,10 @@
 					"scene": null
 				},
 				{
-					"id": 54,
+					"id": 53,
 					"name": "商城搜索",
 					"pathName": "pages/search_store/search_store",
-					"query": "keyword=11",
+					"query": "keyword=华为",
 					"scene": null
 				},
 				{
@@ -446,7 +446,7 @@
 					"id": 55,
 					"name": "需求详情",
 					"pathName": "suppages/demand/demand_detail/demand_detail",
-					"query": "id=2",
+					"query": "id=21",
 					"scene": null
 				},
 				{
@@ -468,6 +468,20 @@
 					"name": "广告详情页",
 					"pathName": "pages/advertising/advertising",
 					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "校园通知",
+					"pathName": "pages/school_inform/school_inform",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "商品的留言详情",
+					"pathName": "suppages/store/lea_Message_detail/lea_Message_detail",
+					"query": "id=1&classid=45",
 					"scene": null
 				}
 			]

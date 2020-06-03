@@ -40,7 +40,7 @@ export const get_Tobinding_WX_emailCode = (params) => {
 }
 // 绑定微信  提交两个参数  params  一个是微信的临时登陆凭证code 还有就是一个邮箱验证码bindEmailCode
 export const post_Tobinding_WX = (params) => {
-  return postData(`/user/wx/binding`,params)
+  return postData(`/security/wx/binding`,params)
 }
 // 微信登陆  code  临时登录凭证code
 export const post_login_WX = (params) => {
@@ -54,7 +54,7 @@ export const get_recommend_byProductId = (pageSize,currentPage,productId) => {
 }
 // 首页的推荐  商品
 export const get_recommend_offline = (pageSize,currentPage) => {
-  return getData(`/goods/recommend/offline/${pageSize}/${currentPage}
+  return getData(`/goods/recommend/realtime/${pageSize}/${currentPage}
   `)
 }
 
@@ -152,7 +152,24 @@ export const get_donation_finsh_detail = (type,id) => {
   return getData(`/order/donation/detail/${type}/${id}`)
 }
 
-// 记录历史
+// 记录历史  浏览商品的
 export const get_add_history = (targetId) => {
   return getData(`/goods/record/browse/${targetId}`)
 }
+
+// 记录历史  浏览广告和通知
+export const get_add_history_advertising = (targetId) => {
+  return getData(`/user/propagate/browse/${targetId}`)
+}
+
+// 商城轮播图   获取轮播图
+
+export const get_swipers = (pageSize,currentPage) => {
+  return getData(`/goods/rotation/${pageSize}/${currentPage}`)
+}
+
+// 记录轮播图点击
+export const get_add_swipers_history = (id) => {
+  return getData(`/goods/rotation/browse/${id}`)
+}
+

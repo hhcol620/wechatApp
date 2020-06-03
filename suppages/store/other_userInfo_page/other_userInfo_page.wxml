@@ -31,14 +31,24 @@
 </view>
 <van-tabs sticky color="var(--themeColor)" bind:change="TabsChange" active="{{index}}">
   <van-tab title="宝贝">
-    <StoreList arrList="{{esList}}" imgURL="{{imgURL}}" />
+    <StoreList arrList="{{esList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}" />
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="求购">
     <!--  -->
-    <StoreList arrList="{{demandList}}" imgURL="{{imgURL}}" />
+    <StoreList arrList="{{demandList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}" />
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="评价">
-    <EvaList arrList="{{evaluateList}}" imgURL="{{imgURL}}"></EvaList>
+    <EvaList arrList="{{evaluateList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></EvaList>
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
 </van-tabs>
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

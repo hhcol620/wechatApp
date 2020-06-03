@@ -7,7 +7,8 @@
     <view class="nickName_real_sign" wx:if="{{userInfo.nickname}}">
       <view class="nickName_real">
         <view class="nickName">{{userInfo.nickname}}</view>
-        <view class="binding_wechat" bind:tap="to_binding_wechat">绑定微信</view>
+        <view class="binding_wechat" bind:tap="to_binding_wechat" wx:if="{{!isbind}}">绑定微信</view>
+        <view class="binding_wechat" bind:tap="relieve_binding_wechat" wx:else>解绑微信</view>
       </view>
       <view class="sign">{{userInfo.signature}}</view>
     </view>
@@ -141,3 +142,6 @@
     </view>
   </view>
 </view>
+<wx_loading load-text="登陆中..." id="loading"></wx_loading>
+<van-toast id="van-toast" />
+<van-toast id="van-toast" />

@@ -3,8 +3,8 @@
 <view class="noreal" wx:if="{{!isreal}}">
   <view class="form">
     <van-cell-group>
-      <van-field value="{{ name }}" label="姓名:" placeholder="请填写姓名" input-align="right" data-name="name" bind:input="getInputData" />
-      <van-field value="{{ studentNum }}" label="学号:" placeholder="请输入学号" input-align="right" data-name="studentNum" bind:input="getInputData" />
+      <van-field value="{{ name }}" label="姓名:" placeholder="请填写姓名" input-align="right" data-name="name" bind:input="getInputData" disabled="{{isreal}}" />
+      <van-field value="{{ cardNum }}" label="身份证号:" placeholder="请输入身份证号" input-align="right" data-name="cardNum" bind:input="getInputData" disabled="{{isreal}}" />
     </van-cell-group>
   </view>
   <!-- 上传证件区域 -->
@@ -21,7 +21,7 @@
         </view>
         <image class="" src="{{imgURL}}{{studentCardImg}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" wx:else></image>
       </view>
-      <view class="title">一卡通正面</view>
+      <view class="title">学生证照片页</view>
     </view>
   </view>
   <!-- 提醒 -->
@@ -44,3 +44,4 @@
 <van-notify id="van-notify" />
 <!-- 成功提示 -->
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

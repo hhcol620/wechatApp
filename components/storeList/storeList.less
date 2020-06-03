@@ -60,15 +60,21 @@ view.container {
             color: #ff1a22;
             font-style: normal;
           }
-          view.item >text.tag{
+          view.item >view.tag_box{
+            display: flex;
             font-size: 22rpx;
             height: 30rpx;
             line-height: 30rpx;
             font-style: normal;
             font-weight: 500;
-            color: #ff1a22;
-            background-color: #ffdddd;
-            padding: 0 4rpx;
+            .tag{
+              color: #ff1a22;
+              background-color: #ffdddd;
+              padding: 0 4rpx;
+              &:not(:last-child){
+                border-right: 1rpx solid #fff;
+              }
+            }
           }
         
           view.item >text.userName {

@@ -3,7 +3,7 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   get_goodsInfo,
-  get_leave_message_first,getUserInfo
+  get_leave_message_first,getUserInfo,getMyInfo
 } from '../../../request/api/store_api.js'
 
 import {
@@ -53,17 +53,23 @@ Page({
     msg_content: '',
     // 回复的信息  
     parentId: '',
-    firstClassId:''
+    firstClassId: '',
+    // placeholder 提示内容
+    placeHolder: '',
+    sendername:''
     
   },
   // 给二级留言回复 placeholder
   async replyFunc (e) {
+    const { placeHolder } = this.data
     // console.log('点击了回复');
     // 留言id firstClassId
-    const { id, firclassid } = e.currentTarget.dataset
+    const { id, firclassid,sendername } = e.currentTarget.dataset
     console.log(id, firclassid);
-    
+    let placeholder = sendername?`回复 @ ${sendername}`:'看对眼要留言,问问更多的细节~'
     this.setData({
+      placeHolder: placeholder,
+      sendername,
       inputShow: !this.data.inputShow,
       parentId: id,
       firstClassId: firclassid
@@ -124,13 +130,18 @@ Page({
       mask: true
     });
     // 从本地取出数据伪造假数据
-    const userInfo = wx.getStorageSync('userInfo');
-    userInfo.pic = userInfo.portrait
+    const userInfo = await this.get_my_Info()
+    const { sendername } = this.data
+    userInfo.pic = userInfo.portrait||''
+    const parentWriterInfo = {
+      nickname: sendername
+    }
     const msg = {
       createTime:getTime(),
       content: msg_content,
       replyTotal: 0,
-      consumerInfo:userInfo
+      consumerInfo: userInfo,
+      parentWriterInfo
     } 
     // console.log(msg);
     // 将这个msg插入到一级留言的头部
@@ -157,6 +168,7 @@ Page({
     const list = data.data.data||[]
     list.forEach(async (v,i) => {
       v.consumerInfo = await this.getUserInfoById(v.consumerId)
+      v.parentWriterInfo = await this.getUserInfoById(v.parentWriterId) || {}
       sec_msg.push(v)
       this.setData({
         sec_msg
@@ -165,7 +177,7 @@ Page({
     let current_page = currentPage+1
     this.setData({
       currentPage: current_page,
-      totalCount
+      totalCount:data.data.totalCount
     })
   },
   // 根据用户id获得用户信息
@@ -188,10 +200,6 @@ Page({
       inputShow:!this.data.inputShow
     })
   },
-  // 点击了发送
-  send () {
-    
-  },
   // 获取输入框中数据
   getData (e) {
     const {name} = e.currentTarget.dataset
@@ -200,6 +208,11 @@ Page({
     this.setData({
       [name]:value
     })
+  },
+  // 获取自己的信息
+  async get_my_Info () {
+    const { data } = await getMyInfo()
+    return data.data
   },
 
 
@@ -210,23 +223,34 @@ Page({
   onResize (e) {
     
   },
+  reachBottom () {
+    const { pageSize,currentPage,totalCount,productId,first_classId } = this.data
+    if (currentPage > Math.ceil(totalCount / pageSize)) {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
+      return
+    }
+    this.get_leave_message_second(productId,first_classId)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // console.log(options);
     // 商品id 一级留言id
-    const { id, classid } = options
-    const eventChannel = this.getOpenerEventChannel()
-    let fir_obj = {}
-    eventChannel.on('acceptDataFromOpenerPage', function(data) {
-      fir_obj = data[0]
-      fir_obj.second_lea_mess = []
-    })
+    const { id, classid,item } = options
+    // console.log(options);
+    let arr = JSON.parse(item)
     this.get_leave_message_second(id, classid)
     this.setData({
-      first_lea_msg: fir_obj,
       imgURL,
+      first_lea_msg: arr[0],
       productId: id,
       first_classId:classid
     })

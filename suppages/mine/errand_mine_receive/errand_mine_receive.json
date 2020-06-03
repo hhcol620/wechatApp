@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
-    "errand_receive":"/components/errand_receive/errand_receive"
+    "errand_receive":"/components/errand_receive/errand_receive",
+    "no_more":"/components/no_more/no_more"
   },
   "enablePullDownRefresh": true,
   "navigationBarTitleText":"我接到的订单"

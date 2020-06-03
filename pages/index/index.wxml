@@ -1,4 +1,5 @@
 <wxs src="../../utils/timeFormat.wxs" module="timeFormat" />
+<!-- <include src="./index.skeleton.wxml"></include> -->
 <view class="" hover-class="none" hover-stop-propagation="false">
   <!-- 首页 -->
   <!-- 导航 start -->
@@ -65,7 +66,9 @@
   <view class="swipers">
     <swiper autoplay circular>
       <swiper-item wx:for="{{advertising}}" wx:for-index="index" wx:for-item="item" wx:key="id" data-id="{{item.id}}" bind:tap="to_advertising">
-        <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view class="img">
+          <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        </view>
       </swiper-item>
     </swiper>
   </view>
@@ -85,3 +88,4 @@
     </view>
   </view>
 </view>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

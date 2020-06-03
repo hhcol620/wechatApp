@@ -83,6 +83,11 @@ export const put_goods_edit = (params) => {
   return putData(`/goods/goods/es/edit`,params)
 }
 
+// 根据商品的标题  推送关键词  {text:''}
+export const post_goods_tag_recommend = (params) => {
+  return postFormData(`/goods/recommend/tag`,params)
+}
+
 // 根据商品id查询商品的留言信息 一级留言 parentId,firstClassId 两个都传0 请求一级留言下的留言 请求 id 为2的一级留言下的留言   这个parentId,firstClassId 分别为0 和 2
 export const get_leave_message_first = (pageSize,currentPage,goodsId,parentId,firstClassId) => {
   return getData(`/goods/goods/msg/${pageSize}/${currentPage}/${goodsId}/${parentId}/${firstClassId}`)
@@ -111,8 +116,8 @@ export const reply_to_me = (pageSize, currentPage) => {
 }
 
 //根据索引删除浏览 记录
-export const deleteBrowsingByIndex = (index) => {
-  return deleteData(`/goods/record/${index}`)
+export const deleteBrowsingByIndex = (productId) => {
+  return deleteData(`/goods/record/${productId}`)
 }
 
 //清空自己的浏览记录
@@ -178,9 +183,13 @@ export const getOrderState = (code)=> {
   return getData(`/order/order/errand/state/${code}`)
 }
 
-//删除跑腿订单  typ取值 5-删除发布的(作为卖家) 6-删除接单(作为买家)
+//删除跑腿订单  typ取值 5-删除发布的(作为卖家) 6-删除接单(作为买家)   已经完成的情况下
 export const deleteErrandOrder = (typ, id) => {
   return deleteData(`/order/order/errand/${typ}/${id}`)
+}
+// 删除跑腿订单 没有人接单的情况下
+export const deleteErrandOrder_noreceive = (id, version) => {
+  return deleteData(`/goods/errand/${id}/${version}`)
 }
 // 完成跑腿订单
 export const finishErrandOrder = (id) => {
@@ -265,6 +274,16 @@ export const get_demand_reply_lea_msg = (pageSize,currentPage,demandId) => {
 export const post_demand_reply_lea_msg = (params) => {
   return postData("/goods/demand/reply", params)
 }
+
+// 查看自己是否已经绑定了微信
+export const get_is_wx_binding = (params) => {
+  return getData(`/security/wx/check`,params)
+}
+// 解除微信绑定
+export const wx_unbinding = (params) => {
+  return deleteData(`/security/wx/unbind`,params)
+}
+
 
 
 

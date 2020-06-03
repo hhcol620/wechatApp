@@ -28,15 +28,6 @@ Page({
     // 公益列表
     donationList: []
   },
-  async getSwiper() {
-    showLoading()
-    // const res = await get_swipers()
-    // console.log(res);
-    // this.setData({
-    //   swiperList:res.data.message
-    // })
-    hideLoading()
-  },
   // 跳转到通知页
   to_school_inform (e) {
     const { id } = e.currentTarget.dataset
@@ -147,5 +138,7 @@ Page({
     this.getDonation()
     this.get_Sch_notice()
     this.get_advertising()
+    // showLoading(this)
+    // hideLoading(this)
   }
 })

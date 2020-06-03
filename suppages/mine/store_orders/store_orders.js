@@ -36,7 +36,9 @@ Page({
     // 订单列表
     orderList: [],
     // tab  默认
-    tabIndex:0
+    tabIndex: 0,
+    // 控制主要数据是否显示
+    is_show: true
   },
   // tab 切换
   async tabChange (e) {
@@ -50,7 +52,8 @@ Page({
       totalCount: 0,
       // 订单列表
       orderList: [],
-      tabIndex: index
+      tabIndex: index,
+      is_show:true
     })
     if (index == 0) {
       await this.getOrderList_buy()
@@ -78,19 +81,27 @@ Page({
     const {
       orderList,currentPage
     } = this.data
+    showLoading(this)
     const {
       data
     } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
+    hideLoading(this)
     if (data.code !== 200) return;
     const res = data.data
     const List = res.data
     console.log(List);
+    if (orderList.length <= 0&&List.length===0) {
+      this.setData({
+        is_show:false
+      })
+    }
     List.forEach(async item => {
       const res = await this.getbuyerInfo(item.salerId)
       const goodsInfo = await this.getGoodsInfo(item.productId)
       item.salerInfo = res
       item.goodsInfo = goodsInfo
       orderList.push(item)
+      
       this.setData({
         orderList
       })
@@ -106,18 +117,26 @@ Page({
   // 我卖出的订单
    // 获取列表 这里面获取了列表之后 需要触发一下父页面的值将值传到页面上
   async getOrderList_sale () {
-    const { orderList,currentPage } = this.data
+    const { orderList, currentPage } = this.data
+    showLoading(this)
     const{ data } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
+    hideLoading(this)
     if (data.code !== 200) return;
     const res = data.data
     const List = res.data
     console.log(List);
+    if (orderList.length <= 0&&List.length===0) {
+      this.setData({
+        is_show:false
+      })
+    }
     List.forEach(async item => {
       const res = await this.getbuyerInfo(item.salerId)
       const goodsInfo = await this.getGoodsInfo(item.productId)
       item.goodsInfo = goodsInfo
       item.salerInfo = res
       orderList.push(item)
+      
       this.setData({
         orderList
       })

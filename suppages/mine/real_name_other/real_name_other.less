@@ -9,24 +9,24 @@ page{
   view.uploadImg{
     margin-top: 20rpx;
     padding: 0 30rpx;
-    height: 380rpx;
+    height: 460rpx;
     background-color: #fff;
     display: flex;
     align-items: center;
-    .item{
-      width: 100%;
+    .left.item{
+      width: calc(~"100vw - 60rpx");
       display: flex;
       flex-direction: column;
       justify-content: center;
       .upbox{
-        width: 100%;
-        height: 260rpx;
+        width: calc(~"100vw - 60rpx");
         box-sizing: border-box;
         border: 2rpx dashed #999;
+        height: 360rpx;
         .beforeUpload{
           .icon{
             position: relative;
-            height: 240rpx;
+            height: 360rpx;
             .col{
               position: absolute;
               left: 50%;
@@ -48,7 +48,7 @@ page{
           }
         }
         image{
-          width: 100%;
+          width: calc(~"100vw - 60rpx");
           height: 100%;
         }
       }

@@ -10,7 +10,8 @@ const app = getApp()
 // 引入全局  请求加载动画方法
 const {
   showLoading,
-  hideLoading
+  hideLoading,
+  imgURL
 } = app.globalData
 
 
@@ -33,7 +34,11 @@ Page({
     // 数据总条数
     totalCount: 0,
     // 点击查看更多的 那条数据的id 
-    id: ''
+    id: '',
+    // 控制主要数据是否显示
+    is_show: true,
+    // 加载图片基地址
+    imgURL:''
   },
   // 页面加载 请求方法 获取自己发布的二手商品列表
   async getGoodsList () {
@@ -42,9 +47,11 @@ Page({
       currrentPage,
       goodsList
     } = this.data
+    showLoading(this)
     const {
       data
     } = await get_goodsList(pageSize,currrentPage)
+    hideLoading(this)
     // console.log(data.code);
     if (data.code !== 200) {
       // 提醒用户获取信息失败
@@ -60,26 +67,35 @@ Page({
     console.log(data);
     // 将页面大小和数据总条数和当前页记录一下 
     
-    const list = data.data.data
+    const list = data.data.data||[]
     // console.log(list);
     const l = list.map((v) => {
       const title = v.title
       const productDesc = v.productDesc
       const mainPicUrl = v.mainPicUrl
       const browserTimes = v.browserTimes
+      const collectTotal = v.collectTotal
       const salePrice = v.salePrice
+      const createTime = v.createTime
       const id = v.id
       return {
         title,
         productDesc,
         mainPicUrl,
         browserTimes,
+        collectTotal,
         salePrice,
+        createTime,
         id
       }
     })
     let c_page = currrentPage+1
     goodsList.push(...l)
+    if (goodsList.length<=0) {
+      this.setData({
+        is_show:false
+      })
+    }
     this.setData({
       goodsList: goodsList,
       currrentPage:c_page
@@ -140,6 +156,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      imgURL  
+    })
     this.getGoodsList()
   },
 
@@ -177,11 +196,10 @@ Page({
   onPullDownRefresh: function() {
     this.setData({
       goodsList: [],
-      // pageSize
-      pageSize: 10,
       // 当前页
       currrentPage: 1,
-      totalCount: 0
+      totalCount: 0,
+      is_show: true,
     })
     this.getGoodsList()
   },

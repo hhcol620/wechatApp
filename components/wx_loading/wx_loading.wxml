@@ -1,0 +1,33 @@
+<view class="box" catchtouchmove="nomove" wx:if="{{loadingState}}">
+  <view class="column">
+    <view class="container animation-1">
+      <view class="shape shape1"></view>
+      <view class="shape shape2"></view>
+      <view class="shape shape3"></view>
+      <view class="shape shape4"></view>
+    </view>
+  </view>
+  <view class="loadingtext">
+    {{loadingtext}}
+    <!-- <view class="load8">
+      <view class="load8-container container1">
+        <view class="circle1"></view>
+        <view class="circle2"></view>
+        <view class="circle3"></view>
+        <view class="circle4"></view>
+      </view>
+      <view class="load8-container container2">
+        <view class="circle1"></view>
+        <view class="circle2"></view>
+        <view class="circle3"></view>
+        <view class="circle4"></view>
+      </view>
+      <view class="load8-container container3">
+        <view class="circle1"></view>
+        <view class="circle2"></view>
+        <view class="circle3"></view>
+        <view class="circle4"></view>
+      </view>
+    </view> -->
+  </view>
+</view>

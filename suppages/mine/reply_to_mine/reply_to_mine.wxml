@@ -1,6 +1,6 @@
 <!-- 消息格式化 -->
 <wxs src="../../../utils/timeFormat.wxs" module="timeFormat"></wxs>
-<view class="container">
+<view class="container" wx:if="{{is_show}}">
   <!-- 滚动显示其他的功能 -->
   <van-swipe-cell right-width="{{ 65 }}" wx:for="{{replyToMe}}" wx:for-index="index" wx:for-item="item" wx:key="id">
     <view class="item" bind:tap="to_commodity" data-targetid="{{item.targetId}}">
@@ -27,5 +27,9 @@
     <view slot="right" class="delete_btn" bind:tap="deleteFunc">删除</view>
   </van-swipe-cell>
 </view>
+<view wx:else>
+  <no_more str="没有数据哦"></no_more>
+</view>
 <!-- 删除的弹框提示 -->
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

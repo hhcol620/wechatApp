@@ -5,9 +5,9 @@
     <view class="deleteBtn" bind:tap="deleteAll">清空</view>
   </view>
 </view>
-<view class="container">
+<view class="container" wx:if="{{is_show}}">
   <view class="item_b" wx:for="{{recordList}}" wx:key="id">
-    <view class="time_title">{{item.browseDate}}</view>
+    <!-- <view class="time_title">{{item.browseDate}}</view> -->
     <view class="content_b">
       <view class="item" bind:longpress="longPressFunc" bind:tap="to_commodity" data-id="{{item.id}}" data-inx="{{index}}">
         <view class="image left">
@@ -24,5 +24,9 @@
     </view>
   </view>
 </view>
+<view wx:else>
+  <no_more str="没有数据哦"></no_more>
+</view>
 <!-- 删除浏览记录的弹框  删除单个和删除全部公用一个 -->
 <van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

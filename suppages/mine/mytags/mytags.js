@@ -29,12 +29,16 @@ Page({
     // 已关注标签
     likeTags:[],
     // 所有的标签
-    allTags: []
+    allTags: [],
+    // 控制主要数据是否显示
+    is_show: true
   },
 
   // 获取标签列表
   async getTag () {
+    showLoading(this)
     const { data } = await getUserTag()
+    hideLoading(this)
     // console.log(data.data);
     if (data.code !== 200) {
       // 获取信息失败
@@ -60,8 +64,7 @@ Page({
       likeTags,
       allTags:List
     })
-    wx.stopPullDownRefresh()
-      
+    wx.stopPullDownRefresh() 
   },
   // 切换 标签是否关注
   async change_concern (e) {
@@ -116,6 +119,10 @@ Page({
     })
     // 然后重新请求 获取tags
     this.getTag()
+  },
+  // 触底加载下一页
+  reachBottom () {
+    
   },
   /**
    * 生命周期函数--监听页面加载

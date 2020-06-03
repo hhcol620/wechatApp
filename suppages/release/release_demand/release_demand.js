@@ -2,7 +2,8 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  get_demandMessage,getCategoryTree,put_demand
+  get_demandMessage, getCategoryTree, put_demand,
+  post_goods_tag_recommend
 } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
@@ -54,7 +55,9 @@ Page({
     // 页面显示的分类
     cateValue: '',
     // 分类的id   后台需要的
-    cateId:''
+    cateId: '',
+    // 推荐的标签
+    addTags:[]
   },
 
 
@@ -282,6 +285,43 @@ Page({
       unit:1
     })
     console.log(res);
+  },
+  async getTagsRecommend () {
+    const { title,productDesc } = this.data
+    // let str = `${title},${productDesc}`
+    let arr = [];
+    arr[0] = title
+    arr[1] = productDesc
+    // console.log(arr);
+    let text = arr.join(',')
+    // console.log(text);
+    if (text.length <= 0) {
+      return
+    }
+    let obj = {text}
+    const { data } = await post_goods_tag_recommend(obj)
+    // console.log(obj);
+    if (data.code !== 200) {
+      return 
+    }
+    this.setData({
+      addTags:data.data
+    })
+  },
+  // 点击标签 添加
+  addTag (e) {
+    const { item } = e.currentTarget.dataset
+    const { tagNames,addTags } = this.data
+    addTags.forEach((v, i) => {
+      if (v === item) {
+        addTags.splice(i,1)
+      }
+    })
+    let tagNames_str = tagNames + ' ' + item
+    this.setData({
+      tagNames: tagNames_str,
+      addTags
+    })
   },
   /**
    * 生命周期函数--监听页面加载

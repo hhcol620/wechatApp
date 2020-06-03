@@ -5,11 +5,18 @@
 <!-- 订单的简略信息 物品描述 起始地点 收货地点 -->
 <!-- 查看详情 这个使用弹框 将收货人信息展示  或者将跑腿人信息展示出来 -->
 <!-- 点击位置 可以出现发货地 和收货地的信息 最好可以开启实时导航 -->
-<van-tabs active="{{ active }}" bind:change="onChange" color="var(--themeColor)">
+<van-tabs active="{{ active }}" bind:change="clickTabs" color="var(--themeColor)">
   <van-tab title="正在进行的">
-    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand"></errand_receive>
+    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand" wx:if="{{is_show}}"></errand_receive>
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="已完成的">
-    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand"></errand_receive>
+    <errand_receive arrList="{{errandList}}" bind:deleteFunc="deleteErrand" wx:if="{{is_show}}"></errand_receive>
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
 </van-tabs>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

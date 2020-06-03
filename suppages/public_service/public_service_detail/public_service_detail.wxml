@@ -1,10 +1,12 @@
+<wxs src="../../../utils/userType.wxs" module="user_Type"></wxs>
 <view class="container">
   <!-- 顶部放一些发起方的一个简介 包括这个活动的简介 -->
   <!-- 这是申请方的一些简介信息 -->
   <view class="sponsor_desc">
     <view class="tip">申请方:</view>
-    <view class="desc">
-      {{donationDetailObj.applyUserInfo.nickname}} {{donationDetailObj.applyUserInfo.signature}}
+    <view class="desc flex_row">
+      <view class="nickname">{{donationDetailObj.applyUserInfo.nickname}}</view>
+      <view class="userType">{{user_Type.userType(donationDetailObj.applyUserInfo.userType)}}</view>
     </view>
   </view>
   <!-- 活动的描述 -->

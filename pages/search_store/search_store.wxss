@@ -95,4 +95,5 @@ view.sx_box .sx {
   align-items: center;
   justify-content: center;
   background-color: var(--themeColor);
+  color: #fff;
 }

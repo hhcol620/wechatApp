@@ -65,7 +65,9 @@ Page({
     // evaluate 评价 列表
     evaluateList: [],
     // tab现在所在位置
-    index: 0
+    index: 0,
+    // 控制主要数据是否显示
+    is_show: true
   },
   // 获取用户信息
   async getUserCenter (id) {
@@ -91,7 +93,8 @@ Page({
     const { index } = e.detail
     const { esList,demandList,evaluateList } = this.data
     this.setData({
-      index
+      index,
+      is_show: true
     })
     if (index == 0) {
       if (esList.length <= 0) {
@@ -118,21 +121,21 @@ Page({
   async get_es_comm () {
     const { getEsObj,userid,esList } = this.data
     const { pageSize,currentPage,totalCount } = getEsObj
-    if (currentPage > Math.ceil(totalCount / pageSize)) {
-      Dialog.alert({
-        message: '没有更多数据了',
-      }).then(() => {
-        // on close
-      });
-      return
-    }
+    showLoading(this)
     const { data } = await get_user_release_comm(pageSize,currentPage,userid)
+    hideLoading(this)
     if (data.code !== 200) {
       return
     }
     console.log(data);
     const cpage = currentPage+1
     esList.push(...data.data.data)
+    if (esList.length <= 0) {
+      // 为空
+      this.setData({
+        is_show:false
+      })
+    }
     this.setData({
       esList,
       ['getEsObj.currentPage']:cpage,
@@ -143,22 +146,22 @@ Page({
   async get_demand () {
     const { getDemandObj,userid,demandList } = this.data
     const { pageSize, currentPage, totalCount } = getDemandObj
-    if (currentPage > Math.ceil(totalCount / pageSize)) {
-      Dialog.alert({
-        message: '没有更多数据了',
-      }).then(() => {
-        // on close
-      });
-      return
-    }
-    const { data } = await get_user_release_demand(pageSize,currentPage,userid)
+    showLoading(this)
+    const { data } = await get_user_release_demand(pageSize, currentPage, userid)
+    hideLoading(this)
     if (data.code !== 200) {
       return
     }
     console.log(data);
     // demandList.push(...data.data.data)
+    
     const cpage = currentPage + 1
     const List = data.data.data
+    if (List.length <= 0 && demandList.length <= 0) {
+      this.setData({
+        is_show: false
+      })
+    }
     List.forEach((v,i) => {
       v.mainPicUrl = v.mainPic
       v.title = v.topic
@@ -177,21 +180,20 @@ Page({
   async getEvaluate () {
     const { getEvaluateObj,userid,evaluateList } = this.data
     const { pageSize, currentPage, totalCount } = getEvaluateObj
-    if (currentPage > Math.ceil(totalCount / pageSize)) {
-      Dialog.alert({
-        message: '没有更多数据了',
-      }).then(() => {
-        // on close
-      });
-      return
-    }
+    showLoading(this)
     const { data } = await get_user_evaluate(pageSize,currentPage,userid)
+    hideLoading(this)
     if (data.code !== 200) {
       return
     }
     // console.log(data);
     // evaluateList.push(...data.data.data)
     const List = data.data.data
+    if (evaluateList.length <= 0 && List.length <= 0) {
+      this.setData({
+        is_show:false
+      })
+    }
     List.forEach(async (v,i) => {
       v.userInfo = await this.get_UserInfo(v.buyerId)
       evaluateList.push(v)
@@ -264,13 +266,47 @@ Page({
    */
   onReachBottom: function () {
     // 先获取tab 所在位置   发起不同的请求
-    const { index } = this.data
+    const { index,getEsObj,getDemandObj,getEvaluateObj } = this.data
     if (index == 0) {
-      this.get_es_comm()
+      const { pageSize,currentPage,totalCount} = getEsObj
+      if (currentPage <= Math.ceil(totalCount / pageSize)) {
+        this.get_es_comm()
+      } else {
+        wx.showToast({
+          title: '没有更多数据了',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: true
+        });  
+      }
+      
     } else if (index == 1) {
-      
+      const { pageSize,currentPage,totalCount} = getDemandObj
+      if (currentPage <= Math.ceil(totalCount / pageSize)) {
+        this.get_demand()
+      } else {
+        wx.showToast({
+          title: '没有更多数据了',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: true
+        });  
+      }
     } else if (index == 2) {
-      
+      const { pageSize,currentPage,totalCount} = getDemandObj
+      if (currentPage <= Math.ceil(totalCount / pageSize)) {
+        this.getEvaluate()
+      } else {
+        wx.showToast({
+          title: '没有更多数据了',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: true
+        });  
+      }
     }
   },
 

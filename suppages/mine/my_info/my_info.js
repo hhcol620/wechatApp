@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 // suppages/store/my_info/my_info.js
 import {
   getMyInfo,
@@ -37,10 +37,12 @@ Page({
     imgURL: ''
   },
   TimeId: -1,
-  async getMyInfo() {
+  async getMyInfo () {
+    showLoading(this)
     const {
       data
     } = await getMyInfo()
+    hideLoading(this)
     if (data.code !== 200) {
       return
     }
@@ -77,6 +79,10 @@ Page({
         const res = await upLoadImages(result.tempFilePaths[0])
         const geturl = JSON.parse(res.data)
         console.log(geturl);
+        const istrue = await this.checkPic(geturl.text)
+        if (!istrue) {
+          return 
+        }
         this.setData({
           ['userInfo.portrait']: `${geturl.text}`
         })
@@ -84,6 +90,17 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+  },
+  // 检测上传的图片是否合法
+  async checkPic (url) {
+    const obj = {picUri:url}
+    const { data } = await checkDataPic(obj)
+    if (data.code !== 200) {
+      Toast(`${data.text}`);
+      return 
+    }
+    // console.log('头像合法',data);
+    return true
   },
   // 防止抖动
   checkNameDebounce() {
@@ -207,14 +224,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    this.submit_userInfo()
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    this.submit_userInfo()
   },
 
   /**

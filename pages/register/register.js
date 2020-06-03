@@ -1,6 +1,6 @@
 import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
-import { post_ToEmailCode,post_register,checkData } from '../../request/api/store_front_api.js'
+import { post_ToEmailCode, post_register, checkData } from '../../request/api/store_front_api.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法

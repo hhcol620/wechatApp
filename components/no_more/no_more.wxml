@@ -1,0 +1,6 @@
+<view class="container">
+  <view class="imgages">
+    <image class="" src="/icons/images/5c31b123a7912.jpg" mode="widthFix" lazy-load="false" binderror="" bindload="" />
+  </view>
+  <view class="desc">{{str}}</view>
+</view>

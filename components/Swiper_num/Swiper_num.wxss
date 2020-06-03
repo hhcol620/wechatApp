@@ -8,6 +8,22 @@
 .swiper_box .index_swiper swiper image {
   width: 100%;
 }
+.swiper_box .index_swiper swiper navigator {
+  position: relative;
+}
+.swiper_box .index_swiper swiper navigator .hot_tag {
+  height: 40rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 30rpx;
+  color: #fff;
+  font-size: 26rpx;
+  line-height: 40rpx;
+  width: 80rpx;
+  border-radius: 6rpx;
+  text-align: center;
+  background: #ea622790;
+}
 .swiper_box .dot {
   height: 40rpx;
   position: absolute;

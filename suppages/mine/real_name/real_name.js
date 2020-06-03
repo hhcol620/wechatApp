@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-import { oneCardAuthen } from '../../../request/api/store_api.js'
+import { oneCardAuthen,getMyInfo } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
 import {
   upLoadImages
@@ -31,7 +31,7 @@ Page({
   data: {
     // 是否已经实名
     isreal: false,
-    // 一卡通正面地址
+    // 学生证正面地址
     studentCardImg: '',
     // 姓名
     name: '',
@@ -39,8 +39,10 @@ Page({
     // school: '',
     // // 学院
     // academy: '',
-    // 学号
-    studentNum:''
+    // 身份证号
+    cardNum: '',
+    // 图片加载基地址
+    imgURL:''
   },
   // 输入框中输入内容触发 获取其中的值
   // 获取输入框中的数据
@@ -55,14 +57,17 @@ Page({
     // console.log(e);
   },
 
-  // 点击上传一卡通
-  upStudentCard(e) {
+  // 点击上传学生证照片页
+  upStudentCard (e) {
+    let that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: async (result) => {
+        showLoading(that)
         const res = await upLoadImages(result.tempFilePaths[0])
+        hideLoading(that)
         const geturl = JSON.parse(res.data)
         this.setData({
           studentCardImg: `${geturl.text}`
@@ -74,40 +79,46 @@ Page({
 
   },
   // 用户点击了提交
-  async submitFunc() {
-
-    const {studentCardImg,name,studentNum} = this.data
-    if (!name.trim()||!studentNum.trim()||!studentCardImg.trim()) {
+  async submitFunc () {
+    showLoading(this)
+    const {studentCardImg,name,cardNum} = this.data
+    if (!name.trim()||!cardNum.trim()||!studentCardImg.trim()) {
       // 有空值   提示用户输入不合法
-      Notify({ type: 'warning', message: '输入不合法,请检查后重试' });
+      Notify({ type: 'danger', message: '输入不合法,请检查后重试' });
       return
     }
     // 发起提交请求*********************
-    // const { name, school, academy, studentNum, studentCardImg } = this.data
+    // const { name, school, academy, cardNum, studentCardImg } = this.data
     const studentObj = {
       fileUri:studentCardImg,
-      realName: name,
-      inputCardNo:studentNum
+      inputName: name,
+      inputCardNo:cardNum
     }
     const { data } = await oneCardAuthen(studentObj)
-    
+    hideLoading(this)
     console.log(data);
     // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页
     if (data.code !== 200) {
       // 提交失败
-      Notify({ type: 'warning', message: '提交失败,请稍后重试' });
+      Notify({ type: 'danger', message: '提交失败,请稍后重试' });
       return
     }
     Notify({ type: 'success', message: `${data.text}` });
     // 提交成功   提示用户 然后回退上一页面
     Dialog.confirm({
         title: '提示',
-        message: '您的提交我们已经收到',
+        message: '您的提交我们已经收到,重新登陆就可以获得更多的权限啦!',
         asyncClose: true
       })
       .then(() => {
         setTimeout(() => {
-          this.navigateBackFunc()
+          // this.navigateBackFunc()
+          try {
+            wx.clearStorageSync()
+          } catch(e) {
+            // Do something when catch error
+          }
+          this.toLogin()
           Dialog.close();
         }, 1000);
       })
@@ -123,6 +134,33 @@ Page({
       delta: 1
     })
   },
+  // 认证或者提交成功 让用户跳到登陆页
+  toLogin () {
+    wx.redirectTo({
+      url: '/pages/login/login',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+  // 页面加载 发起请求获取是否已经实名成功
+  async get_my_info () {
+    const { data } = await getMyInfo()
+    console.log(data);
+    if (data.code !== 200) {
+      return
+    }
+    if (data.data.state === 40) {
+      // 已经实名成功
+      this.setData({
+        isreal:true
+      })
+    }
+    
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -130,6 +168,7 @@ Page({
     this.setData({
       imgURL
     })
+    this.get_my_info()
   },
 
   /**

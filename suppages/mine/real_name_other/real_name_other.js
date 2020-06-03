@@ -27,6 +27,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 是否已经实名
+    isreal: false,
     // 身份证正面地址
     cardImg: '',
     // 姓名
@@ -50,13 +52,16 @@ Page({
   },
 
   // 点击身份证
-  upCard(e) {
+  upCard (e) {
+    let that = this
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: async (result) => {
+        showLoading(that)
         const res = await upLoadImages(result.tempFilePaths[0])
+        hideLoading(that)
         const geturl = JSON.parse(res.data)
         // console.log();
         this.setData({
@@ -70,7 +75,7 @@ Page({
   },
   // 用户点击了提交
   async submitFunc() {
-
+    showLoading(this)
     const {cardImg,name,cardNum,telNum} = this.data
     if (!name.trim()||!cardNum.trim()||!cardImg.trim()) {
       // 有空值   提示用户输入不合法
@@ -80,11 +85,11 @@ Page({
     // 发起提交请求*********************
     const userCardAuthenObj = {
       fileUri:cardImg,
-      realName: name,
+      inputName: name,
       inputCardNo:cardNum
     }
     const { data } = await userIdCardAuthen(userCardAuthenObj)
-    
+    hideLoading(this)
     console.log(data);
     // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页
     if (data.code !== 200) {
@@ -96,19 +101,52 @@ Page({
     // 提交成功之后  提示用户已经接收到您的实名认证申请 然后等待1秒 退到上一页
 
     Dialog.confirm({
-        title: '提示',
-        message: '您的提交我们已经收到',
-        asyncClose: true
-      })
-      .then(() => {
-        setTimeout(() => {
-          this.navigateBackFunc()
-          Dialog.close();
-        }, 1000);
-      })
-      .catch(() => {
+      title: '提示',
+      message: '您的提交我们已经收到,重新登陆就可以获得更多的权限啦!',
+      asyncClose: true
+    })
+    .then(() => {
+      setTimeout(() => {
+        // this.navigateBackFunc()
+        try {
+          wx.clearStorageSync()
+        } catch(e) {
+          // Do something when catch error
+        }
+        this.toLogin()
         Dialog.close();
-      });
+      }, 1000);
+    })
+    .catch(() => {
+      Dialog.close();
+    });
+  },
+  // 认证或者提交成功 让用户跳到登陆页
+  toLogin () {
+    wx.redirectTo({
+      url: '/pages/login/login',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+  // 页面加载 发起请求获取是否已经实名成功
+  async get_my_info () {
+    const { data } = await getMyInfo()
+    console.log(data);
+    if (data.code !== 200) {
+      return
+    }
+    if (data.data.state === 40) {
+      // 已经实名成功
+      this.setData({
+        isreal:true
+      })
+    }
+    
   },
   // 跳转到上一个页面
   navigateBackFunc() {
@@ -123,6 +161,7 @@ Page({
     this.setData({
       imgURL
     })
+    this.get_my_info()
   },
 
   /**

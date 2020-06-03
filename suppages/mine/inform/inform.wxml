@@ -1,6 +1,6 @@
 <!-- 消息格式化 -->
 <wxs src="../../../utils/newstype.wxs" module="newsType"></wxs>
-<view class="container">
+<view class="container" wx:if="{{is_show}}">
   <view class="item" wx:for="{{evaluateList}}" wx:key="id" wx:for-index="id" wx:for-item="it">
     <view class="time">
       <text class="" selectable="false" space="false" decode="false">{{it.createTime}}</text>
@@ -15,3 +15,7 @@
     </view>
   </view>
 </view>
+<view wx:else>
+  <no_more str="没有数据哦"></no_more>
+</view>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

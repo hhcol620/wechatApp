@@ -5,7 +5,7 @@ import {
   getUserInfo
 } from '../../request/api/store_api.js'
 import {
-  get_propagate_detail
+  get_propagate_detail,get_add_history_advertising
 } from '../../request/api/store_front_api.js'
 //index.js
 //获取应用实例
@@ -28,102 +28,123 @@ Page({
     // 加载图片基地址
     imgURL: '',
     // 通知id
-    id:'',
+    id: '',
     // 通知详情
-    informDetail:[]
+    informDetail: []
   },
   // 根据通知的id获取详情
-  async get_detail_byId (id){
-    const { data } = await get_propagate_detail(id)
+  async get_detail_byId(id) {
+    const {
+      data
+    } = await get_propagate_detail(id)
     console.log(data);
     const obj = data.data
     const publisherInfo = await this.get_userInfo_byId(obj.publisherId)
     obj.publisherInfo = publisherInfo
     this.setData({
-      informDetail:obj
+      informDetail: obj
     })
   },
   // 根据用户id获取用户的信息
-  async get_userInfo_byId (userid) {
-    const { data } = await getUserInfo(userid)
+  async get_userInfo_byId(userid) {
+    const {
+      data
+    } = await getUserInfo(userid)
     if (data.code !== 200) {
-      return 
+      return
     }
     return data.data
   },
   // 跳转用户中心页
-  toUserCenter (e) {
-    const { userid } = e.currentTarget.dataset
+  toUserCenter(e) {
+    const {
+      userid
+    } = e.currentTarget.dataset
     console.log(userid);
     wx.navigateTo({
       url: `/suppages/store/other_userInfo_page/other_userInfo_page?userid=${userid}`,
       success: (result) => {
-        
+
       },
       fail: () => {},
       complete: () => {}
     });
-      
+
+  },
+  // 记录浏览历史
+  async add_history () {
+    const { id } = this.data
+    const {
+      data
+    } = await get_add_history_advertising(id)
+    console.log('浏览历史', data);
+    if (data.code !== 200) {
+      return
+    }
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    const { id } = options
+  onLoad: function(options) {
+    const {
+      id
+    } = options
     this.setData({
       imgURL,
       id
     })
     this.get_detail_byId(id)
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
+  onUnload: function() {
+    this.add_history()
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -1,9 +1,16 @@
 <!-- 这个标签选择页 顶部使用一个tab页显示已关注 和所有的标签 -->
 <van-tabs active="{{ active }}" bind:change="onChange" swipe-threshold='2' color="#2ecc71">
   <van-tab title="已关注标签">
-    <selectTags arrList="{{likeTags}}" bind:changeConcern="change_concern"></selectTags>
+    <selectTags arrList="{{likeTags}}" bind:changeConcern="change_concern" wx:if="{{is_show}}"></selectTags>
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
   <van-tab title="所有标签">
-    <selectTags arrList="{{allTags}}" bind:changeConcern="change_concern"></selectTags>
+    <selectTags arrList="{{allTags}}" bind:changeConcern="change_concern" wx:if="{{is_show}}"></selectTags>
+    <view wx:else>
+      <no_more str="没有数据哦"></no_more>
+    </view>
   </van-tab>
 </van-tabs>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

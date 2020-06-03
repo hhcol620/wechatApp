@@ -78,7 +78,9 @@ Page({
     // 价格排序   2表示升序 1表示降序
     priceOrder: '',
     // 发布时间排序   2表示升序 1表示降序
-    timeOrder: ''
+    timeOrder: '',
+    // 控制主要数据是否显示
+    is_show: true
   },
 
   // 单选框
@@ -145,9 +147,11 @@ Page({
     })
 
     console.log('tradeType', tradeType);
+    showLoading(this)
     const {
       data
     } = await get_search_content(pageSize, currentPage, searchContent, priceMin, priceMax, tradeType, priceOrder, timeOrder)
+    hideLoading(this)
     console.log(data);
     if (data.code !== 200) {
       wx.showToast({
@@ -166,8 +170,12 @@ Page({
     } = this.data
     totalCount = data.data.totalCount
     const list = data.data.data
-    // console.log(list);
-    // goodsList.push(...list)
+    if (goodsList.length <= 0 && list.length <= 0) {
+      // console.log('1111111111111111112');
+      this.setData({
+        is_show:false
+      })
+    }
     list.forEach(async item => {
       let consumerInfo = await this.getUserInfoById(item.consumerId)
       item.consumerInfo = consumerInfo
@@ -233,7 +241,8 @@ Page({
       pageSize: 10,
       currentPage: 1,
       totalCount: 0,
-      goodsList: []
+      goodsList: [],
+      is_show:true
     })
     // 关闭侧边框 开始搜索
     this.onClose()
@@ -262,7 +271,8 @@ Page({
       } */
     /* 综合排序的时候将 priceOrder timeOrder 都重置   */
     this.setData({
-      goodsList:[]
+      goodsList: [],
+      is_show:true
     })
     switch (value) {
 

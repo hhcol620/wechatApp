@@ -31,7 +31,9 @@ Page({
     pageSize: 10,
     currentPage: 1,
     totalCount: 0,
-    imgURL: ''
+    imgURL: '',
+    // 控制主要数据是否显示
+    is_show: true
   },
   // 点击收藏按钮
   collectFunc(e) {
@@ -74,9 +76,11 @@ Page({
       currentPage,
       collectList
     } = this.data
+    showLoading(this)
     const {
       data
     } = await getMyProductCollectList(pageSize, currentPage)
+    hideLoading(this)
     if (data.code !== 200) {
       wx.showToast({
         title: '获取信息失败',
@@ -88,6 +92,11 @@ Page({
       return
     }
     const arrList = data.data.data
+    if (collectList.length <= 0&&arrList.length===0) {
+      this.setData({
+        is_show:false
+      })
+    }
     arrList.forEach(async (item) => {
       // item.consumerId
       const res = await this.get_user_info(item.userId)
@@ -100,6 +109,7 @@ Page({
         collectList
       })
     })
+    
     wx.stopPullDownRefresh()
   },
   // 根据用户id  consumerId  获取用户信息

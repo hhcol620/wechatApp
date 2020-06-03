@@ -31,7 +31,8 @@ Page({
 
  
   // 根据订单id获取订单的详情
-  async getOrder_detail (type,orderid) {
+  async getOrder_detail (type, orderid) {
+    showLoading(this)
     const { data } = await getOrderDetail(type,orderid)
     if (data.code !== 200) {
       // 获取订单信息失败
@@ -43,6 +44,7 @@ Page({
     const buyerInfo = await this.getUserInfoById(orderObj.buyerId)
     const salerInfo = await this.getUserInfoById(orderObj.salerId)
     const evaluateInfo = await this.getEvaluateByOrderId(orderObj.id)
+    hideLoading(this)
     orderObj.goodsInfo = goodsInfo
     orderObj.buyerInfo = buyerInfo
     orderObj.salerInfo = salerInfo
@@ -53,7 +55,9 @@ Page({
   },
   // 根据订单id获取订单详情 不需要type
   async get_Order_Detail (id) {
+    showLoading(this)
     const { data } = await get_product_order_detail(id)
+    hideLoading(this)
     if (data.code !== 200) {
       // 获取订单信息失败
       return 

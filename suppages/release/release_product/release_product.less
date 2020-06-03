@@ -247,6 +247,40 @@ view.container {
       width: calc(~"100% - 100rpx");
     }
   }
+  view.get_rec_Tags{
+    // margin-top: 20rpx;
+    border-radius: 6rpx;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #fff;
+    padding: 30rpx;
+
+    .tip {
+      font-size: 24rpx;
+      line-height: 42rpx;
+      font-weight: 500;
+      font-style: normal;
+      color: #333;
+      min-width: 116rpx;
+      margin-right: 30rpx;
+    }
+    .Tags_content{
+      width: calc(~"100% - 100rpx");
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 26rpx;
+      color: #4d4d4d;
+      font-style: normal;
+      font-weight: 500;
+      .item{
+        padding: 4rpx 8rpx;
+        margin-right: 20rpx;
+        margin-bottom: 10rpx;
+        border: 1rpx solid var(--themeColor);
+      }
+    }
+  }
 }
 // 发布按钮
 .submitBtn{

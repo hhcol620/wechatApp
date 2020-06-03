@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "SearchSelect":"../../components/SearchSelect/SearchSelect",
-    "ForumList":"../../components/forumList/forumList"
+    "ForumList":"../../components/forumList/forumList",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
   "navigationBarTitleText":"搜索"
 }

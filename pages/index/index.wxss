@@ -166,6 +166,10 @@ view.inform_plate view.item view.headline {
   font-weight: 500;
   color: #4d4d4d;
   font-style: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 view.inform_plate view.item view.image_b {
   margin-top: 20rpx;
@@ -248,15 +252,22 @@ view.advertising .advertising_b .item .view_more {
 }
 .swipers {
   margin: 50rpx;
+  width: calc( 100vw - 100rpx);
 }
 .swipers swiper {
+  width: calc( 100vw - 100rpx);
   height: 160rpx;
 }
 .swipers swiper swiper-item {
+  width: calc( 100vw - 100rpx);
   height: 160rpx;
 }
-.swipers swiper swiper-item image {
-  width: 100%;
+.swipers swiper swiper-item .img {
+  width: calc( 100vw - 100rpx);
+  height: 160rpx;
+}
+.swipers swiper swiper-item .img image {
+  width: calc( 100vw - 100rpx);
   height: 160rpx;
   border-radius: 6rpx;
 }

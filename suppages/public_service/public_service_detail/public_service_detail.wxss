@@ -25,6 +25,15 @@ view.container view.activity_desc view.desc {
   padding-bottom: 20rpx;
   border-bottom: 1rpx solid var(--borderColor);
 }
+view.container view.sponsor_desc view.desc .userType,
+view.container view.activity_desc view.desc .userType {
+  font-size: 24rpx;
+  line-height: 36rpx;
+  padding: 0 6rpx;
+  margin-left: 20rpx;
+  background-color: var(--themeColor);
+  color: #fff;
+}
 view.container view.materials view.title {
   margin-top: 10rpx;
   font-size: 30rpx;
@@ -110,4 +119,7 @@ view.container view.participators .item_row:last-child {
 .footerFixed .van-goods-action {
   height: 100rpx;
   background-color: #fff;
+}
+.flex_row {
+  display: flex;
 }

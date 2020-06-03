@@ -1,138 +1,155 @@
 <!-- wxs 格式化时间 微信小程序里面的过滤器  写在wxs文件里面 -->
 <wxs src="../../../utils/timeFormat.wxs" module="timeFormat"></wxs>
+<wxs src="../../../utils/tradeType.wxs" module="trade"></wxs>
 <!-- <view>{{timeFormat.time_for('2020-05-05 15:09:31')}}</view> -->
-<!-- suppages/store/commodity/commodity.wxml -->
-<view class="container" hover-class="none" hover-stop-propagation="false">
-  <view class="header">
-    <!-- 发布者信息 -->
-    <view class="author" hover-class="none" hover-stop-propagation="false">
-      <view class="head_img" hover-class="none" hover-stop-propagation="false">
-        <image class="" src="{{imgURL}}/{{goodsInfo.consumerInfo.pic}}" lazy-load="false" binderror="" bindload="" data-userid="{{goodsInfo.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
+<view class="is_show" wx:if="{{is_show}}">
+  <view class="container" hover-class="none" hover-stop-propagation="false">
+    <view class="header">
+      <!-- 发布者信息 -->
+      <view class="author" hover-class="none" hover-stop-propagation="false">
+        <view class="head_img" hover-class="none" hover-stop-propagation="false">
+          <image class="" src="{{imgURL}}{{goodsInfo.consumerInfo.pic}}" lazy-load="false" binderror="" bindload="" data-userid="{{goodsInfo.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
+        </view>
+        <view class="author_mess" hover-class="none" hover-stop-propagation="false">
+          <view class="nickName">{{goodsInfo.consumerInfo.nickname}}</view>
+          <view class="creatTime">发布于{{timeFormat.time_for(goodsInfo.createTime)}}</view>
+        </view>
       </view>
-      <view class="author_mess" hover-class="none" hover-stop-propagation="false">
-        <view class="nickName">{{goodsInfo.consumerInfo.nickname}}</view>
-        <view class="creatTime">发布于{{timeFormat.time_for(goodsInfo.createTime)}}</view>
+      <view class="more" bind:tap="to_report_comm">
+        <!-- <text class="iconfont icon-more"></text> -->
+        举报商品
       </view>
     </view>
-    <view class="more" bind:tap="click_more">
-      <text class="iconfont icon-more"></text>
-    </view>
-  </view>
-  <!-- 商品描述 start -->
-  <view class="comm_desc" hover-class="none" hover-stop-propagation="false">
-    <view class="price">
-      <text class="icon">￥</text>
-      {{goodsInfo.salePrice}}
-    </view>
-    <view class="desc_box">
-      {{goodsInfo.productDesc}}
-      <view class="desc_tags" hover-class="none" hover-stop-propagation="false">
-        <van-tag plain type="primary" size="medium" wx:for="{{goodsInfo.tagNames}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
-          {{item}}
-        </van-tag>
+    <!-- 商品描述 start -->
+    <view class="comm_desc" hover-class="none" hover-stop-propagation="false">
+      <view class="head_box">
+        <view class="price">
+          <text class="icon">￥</text>
+          {{goodsInfo.salePrice}}
+        </view>
+        <!-- <view class="tag" wx:if="{{goodsInfo.tradeType==20}}">
+          <view class="" selectable="false" space="false" decode="false">
+            {{trade.tradeType(goodsInfo.tradeType)}}
+          </view>
+        </view> -->
       </view>
-      <view class="desc_images" hover-class="none" hover-stop-propagation="false">
-        <image class="" src="{{goodsInfo.mainPicUrl}}" mode="widthFix" lazy-load="false" />
-        <image class="" wx:for="{{goodsInfo.otherImgUrl}}" wx:for-item="item" wx:for-index="index" wx:key="*this" src="{{item}}" mode="widthFix" lazy-load="false" />
-      </view>
-      <!-- 商品情况 -->
-      <view class="comm_desc_bottom" hover-class="none" hover-stop-propagation="false">
-        <view class="comm_desc_left">平台担保</view>
-        <view class="comm_desc_right">
-          <ul>
-            <li>浏览{{goodsInfo.browserTimes}}</li>
-            <li>回复{{first_lea_mess_TotalCount}}</li>
-          </ul>
+      <view class="desc_box">
+        {{goodsInfo.productDesc}}
+        <view class="desc_tags" hover-class="none" hover-stop-propagation="false">
+          <!-- <van-tag plain type="primary" size="medium" wx:if="{{goodsInfo.tradeType==20}}">
+            {{trade.tradeType(goodsInfo.tradeType)}}
+          </van-tag> -->
+          <van-tag plain type="primary" size="medium" wx:for="{{goodsInfo.tagNames}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
+            {{item}}
+          </van-tag>
+        </view>
+        <view class="desc_images" hover-class="none" hover-stop-propagation="false">
+          <image class="" wx:for="{{goodsInfo.otherImgUrl}}" wx:for-item="item" wx:for-index="index" wx:key="*this" src="{{item}}" bind:tap="previewImage" data-imgurl="{{item}}" mode="widthFix" lazy-load="false" />
+        </view>
+        <!-- 商品情况 -->
+        <view class="comm_desc_bottom" hover-class="none" hover-stop-propagation="false">
+          <view class="comm_desc_left">平台担保</view>
+          <view class="comm_desc_right">
+            <ul>
+              <li>浏览{{goodsInfo.browserTimes||0}}</li>
+              <li>回复{{first_lea_mess_TotalCount||0}}</li>
+              <li>想要{{goodsInfo.collectTotal||0}}</li>
+            </ul>
+          </view>
         </view>
       </view>
     </view>
   </view>
-</view>
-<!-- 描述作者 -->
-<view class="author_desc" hover-class="none" hover-stop-propagation="false">
-  <view class="nickName" hover-class="none" hover-stop-propagation="false">
-    {{goodsInfo.consumerInfo.nickname}}
+  <!-- 描述作者 -->
+  <view class="author_desc" hover-class="none" hover-stop-propagation="false">
+    <view class="nickName" hover-class="none" hover-stop-propagation="false">
+      {{goodsInfo.consumerInfo.nickname}}
+    </view>
+    <view class="author_mess" hover-class="none" hover-stop-propagation="false">
+      {{goodsInfo.consumerInfo.signature}}
+    </view>
+    <view class="author_real" hover-class="none" hover-stop-propagation="false" wx:if="{{goodsInfo.consumerInfo.state===40}}">
+      实名认证已通过
+    </view>
   </view>
-  <view class="author_mess" hover-class="none" hover-stop-propagation="false">
-    {{goodsInfo.consumerInfo.signature}}
-  </view>
-  <view class="author_real" hover-class="none" hover-stop-propagation="false" wx:if="{{goodsInfo.consumerInfo.state===40}}">
-    实名认证已通过
-  </view>
-</view>
-<!-- 留言板 其中包括商品的详情的留言板和需求里面的留言板 -->
-<view class="reply_all" hover-class="none" hover-stop-propagation="false">
-  <view class="title" hover-class="none" hover-stop-propagation="false">
-    全部留言 {{first_lea_mess_TotalCount}}
-  </view>
-  <!-- 留言面板 -->
-  <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
-    <van-row class="container" wx:for="{{first_lea_mess}}" wx:for-item="item" wx:for-index="index" wx:key="id">
-      <van-col span="4" class="headeImg">
-        <image class="" src="{{imgURL}}/{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" data-userid="{{item.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
-      </van-col>
-      <van-col span="15" class="reply_container" bind:tap="to_reply_detail" bind:longpress="open_lea_report" data-tarid="{{item.id}}" data-tarcustomerid="{{item.consumerId}}" data-classId="{{item.id}}">
-        <view class="userName">{{item.consumerInfo.nickname}}</view>
-        <view class="content">{{item.content}}</view>
-        <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
-      </van-col>
-      <van-row>
-        <van-col offset="4" span="20">
-          <view class="reply_box" wx:if="{{item.second_lea_mess.total>0}}" bindtap="to_reply_detail" data-classId="{{item.id}}">
-            <view class="item" wx:for="{{item.second_lea_mess.list}}" wx:for-index="second_index" wx:for-item="second_item" wx:key="id">
-              {{second_item.content}}
-            </view>
-            <view class="item color" wx:if="{{item.second_lea_mess.total>3}}">
-              全部{{item.second_lea_mess.total}}条回复>
-            </view>
-          </view>
+  <!-- 留言板 其中包括商品的详情的留言板和需求里面的留言板 -->
+  <view class="reply_all" hover-class="none" hover-stop-propagation="false">
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      全部留言 {{first_lea_mess_TotalCount}}
+    </view>
+    <!-- 留言面板 -->
+    <view class="reply_mess_box" hover-class="none" hover-stop-propagation="false">
+      <van-row class="container" wx:for="{{first_lea_mess}}" wx:for-item="item" wx:for-index="index" wx:key="id">
+        <van-col span="4" class="headeImg">
+          <image class="" src="{{imgURL}}{{item.consumerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" data-userid="{{item.consumerInfo.userId}}" bind:tap="toOtherInfoPage" />
         </van-col>
+        <van-col span="15" class="reply_container" bind:tap="to_reply_detail" bind:longpress="open_lea_report" data-tarid="{{item.id}}" data-tarcustomerid="{{item.consumerId}}" data-classId="{{item.id}}">
+          <view class="userName">{{item.consumerInfo.nickname}}</view>
+          <view class="content">{{item.content}}</view>
+          <view class="creatTime">{{timeFormat.time_for(item.createTime)}}</view>
+        </van-col>
+        <van-row>
+          <van-col offset="4" span="20">
+            <view class="reply_box" wx:if="{{item.second_lea_mess.total>0}}" bindtap="to_reply_detail" data-classId="{{item.id}}">
+              <view class="item" wx:for="{{item.second_lea_mess.list}}" wx:for-index="second_index" wx:for-item="second_item" wx:key="id">
+                {{second_item.content}}
+              </view>
+              <view class="item color" wx:if="{{item.second_lea_mess.total>3}}">
+                全部{{item.second_lea_mess.total}}条回复>
+              </view>
+            </view>
+          </van-col>
+        </van-row>
       </van-row>
-    </van-row>
-    <view class="reply_mess_box_footer" wx:if="{{isShowMore}}" bind:tap="get_more" data-id="{{id}}">
-      <!-- 查看更多 -->
-      加载更多的留言
-      <text class="iconfont icon-jiantou-copy"></text>
+      <view class="reply_mess_box_footer" wx:if="{{isShowMore}}" bind:tap="get_more" data-id="{{id}}">
+        <!-- 查看更多 -->
+        加载更多的留言
+        <text class="iconfont icon-jiantou-copy"></text>
+      </view>
     </view>
   </view>
-</view>
-<!-- 推荐面板 -->
-<view class="recommend_box" hover-class="none" hover-stop-propagation="false">
-  <view class="title" hover-class="none" hover-stop-propagation="false">
-    猜你喜欢
-    <text class="iconfont icon-xihuan3" />
+  <!-- 推荐面板 -->
+  <view class="recommend_box" hover-class="none" hover-stop-propagation="false">
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      猜你喜欢
+      <text class="iconfont icon-xihuan3" />
+    </view>
+    <StoreList arrList="{{recommend_byId}}" imgURL="{{imgURL}}" />
   </view>
-  <StoreList arrList="{{recommend_byId}}" imgURL="{{imgURL}}" />
+  <!-- 底部栏目 需要固定到底部 -->
+  <view class="fixed_bottom">
+    <van-goods-action>
+      <view>
+        <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
+        <van-goods-action-icon icon="{{isCollect?'star':'star-o'}}" text="收藏" bind:click="collectFunc" data-id="{{goodsInfo.id}}" />
+      </view>
+      <view>
+        <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />
+      </view>
+    </van-goods-action>
+  </view>
+  <!-- 底部输入框 -->
+  <view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
+    <van-cell-group>
+      <van-field value="{{ msg_content }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
+        <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
+      </van-field>
+    </van-cell-group>
+  </view>
 </view>
-<!-- 底部栏目 需要固定到底部 -->
-<view class="fixed_bottom">
-  <van-goods-action>
-    <view>
-      <van-goods-action-icon icon="chat-o" text="回复" bind:click="replyFunc" />
-      <van-goods-action-icon icon="{{isCollect?'star':'star-o'}}" text="收藏" bind:click="collectFunc" data-id="{{goodsInfo.id}}" />
-    </view>
-    <view>
-      <van-goods-action-button color="#ff3f34" text="立即购买" bind:click="toPayFunc" />
-    </view>
-  </van-goods-action>
-</view>
-<!-- 底部输入框 -->
-<view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
-  <van-cell-group>
-    <van-field value="{{ msg_content }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center placeholder="看对眼要留言,问问更多的细节~" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
-      <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
-    </van-field>
-  </van-cell-group>
+<view class="no_show" wx:else>
+  <view class="box animate__animated animate__bounceInDown">该商品已下架或删除</view>
 </view>
 <!-- 弹出层 -->
 <van-overlay show="{{ overlay_show_comm }}" bind:click="onClickHide_comm">
   <view class="wrapper">
-    <view class="report" bind:tap="to_report_comm">举报商品</view>
+    <view class="report" bind:tap="to_report_comm" catch:tap="noop">举报商品</view>
   </view>
 </van-overlay>
 <!-- 弹出层 -->
 <van-overlay show="{{ overlay_show_lea }}" bind:click="onClickHide_lea">
   <view class="wrapper">
-    <view class="report" bind:tap="to_report_lea">举报留言</view>
+    <view class="report" bind:tap="to_report_lea" catch:tap="noop">举报留言</view>
   </view>
 </van-overlay>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

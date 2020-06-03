@@ -45,7 +45,6 @@
         "mine/store_orders_detail/store_orders_detail",
         "mine/store_release_product/store_release_product",
         "mine/store_demand/store_demand",
-        "mine/store_leave_message/store_leave_message",
         "mine/store_evaluate/store_evaluate", 
         "mine/errand_mine_issue/errand_mine_issue",
         "mine/errand_mine_receive/errand_mine_receive",
@@ -81,6 +80,11 @@
         "selectedIconPath": "./icons/icon_font_img/wode-select.png"
       }
     ]
+  },
+  "usingComponents": {
+    "wx_loading":"/components/wx_loading/wx_loading",
+    "no_more":"/components/no_more/no_more",
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
   },
   
   "sitemapLocation": "sitemap.json"

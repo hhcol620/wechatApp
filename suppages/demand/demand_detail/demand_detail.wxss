@@ -43,8 +43,14 @@ page {
   padding-top: 30rpx;
   display: flex;
   justify-content: center;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: #4d4d4d;
+  font-style: normal;
+  font-weight: 500;
 }
 .container .comm_desc {
+  margin-top: 20rpx;
   background-color: #fff;
 }
 .container .comm_desc .price {
@@ -237,6 +243,7 @@ page {
 .recommend_box {
   margin-top: 20rpx;
   width: 100%;
+  margin-bottom: 100rpx;
 }
 .recommend_box .title {
   display: flex;
@@ -259,15 +266,24 @@ page {
   width: 100%;
 }
 .van-goods-action {
+  width: 100%;
   padding: 0 20rpx;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .van-goods-action-button {
-  width: 36vw;
+  width: 80vw;
 }
-.van-icon-star {
-  color: #FFDC00;
+.btn {
+  background-color: #f6f6f6;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20rpx 30rpx 30rpx;
+}
+.btn .van-button {
+  width: 100%;
 }
 .wrapper {
   display: flex;
@@ -296,4 +312,24 @@ page {
 }
 .gary {
   filter: grayscale(100%);
+}
+.no_show {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no_show .box {
+  height: 80rpx;
+  border-radius: 6rpx;
+  width: 300rpx;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  background-color: var(--themeColor);
 }

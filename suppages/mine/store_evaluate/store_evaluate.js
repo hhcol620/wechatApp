@@ -28,12 +28,16 @@ Page({
     isShow: false,
     // 评价列表 
     evaluateList: [],
-
+    // 请求参数
     pageSize: 10,
     currentPage: 1,
+    totalCount:0,
     // 评价id
     id: '',
     // 页面加载图片基地址
+    imgURL: '',
+    // 控制主要数据是否显示
+    is_show: true
   },
 
   // 长按了更多  打开一个弹框
@@ -68,11 +72,14 @@ Page({
     console.log(data);
   },
   // 页面加载 就发起请求  获得自己给别人的评价列表
-  async getEvaluate() {
+  async getEvaluate () {
+    const { pageSize, currentPage, totalCount, evaluateList } = this.data
+    showLoading(this)
     const {
       data
-    } = await get_evaluate(this.data.pageSize, this.data.currentPage)
-    
+    } = await get_evaluate(pageSize,currentPage)
+    hideLoading(this)
+    wx.stopPullDownRefresh()
     if (data.code !== 200) {
       wx.showToast({
         title: '获取信息失败',
@@ -83,21 +90,19 @@ Page({
       });
       return
     }
-
+    let list = data.data.data||[]
+    let c_page = currentPage+1
+    evaluateList.push(...list)
+    if (evaluateList.length <= 0) {
+      this.setData({
+        is_show:false
+      })
+    }
     this.setData({
-      evaluateList: data.data.data
+      evaluateList,
+      totalCount: data.data.totalCount,
+      currentPage: c_page
     })
-    // 成功将数据 赋值到data里面
-    // 根据其中的买家id  获取用户的信息 头像和昵称
-    // List.forEach(async item => {
-    //   const buyerInfo = await this.getUserInfoById(item.buyerId)
-    //   item.buyerInfo = buyerInfo
-    //   evaluateList.push(item)
-    //   // console.log(List);
-    //   this.setData({
-    //     evaluateList
-    //   })
-    // })
 
   },
   // 根据用户id获得用户信息
@@ -125,14 +130,39 @@ Page({
     });
       
   },
+  // 下拉刷新  
+  pullDownRefresh () {
+    this.setData({
+      currentPage: 1,
+      totalCount: 0,
+      evaluateList: [],
+    })
+    this.getEvaluate()
+  },
+  // 触底加载下一页
+  reachBottom () {
+    const { pageSize,currentPage,totalCount} = this.data
+    if (currentPage <= Math.ceil(totalCount / pageSize)) {
+      this.getEvaluate()
+    }
+    wx.showToast({
+      title: '没有更多的数据了',
+      icon: 'none',
+      image: '',
+      duration: 1500,
+      mask: true
+    }); 
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getEvaluate()
     this.setData({
       imgURL
     })
+    this.getEvaluate()
+    
   },
 
   /**
@@ -167,7 +197,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.pullDownRefresh()
   },
 
   /**

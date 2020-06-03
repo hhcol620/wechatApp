@@ -11,11 +11,12 @@ page {
     justify-content: space-between;
     padding-bottom: 20rpx;
     border-bottom: 1rpx solid var(--borderColor);
+
     .author {
       background-color: #fff;
       padding-top: 20rpx;
       display: flex;
-      
+
 
       .head_img {
         image {
@@ -45,11 +46,17 @@ page {
         }
       }
     }
-    .more{
+
+    .more {
       width: 60rpx;
       padding-top: 30rpx;
       display: flex;
       justify-content: center;
+      font-size: 24rpx;
+      line-height: 30rpx;
+      color: #4d4d4d;
+      font-style: normal;
+      font-weight: 500;
     }
   }
 
@@ -57,18 +64,37 @@ page {
   .comm_desc {
     background-color: #fff;
 
-    .price {
-      font-size: 36rpx;
-      line-height: 100rpx;
-      font-weight: 700;
-      font-style: normal;
-      color: var(--iconALIColor);
+    .head_box {
+      display: flex;
+      justify-content: space-between;
+      .price {
+        font-size: 36rpx;
+        line-height: 100rpx;
+        font-weight: 700;
+        font-style: normal;
+        color: var(--iconALIColor);
 
-      text {
-        font-size: 26rpx;
-        font-weight: 500;
+        text {
+          font-size: 26rpx;
+          font-weight: 500;
+        }
+      }
+      .tag{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >view{
+          font-size: 24rpx;
+          font-style: normal;
+          font-weight: 500;
+          color: #ff3f34;
+          line-height: 30rpx;
+          height: 30rpx;
+          background-color: #ff3f3430;
+        }
       }
     }
+
 
     .desc_box {
       font-size: 32rpx;
@@ -248,8 +274,13 @@ page {
           width: 500rpx;
 
           .item {
+            width: 100%;
             padding-bottom: 10rpx;
             padding-left: 10rpx;
+            display: flex;
+            flex-wrap: wrap;
+            word-wrap: break-word;
+            word-break: break-all;
           }
 
           .color {
@@ -338,12 +369,36 @@ page {
   color: #333;
   font-style: normal;
   font-weight: 500;
-  &:first-child{
+
+  &:first-child {
     border-top-left-radius: 10rpx;
     border-top-right-radius: 10rpx;
   }
-  &:last-child{
+
+  &:last-child {
     border-bottom-left-radius: 10rpx;
     border-bottom-right-radius: 10rpx;
+  }
+}
+
+.no_show {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    height: 80rpx;
+    border-radius: 6rpx;
+    width: 300rpx;
+    color: #fff;
+    font-size: 30rpx;
+    line-height: 80rpx;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    background-color: var(--themeColor);
   }
 }

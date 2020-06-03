@@ -10,7 +10,7 @@
   <view class="desc">
     <view class="tip">描述</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" placeholder="请输入您的宝贝最全的描述" value="{{productDesc}}" data-name="productDesc" bindinput="getInputData"></textarea>
+      <textarea show-confirm-bar="{{false}}" placeholder="请输入您的宝贝最全的描述" value="{{productDesc}}" data-name="productDesc" bindinput="getInputData" bindblur="getTagsRecommend"></textarea>
     </view>
   </view>
   <!-- 选择主图 -->
@@ -76,7 +76,16 @@
       <input class="weui-inputr" type="text" value="{{tagNames}}" data-name="tagNames" placeholder="请输入标签关键词 使用空格分开" bindinput="getInputData" bindblur="getUpTags" />
     </view>
   </view>
+  <view class="get_rec_Tags">
+    <view class="tip">*推荐标签</view>
+    <view class="Tags_content">
+      <view class="item" bind:tap="addTag" data-item="{{item}}" wx:for="{{addTags}}" wx:for-index="index" wx:for-item="item" wx:key="*this">
+        {{item}}
+      </view>
+    </view>
+  </view>
 </view>
 <view class="submitBtn">
   <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
 </view>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

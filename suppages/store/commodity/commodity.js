@@ -5,7 +5,8 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 import {
   get_goodsInfo,
   get_leave_message_first,
-  getUserInfo
+  getUserInfo,
+  getMyInfo
 } from '../../../request/api/store_api.js'
 
 import {
@@ -67,7 +68,9 @@ Page({
     // 被长按点击的留言id
     lea_msg_id: '',
     // 被长按点击的留言的作者id
-    lea_msg_customerId:''
+    lea_msg_customerId: '',
+    // 是否显示主要的内容
+    is_show:true
   },
   // 回复
   replyFunc() {
@@ -212,7 +215,7 @@ Page({
 
       return
     }
-    console.log('点击了发送');
+    // console.log('点击了发送');
     const {
       id,
       msg_content
@@ -246,8 +249,11 @@ Page({
       duration: 1500,
       mask: true
     });
+    // this.setData({
+    //   msg_content:''
+    // })
     // 从本地取出数据伪造假数据
-    const userInfo = wx.getStorageSync('userInfo');
+    const userInfo = await this.get_my_Info()
     userInfo.pic = userInfo.portrait
     const msg = {
       createTime: getTime(),
@@ -270,6 +276,11 @@ Page({
     })
 
   },
+  // 获取自己的信息
+  async get_my_Info () {
+    const { data } = await getMyInfo()
+    return data.data
+  },
   // 获取输入框中数据
   getData(e) {
     const {
@@ -283,10 +294,12 @@ Page({
   },
 
   // 页面加载  立即根据商品的id获取商品的信息
-  async getGoodsInfo(id) {
+  async getGoodsInfo (id) {
+    showLoading(this)
     const {
       data
     } = await get_goodsInfo(id)
+    hideLoading(this)
     // console.log(data);
     if (data.code !== 200) {
       // 失败
@@ -297,6 +310,9 @@ Page({
         duration: 1500,
         mask: true
       });
+      this.setData({
+        is_show:false
+      })
       return
     }
     // 
@@ -313,8 +329,8 @@ Page({
     const strArr = tagNames ? tagNames.split('|') : []
     // console.log(str);
     const otherImgs = otherImgUrl ? otherImgUrl.split(',') : []
+    otherImgs.unshift(mainPicUrl)
     // 附图测试
-    // const otherImgs = ['/group1/M00/00/01/rBgYGV6RdkOACa0DAABW5M6zRWk259.jpg','/group1/M00/00/01/rBgYGV6RdkOACa0DAABW5M6zRWk259.jpg','/group1/M00/00/01/rBgYGV6RdkOACa0DAABW5M6zRWk259.jpg']
     // 然后循环每一项  对其头部添加前缀
     const imgs = otherImgs.map(v => {
       return `${imgURL}` + v
@@ -494,15 +510,17 @@ Page({
       classid
     } = e.currentTarget.dataset
     // console.log(e);
-
+    const item = first_lea_mess.filter((i, v) => {
+      return classid === i.id
+    })
+    let str = JSON.stringify(item)
+    // console.log(JSON);
     wx.navigateTo({
-      url: `/suppages/store/lea_Message_detail/lea_Message_detail?id=${id}&classid=${classid}`,
+      url: `/suppages/store/lea_Message_detail/lea_Message_detail?id=${id}&classid=${classid}&item=${str}`,
       success: (res) => {
         // 跳转成功 将被点击的那一条数据传给下一页面
-        const item = first_lea_mess.filter((i, v) => {
-          return classid === i.id
-        })
-        res.eventChannel.emit('acceptDataFromOpenerPage', item)
+        
+        // res.eventChannel.emit('acceptDataFromOpenerPage', item)
       },
       fail: () => {},
       complete: () => {
@@ -513,6 +531,7 @@ Page({
   },
   // 点击更多
   click_more () {
+
     // 打开弹框 
     this.setData({
       overlay_show_comm:true
@@ -525,7 +544,7 @@ Page({
   // 跳转到举报页 商品id
   to_report_comm () {
     const { id, goodsInfo } = this.data
-    const customerId = goodsInfo.consumerInfo.userId
+    const customerId = goodsInfo.consumerId
     // console.log(customerId);
     wx.navigateTo({
       url: `/suppages/store/commodity_report/commodity_report?type=1&targetid=${id}&customerid=${customerId}`,
@@ -552,6 +571,7 @@ Page({
   onClickHide_lea() {
     this.setData({ overlay_show_lea: false });
   },
+  noop() {},
   // 跳到举报留言的弹出层
   to_report_lea () {
     const { lea_msg_id,lea_msg_customerId } = this.data
@@ -587,6 +607,24 @@ Page({
       // 记录历史失败
       return
     }
+  },
+
+  // 预览图片
+  previewImage (e) {
+    const { imgurl } = e.currentTarget.dataset
+    const { otherImgUrl } = this.data.goodsInfo
+    wx.previewImage({
+      current: imgurl,
+      urls: otherImgUrl,
+      success: (result) => {
+        
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+      complete: () => {}
+    }); 
+      
   },
 
 

@@ -18,19 +18,19 @@
       <view class="item">
         <view class="leftdesc">邮箱</view>
         <view class="input">
-          <input class="weui-input" auto-focus placeholder="请输入邮箱" bindinput="getInputData" data-name="email" />
+          <input class="weui-input" placeholder="请输入邮箱" bindinput="getInputData" data-name="email" bind:blur="checkEmailData" />
         </view>
       </view>
       <view class="item">
         <view class="leftdesc">密码</view>
         <view class="input">
-          <input class="weui-input" placeholder="请输入密码" bindinput="getInputData" data-name="password" />
+          <input class="weui-input" password placeholder="请输入密码" bindinput="getInputData" data-name="password" />
         </view>
       </view>
       <view class="item">
         <view class="leftdesc">密码</view>
         <view class="input">
-          <input class="weui-input" placeholder="请再次输入密码" bindinput="getInputData" data-name="secPassword" />
+          <input class="weui-input" password placeholder="请再次输入密码" bindinput="getInputData" data-name="secPassword" />
         </view>
       </view>
       <view class="item">

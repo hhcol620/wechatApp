@@ -24,9 +24,10 @@ Component({
     // 点击联系发起人
     contactIssure (e) {
       // console.log(e);
-      const {phoneNum} = e.currentTarget.dataset
+      const { phonenum } = e.currentTarget.dataset
+      console.log(phonenum);
       wx.makePhoneCall({
-        phoneNumber: phoneNum,
+        phoneNumber: phonenum,
         success: (result) => {
           
         },
@@ -39,6 +40,18 @@ Component({
       const { id } = e.currentTarget.dataset
       this.triggerEvent('deleteFunc',id)
       // console.log(id);
+    },
+    toDetail(e){
+      const { id } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/suppages/mine/errand_order_detail/errand_order_detail?id=${id}`,
+        success: (result) => {
+          
+        },
+        fail: () => {},
+        complete: () => {}
+      });
+        
     }
   }
 })

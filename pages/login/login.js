@@ -46,10 +46,10 @@ Page({
   },
   // 账号密码登陆
   async post_login_password () {
+    showLoading(this)
     const { email, password, inputCode, code, isPasswordLogin } = this.data
     // 验证邮箱
     var emreg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
-    17
     if (emreg.test(email) == false) {
       // 不符合条件
       wx.showToast({
@@ -59,6 +59,7 @@ Page({
         duration: 1500,
         mask: true
       });
+      hideLoading(this)
         
       return 
     }
@@ -67,6 +68,15 @@ Page({
       // 表示为账号密码登陆
       // 发起请求之前再判断code是否一致
       if (!email.trim() || !password.trim() || !inputCode.trim()) {
+        wx.showToast({
+          title: '输入不合法',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: true
+        });
+        hideLoading(this)
+          
         // 判断都不能为空
         return
       }
@@ -79,6 +89,7 @@ Page({
           duration: 1500,
           mask: true
         });
+        hideLoading(this)
           
         return
       }
@@ -100,9 +111,11 @@ Page({
         duration: 1500,
         mask: true
       });
+      hideLoading(this)
         
       return 
     }
+    hideLoading(this)
     // 登陆成功 
     // 本地存储accessToken 并设置全局的access_token
     // 本地存储cookie 并设置全局的cookie
@@ -115,7 +128,7 @@ Page({
     app.globalData.access_token = 'bearer ' +  accessToken
     app.globalData.userAccessToken = userAccessToken
     // 获取登陆信息
-    await this.getmyinfo()
+    // await this.getmyinfo()
     // 存储成功之后 返回上一页
     wx.navigateBack({
       delta: 1
@@ -263,13 +276,14 @@ Page({
   // 微信登陆
   async wechat_login () {
     // 在这个位置 直接登录  如果已经绑定 则不用跳转 登陆成功直接返回   否则跳转进行绑定
+    showLoading(this)
     const {code} = await wx.login()
     console.log(code)
     const obj = {
       code
     }
     const { data } = await post_login_WX(obj)
-    console.log(data);
+    // console.log(data);
     if (data.code !== 200) {
       wx.showToast({
         title: `${data.text}`,
@@ -278,7 +292,7 @@ Page({
         duration: 1500,
         mask: true
       });
-        
+      hideLoading(this)
       return 
     }
     // 设置全局的access_token
@@ -288,8 +302,9 @@ Page({
     const userAccessToken = wx.getStorageSync('userAccessToken');
     app.globalData.access_token = 'bearer ' +  accessToken
     app.globalData.userAccessToken = userAccessToken
+    hideLoading(this)
     // 获取登陆信息
-    await this.getmyinfo()
+    // await this.getmyinfo()
     // 存储成功之后 返回上一页
     wx.navigateBack({
       delta: 1

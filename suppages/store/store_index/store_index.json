@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "SearchInput" : "../../components/SearchInput/SearchInput",
+    "SearchInput" : "/components/SearchInput/SearchInput",
     "Swiper_num":"/components/Swiper_num/Swiper_num",
     "StoreList":"/components/storeList/storeList",
     "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
