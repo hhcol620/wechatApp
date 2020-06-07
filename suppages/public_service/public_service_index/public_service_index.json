@@ -4,5 +4,7 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "public_service_list":"/components/public_service_list/public_service_list"
   },
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark",
   "navigationBarTitleText":"公益审核"
 }

@@ -3,10 +3,10 @@
   <view class="item {{item.id === id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="item" wx:for-index="index" wx:key="id" data-goodsid="{{item.id}}" bind:tap="selectGoods">
     <view class="main">
       <view class="left mainImg">
-        <image class="" src="https://pics.images.ac.cn/image/5e9e31c4844eb.html" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
+        <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
       </view>
       <view class="right">
-        <view class="desc">{{item.productDesc}}</view>
+        <view class="desc">{{item.title}}</view>
         <view class="price">￥ {{item.salePrice}}</view>
         <view class="other">
           <text>留言0</text>
@@ -20,3 +20,5 @@
 <view class="btn">
   <van-button type="primary" size="normal" bind:tap="submitFunc">确定</van-button>
 </view>
+<wx_loading load-text="加载中" id="loading"></wx_loading>
+<van-toast id="van-toast" />

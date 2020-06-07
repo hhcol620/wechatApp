@@ -24,7 +24,7 @@
   </van-button>
 </view>
 <view class="overlay" hover-class="none" hover-stop-propagation="false">
-  <van-overlay show="{{ isShow }}">
+  <van-overlay show="{{ isShow }}" bind:click="onClickHide">
     <!-- 抢单中 -->
     <view class="loading" wx:if="{{isloading}}">
       <Loading />

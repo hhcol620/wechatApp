@@ -96,26 +96,18 @@ Page({
     }
     // 成功  提示成功 并后退一页
     // 提交成功   提示用户 然后回退上一页面
-    Dialog.confirm({
+    Dialog.alert({
       title: '提示',
       message: '您已成功发布跑腿,很快就会有人联系您呢,请保持手机畅通',
       asyncClose: true
     })
-      .then(() => {
+    .then(() => {
       clearTimeout(time)
       const time = setTimeout(() => {
         this.navigateBackFunc()
         Dialog.close();
       }, 1000);
     })
-    .catch(() => {
-      Dialog.close();
-    });
-    clearTimeout(time)
-    const time = setTimeout(() => {
-      this.navigateBackFunc()
-      Dialog.close();
-    }, 2000);
   },
   // 获取输入框中的数据
   getInputData(e) {

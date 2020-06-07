@@ -7,5 +7,7 @@
     "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "Errand_index":"/components/errand_index/errand_index"
   },
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark",
   "navigationBarTitleText":"跑腿服务"
 }

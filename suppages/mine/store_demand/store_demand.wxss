@@ -44,6 +44,7 @@ page {
 }
 .container .item view.main .right .tags .tagItem {
   padding: 4rpx 10rpx;
+  margin-right: 6rpx;
   border-radius: 4rpx;
   border: 1rpx solid var(--themeColor);
 }

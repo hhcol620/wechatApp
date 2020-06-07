@@ -23,10 +23,13 @@ view.container ul li view.header {
 }
 view.container ul li view.header view.main_img {
   width: 100%;
+  max-height: 400rpx;
+  overflow: hidden;
 }
 view.container ul li view.header view.main_img image {
   width: 100%;
   border-radius: 6rpx;
+  max-height: 400rpx;
 }
 view.container ul li view.footer view.desc {
   margin: 10rpx 0;

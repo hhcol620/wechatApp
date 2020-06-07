@@ -1,5 +1,8 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
+
 // suppages/mine/store_orders/store_orders.js
 import {
   getAllErrandList
@@ -20,49 +23,78 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 'new',
+    // active: 'new',
     // 跑腿信息列表
     errandList: [],
     // 页面大小  
     pageSize: 10,
     // 当前页
-    currentPage: 1
+    currentPage: 1,
+    // total
+    totalCount:0,
+    // 默认激活项
+    index: 0
   },
   // 获取跑腿信息
-  async getErrandList(pageSize, currentPage, typ) {
+  async getErrandList (pageSize, currentPage, typ) {
+    showLoading(this)
+    const { errandList } = this.data
     const {
       data
     } = await getAllErrandList(pageSize, currentPage, typ)
+    wx.stopPullDownRefresh()
     // console.log(data);
     if (data.code !== 200) {
+      hideLoading(this)
       // 失败
       return 
     }
+    let c_page = currentPage + 1
+    // console.log(c_page);
+    const arr = data.data.data
+    // console.log('arr',arr);
+
+    // let list = errandList.push(...arr)
+    arr.forEach((v, i) => {
+      errandList.push(v)
+      if (typ == 1) {
+        errandList.sort(createComparisonFunction('createTime'))
+      } else if(typ == 2 ) {
+        errandList.sort(createComparisonFunction('price'))
+      }
+    })
+    // console.log(list);
     // 成功
     this.setData({
-      errandList: data.data.data
+      errandList,
+      currentPage: c_page,
+      totalCount:data.data.totalCount
     })
+    hideLoading(this)
   },
   // tab 切换
   tabChange (e) {
+    const {
+      index
+    } = e.detail
     this.setData({
       errandList: [],
       // 页面大小  
       pageSize: 10,
       // 当前页
-      currentPage: 1
+      currentPage: 1,
+      totalCount:0,
+      index
     })
     const { pageSize, currentPage } = this.data
     // console.log(e);
     // 获取标识符 如果根据标识符发起不同的请求
-    const {
-      name
-    } = e.detail
-    if (name === 'new') {
+    
+    if (index === 0) {
       // typ 设置为1
     this.getErrandList(pageSize, currentPage,1)
 
-    } else if (name === 'price') {
+    } else if (index === 1) {
       // typ设置为2
     this.getErrandList(pageSize, currentPage,2)
     }
@@ -78,6 +110,45 @@ Page({
       complete: () => {}
     });
       
+  },
+  // 下拉刷新
+  pullDownRefresh () {
+    this.setData({
+      currentPage: 1,
+      totalCount: 0,
+      errandList: []
+    })
+    const { index,pageSize,currentPage } = this.data
+    if (index === 0) {
+      // typ 设置为1
+    this.getErrandList(pageSize, currentPage,1)
+
+    } else if (index === 1) {
+      // typ设置为2
+    this.getErrandList(pageSize, currentPage,2)
+    }
+  },
+  // 触底加载下一页
+  reachBottom () {
+    const { index, pageSize, currentPage, totalCount } = this.data
+    if (currentPage > Math.ceil(totalCount / pageSize)) {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      }); 
+      return
+    }
+    if (index === 0) {
+      // typ 设置为1
+    this.getErrandList(pageSize, currentPage,1)
+
+    } else if (index === 1) {
+      // typ设置为2
+    this.getErrandList(pageSize, currentPage,2)
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -120,14 +191,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.pullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.reachBottom()
   },
 
   /**

@@ -1,7 +1,7 @@
 <!-- 这是我发布的需求页 -->
 <view class="container" wx:if="{{is_show}}">
   <view class="item" wx:for="{{demandList}}" wx:for-item="item" wx:for-index="index" wx:key="*this">
-    <navigator class="" target="" url="../../demand/demand_detail/demand_detail" hover-class="navigator-hover" open-type="navigate">
+    <navigator class="" target="" url="../../demand/demand_detail/demand_detail?id={{item.id}}" hover-class="navigator-hover" open-type="navigate">
       <view class="main">
         <view class="left mainImg">
           <image class="" src="{{imgURL}}{{item.mainPic}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>

@@ -1,5 +1,8 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   get_goodsList
@@ -66,9 +69,10 @@ Page({
     // 获取信息成功  将数据渲染到页面上
     console.log(data);
     // 将页面大小和数据总条数和当前页记录一下 
-    
+    const totalCount = data.data.totalCount
     const list = data.data.data||[]
     // console.log(list);
+    // 二次包装一下 提高速度
     const l = list.map((v) => {
       const title = v.title
       const productDesc = v.productDesc
@@ -91,6 +95,7 @@ Page({
     })
     let c_page = currrentPage+1
     goodsList.push(...l)
+    goodsList.sort(createComparisonFunction('createTime'))
     if (goodsList.length<=0) {
       this.setData({
         is_show:false
@@ -98,7 +103,8 @@ Page({
     }
     this.setData({
       goodsList: goodsList,
-      currrentPage:c_page
+      currrentPage: c_page,
+      totalCount:totalCount
     })
     wx.stopPullDownRefresh()
   },
@@ -150,6 +156,15 @@ Page({
     if (currrentPage <= Math.ceil(totalCount / pageSize)) {
       // 
       this.getGoodsList()
+    } else {
+      wx.showToast({
+        title: '没有更多的数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+        
     }
   },
   /**

@@ -9,7 +9,7 @@
           <image class="" src="{{imgURL}}{{item.mainPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload=""></image>
         </view>
         <view class="right">
-          <view class="desc">{{item.productDesc}}</view>
+          <view class="desc">{{item.title}}</view>
           <view class="price">￥ {{item.salePrice}}</view>
           <view class="other">
             <text>收藏{{item.collectTotal}}</text>

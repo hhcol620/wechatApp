@@ -354,10 +354,6 @@ Page({
       fail: () => {},
       complete: () => {}
     });
-      
-
-    
-
   },
   // 点击更多
   click_more () {
@@ -392,7 +388,8 @@ Page({
     })
   },
   // 隐藏弹出层
-  onClickHide_comm() {
+  onClickHide_comm () {
+    console.log('ok');
     this.setData({ overlay_show_comm: false });
   },
   // 隐藏弹出层
@@ -430,7 +427,7 @@ Page({
     const obj = { demandId,targetId }
     const { data } = await post_demand_reply_lea_msg(obj)
     // console.log(data);
-    this.get_leave_message(demandId)
+    // this.get_leave_message(demandId)
   },
 
   // 预览图片
@@ -469,23 +466,13 @@ Page({
     
   },
   onShow: function() {
-    // 需求id
     const { id } = this.data
-    let commodityId
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('acceptSelectComm', function(data) {
-      // 选择的商品的id
-      const { goodsInfo } = data
-      console.log('goodsInfo',goodsInfo);
-      commodityId = goodsInfo.id
-    })
-    this.post_demand_comm(id,commodityId)
     this.setData({
       currentPage: 1,
-      pageSize: 5,
-      // 一级留言
       first_lea_mess: [],
+      first_lea_mess_TotalCount:0
     })
-    
+    // 获得留言信息
+    this.get_leave_message(id)
   }
 })

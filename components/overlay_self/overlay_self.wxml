@@ -1,0 +1,3 @@
+<view class="wrapper" catch:touchmove="move" bind:tap="close">
+  <slot></slot>
+</view>

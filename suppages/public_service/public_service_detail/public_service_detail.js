@@ -1,5 +1,5 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 // suppages/mine/store_orders/store_orders.js
 import {
   getDonationDetail,getDonationDetail_attribute,getUserInfo
@@ -46,24 +46,10 @@ Page({
     const { data } = await getDonationDetail_attribute(type, id)
     console.log(data);
     if (data.code !== 200) {
-      wx.showToast({
-        title: `${data.text}`,
-        icon: 'none',
-        image: '',
-        duration: 1500,
-        mask: true
-      });
-        
+      Toast(`${data.text}`);
       return 
     }
-    // 已经成功
-    wx.showToast({
-      title: '成功发表态度',
-      icon: 'success',
-      image: '',
-      duration: 1500,
-      mask: true
-    });
+    Toast.success('成功发表态度');
     const { donationDetailObj } = this.data
 
     if (type == 2) {

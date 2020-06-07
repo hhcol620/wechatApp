@@ -9,3 +9,5 @@
     </van-tab>
   </van-tabs>
 </view>
+<van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

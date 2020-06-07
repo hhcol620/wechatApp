@@ -1,20 +1,22 @@
+<wxs src="../../utils/computed_percentage.wxs" module="computed_percentage"></wxs>
 <!-- 这应该是一个列表区域 不加搜索不加分页  采用下拉自动加载更新 -->
 <view class="container">
   <view class="item" wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
     <navigator class="" target="" url="/suppages/public_service/public_service_detail/public_service_detail?id={{item.id}}&type={{item.state}}" hover-class="navigator-hover" open-type="navigate">
       <!-- 活动主题 或者名字 -->
-      <view class="title">活动主题 : 资助贫困山区儿童</view>
+      <view class="title">活动主题 : {{item.title}}</view>
       <!-- 申请方 活动主办方 -->
-      <view class="sponsor">活动主办方 : 内蒙古科技大学红十字协会</view>
+      <view class="sponsor">活动主办方 : {{item.applyUserInfo.nickname}}</view>
       <!-- 下面放置 浏览量 网友对此次活动的支持度 -->
       <view class="footer">
-        <view class="footer_item">
+        <!-- <view class="footer_item">
           <text class="iconfont icon-liulan5"></text>
           浏览 996
-        </view>
+        </view> -->
         <view class="footer_item">
-          <text class="iconfont icon-dianzan1"></text>
-          支持度 98%
+          <!-- <text class="iconfont icon-dianzan1"></text> -->
+          <!-- 支持度 {{item.userDownTotal?((item.userUpTotal/(item.userUpTotal+item.userDownTotal))*100):0}}% -->
+          支持度 {{computed_percentage.c_percentage(item.userUpTotal,item.userDownTotal)}}%
         </view>
       </view>
     </navigator>

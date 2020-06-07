@@ -6,7 +6,7 @@
     <view class="tip">申请方:</view>
     <view class="desc flex_row">
       <view class="nickname">{{donationDetailObj.applyUserInfo.nickname}}</view>
-      <view class="userType">{{user_Type.userType(donationDetailObj.applyUserInfo.userType)}}</view>
+      <view class="userType">{{user_Type.uType(donationDetailObj.applyUserInfo.uType)}}</view>
     </view>
   </view>
   <!-- 活动的描述 -->
@@ -66,3 +66,4 @@
   </van-goods-action>
 </view>
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

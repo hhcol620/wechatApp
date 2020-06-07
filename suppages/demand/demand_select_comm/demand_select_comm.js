@@ -1,8 +1,14 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
+
+
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  get_goodsList
+  get_goodsList,post_demand_reply_lea_msg
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -10,7 +16,8 @@ const app = getApp()
 // 引入全局  请求加载动画方法
 const {
   showLoading,
-  hideLoading
+  hideLoading,
+  imgURL
 } = app.globalData
 
 
@@ -34,14 +41,19 @@ Page({
     totalCount: 0,
     // // 被选中的商品id
     id: '',
+    // 加载图片基地址
+    imgURL:''
   },
   // 页面加载 请求方法 获取自己发布的二手商品列表
-  async getGoodsList() {
+  async getGoodsList () {
+    showLoading(this)
+    let { pageSize,currrentPage,totalCount,goodsList } = this.data
     const {
       data
-    } = await get_goodsList(1, 1)
+    } = await get_goodsList(pageSize, currrentPage)
     // console.log(data.code);
     if (data.code !== 200) {
+      hideLoading(this)
       // 提醒用户获取信息失败
       wx.showToast({
         title: '获取信息失败',
@@ -53,19 +65,9 @@ Page({
     }
     // 获取信息成功  将数据渲染到页面上
     console.log(data);
-    // 将页面大小和数据总条数和当前页记录一下 
-    const {
-      pageSize,
-      currrentPage,
-      totalCount
-    } = data.data
-    this.setData({
-      pageSize,
-      currrentPage,
-      totalCount
-    })
     const list = data.data.data
-    console.log(list);
+    totalCount = data.data.totalCount
+    let c_page = currrentPage+1
     const l = list.map((v) => {
       const title = v.title
       const productDesc = v.productDesc
@@ -82,10 +84,15 @@ Page({
         id
       }
     })
-    console.log(l);
+    // console.log('l',l);
+    goodsList.push(...l)
+    goodsList.sort(createComparisonFunction('createTime'))
     this.setData({
-      goodsList: l
+      goodsList,
+      totalCount,
+      currrentPage:c_page
     })
+    hideLoading(this)
     wx.stopPullDownRefresh()
   },
   // 点击商品  表示选中
@@ -98,22 +105,58 @@ Page({
 
   },
   // 点击了确定
-  submitFunc () {
-  /* 首先需要将这个商品id传到上一个需求页面 初步想去触发上一个页面的事件 将值传到上一页面 并执行发送 */
-    const { id,demandId,goodsList } = this.data
-    console.log(id);
-    const goodsInfo = goodsList.filter((item) => {
-      return id === item.id
+  async submitFunc () {
+    const { id } = this.data 
+    if (!id) {
+      // 
+      Toast('您还没有选择商品,请选择商品后确认回复');
+      return
+    }
+    await this.post_demand_comm()
+  },
+  // 提交商品留言  demandId   targetId 
+  async post_demand_comm () {
+    const { demandId,id } = this.data
+    const obj = { demandId,targetId:id }
+    const { data } = await post_demand_reply_lea_msg(obj)
+    // console.log(data);
+    if (data.code !== 200) {
+      Toast('确认回复失败')
+      return 
+    }
+    Toast.success('回复成功')
+    setTimeout(function() {
+      wx.navigateBack({
+        delta: 1
+      });
+    },500) 
+  },
+  // 触底加载下一页
+  reachBottom () {
+    const { pageSize, currrentPage, totalCount } = this.data
+    if (currrentPage > Math.ceil(totalCount / pageSize)) {
+      // 没有更多数据了
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return 
+    }
+    // 继续加载下一页
+    this.getGoodsList()
+  },
+  // 下拉刷新
+  pullDownRefresh () {
+    this.setData({
+      goodsList: [],
+      // 当前页
+      currrentPage: 1,
+      totalCount: 0
     })
-    // console.log(goodsInfo[0]);
-    wx.navigateTo({
-      url: `/suppages/demand/demand_detail/demand_detail?id=${demandId}`,
-      success: (result) => {
-        result.eventChannel.emit('acceptSelectComm', { goodsInfo: goodsInfo[0] })
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+    this.getGoodsList()
   },
   /**
    * 生命周期函数--监听页面加载
@@ -121,7 +164,8 @@ Page({
   onLoad: function(options) {
     const { id } = options
     this.setData({
-      demandId:id
+      demandId: id,
+      imgURL
     })
     this.getGoodsList()
   },
@@ -158,22 +202,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    this.setData({
-      goodsList: [],
-      // pageSize
-      pageSize: 10,
-      // 当前页
-      currrentPage: 1,
-      totalCount: 0
-    })
-    this.getGoodsList()
+    this.pullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.reachBottom()
   },
 
   /**

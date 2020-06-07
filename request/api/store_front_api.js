@@ -117,7 +117,7 @@ export const post_report = (params) => {
   return postData(`/user/report`,params)
 }
 
-// 根据用户id获取用户中心的信息
+// 根据用户id获取用户中心的信息 浏览 收藏 卖出宝贝 捐款金额
 export const get_userCenter_ByUserId = (userId) => {
   return getData(`/goods/goods/es/center/${userId}`)
 }

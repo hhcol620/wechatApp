@@ -22,10 +22,10 @@
 <van-popup show="{{ show }}" position="right" custom-style="width: 70%;height: 100%" bind:close="onClose" z-index="9999">
   <view class="main">
     <view class="item">
-      <view class="title">交易方式</view>
+      <view class="title">交易类型</view>
       <!-- 这个可以多选 -->
       <view class="container">
-        <!-- 自定义多选框 -->
+        <!-- 自定义单选框 -->
         <Radio_self list="{{way_radio_items}}" bind:handleItemChange="handleItemChange"></Radio_self>
       </view>
     </view>

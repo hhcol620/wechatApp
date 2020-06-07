@@ -531,7 +531,6 @@ Page({
   },
   // 点击更多
   click_more () {
-
     // 打开弹框 
     this.setData({
       overlay_show_comm:true
@@ -571,7 +570,6 @@ Page({
   onClickHide_lea() {
     this.setData({ overlay_show_lea: false });
   },
-  noop() {},
   // 跳到举报留言的弹出层
   to_report_lea () {
     const { lea_msg_id,lea_msg_customerId } = this.data

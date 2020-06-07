@@ -19,7 +19,7 @@
     </view>
     <view class="footer">
       <view class="viewDetail">
-        <van-button round type="primary" size="mini" bind:click="To_errand_detail" data-id="{{item.id}}">
+        <van-button round type="primary" size="small" bind:click="To_errand_detail" data-id="{{item.id}}">
           查看详情
         </van-button>
       </view>

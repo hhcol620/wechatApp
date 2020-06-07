@@ -40,10 +40,10 @@
   </view>
 </view>
 <!-- 回复输入框 -->
-<!-- 底部输入框 -->
-<view class="input_box" wx-if="{{inputShow}}" style="bottom:{{keyBoardHeight}}">
+<!-- 底部输入框 wx-if="{{inputShow}}" -->
+<view class="input_box" style="bottom:{{keyBoardHeight}}">
   <van-cell-group>
-    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="{{placeHolder}}" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
+    <van-field value="{{ sms }}" auto-focus="{{true}}" focus="{{true}}" clickable="{{true}}" center clearable placeholder="{{placeHolder||'选择留言回复哦'}}" border="{{ false }}" use-button-slot cursor-spacing="{{10}}" bind:blur="inputBlur" bind:focus="inputFocus" adjust-position="{{false}}" bind:input="getData" data-name="msg_content">
       <van-button slot="button" size="small" type="primary" bind:tap="sendFunc">发送</van-button>
     </van-field>
   </van-cell-group>

@@ -1,3 +1,8 @@
+import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
+
+
 // suppages/store/inform/inform.js
 import {
   getSystemInfoSync
@@ -5,7 +10,6 @@ import {
 import {
   getSystemNews,get_read_all
 } from '../../../request/api/store_api.js'
-import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
 //获取应用实例
 const app = getApp()
@@ -52,6 +56,7 @@ Page({
     let cpage = currentPage + 1
     let list = data.data.data
     evaluateList.push(...list)
+    evaluateList.sort(createComparisonFunction('createTime'))
     if (evaluateList.length <= 0) {
       this.setData({
         is_show:false

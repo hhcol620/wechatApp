@@ -15,8 +15,8 @@
         </view>
       </view>
       <view class="more" bind:tap="click_more">
-        <!-- <text class="iconfont icon-more"></text> -->
-        举报求购
+        <text class="iconfont icon-more"></text>
+        <!-- 举报求购 -->
       </view>
     </view>
     <!-- 商品描述 start -->
@@ -50,8 +50,11 @@
     <view class="nickName" hover-class="none" hover-stop-propagation="false">
       {{demandInfo.consumerInfo.nickname}}
     </view>
-    <view class="author_mess" hover-class="none" hover-stop-propagation="false">
+    <view class="author_mess" hover-class="none" hover-stop-propagation="false" wx:if="{{demandInfo.consumerInfo.signature != null}}">
       {{demandInfo.consumerInfo.signature}}
+    </view>
+    <view class="author_mess" hover-class="none" hover-stop-propagation="false" wx:else>
+      这个人什么都没有留下哦。
     </view>
     <view class="author_real" hover-class="none" hover-stop-propagation="false" wx:if="{{demandInfo.consumerInfo.state===40}}">
       实名认证已通过
@@ -104,13 +107,13 @@
     </view>
   </view>
   <!-- 推荐面板 -->
-  <view class="recommend_box" hover-class="none" hover-stop-propagation="false">
+  <!-- <view class="recommend_box" hover-class="none" hover-stop-propagation="false">
     <view class="title" hover-class="none" hover-stop-propagation="false">
       猜你喜欢
       <text class="iconfont icon-xihuan3" />
     </view>
     <StoreList arrList="{{recommend_byId}}" imgURL="{{imgURL}}" />
-  </view>
+  </view> -->
   <view class="btn">
     <van-button type="primary" size="normal" bind:tap="toSelect_comm">选择商品回复</van-button>
   </view>
@@ -119,16 +122,21 @@
   <view class="box animate__animated animate__bounceInDown">该求购已下架或删除</view>
 </view>
 <!-- 弹出层 -->
-<van-overlay show="{{ overlay_show_comm }}" bind:click="onClickHide_comm">
+<!-- <van-overlay show="{{ overlay_show_comm }}" bind:click="onClickHide_comm">
   <view class="wrapper">
     <view class="report" bind:tap="to_report_demand">举报求购</view>
   </view>
-</van-overlay>
+</van-overlay> -->
 <!-- 弹出层 -->
-<van-overlay show="{{ overlay_show_lea }}" bind:click="onClickHide_lea">
+<overlay_self wx:if="{{overlay_show_comm}}" bind:click="onClickHide_comm">
+  <view class="wrapper">
+    <view class="report" bind:tap="to_report_demand">举报求购</view>
+  </view>
+</overlay_self>
+<overlay_self wx:if="{{ overlay_show_lea }}" bind:click="onClickHide_lea">
   <view class="wrapper">
     <view class="report" bind:tap="to_report_lea">举报留言</view>
   </view>
-</van-overlay>
+</overlay_self>
 <van-dialog id="van-dialog" />
 <wx_loading load-text="加载中" id="loading"></wx_loading>

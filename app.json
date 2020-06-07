@@ -58,7 +58,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#2ecc71",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#4d4d4d"
   },
   "tabBar": {
     "color": "#333",
@@ -84,7 +85,9 @@
   "usingComponents": {
     "wx_loading":"/components/wx_loading/wx_loading",
     "no_more":"/components/no_more/no_more",
-    "van-toast": "/miniprogram_npm/vant-weapp/toast/index"
+    "van-toast": "/miniprogram_npm/vant-weapp/toast/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index",
+    "overlay_self":"/components/overlay_self/overlay_self"
   },
   
   "sitemapLocation": "sitemap.json"

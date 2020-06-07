@@ -222,7 +222,7 @@
 					"id": 23,
 					"name": "商品详情页 id =1",
 					"pathName": "suppages/store/commodity/commodity",
-					"query": "id=19",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -338,10 +338,10 @@
 					"scene": null
 				},
 				{
-					"id": 46,
+					"id": 40,
 					"name": "跑腿帮详情页id =2",
 					"pathName": "suppages/errand/errand_detail/errand_detail",
-					"query": "id=6",
+					"query": "id=1",
 					"scene": null
 				},
 				{

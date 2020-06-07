@@ -31,6 +31,11 @@ export const put_demand = (params) => {
   return putData('/goods/goods/demand',params)
 }
 
+// 编辑需求  提交
+export const post_edit_demand = (params) => {
+  return postData('/goods/goods/demand',params)
+}
+
 // 删除用户自己发布的需求 根据id
 export const delete_demand = (id) => {
   return deleteData(`/goods/goods/demand/${id}`)

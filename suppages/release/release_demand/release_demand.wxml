@@ -56,6 +56,10 @@
     </view>
   </view>
 </view>
-<view class="submitBtn">
+<view class="submitBtn" wx:if="{{!isEdit}}">
   <van-button type="primary" size="normal" bind:click="submit_btn">立即发布</van-button>
 </view>
+<view class="submitBtn" wx:if="{{isEdit}}">
+  <van-button type="primary" size="normal" bind:click="finish_submit">完成修改</van-button>
+</view>
+<van-toast id="van-toast" />

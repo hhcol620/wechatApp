@@ -2,7 +2,7 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  getErrandOrder_detail,getErrand_detail
+  getErrandOrder_detail,getErrand_detail,getUserInfo
 } from '../../../request/api/store_api.js'
 
 
@@ -73,6 +73,14 @@ Page({
       complete: () => {}
     });
       
+  },
+  // 根据用户id获得发布者信息
+  // 根据用户id获得用户信息
+  async get_userInfo (userId) {
+    const { data } = await getUserInfo(userId)
+    const Info = data.data
+    console.log(Info);
+    return Info
   },
 
   /**

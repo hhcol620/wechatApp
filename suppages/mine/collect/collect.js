@@ -1,5 +1,8 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
+
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   getMyProductCollectList,
@@ -105,6 +108,7 @@ Page({
       item.consumerInfo = res
       // console.log(item);
       collectList.push(item)
+      collectList.sort(createComparisonFunction('collectDate'))
       this.setData({
         collectList
       })

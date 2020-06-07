@@ -39,3 +39,6 @@ view.container view.item view.footer view.viewDetail {
   justify-content: flex-end;
   padding-right: 30rpx;
 }
+view.container view.item view.footer view.viewDetail .van-button .van-button__text {
+  font-size: 28rpx;
+}

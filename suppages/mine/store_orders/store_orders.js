@@ -1,5 +1,6 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
-
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
 
 import {
   getMyOrderList,
@@ -101,7 +102,7 @@ Page({
       item.salerInfo = res
       item.goodsInfo = goodsInfo
       orderList.push(item)
-      
+      orderList.sort(createComparisonFunction('createTime'))
       this.setData({
         orderList
       })
@@ -124,7 +125,7 @@ Page({
     if (data.code !== 200) return;
     const res = data.data
     const List = res.data
-    console.log(List);
+    // console.log(List);
     if (orderList.length <= 0&&List.length===0) {
       this.setData({
         is_show:false
@@ -136,7 +137,7 @@ Page({
       item.goodsInfo = goodsInfo
       item.salerInfo = res
       orderList.push(item)
-      
+      orderList.sort(createComparisonFunction('createTime'))
       this.setData({
         orderList
       })

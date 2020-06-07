@@ -2,7 +2,7 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
 // suppages/mine/store_orders/store_orders.js
 import {
-  getFinishDonation,getFinishingDonation
+  getFinishDonation,getFinishingDonation,getUserInfo
 } from '../../../request/api/store_api.js'
 
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
@@ -33,16 +33,18 @@ Page({
   },
   // 切换tab栏
   async tabsClick (e) {
+    const { index } = e.detail
     // 切换tab 清空存储列表
     this.setData({
-      pageSize: 10,
       currentPage: 1,
+      totalCount: 0,
       // 存储列表
-      donationList:[]
+      donationList: [],
+      active:index
     })
-    const {pageSize,currentPage } = this.data
+    const { pageSize,currentPage } = this.data
     // console.log(e);   //index 1表示正在审核 2表示审核成功
-    const { index } = e.detail
+    
     if (index == 0) {
       await this.getFinishing_donation(pageSize, currentPage)
     } else if (index == 1) {
@@ -51,40 +53,109 @@ Page({
   },
   // 获取已经转账的公益基金申请
   async getFinish_donation (pageSize, currentPage) {
+    showLoading(this)
     const { donationList } = this.data
     const { data } = await getFinishDonation(pageSize, currentPage)
-    console.log(data);
+    wx.stopPullDownRefresh()
+    // console.log(data);
     if (data.code !== 200) {
+      hideLoading(this)
       return 
     }
     // 成功
     const total = data.data.totalCount
+    let c_page = currentPage+1
     const arr = data.data.data
-    const list = donationList.concat(arr)
-    console.log(list);
+    arr.forEach(async (v, i) => {
+      const userInfo = await this.get_user_info(v.applyUserId)
+      v.applyUserInfo = userInfo
+      donationList.push(v)
+      this.setData({
+        donationList
+      })
+    })
+    hideLoading(this)
+    // const list = donationList.concat(arr)
+    // console.log(list);
     this.setData({
-      totalCount:total,
-      donationList:list
+      totalCount: total,
+      currentPage:c_page
     })
   },
   // 获得正在审核的公益基金申请
   async getFinishing_donation (pageSize, currentPage) {
     const { donationList } = this.data
+    showLoading(this)
     const { data } = await getFinishingDonation(pageSize, currentPage)
+    wx.stopPullDownRefresh()
     if (data.code !== 200) {
+      hideLoading(this)
       return 
     }
     // 成功
     const total = data.data.totalCount
+    let c_page = currentPage+1
     const arr = data.data.data
-    const list = donationList.concat(arr)
-    console.log(list);
+    arr.forEach(async (v, i) => {
+      const userInfo = await this.get_user_info(v.applyUserId)
+      v.applyUserInfo = userInfo
+      console.log(userInfo);
+      donationList.push(v)
+      this.setData({
+        donationList
+      })
+    })
+    hideLoading(this)
     this.setData({
-      totalCount:total,
-      donationList:list
+      totalCount: total,
+      currentPage:c_page
     })
   },
-
+  // 根据id获取用户的信息
+  async get_user_info (userid) {
+    const { data } = await getUserInfo(userid)
+    if (data.code !== 200) {
+      return 
+    }
+    return data.data
+  },
+  // 下拉刷新
+  async pullDownRefresh () {
+    this.setData({
+      currentPage: 1,
+      totalCount: 0,
+      donationList:[]
+    })
+    const index = this.data.active
+    const { pageSize,currentPage } = this.data
+    
+    if (index == 0) {
+      await this.getFinishing_donation(pageSize, currentPage)
+    } else if (index == 1) {
+      await this.getFinish_donation(pageSize, currentPage)
+    }
+  },
+  // 触底加载下一页
+  async reachBottom () {
+    const index = this.data.active
+    const { pageSize, currentPage, totalCount } = this.data
+    if (currentPage > Math.ceil(totalCount / pageSize)) {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return 
+    }
+    if (index == 0) {
+      await this.getFinishing_donation(pageSize, currentPage)
+    } else if (index == 1) {
+      await this.getFinish_donation(pageSize, currentPage)
+    }
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -125,14 +196,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.pullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.reachBottom()
   },
 
   /**

@@ -18,14 +18,15 @@
       </view>
     </view>
     <view class="bottom_c">
-      <view class="user_sign">{{UserInfo.signature}}</view>
+      <view class="user_sign" wx:if="{{UserInfo.signature != null}}">{{UserInfo.signature}}</view>
+      <view class="user_sign" wx:else>这个人什么都没有留下哦。</view>
     </view>
     <view class="user_desc">
       <view class="item">浏览 {{personMsg.browseTotal}}</view>
       <view class="item">收藏 {{personMsg.collectTotal}}</view>
       <view class="item">卖出 {{personMsg.saleTotal}}</view>
       <view class="item">宝贝 {{personMsg.goodsTotal}}</view>
-      <view class="item">捐款金额 {{personMsg.donationTotal}}</view>
+      <view class="item">捐款数量 {{personMsg.donationTotal}}</view>
     </view>
   </view>
 </view>

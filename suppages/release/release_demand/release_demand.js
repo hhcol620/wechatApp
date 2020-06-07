@@ -1,6 +1,8 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 引入  用来发送请求的方法  需要将路径补全
+
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 import {
   get_demandMessage, getCategoryTree, put_demand,
   post_goods_tag_recommend
@@ -57,7 +59,9 @@ Page({
     // 分类的id   后台需要的
     cateId: '',
     // 推荐的标签
-    addTags:[]
+    addTags: [],
+    // 是否为编辑需求
+    isEdit:false
   },
 
 
@@ -284,7 +288,40 @@ Page({
       content: productDesc,
       unit:1
     })
-    console.log(res);
+    Toast.success('发布成功');
+    setTimeout(function() {
+        wx.navigateBack({
+        delta: 1
+      });
+    },1000)
+      
+  },
+  // 点击完成
+  async finish_submit () {
+    // 格式化标签
+    this.getUpTags()
+    // 获得附图的字符串形式
+    const { fileListaddress,id } = this.data
+    const fileListStr = fileListaddress.join(',')
+    // 将数据包装到一起发给后台
+    const { title,mainImgaddress,upTags,productDesc,cateId } = this.data
+    const res = await put_demand({
+      id:id,
+      categoryId: cateId,
+      mainPic: mainImgaddress,
+      otherPics: fileListStr,
+      topic:title,
+      tagNames:upTags,
+      content: productDesc,
+      unit:1
+    })
+    Toast.success('编辑的内容已经成功提交');
+    setTimeout(function() {
+        wx.navigateBack({
+        delta: 1
+      });
+    },1000)
+      
   },
   async getTagsRecommend () {
     const { title,productDesc } = this.data
@@ -327,9 +364,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const { id } = options
+    if (id) {
+      this.setData({
+        isEdit:true
+      })
+    }
     this.getCateTree()
-    if (options.id) {
-      this.getDemandInfo(options.id)
+    if (id) {
+      this.getDemandInfo(id)
     }
   },
 

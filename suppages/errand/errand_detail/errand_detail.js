@@ -24,6 +24,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // 需求id
     id: '',
     // 控制隐私信息的显示
     isShow: false,
@@ -33,6 +34,7 @@ Page({
     privacy_mess: {},
     // 是否正在加载
     isloading: true,
+    
   },
 
   // 根据id获得跑腿的详细信息
@@ -59,11 +61,15 @@ Page({
   },
   // 立即接单
   async receive_order (e) {
-    const { id,version} = this.data.public_mess
+    const { id,version } = this.data.public_mess
     // 发起请求
     const resTo = await this.toReceiveOrder(id, version)
     // console.log(resTo);
     if (resTo) {
+      this.setData({
+        isShow:true,
+        isloading:true
+      })
       // resTo.text
       const code  = resTo.text
       // 等待3秒发送请求
@@ -85,20 +91,16 @@ Page({
           }
           // 成功
           Dialog.alert({
-            message: `${data.text}`,
+            message: `${res.text}`,
           }).then(() => {
             this.setData({
-              isShow: false,
+              isShow: true,
               isloading:false
             })
           });
         },3000
       )
-      console.log(res);
     }
-    this.setData({
-      isShow:true
-    })
   },
   // 关闭遮罩
   onClickHide () {
@@ -154,6 +156,7 @@ Page({
     // console.log(options);
     const {id} = options
     // console.log(id);
+    
     this.setData({
       id
     })
