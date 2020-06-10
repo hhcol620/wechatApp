@@ -21,17 +21,19 @@
         <view class="title">商品总价</view>
         <view class="price">￥  {{order_detail.goodsInfo.salePrice}}</view>
       </view>
-      <view class="item">
+      <!-- <view class="item">
         <view class="title">钱款去向</view>
         <view class="price">已到达卖家账户</view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view class="main">
     <!-- 这里放我的收货信息  和 评价的信息 -->
     <view class="top">
       <!-- 收货地址 -->
-      <view class="title">收货地址: 张三 1777777</view>
+      <view class="title">
+        收货地址: {{order_detail.buyerInfo.nickname}} {{order_detail. phoneNum}}
+      </view>
       <view class="other_mess">{{order_detail.address}}</view>
     </view>
     <view class="bottom">

@@ -110,11 +110,10 @@ Page({
     console.log(index);
     // 将index 赋值给active 保存一下
     this.setData({
-      active: index,
-      pageSize: 10,
-      currentPage: 1,
-      totalCount: 0,
       recommend_offline: [],
+      active: index,
+      currentPage: 1,
+      totalCount: 0
     })
     if (index == 0) {
       await this.get_recommend_offline()

@@ -22,7 +22,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: 3.5,
     // 订单信息
     order_detail: {},
     // 加载图片基地址

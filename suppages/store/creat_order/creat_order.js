@@ -240,7 +240,7 @@ Page({
       });
       return 
     }
-    const { orderCode, paymentMoney} = res.data
+    const { orderCode, paymentMoney } = res.data
     if (radio == 1) {
       wx.navigateTo({
         url: `/suppages/store/wx_payment/wx_payment?ordercode=${orderCode}&paymentmoney=${paymentMoney}`,
@@ -307,7 +307,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    
   },
 
   /**

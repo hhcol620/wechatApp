@@ -11,7 +11,7 @@
 </view>
 <view class="tab_offline">
   <van-tabs bind:change="tabChange" type="card" sticky="{{true}}">
-    <van-tab title="实时推荐">
+    <van-tab title="猜你喜欢">
       <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
     </van-tab>
     <van-tab title="真心求购">

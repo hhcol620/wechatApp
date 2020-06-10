@@ -2,12 +2,14 @@
   <view class="item" wx:for="{{arrList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
     <view class="header">
       <view class="image">
-        <image class="" src="{{imgURL}}{{item.userInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <view>
+          <image class="" wx:if="{{item.userInfo.pic}}" src="{{imgURL}}{{item.userInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        </view>
       </view>
       <view class="right">
         <view class="nickname">{{item.userInfo.nickname}}</view>
         <view class="desc">
-          {{item.content}}{{item.content}}{{item.content}}{{item.content}}{{item.content}}{{item.content}}{{item.content}}{{item.content}}
+          {{item.content}}
           <view class="whole_e" wx:if="{{item.wholeEvaluate>=6}}">好评</view>
           <view class="whole_e" wx:if="{{item.wholeEvaluate<6&&item.wholeEvaluate>3}}">中评</view>
           <view class="whole_e" wx:if="{{item.wholeEvaluate<3}}">差评</view>

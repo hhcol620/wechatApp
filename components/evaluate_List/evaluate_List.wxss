@@ -1,13 +1,22 @@
 view.container {
   margin: 30rpx;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border-radius: 10rpx;
 }
 view.container view.item {
+  background-color: #f9f9f9;
+  margin: 20rpx 0;
   padding: 20rpx;
+  border-radius: 10rpx;
 }
 view.container view.item view.header {
   display: flex;
+}
+view.container view.item view.header view.image > view {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 10rpx;
+  background-color: #d1d1d1;
 }
 view.container view.item view.header view.image image {
   height: 100rpx;
@@ -34,9 +43,10 @@ view.container view.item view.header view.right .desc .whole_e {
   width: 80rpx;
   text-align: center;
   line-height: 30rpx;
-  border: 1rpx solid var(--themeColor);
+  background-color: var(--themeColor);
+  color: #fff;
   padding: 4rpx 10rpx;
-  border-radius: 22rpx;
+  border-radius: 4rpx;
 }
 view.container view.item view.header view.right .createTime {
   margin-top: 10rpx;

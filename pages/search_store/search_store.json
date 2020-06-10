@@ -8,5 +8,5 @@
     "van-popup": "/miniprogram_npm/vant-weapp/popup/index",
     "Radio_self":"/components/Radio_self/Radio_self"
   },
-  "navigationBarTitleText":"IRH商城"
+  "navigationBarTitleText":"IRH校园商城"
 }

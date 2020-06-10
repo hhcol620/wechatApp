@@ -120,7 +120,7 @@ Page({
   async getOrderList_sale () {
     const { orderList, currentPage } = this.data
     showLoading(this)
-    const{ data } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
+    const{ data } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 1);
     hideLoading(this)
     if (data.code !== 200) return;
     const res = data.data

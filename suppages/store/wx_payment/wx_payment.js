@@ -6,7 +6,7 @@ import {
 } from '../../../request/api/store_api.js'
 
 import {
-  getOrderPayWx
+  getOrderPayWx,getOrderId
 } from '../../../request/api/store_front_api.js'
 
 import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
@@ -52,13 +52,28 @@ Page({
     Dialog.alert({
       message: '付款成功,可以在我的->商城订单中查看(仅供测试环境)',
     }).then(() => {
-      // on close
+      this.getOrderIdFunc()
     });
       
   },
   // 根据订单号获取订单id
-  async getOrderId () {
-    return id
+  async getOrderIdFunc () {
+    const { ordercode } = this.data 
+    const { data } = await getOrderId(ordercode)
+    if (data.code !== 200) {
+      return 
+    }
+    let orderId = data.data
+    wx.redirectTo({
+      url: `../../../suppages/mine/store_orders_detail/store_orders_detail?orderid=${orderId}&type=2`,
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      // ../../../suppages/mine/store_orders_detail/store_orders_detail?orderid=${orderId}&type=${type}
+      
   },
 
   /**
@@ -97,7 +112,11 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    Dialog.alert({
+      message: '页面退出,自动关闭订单',
+    }).then(() => {
+      // on close
+    });
   },
 
   /**

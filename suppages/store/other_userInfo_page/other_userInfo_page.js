@@ -1,5 +1,10 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
+
+
 // 引入  用来发送请求的方法  需要将路径补全
 import { getUserInfo } from '../../../request/api/store_api.js'
 
@@ -105,7 +110,9 @@ Page({
         this.get_demand()
       }
     } else if (index == 2) {
-      this.getEvaluate()
+      if (evaluateList.length <= 0) {
+        this.getEvaluate()
+      }
     }
   },
   // 根据用户id获取用户信息
@@ -130,6 +137,7 @@ Page({
     console.log(data);
     const cpage = currentPage+1
     esList.push(...data.data.data)
+    esList.sort(createComparisonFunction('createTime'))
     if (esList.length <= 0) {
       // 为空
       this.setData({
@@ -167,6 +175,7 @@ Page({
       v.title = v.topic
       v.productDesc = v.content
       demandList.push(v)
+      demandList.sort(createComparisonFunction('createTime'))
       this.setData({
         demandList
       })
@@ -197,6 +206,7 @@ Page({
     List.forEach(async (v,i) => {
       v.userInfo = await this.get_UserInfo(v.buyerId)
       evaluateList.push(v)
+      evaluateList.sort(createComparisonFunction('createTime'))
       this.setData({
         evaluateList
       })
@@ -266,9 +276,9 @@ Page({
    */
   onReachBottom: function () {
     // 先获取tab 所在位置   发起不同的请求
-    const { index,getEsObj,getDemandObj,getEvaluateObj } = this.data
+    const { index } = this.data
     if (index == 0) {
-      const { pageSize,currentPage,totalCount} = getEsObj
+      const { pageSize,currentPage,totalCount} = this.data.getEsObj
       if (currentPage <= Math.ceil(totalCount / pageSize)) {
         this.get_es_comm()
       } else {
@@ -282,7 +292,7 @@ Page({
       }
       
     } else if (index == 1) {
-      const { pageSize,currentPage,totalCount} = getDemandObj
+      const { pageSize,currentPage,totalCount} = this.data.getDemandObj
       if (currentPage <= Math.ceil(totalCount / pageSize)) {
         this.get_demand()
       } else {
@@ -295,7 +305,7 @@ Page({
         });  
       }
     } else if (index == 2) {
-      const { pageSize,currentPage,totalCount} = getDemandObj
+      const { pageSize,currentPage,totalCount} = this.data.getEvaluateObj
       if (currentPage <= Math.ceil(totalCount / pageSize)) {
         this.getEvaluate()
       } else {

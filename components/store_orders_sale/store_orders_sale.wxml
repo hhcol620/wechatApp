@@ -6,7 +6,10 @@
         <image class="" src="{{imgURL}}{{item.salerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
         <view class="nickName">{{item.salerInfo.nickname}}</view>
       </view>
-      <view class="orders_desc">交易成功</view>
+      <!-- 40:等待支付 50:交易成功 60:捐款金额已分配 -->
+      <view class="orders_desc" wx:if="{{item.state==40}}">等待支付</view>
+      <view class="orders_desc" wx:if="{{item.state==50}}">交易成功</view>
+      <view class="orders_desc" wx:if="{{item.state==60}}">捐款金额已分配</view>
     </view>
     <view class="main" bind:tap="jumpPageDetail" data-orderid="{{item.id}}">
       <view class="mainImg">

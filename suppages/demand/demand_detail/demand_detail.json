@@ -13,5 +13,5 @@
     "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index",
     "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
-  "navigationBarTitleText":"求购详情"
+  "navigationBarTitleText":"IRH校园求购"
 }

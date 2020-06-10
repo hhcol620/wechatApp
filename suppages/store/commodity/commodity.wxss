@@ -251,6 +251,7 @@ page {
 .recommend_box {
   margin-top: 20rpx;
   width: 100%;
+  padding-bottom: 100rpx;
 }
 .recommend_box .title {
   display: flex;

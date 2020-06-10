@@ -1,4 +1,9 @@
-
+// 如果使用  async  await 这个es7 的将异步的请求
+import regeneratorRuntime from '../../lib/runtime/runtime.js'
+// 引入  用来发送请求的方法  需要将路径补全
+import {
+  get_product_order_detail
+} from '../../request/api/store_api.js'
 // components/store_orders_buy/store_orders_buy.js
 Component({
   /**
@@ -39,6 +44,29 @@ Component({
       // console.log(orderid);
       this.triggerEvent('detail',obj)     
 
+    },
+    // 跳转到支付页
+    jumpPagePay (e) {
+      const { orderid } = e.currentTarget.dataset
+      this.get_Order_Detail(orderid)
+    },
+    // 根据订单id获取订单详情
+    async get_Order_Detail (id) {
+      const { data } = await get_product_order_detail(id)
+      if (data.code !== 200) {
+        // 获取订单信息失败
+        return 
+      }
+      console.log(data.data);
+      const { orderCode,paymentMoney }= data.data
+      wx.navigateTo({
+        url: `/suppages/store/wx_payment/wx_payment?ordercode=${orderCode}&paymentmoney=${paymentMoney}`,
+        success: (result) => {
+
+        },
+        fail: () => {},
+        complete: () => {}
+      });
     },
     // 联系卖家
     contact_seller() {

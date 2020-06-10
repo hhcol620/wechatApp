@@ -92,6 +92,10 @@ export const  postCreateOrder = (id,params) => {
 export const getOrderPayWx = (orderCode) => {
   return getData(`/order/pay/wx/${orderCode}`)
 }
+// 根据订单号 获取订单id
+export const getOrderId= (orderCode) => {
+  return getData(`/order/order/es/id/${orderCode}`)
+}
 
 // 回复留言    productId       content    回复商品的时候   firstClassId parentId 这两个设置为-1
 export const write_msg = (params) => {
@@ -104,7 +108,7 @@ export const get_search_content = (pageSize, currentPage, keyword, priceMin, pri
 }
 // 商城首页的推荐 离线推荐
 export const get_goods_recommend_offline = (pageSize, currentPage) => {
-  return getData(`/goods/recommend/offline/${pageSize}/${currentPage}`)
+  return getData(`/goods/recommend/realtime/${pageSize}/${currentPage}`)
 }
 // 举报  
 // 获取举报的列表

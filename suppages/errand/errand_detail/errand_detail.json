@@ -5,5 +5,5 @@
     "Loading":"/components/loading/loading",
     "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
-  "navigationBarTitleText":"跑腿服务"
+  "navigationBarTitleText":"IRH校园跑腿"
 }
