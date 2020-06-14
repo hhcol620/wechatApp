@@ -2,6 +2,7 @@ import regeneratorRuntime from '../../lib/runtime/runtime.js'
 
 import { post_login,get_login_code,post_emailCodeLogin,post_ToEmailCode,post_login_WX } from '../../request/api/store_front_api.js'
 import { getMyInfo } from '../../request/api/store_api.js'
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -252,6 +253,7 @@ Page({
     const { data } = await post_ToEmailCode(2,email)
     console.log(data);
     if (data.code !== 200) {
+      Toast.fail(`${data.text}`)
       return 
     }
     wx.showToast({

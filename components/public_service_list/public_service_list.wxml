@@ -13,11 +13,11 @@
           <text class="iconfont icon-liulan5"></text>
           浏览 996
         </view> -->
-        <view class="footer_item">
-          <!-- <text class="iconfont icon-dianzan1"></text> -->
-          <!-- 支持度 {{item.userDownTotal?((item.userUpTotal/(item.userUpTotal+item.userDownTotal))*100):0}}% -->
+        <!-- <view class="footer_item">
           支持度 {{computed_percentage.c_percentage(item.userUpTotal,item.userDownTotal)}}%
-        </view>
+        </view> -->
+        <view class="footer_item" wx:if="{{item.state==2}}">申请时间 {{item.createTime}}</view>
+        <view class="footer_item" wx:if="{{item.state==5}}">更新时间 {{item.updateTime}}</view>
       </view>
     </navigator>
   </view>

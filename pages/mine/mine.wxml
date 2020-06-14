@@ -1,8 +1,11 @@
 <!-- 头部信息 -->
 <view class="head">
   <view class="card">
-    <view class="headImg" wx:if="{{userInfo.portrait}}">
-      <image class="" src="{{imgURL}}{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" bind:tap="priviewImg" data-img="{{imgURL}}{{userInfo.portrait}}" />
+    <view class="left">
+      <view class="headImg" wx:if="{{userInfo.portrait}}">
+        <image class="" src="{{imgURL}}{{userInfo.portrait}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" bind:tap="priviewImg" data-img="{{imgURL}}{{userInfo.portrait}}" />
+      </view>
+      <!-- <view class="exit">退出登录</view> -->
     </view>
     <view class="nickName_real_sign" wx:if="{{userInfo.nickname}}">
       <view class="nickName_real">
@@ -100,6 +103,14 @@
             <view>
               <view class="iconfont icon-fankuijianyi"></view>
               <view class="textdesc">反馈建议</view>
+            </view>
+          </button>
+        </view>
+        <view class="item_i">
+          <button slot="icon" class="item_nav" bind:tap="exit">
+            <view>
+              <view class="iconfont icon-tuichu"></view>
+              <view class="textdesc">退出登录</view>
             </view>
           </button>
         </view>

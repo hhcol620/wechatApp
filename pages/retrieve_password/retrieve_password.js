@@ -142,14 +142,16 @@ Page({
     // 修改密码成功
     wx.showToast({
       title: '修改密码成功',
-      icon: 'none',
+      icon: 'success',
       image: '',
       duration: 1500,
       mask: true
     });
-    wx.navigateBack({
-      delta: 1
-    });
+    setTimeout(() => {
+      wx.navigateBack({
+        delta: 1
+      });
+    },1000)
       
   },
   /**

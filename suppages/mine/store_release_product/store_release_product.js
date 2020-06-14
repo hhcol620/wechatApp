@@ -5,7 +5,7 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 import { createComparisonFunction } from '../../../utils/sort_self.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  get_goodsList
+  get_goodsList,delete_goods
 } from '../../../request/api/store_api.js'
 //index.js
 //获取应用实例
@@ -82,6 +82,7 @@ Page({
       const salePrice = v.salePrice
       const createTime = v.createTime
       const id = v.id
+      const state = v.state
       return {
         title,
         productDesc,
@@ -90,7 +91,8 @@ Page({
         collectTotal,
         salePrice,
         createTime,
-        id
+        id,
+        state
       }
     })
     let c_page = currrentPage+1
@@ -112,7 +114,7 @@ Page({
   more_btn(e) {
     // 这个就是这条数据的id值  存储一下 提供打开弹框后使用
     // console.log(e.currentTarget.dataset);
-    const id = e.currentTarget.dataset
+    const {id} = e.currentTarget.dataset
     this.setData({
       isShow: true,
       id: id
@@ -149,6 +151,38 @@ Page({
       fail: () => {},
       complete: () => {}
     });
+  },
+  async delete_commodity () {
+    const  {id,goodsList} = this.data
+    console.log(id);
+    const { data } = await delete_goods(id)
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '删除失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return
+    }
+    wx.showToast({
+      title: '删除成功',
+      icon: 'success',
+      image: '',
+      duration: 1500,
+      mask: true
+    });
+    let list = goodsList
+    list.forEach((v,i) => {
+      if (v.id == id) {
+        list.splice(i,1)
+      }
+    })
+    this.setData({
+      goodsList:list
+    })
+      
   },
   // 触底加载下一页
   reachBottom () {

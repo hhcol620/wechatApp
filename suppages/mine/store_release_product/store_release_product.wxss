@@ -59,7 +59,7 @@ page {
 }
 .container .item view.footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin-top: 20rpx;
   padding-top: 20rpx;
@@ -94,6 +94,11 @@ page {
 }
 .container .item view.footer view.right view.more .van-icon {
   font-size: 40rpx;
+}
+.container .item view.footer view.left view.state_tag {
+  font-size: 26rpx;
+  padding: 4rpx 6rpx;
+  border-radius: 4rpx;
 }
 /* 
    position: fixed;
@@ -148,4 +153,20 @@ page {
   color: #333;
   font-weight: 500;
   font-style: normal;
+}
+.valid {
+  color: #2ecc71;
+  border: 1rpx solid #2ecc71;
+}
+.pay {
+  color: #e74c3c;
+  border: 1rpx solid #e74c3c;
+}
+.sale {
+  color: #3498db;
+  border: 1rpx solid #3498db;
+}
+.check {
+  color: #e67e22;
+  border: 1rpx solid #e67e22;
 }

@@ -105,6 +105,7 @@ page {
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
+  border-top: 1rpx solid var(--borderColor);
 }
 .bottomBtn .release_product {
   height: 100rpx;

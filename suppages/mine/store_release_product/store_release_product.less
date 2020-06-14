@@ -60,7 +60,7 @@ page{
     }
     view.footer {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: center;
       margin-top: 20rpx;
       padding-top: 20rpx;
@@ -99,6 +99,13 @@ page{
           .van-icon {
             font-size: 40rpx;
           }
+        }
+      }
+      view.left {
+        view.state_tag {
+          font-size: 26rpx;
+          padding: 4rpx 6rpx;
+          border-radius: 4rpx;
         }
       }
     }
@@ -172,4 +179,25 @@ page{
 
     .where_monery {}
   }
+}
+
+// 有效
+.valid{
+  color: #2ecc71;
+  border: 1rpx solid #2ecc71;
+}
+// 正在付款
+.pay{
+  color: #e74c3c;
+  border: 1rpx solid #e74c3c;
+}
+// 已卖出
+.sale{
+  color: #3498db;
+  border: 1rpx solid #3498db;
+}
+// 审核中
+.check{
+  color: #e67e22;
+  border: 1rpx solid #e67e22;
 }

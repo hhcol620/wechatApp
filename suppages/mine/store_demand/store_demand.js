@@ -73,7 +73,7 @@ Page({
       return  
     }
     // 获取成功
-    const list = data.data.data
+    const list = data.data.data||[]
     list.forEach((v,i) => {
       v.tgNameArr = v.tagNames.split('|')||[]
     })
@@ -92,8 +92,8 @@ Page({
   },
   // 点击了删除需求
   async delete_demand () {
-    const { data } = await delete_demand(3)
-    // console.log(data.code);
+    const { id,demandList } = this.data
+    const { data } = await delete_demand(id)
     if (data.code !== 200) {
       wx.showToast({
         title: '删除失败',
@@ -102,6 +102,15 @@ Page({
         mask: true
       });
     }
+    let list = demandList
+    list.forEach((v, i) => {
+      if (v.id == id) {
+        list.splice(i,1)
+      }
+    })
+    this.setData({
+      demandList:list
+    })
     wx.showToast({
       title: '删除成功',
       icon: 'success',

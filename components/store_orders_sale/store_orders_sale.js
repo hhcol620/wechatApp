@@ -36,7 +36,7 @@ Component({
       }
       this.triggerEvent('detail',obj)
     },
-    // 联系卖家
+    // 联系买家
     contact_seller () {
       wx.makePhoneCall({
         // 手机号
@@ -47,13 +47,20 @@ Component({
         success: (res) => {},
       })
     },
+    // 删除订单
+    deleteOrder (e) {
+      const { orderId } = this.data
+      const { type } = e.currentTarget.dataset
+      const obj = {orderid:orderId,type}
+      this.triggerEvent('deleteorder',obj)
+    },
     // 点击了更多  打开一个弹框
     more_btn (e) {
       const { orderid } = e.currentTarget.dataset
-      // console.log(e);
+      // console.log(orderid);
       this.setData({
         isShow: true,
-        orderId: orderid
+        orderId:orderid
       })
     },
     // 隐藏遮罩弹框 

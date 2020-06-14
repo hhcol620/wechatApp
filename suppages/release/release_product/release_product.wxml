@@ -66,7 +66,8 @@
   <view class="degree">
     <view class="tip">新旧程度</view>
     <view class="degree_box">
-      <input class="weui-number" type="digit" placeholder="请输入宝贝的新旧程度" value="{{degreeValue}}" data-name="degreeValue" bindinput="getInputData" />
+      <!-- <input class="weui-number" type="digit" placeholder="请输入宝贝的新旧程度" value="{{degreeValue}}" data-name="degreeValue" bindinput="getInputData" /> -->
+      <van-stepper value="{{ degreeValue }}" step="1" min="1" max="9" integer  show-plus="{{false}}" show-minus="{{false}}" bind:change="getStepData" />
     </view>
   </view>
   <!-- 让用户给自己的商品打上标签 tags -->

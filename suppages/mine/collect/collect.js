@@ -94,7 +94,7 @@ Page({
       });
       return
     }
-    const arrList = data.data.data
+    const arrList = data.data.data||[]
     if (collectList.length <= 0&&arrList.length===0) {
       this.setData({
         is_show:false

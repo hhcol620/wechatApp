@@ -58,7 +58,7 @@ Page({
       return 
     }
     let current_page = currentPage + 1
-    const List = data.data.data
+    const List = data.data.data||[]
     if (replyToMe.length <= 0 && List.length <= 0) {
       this.setData({
         is_show:false

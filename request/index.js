@@ -31,8 +31,6 @@
 //   })
 // }
 import Toast from '../miniprogram_npm/vant-weapp/toast/toast';
-
-
 // 配置基地址
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -51,7 +49,7 @@ const getData = (url, params) => {
         // console.log(result);
         let code = result.data.code
         if (code === 402) {
-          Toast('身份过期,请重新登陆');
+          // Toast('身份过期,请重新登陆');
           wx.clearStorageSync();
         }
         reslove(result)
@@ -88,7 +86,7 @@ const postData = (url, params) => {
       },
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
-          Toast('身份过期,请重新登陆');
+          // Toast('身份过期,请重新登陆');
           wx.clearStorageSync(); 
         }
       }
@@ -114,7 +112,7 @@ const deleteData = (url, params) => {
       },
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
-          Toast('身份过期,请重新登陆');
+          // Toast('身份过期,请重新登陆');
           wx.clearStorageSync(); 
         }
       }
@@ -140,7 +138,7 @@ const putData = (url, params) => {
       },
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
-          Toast('身份过期,请重新登陆');
+          // Toast('身份过期,请重新登陆');
           wx.clearStorageSync(); 
         }
       }
@@ -167,7 +165,7 @@ const postFormData = (url, params) => {
       },
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
-          Toast('身份过期,请重新登陆');
+          // Toast('身份过期,请重新登陆');
           wx.clearStorageSync(); 
         }
       }

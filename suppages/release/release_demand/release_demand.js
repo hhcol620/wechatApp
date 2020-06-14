@@ -4,7 +4,7 @@ import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 
 import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 import {
-  get_demandMessage, getCategoryTree, put_demand,
+  get_demandMessage, getCategoryTree, put_demand,post_edit_demand,
   post_goods_tag_recommend
 } from '../../../request/api/store_api.js'
 // 引入上传文件方法 参数就是本地的路径
@@ -305,7 +305,7 @@ Page({
     const fileListStr = fileListaddress.join(',')
     // 将数据包装到一起发给后台
     const { title,mainImgaddress,upTags,productDesc,cateId } = this.data
-    const res = await put_demand({
+    const res = await post_edit_demand({
       id:id,
       categoryId: cateId,
       mainPic: mainImgaddress,

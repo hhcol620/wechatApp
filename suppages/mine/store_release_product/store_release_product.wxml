@@ -20,6 +20,12 @@
       </view>
     </navigator>
     <view class="footer">
+      <view class="left">
+        <view class="state_tag valid" wx:if="{{item.state==2}}">有效</view>
+        <view class="state_tag pay" wx:if="{{item.state==3}}">买家正在付款</view>
+        <view class="state_tag sale" wx:if="{{item.state==4}}">已卖出</view>
+        <view class="state_tag check" wx:if="{{item.state==5}}">审核中</view>
+      </view>
       <view class="right">
         <!-- 点击编辑 进入发布页面 -->
         <view class="edit">

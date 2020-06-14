@@ -51,23 +51,22 @@ Page({
   },
   // 进入我的页面立即判断本地是否有token 如果没有的话就重定向到登陆页页面
   async redirectToLogin() {
-    const token = wx.getStorageSync('access_token');
-    if (!token) {
-      // 获取不到就跳转到登陆页
-      // console.log('获取不到');
-      wx.navigateTo({
-        url: '/pages/login/login',
-        success: (result) => {
+    // const token = wx.getStorageSync('access_token');
+    // if (!token) {
+    //   wx.navigateTo({
+    //     url: '/pages/login/login',
+    //     success: (result) => {
 
-        },
-        fail: () => {},
-        complete: () => {}
-      });
-    } else {
-      this.getmyinfo()
-      this.getUnRead()
-      this.isBind()
-    }
+    //     },
+    //     fail: () => {},
+    //     complete: () => {}
+    //   });
+    // } else {
+      
+    // }
+    this.getmyinfo()
+    this.getUnRead()
+    this.isBind()
   },
   // 登陆成功获取我的个人信息
   async getmyinfo() {
@@ -168,7 +167,7 @@ Page({
 
   },
   // 解绑
-  async relieveBindingWechat () {
+  async relieveBindingWechat() {
     const {
       data
     } = await wx_unbinding()
@@ -220,6 +219,32 @@ Page({
       complete: () => {}
     });
   },
+  // 退出登录
+  exit() {
+
+    Dialog.confirm({
+        title: '提示',
+        message: '确定退出此账号吗',
+      })
+      .then(() => {
+        wx.clearStorage()
+        this.setData({
+          userInfo: {},
+          // 加载图片基地址
+          imgURL: '',
+          // 系统通知 未读
+          inform_no_read: 0,
+          // at我的未读
+          atMe_no_read: 0,
+          // 用户是否已经绑定
+          isbind: false
+        })
+      })
+      .catch(() => {
+        // on cancel
+      });
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -242,6 +267,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    this.setData({
+      imgURL
+    })
     this.redirectToLogin()
     // this.getmyinfo()
     // this.getUnRead()

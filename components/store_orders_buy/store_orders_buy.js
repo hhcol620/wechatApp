@@ -50,6 +50,21 @@ Component({
       const { orderid } = e.currentTarget.dataset
       this.get_Order_Detail(orderid)
     },
+    // 取消订单
+    cancel_order (e) {
+      // 用户点击了取消订单
+      const {
+        orderid,type
+      } = e.currentTarget.dataset
+      const obj = {orderid,type}
+      this.triggerEvent('deleteorder',obj)
+    },
+    deleteOrder (e) {
+      const { orderId } = this.data
+      const { type } = e.currentTarget.dataset
+      const obj = {orderid:orderId,type}
+      this.triggerEvent('deleteorder',obj)
+    },
     // 根据订单id获取订单详情
     async get_Order_Detail (id) {
       const { data } = await get_product_order_detail(id)
@@ -97,9 +112,12 @@ Component({
 
     },
     // 点击了更多  打开一个弹框
-    more_btn() {
+    more_btn (e) {
+      const { orderid } = e.currentTarget.dataset
+      // console.log(orderid);
       this.setData({
-        isShow: true
+        isShow: true,
+        orderId:orderid
       })
     },
     // 隐藏遮罩弹框 

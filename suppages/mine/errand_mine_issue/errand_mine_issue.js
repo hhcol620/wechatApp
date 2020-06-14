@@ -55,7 +55,7 @@ Page({
       return
     }
     wx.stopPullDownRefresh()
-    const list = data.data.data
+    const list = data.data.data||[]
     errandList.push(...list)
     errandList.sort(createComparisonFunction('createTime'))
     let c_page = currentPage + 1

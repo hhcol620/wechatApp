@@ -535,6 +535,13 @@ Page({
       addTags
     })
   },
+  // 点击step 变化时触发
+  getStepData (e) {
+    let degreeValue = e.detail
+    this.setData({
+      degreeValue
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

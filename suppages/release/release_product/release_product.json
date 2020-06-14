@@ -8,7 +8,8 @@
     "van-uploader": "/miniprogram_npm/vant-weapp/uploader/index",
     "Radio_self":"/components/Radio_self/Radio_self",
     "Checkbox_self":"/components/Checkbox_self/Checkbox_self",
-    "cateSelectTree":"/components/cateSelectTree/cateSelectTree"
+    "cateSelectTree":"/components/cateSelectTree/cateSelectTree",
+    "van-stepper": "/miniprogram_npm/vant-weapp/stepper/index"
   },
   "navigationBarTitleText":"发布宝贝"
 }

@@ -54,7 +54,7 @@ Page({
     wx.stopPullDownRefresh()
     this.data.totalCount = data.data.totalCount;
     let cpage = currentPage + 1
-    let list = data.data.data
+    let list = data.data.data||[]
     evaluateList.push(...list)
     evaluateList.sort(createComparisonFunction('createTime'))
     if (evaluateList.length <= 0) {

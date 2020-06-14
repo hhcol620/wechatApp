@@ -47,3 +47,4 @@
     <view class="submit_btn" bind:tap="post_registerEmailCode">注册</view>
   </view>
 </view>
+<van-toast id="van-toast" />

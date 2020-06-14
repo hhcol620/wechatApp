@@ -1,16 +1,18 @@
 <!-- 这是我的里面商城中的订单 这里面包括着我买到的和我卖出的订单 -->
 <van-tabs active="{{ active }}" color='var(--themeColor)' bind:change="tabChange">
   <van-tab title="我买到的">
-    <store_orders_buy bind:detail="toOrdersDetail" myOrderList="{{orderList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></store_orders_buy>
+    <store_orders_buy bind:detail="toOrdersDetail" bind:deleteorder="cancelOrder" myOrderList="{{orderList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></store_orders_buy>
     <view wx:else>
       <no_more str="没有数据哦"></no_more>
     </view>
   </van-tab>
   <van-tab title="我卖出的">
-    <store_orders_sale bind:detail="toOrdersDetail" myOrderList="{{orderList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></store_orders_sale>
+    <store_orders_sale bind:detail="toOrdersDetail" bind:deleteorder="cancelOrder" myOrderList="{{orderList}}" imgURL="{{imgURL}}" wx:if="{{is_show}}"></store_orders_sale>
     <view wx:else>
       <no_more str="没有数据哦"></no_more>
     </view>
   </van-tab>
 </van-tabs>
 <wx_loading load-text="加载中" id="loading"></wx_loading>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

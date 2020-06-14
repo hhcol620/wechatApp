@@ -66,6 +66,11 @@ export const getEvaluateByOrderId = (orderId) =>{
   return getData(`/order/evaluate/byOrderId/${orderId}`)
 }
 
+// 取消订单
+export const cancel_order = (type,orderId) => {
+  //todo  没测
+  return deleteData(`/order/order/es/cancel/${type}/${orderId}`)
+}
 
 // 分页查看自己发布商品
 export const get_goodsList = (pageSize,currentPage) => {
@@ -86,6 +91,10 @@ export const put_goods = (params) => {
 // 编辑商品
 export const put_goods_edit = (params) => {
   return putData(`/goods/goods/es/edit`,params)
+}
+// 删除商品
+export const delete_goods = (id) => {
+  return deleteData(`/goods/goods/es/${id}`)
 }
 
 // 根据商品的标题  推送关键词  {text:''}

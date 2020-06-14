@@ -114,3 +114,30 @@ view.container view.item view.footer view.right view.more .van-icon {
   font-weight: 500;
   font-style: normal;
 }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.wrapper .wrapper_item {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-style: normal;
+  font-weight: 500;
+  border-bottom: 1rpx solid #d1d1d1;
+}
+.wrapper .wrapper_item:first-child {
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.wrapper .wrapper_item:last-child {
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}

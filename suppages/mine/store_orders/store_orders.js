@@ -1,12 +1,16 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 排序
 import { createComparisonFunction } from '../../../utils/sort_self.js'
+import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
+
 
 import {
   getMyOrderList,
   getUserInfo,
-  get_goodsInfo
+  get_goodsInfo,
+  cancel_order
 } from '../../../request/api/store_api.js'
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -88,8 +92,8 @@ Page({
     } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 2);
     hideLoading(this)
     if (data.code !== 200) return;
-    const res = data.data
-    const List = res.data
+    const res = data.data||[]
+    const List = res.data||[]
     console.log(List);
     if (orderList.length <= 0&&List.length===0) {
       this.setData({
@@ -123,8 +127,8 @@ Page({
     const{ data } = await getMyOrderList(this.data.pageSize, this.data.currentPage, 1);
     hideLoading(this)
     if (data.code !== 200) return;
-    const res = data.data
-    const List = res.data
+    const res = data.data||[]
+    const List = res.data||[]
     // console.log(List);
     if (orderList.length <= 0&&List.length===0) {
       this.setData({
@@ -162,6 +166,40 @@ Page({
       data
     } = await get_goodsInfo(goodsId)
     return data.data
+  },
+  // 取消订单
+  async cancelOrder (e) {
+    // console.log(e);
+    let { orderList } = this.data
+    const { orderid, type } = e.detail
+    Dialog.confirm({
+      title: '提示',
+      message: (type==3)?'确认要取消这个订单吗?':'确定要删除这个订单吗?',
+    })
+      .then(async () => {
+        const { data } = await cancel_order(type, orderid)
+        if (data.code !== 200) {
+          Toast.fail('操作失败')
+          return 
+        }
+        if (type == 3) {
+          Toast.success('您已成功取消订单')
+        } else {
+          Toast.success('您已成功删除订单')
+        }
+        orderList.forEach((v, i) => {
+          if (v.id == orderid) {
+            orderList.splice(i,1)
+          }
+        })
+        this.setData({
+          orderList
+        })
+      })
+      .catch(() => {
+        // on cancel
+      });
+   
   },
   // 下拉刷新
   async pullDownRefresh() {
