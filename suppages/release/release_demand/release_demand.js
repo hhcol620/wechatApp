@@ -262,8 +262,6 @@ Page({
         children
       }
     })
-    // console.log('cateChlidren',cateChlidren);
-    // console.log(l);
     this.setData({
       getCategoryTree: l,
       cateChlidren:cateChlidren
@@ -279,6 +277,16 @@ Page({
     const fileListStr = fileListaddress.join(',')
     // 将数据包装到一起发给后台
     const { title,mainImgaddress,upTags,productDesc,cateId } = this.data
+    if (!title.trim() || !mainImgaddress.trim() || !upTags.trim() || !productDesc.trim()||!cateId) {
+      wx.showToast({
+        title: '请输入必要信息',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return  
+    }
     const res = await put_demand({
       categoryId: cateId,
       mainPic: mainImgaddress,
@@ -293,7 +301,7 @@ Page({
         wx.navigateBack({
         delta: 1
       });
-    },1000)
+    },2000)
       
   },
   // 点击完成
@@ -304,7 +312,17 @@ Page({
     const { fileListaddress,id } = this.data
     const fileListStr = fileListaddress.join(',')
     // 将数据包装到一起发给后台
-    const { title,mainImgaddress,upTags,productDesc,cateId } = this.data
+    const { title, mainImgaddress, upTags, productDesc, cateId } = this.data
+    if (!title.trim() || !mainImgaddress.trim() || !upTags.trim() || !productDesc.trim() || !cateId.trim()) {
+      wx.showToast({
+        title: '请输入必要信息',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return  
+    }
     const res = await post_edit_demand({
       id:id,
       categoryId: cateId,
@@ -320,7 +338,7 @@ Page({
         wx.navigateBack({
         delta: 1
       });
-    },1000)
+    },2000)
       
   },
   async getTagsRecommend () {

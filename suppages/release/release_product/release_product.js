@@ -12,6 +12,7 @@ import {
 import {
   upLoadImages
 } from '../../../utils/uploadImg.js'
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js'
 //index.js
 //获取应用实例
 const app = getApp()
@@ -35,7 +36,7 @@ Page({
     // 价格
     price: '',
     // 新旧程度
-    degreeValue: '',
+    degreeValue: 1,
     // 主图
     mainImg: '',
     // 用于提交后台的主图
@@ -407,7 +408,7 @@ Page({
   },
 
   // 点击立即发布
-  async submit_btn() {
+  async submit_btn () {
 
     // 如果data里面的id值不为空  存在的话 进行编辑修改   提交的时候使用这个接口
     // 格式化标签
@@ -439,6 +440,16 @@ Page({
       cateId,
       id
     } = this.data
+    if (!title.trim() ||!price.trim() ||!mainImgaddress.trim()||!upTags.trim()||!productDesc.trim()||!cateId) {
+      wx.showToast({
+        title: '请输入必要信息',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      return
+      }
     // 如果这里面的id存在 则表示是正在编辑  走编辑的接口  否则走提交的接口
     let res;
     if (id) {
@@ -480,20 +491,19 @@ Page({
         
       return
     }
-    wx.showToast({
-      title: '发布成功',
-      icon: 'success',
-      image: '',
-      duration: 1500,
-      mask: true,
-      success: (result) => {
-        wx.navigateBack({
-          delta: 1
-        });      
-      },
-      fail: () => {},
-      complete: () => {}
-    });
+    // wx.showToast({
+    //   title: '发布成功',
+    //   icon: 'success',
+    //   image: '',
+    //   duration: 1500,
+    //   mask: true,
+    // });
+    Toast.success('发布成功')
+    setTimeout(() => {
+      wx.navigateBack({
+        delta: 1
+      }); 
+    },2000)
       
 
   },

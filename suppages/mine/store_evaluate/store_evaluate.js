@@ -1,5 +1,8 @@
 // 如果使用  async  await 这个es7 的将异步的请求
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
+
+// 排序
+import { createComparisonFunction } from '../../../utils/sort_self.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
   get_evaluate,
@@ -93,6 +96,7 @@ Page({
     let list = data.data.data||[]
     let c_page = currentPage+1
     evaluateList.push(...list)
+    evaluateList.sort(createComparisonFunction('createTime'))
     if (evaluateList.length <= 0) {
       this.setData({
         is_show:false
