@@ -70,7 +70,7 @@ Page({
     if (!mian_desc.trim() || !price.trim() || !requirement.trim()) {
       // 输入不合法
       wx.showToast({
-        title: '输入不合法',
+        title: '请输入必要的信息',
         icon: 'none',
         //  禁止用户手抖连续点击
         mask: true

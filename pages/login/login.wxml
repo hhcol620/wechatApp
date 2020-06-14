@@ -1,4 +1,4 @@
-<!-- 这里需要实现登陆和邮箱验证码 -->
+<!-- 这里需要实现登录和邮箱验证码 -->
 <view class="container">
   <!-- 背景 -->
   <view class="bg">
@@ -7,7 +7,7 @@
     <view class="three item"></view>
   </view>
   <view class="card">
-    <view class="title">登陆</view>
+    <view class="title">登录</view>
     <view class="input_box">
       <view class="item">
         <view class="leftdesc">账号</view>
@@ -39,8 +39,8 @@
       </view>
     </view>
     <view class="login">
-      <view class="email_login" wx:if="{{isPasswordLogin}}" bind:tap="email_login">验证码登陆</view>
-      <view class="password_login" wx:else bind:tap="passwordLogin">密码登陆</view>
+      <view class="email_login" wx:if="{{isPasswordLogin}}" bind:tap="email_login">验证码登录</view>
+      <view class="password_login" wx:else bind:tap="passwordLogin">密码登录</view>
       <view class="found_pass" bind:tap="to_found_password">找回密码</view>
     </view>
     <view class="other_login">
@@ -57,9 +57,9 @@
         注册
       </navigator>
     </view>
-    <view class="submit_btn" bind:tap="post_login_password">登陆</view>
-    <view class="submit_btn" bind:tap="post_login_password">登陆</view>
+    <view class="submit_btn" bind:tap="post_login_password">登录</view>
+    <view class="submit_btn" bind:tap="post_login_password">登录</view>
   </view>
 </view>
-<wx_loading load-text="登陆中..." id="loading"></wx_loading>
+<wx_loading load-text="登录中..." id="loading"></wx_loading>
 <van-toast id="van-toast" />

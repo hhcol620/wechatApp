@@ -454,6 +454,7 @@ Page({
     let res;
     if (id) {
       // 编辑接口
+      showLoading(this)
       res = await put_goods_edit({
         categoryId: cateId,
         mainPicUrl: mainImgaddress,
@@ -467,6 +468,7 @@ Page({
       })
     } else {
       // 发布接口
+      showLoading(this)
       res = await put_goods({
         categoryId: cateId,
         mainPicUrl: mainImgaddress,
@@ -479,7 +481,8 @@ Page({
         productDesc: productDesc
       })
     }
-    console.log(res);
+    // console.log(res);
+    hideLoading(this)
     if (res.data.code !== 200) {
       wx.showToast({
         title: '发布失败',

@@ -63,3 +63,4 @@
   <van-button type="primary" size="normal" bind:click="finish_submit">完成修改</van-button>
 </view>
 <van-toast id="van-toast" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

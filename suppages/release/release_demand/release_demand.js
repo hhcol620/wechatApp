@@ -287,7 +287,8 @@ Page({
       });
       return  
     }
-    const res = await put_demand({
+    showLoading(this)
+    const { data } = await put_demand({
       categoryId: cateId,
       mainPic: mainImgaddress,
       otherPics: fileListStr,
@@ -296,6 +297,11 @@ Page({
       content: productDesc,
       unit:1
     })
+    if (data.code !== 200) {
+      Toast.fail('发布失败,请稍后重试')
+      return
+    }
+    hideLoading(this)
     Toast.success('发布成功');
     setTimeout(function() {
         wx.navigateBack({
@@ -313,7 +319,7 @@ Page({
     const fileListStr = fileListaddress.join(',')
     // 将数据包装到一起发给后台
     const { title, mainImgaddress, upTags, productDesc, cateId } = this.data
-    if (!title.trim() || !mainImgaddress.trim() || !upTags.trim() || !productDesc.trim() || !cateId.trim()) {
+    if (!title.trim() || !mainImgaddress.trim() || !upTags.trim() || !productDesc.trim() || !cateId) {
       wx.showToast({
         title: '请输入必要信息',
         icon: 'none',
@@ -323,7 +329,8 @@ Page({
       });
       return  
     }
-    const res = await post_edit_demand({
+    showLoading(this)
+    const { data } = await post_edit_demand({
       id:id,
       categoryId: cateId,
       mainPic: mainImgaddress,
@@ -333,6 +340,12 @@ Page({
       content: productDesc,
       unit:1
     })
+    // console.log(data);
+    hideLoading(this)
+    if (data.code !== 200) {
+      Toast.fail('编辑的内容提交失败,请稍后重试');
+      return 
+    }
     Toast.success('编辑的内容已经成功提交');
     setTimeout(function() {
         wx.navigateBack({
@@ -385,7 +398,8 @@ Page({
     const { id } = options
     if (id) {
       this.setData({
-        isEdit:true
+        isEdit: true,
+        id
       })
     }
     this.getCateTree()
