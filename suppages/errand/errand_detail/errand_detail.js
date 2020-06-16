@@ -79,24 +79,25 @@ Page({
         async () => {
           const res = await this.get_order_state(code)
           if (res.code !== 200) {
+            this.setData({
+              isShow:false
+            })
             Dialog.alert({
               message: `${data.text}`,
             }).then(() => {
-              this.setData({
-                isShow:false
-              })
+              
             });
             // 失败
             return 
           }
           // 成功
+          this.setData({
+            isShow:false
+          })
           Dialog.alert({
             message: `${res.text}`,
           }).then(() => {
-            this.setData({
-              isShow: true,
-              isloading:false
-            })
+            
           });
         },3000
       )

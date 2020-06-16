@@ -27,7 +27,9 @@ Component({
     // 控制遮罩是否显示
     isShow: false,
     // 订单id
-    orderId:''
+    orderId: '',
+    // 控制确认收货是否显示
+    finish_show:false
   },
 
   /**
@@ -59,11 +61,17 @@ Component({
       const obj = {orderid,type}
       this.triggerEvent('deleteorder',obj)
     },
+    // 删除订单
     deleteOrder (e) {
       const { orderId } = this.data
       const { type } = e.currentTarget.dataset
       const obj = {orderid:orderId,type}
       this.triggerEvent('deleteorder',obj)
+    },
+    // 完成订单
+    finish_ordedr () {
+      const { orderId } = this.data
+      this.triggerEvent('finishorder',orderId)
     },
     // 根据订单id获取订单详情
     async get_Order_Detail (id) {
@@ -113,8 +121,16 @@ Component({
     },
     // 点击了更多  打开一个弹框
     more_btn (e) {
-      const { orderid } = e.currentTarget.dataset
-      // console.log(orderid);
+      const { orderid, state } = e.currentTarget.dataset
+      if (state != 45) {
+        this.setData({
+          finish_show:false
+        })
+      } else {
+        this.setData({
+          finish_show:true
+        })
+      }
       this.setData({
         isShow: true,
         orderId:orderid

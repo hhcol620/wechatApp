@@ -95,10 +95,22 @@ page {
 .container .item view.footer view.right view.more .van-icon {
   font-size: 40rpx;
 }
+.container .item view.footer view.left {
+  display: flex;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30rpx;
+}
 .container .item view.footer view.left view.state_tag {
   font-size: 26rpx;
   padding: 4rpx 6rpx;
   border-radius: 4rpx;
+}
+.container .item view.footer view.left .code {
+  padding: 4rpx 6rpx;
+  font-size: 24rpx;
+  color: #4d4d4d;
+  margin-left: 16rpx;
 }
 /* 
    position: fixed;

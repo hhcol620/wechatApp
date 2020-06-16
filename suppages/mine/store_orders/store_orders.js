@@ -8,7 +8,8 @@ import {
   getMyOrderList,
   getUserInfo,
   get_goodsInfo,
-  cancel_order
+  cancel_order,
+  finishOrder
 } from '../../../request/api/store_api.js'
 import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js'
 
@@ -50,7 +51,6 @@ Page({
     // console.log(e);
     const { index } = e.detail
     this.setData({
-      pageSize: 5,
       // 当前页
       currentPage: 1,
       // 总条数
@@ -200,6 +200,39 @@ Page({
         // on cancel
       });
    
+  },
+  // 完成订单
+  async finish_order (e) {
+    let orderId = e.detail
+    const { data } = await finishOrder(orderId)
+    // console.log(data);
+    if (data.code !== 200) {
+      wx.showToast({
+        title: '确认收货失败',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: true
+      });
+      
+      return
+    }
+    Toast.success('确认收货成功')
+    const { tabIndex } = this.data
+    this.setData({
+      // 当前页
+      currentPage: 1,
+      // 总条数
+      totalCount: 0,
+      // 订单列表
+      orderList: [],
+      is_show:true
+    })
+    if (tabIndex == 0) {
+      await this.getOrderList_buy()
+    } else if (tabIndex == 1) {
+      await this.getOrderList_sale()
+    }
   },
   // 下拉刷新
   async pullDownRefresh() {

@@ -222,7 +222,7 @@
 					"id": 23,
 					"name": "商品详情页 id =1",
 					"pathName": "suppages/store/commodity/commodity",
-					"query": "id=1",
+					"query": "id=8",
 					"scene": null
 				},
 				{

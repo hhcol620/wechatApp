@@ -47,12 +47,9 @@
   </view>
 </view>
 <!-- 遮罩弹框提示用户 -->
-<van-overlay show="{{ isShow }}" bind:click="onClickHide">
-  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
-    <view class="block">
-      <!-- 删除需求 -->
-      <view class="delete_demand item" bind:tap="delete_demand">删除需求</view>
-    </view>
+<overlay_self wx:if="{{ isShow }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <view class="delete_demand item" bind:tap="delete_demand">删除需求</view>
   </view>
-</van-overlay>
+</overlay_self>
 <wx_loading load-text="加载中" id="loading"></wx_loading>

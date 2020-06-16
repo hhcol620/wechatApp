@@ -31,8 +31,10 @@ Page({
     swiperImgs: [],
     // 加载图片基地址
     imgURL: '',
-    // 推荐的列表
+    // 推荐商品的列表
     recommend_offline: [],
+    // 推荐的需求列表
+    demand_list:[],
     // 请求推荐的分页 
     pageSize: 10,
     currentPage: 1,
@@ -71,7 +73,7 @@ Page({
   // 首页的推荐  需求的推荐
   async get_demand_recommend_offline () {
     showLoading(this)
-    const { pageSize,currentPage,totalCount,recommend_offline } = this.data
+    const { pageSize,currentPage,totalCount,demand_list } = this.data
     const { data } = await get_demand_recommendOffline(pageSize,currentPage)
     console.log(data);
     if (data.code !== 200) {
@@ -88,9 +90,9 @@ Page({
       const consumerInfo = await this.getUserInfoById(item.consumerId)
       item.consumerInfo = consumerInfo
       item.mainPicUrl = item.mainPic
-      recommend_offline.push(item)
+      demand_list.push(item)
       this.setData({
-        recommend_offline
+        demand_list
       })
     })
     hideLoading(this)
@@ -105,16 +107,17 @@ Page({
   },
   // 用户点击tab
   async tabChange (e) {
-    // console.log(e);
-    const { index } = e.detail
-    console.log(index);
-    // 将index 赋值给active 保存一下
     this.setData({
       recommend_offline: [],
+      demand_list:[],
       active: index,
       currentPage: 1,
       totalCount: 0
     })
+    // console.log(e);
+    const { index } = e.detail
+    // console.log(index);
+    // 将index 赋值给active 保存一下
     if (index == 0) {
       await this.get_recommend_offline()
     } else if (index == 1) {

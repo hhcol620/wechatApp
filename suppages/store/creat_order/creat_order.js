@@ -16,6 +16,7 @@ import Dialog from '../../../miniprogram_npm/vant-weapp/dialog/dialog';
 import {
   getTime
 } from '../../../utils/getTime.js'
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js';
 //index.js
 //获取应用实例
 const app = getApp()
@@ -87,7 +88,7 @@ Page({
   onSubmit () {
     const { userInfo } = this.data
     const { address, nickname, phoneNum } = userInfo
-    if (!address.trim() || !nickname.trim() || !phoneNum.trim()) {
+    if (!address || !nickname || !phoneNum) {
       // 收货地址信息不完整
       Dialog.alert({
         message: '收货地址信息不完整,请检查后重试',
@@ -131,7 +132,7 @@ Page({
         mask: true
       });
       if (data.code === 402) {
-        wx.navigateTo({
+        wx.redirectTo({
           url: '/pages/login/login',
           success: (result) => {
 
@@ -216,33 +217,17 @@ Page({
     const res = await this.get_order_code(id)
     console.log(res);
     if (res.code !== 200) {
-      wx.showModal({
-        title: `${res.text}`,
-        content: '',
-        showCancel: true,
-        cancelText: '取消',
-        cancelColor: '#000000',
-        confirmText: '确定',
-        confirmColor: '#3CC51F',
-        success: (result) => {
-          if (result.confirm) {
-            wx.navigateBack({
-              delta: 1
-            });
-              
-          }
-        },
-        fail: () => {},
-        complete: () => {}
-      });
-      wx.navigateBack({
-        delta: 1
-      });
+      Toast.fail(`${res.text}`)
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1
+        });
+      },2000)
       return 
     }
     const { orderCode, paymentMoney } = res.data
     if (radio == 1) {
-      wx.navigateTo({
+      wx.redirectTo({
         url: `/suppages/store/wx_payment/wx_payment?ordercode=${orderCode}&paymentmoney=${paymentMoney}`,
         success: (result) => {
 
@@ -253,7 +238,7 @@ Page({
 
     } else if (radio == 2) {
       // 支付宝的话直接跳转
-      wx.navigateTo({
+      wx.redirectTo({
         url: `../payment/payment?radio=${radio}`,
         success: (result) => {},
         fail: () => {},

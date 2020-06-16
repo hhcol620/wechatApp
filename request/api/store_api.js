@@ -72,6 +72,11 @@ export const cancel_order = (type,orderId) => {
   return deleteData(`/order/order/es/cancel/${type}/${orderId}`)
 }
 
+// 完成订单 宝贝 
+export const finishOrder = (orderId) => {
+  return getData(`/order/order/es/finish/${orderId}`)
+}
+
 // 分页查看自己发布商品
 export const get_goodsList = (pageSize,currentPage) => {
   return getData(`/goods/goods/es/list/${pageSize}/${currentPage}`)

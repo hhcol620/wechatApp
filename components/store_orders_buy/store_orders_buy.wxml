@@ -1,3 +1,4 @@
+<wxs src="../../utils/trade_state.wxs" module="trade"></wxs>
 <!-- 这是买到商品的订单 -->
 <view class="container">
   <view class="item" wx:for="{{myOrderList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
@@ -6,10 +7,7 @@
         <image class="" src="{{imgURL}}{{item.salerInfo.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
         <view class="nickName">{{item.salerInfo.nickname}}</view>
       </view>
-      <!-- 40:等待支付 50:交易成功 60:捐款金额已分配 -->
-      <view class="orders_desc" wx:if="{{item.state==40}}">等待支付</view>
-      <view class="orders_desc" wx:if="{{item.state==50}}">交易成功</view>
-      <view class="orders_desc" wx:if="{{item.state==60}}">捐款金额已分配</view>
+      <view class="orders_desc">{{trade.tradeState(item.state)}}</view>
     </view>
     <!-- 点击中间区域  跳转到订单详情页 -->
     <view class="main" bind:tap="jumpPageDetail" data-orderid="{{item.id}}" wx:if="{{item.state!=40}}">
@@ -39,15 +37,12 @@
       <view class="right">
         <!-- 查看评价 查看是否已经评价 如果是未评价的 这里应该显示点击评价 如果已经评价 不能更改 -->
         <view class="evaluation">
-          <van-button type="default" round size="small" bind:click="write_evaluation" data-orderid="{{item.id}}" wx:if="{{item.state!=40}}">
+          <van-button type="default" round size="small" bind:click="write_evaluation" data-orderid="{{item.id}}" wx:if="{{item.evaluateState==1&&item.state!=40}}">
             点击评价
-          </van-button>
-          <van-button type="default" round size="small" bind:click="cancel_order" data-orderid="{{item.id}}" data-type="3" wx:if="{{item.state==40}}">
-            取消订单
           </van-button>
         </view>
         <!-- 更多 点击这个可以打开一个弹框 -->
-        <view class="more" bind:tap="more_btn" data-orderid="{{item.id}}">
+        <view class="more" bind:tap="more_btn" data-orderid="{{item.id}}" data-state="{{item.state}}">
           <van-icon name="more-o" size="1.2em" color="#4d4d4d" />
         </view>
       </view>
@@ -55,17 +50,11 @@
   </view>
 </view>
 <!-- 遮罩弹框提示用户  显示内容 选择更多  查看钱款 查看物流 -->
-<!-- <van-overlay show="{{ isShow }}" bind:click="onClickHide">
-  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
-    <view class="block">
-      <view class="order_detail item" bind:tap="order_detail">查看订单信息</view>
-    </view>
-  </view>
-</van-overlay> -->
 <overlay_self wx:if="{{ isShow }}" bind:click="onClickHide">
   <view class="wrapper">
     <view class="wrapper_item item" bind:tap="order_detail">查看订单信息</view>
     <view class="wrapper_item item" bind:tap="deleteOrder" data-type="1">删除订单</view>
+    <view class="wrapper_item item" bind:tap="finish_ordedr" wx:if="{{finish_show}}">确认收货</view>
   </view>
 </overlay_self>
 <van-toast id="van-toast" />

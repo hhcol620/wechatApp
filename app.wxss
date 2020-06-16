@@ -8,6 +8,33 @@ page,view,text,swiper,swiper-item,image,navigator{
   margin: 0;
   box-sizing: border-box;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.wrapper .item {
+  width: 300rpx;
+  height: 80rpx;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  color: #333;
+  font-style: normal;
+  font-weight: 500;
+}
+.wrapper .item:first-child {
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.wrapper .item:last-child {
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+
 /* 
   定义主题颜色  通过变量来实现
   其他地方如果需要使用可以按照下面这种方式

@@ -177,7 +177,7 @@ Page({
 
       return
     }
-    console.log('点击了立即购买,发起请求生成预订单');
+    // console.log('点击了立即购买,发起请求生成预订单');
     wx.navigateTo({
       url: `../creat_order/creat_order?id=${id}&version=${version}`,
       success: function(res) {

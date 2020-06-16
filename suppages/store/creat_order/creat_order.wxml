@@ -87,3 +87,4 @@
   </van-popup>
 </view>
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

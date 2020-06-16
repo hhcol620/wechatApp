@@ -7,6 +7,7 @@ import { createComparisonFunction } from '../../../utils/sort_self.js'
 import {
   get_goodsList,delete_goods
 } from '../../../request/api/store_api.js'
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js'
 //index.js
 //获取应用实例
 const app = getApp()
@@ -166,13 +167,7 @@ Page({
       });
       return
     }
-    wx.showToast({
-      title: '删除成功',
-      icon: 'success',
-      image: '',
-      duration: 1500,
-      mask: true
-    });
+    Toast.success('删除成功')
     let list = goodsList
     list.forEach((v,i) => {
       if (v.id == id) {

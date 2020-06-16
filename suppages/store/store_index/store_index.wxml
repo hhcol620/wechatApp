@@ -15,7 +15,7 @@
       <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
     </van-tab>
     <van-tab title="真心求购">
-      <StoreList arrList="{{recommend_offline}}" imgURL="{{imgURL}}" class="storeList" />
+      <StoreList arrList="{{demand_list}}" imgURL="{{imgURL}}" class="storeList" />
     </van-tab>
   </van-tabs>
 </view>

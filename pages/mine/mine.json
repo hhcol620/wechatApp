@@ -4,5 +4,6 @@
     "van-grid": "/miniprogram_npm/vant-weapp/grid/index",
     "van-grid-item": "/miniprogram_npm/vant-weapp/grid-item/index"
   },
+  "enablePullDownRefresh": true,
   "navigationBarTitleText": "个人中心"
 }

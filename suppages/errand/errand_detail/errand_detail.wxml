@@ -24,21 +24,22 @@
   </van-button>
 </view>
 <view class="overlay" hover-class="none" hover-stop-propagation="false">
-  <van-overlay show="{{ isShow }}" bind:click="onClickHide">
+  <overlay_self wx:if="{{ isShow }}" bind:click="onClickHide">
     <!-- 抢单中 -->
     <view class="loading" wx:if="{{isloading}}">
       <Loading />
       <view class="desc">正在抢单 ...</view>
     </view>
     <!-- 插槽 数据请求回来了 且已经抢单成功 -->
-    <view class="wraper" wx:else>
+    <view class="wrapper" wx:else>
       <view class="privacy_mess">
         <!-- 隐私信息 -->
+        <view class="tip">接单成功: 发单人详细信息如下</view>
         <view class="name">姓名: {{privacy_mess.name}}</view>
         <view class="tel">手机号: {{privacy_mess.phoneNum}}</view>
         <view class="remark">备注信息: {{privacy_mess.cypher}}</view>
       </view>
     </view>
-  </van-overlay>
+  </overlay_self>
 </view>
 <van-dialog id="van-dialog" />

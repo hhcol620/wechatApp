@@ -21,12 +21,14 @@
     </navigator>
     <view class="footer">
       <view class="left">
-        <view class="state_tag valid" wx:if="{{item.state==2}}">有效</view>
+        <view class="state_tag valid" wx:if="{{item.state==2}}">等个有缘人</view>
         <view class="state_tag pay" wx:if="{{item.state==3}}">买家正在付款</view>
         <view class="state_tag sale" wx:if="{{item.state==4}}">已卖出</view>
         <view class="state_tag check" wx:if="{{item.state==5}}">审核中</view>
+        <!-- 商品编号 -->
+        <view class="code">商品编号: {{item.id}}</view>
       </view>
-      <view class="right">
+      <view class="right" wx:if="{{item.state==2}}">
         <!-- 点击编辑 进入发布页面 -->
         <view class="edit">
           <van-button type="default" round size="small" data-id="{{item.id}}" bind:click="editFunc">
@@ -50,13 +52,10 @@
     发布宝贝
   </view>
 </view>
-<!-- 遮罩弹框提示用户  显示内容 选择更多  查看钱款 查看物流 -->
-<van-overlay show="{{ isShow }}" bind:click="onClickHide">
-  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
-    <view class="block">
-      <!-- 查看买家信息 -->
-      <view class="delete_commodity item" bind:tap="delete_commodity">下架商品</view>
-    </view>
+<overlay_self wx:if="{{ isShow }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <view class="delete_commodity item" bind:tap="delete_commodity">删除商品</view>
   </view>
-</van-overlay>
+</overlay_self>
 <wx_loading load-text="加载中" id="loading"></wx_loading>
+<van-toast id="van-toast" />

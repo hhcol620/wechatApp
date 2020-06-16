@@ -10,7 +10,6 @@
     "van-field": "/miniprogram_npm/vant-weapp/field/index",
     "van-button": "/miniprogram_npm/vant-weapp/button/index",
     "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
-    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index",
     "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
   },
   "navigationBarTitleText":"IRH校园求购"

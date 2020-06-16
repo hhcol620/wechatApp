@@ -62,11 +62,12 @@ Page({
     //     complete: () => {}
     //   });
     // } else {
-      
+
     // }
     this.getmyinfo()
     this.getUnRead()
     this.isBind()
+    wx.stopPullDownRefresh()
   },
   // 登陆成功获取我的个人信息
   async getmyinfo() {
@@ -294,7 +295,18 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      userInfo: {},
+      // 加载图片基地址
+      imgURL: '',
+      // 系统通知 未读
+      inform_no_read: 0,
+      // at我的未读
+      atMe_no_read: 0,
+      // 用户是否已经绑定
+      isbind: false
+    }),
+    this.redirectToLogin() 
   },
 
   /**

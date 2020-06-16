@@ -140,18 +140,18 @@
   </view>
 </view>
 <view class="no_show" wx:else>
-  <view class="box animate__animated animate__bounceInDown">该商品已下架或删除</view>
+  <view class="box animate__animated animate__bounceInDown">该商品可能已经被卖家删除</view>
 </view>
 <!-- 弹出层 -->
 <overlay_self wx:if="{{ overlay_show_comm }}" bind:click="onClickHide_comm">
   <view class="wrapper">
-    <view class="report" bind:tap="to_report_comm">举报商品</view>
+    <view class="report item" bind:tap="to_report_comm">举报商品</view>
   </view>
 </overlay_self>
 <!-- 弹出层 -->
 <overlay_self wx:if="{{ overlay_show_lea }}" bind:click="onClickHide_lea">
   <view class="wrapper">
-    <view class="report" bind:tap="to_report_lea">举报留言</view>
+    <view class="report item" bind:tap="to_report_lea">举报留言</view>
   </view>
 </overlay_self>
 <wx_loading load-text="加载中" id="loading"></wx_loading>

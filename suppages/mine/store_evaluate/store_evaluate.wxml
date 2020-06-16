@@ -23,12 +23,9 @@
   <no_more str="没有数据哦"></no_more>
 </view>
 <!-- 遮罩弹框提示用户 -->
-<van-overlay show="{{ isShow }}" bind:click="onClickHide">
-  <view class="overlay_container" hover-class="none" hover-stop-propagation="false">
-    <view class="block">
-      <!-- 删除评价 -->
-      <view class="delete_evaluate item" bind:tap="delete_evaluate">删除评价</view>
-    </view>
+<overlay_self wx:if="{{ isShow }}" bind:click="onClickHide">
+  <view class="wrapper">
+    <view class="delete_evaluate item" bind:tap="delete_evaluate">删除评价</view>
   </view>
-</van-overlay>
+</overlay_self>
 <wx_loading load-text="加载中" id="loading"></wx_loading>

@@ -8,8 +8,11 @@ import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast';
 import { createComparisonFunction } from '../../../utils/sort_self.js'
 // 引入  用来发送请求的方法  需要将路径补全
 import {
-  get_goodsList,post_demand_reply_lea_msg
+  get_goodsList,post_demand_reply_lea_msg,getMyInfo
 } from '../../../request/api/store_api.js'
+import {
+  get_user_release_comm
+} from '../../../request/api/store_front_api.js'
 //index.js
 //获取应用实例
 const app = getApp()
@@ -42,15 +45,17 @@ Page({
     // // 被选中的商品id
     id: '',
     // 加载图片基地址
-    imgURL:''
+    imgURL: '',
+    // 用户id
+    userid:''
   },
   // 页面加载 请求方法 获取自己发布的二手商品列表
   async getGoodsList () {
     showLoading(this)
-    let { pageSize,currrentPage,totalCount,goodsList } = this.data
+    let { pageSize,currrentPage,totalCount,goodsList, userid } = this.data
     const {
       data
-    } = await get_goodsList(pageSize, currrentPage)
+    } = await get_user_release_comm(pageSize, currrentPage,userid)
     // console.log(data.code);
     if (data.code !== 200) {
       hideLoading(this)
@@ -131,6 +136,18 @@ Page({
       });
     },500) 
   },
+  // 获取我的个人信息
+  async get_mine_Info () {
+    const { data } = await getMyInfo()
+    if (data.code !== 200) {
+      return 
+    }
+    // console.log(data);
+    // this.setData({
+    //   userid:data.data.id
+    // })
+    return data.data.id
+  },
   // 触底加载下一页
   reachBottom () {
     const { pageSize, currrentPage, totalCount } = this.data
@@ -161,11 +178,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     const { id } = options
+    const userid = await this.get_mine_Info()
     this.setData({
       demandId: id,
-      imgURL
+      imgURL,
+      userid
     })
     this.getGoodsList()
   },
