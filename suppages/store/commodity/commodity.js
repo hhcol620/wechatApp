@@ -90,7 +90,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
 
       return
@@ -117,7 +117,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });
 
         return
@@ -127,7 +127,7 @@ Page({
         icon: 'success',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       this.setData({
         isCollect: false
@@ -144,7 +144,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });
 
         return
@@ -154,7 +154,7 @@ Page({
         icon: 'success',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       this.setData({
         isCollect: true
@@ -172,7 +172,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
 
       return
@@ -210,7 +210,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
 
       return
@@ -238,7 +238,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return
     }
@@ -247,7 +247,7 @@ Page({
       icon: 'success',
       image: '',
       duration: 1500,
-      mask: true
+      mask: false
     });
     // this.setData({
     //   msg_content:''
@@ -308,7 +308,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       this.setData({
         is_show:false

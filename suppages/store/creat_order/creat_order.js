@@ -129,7 +129,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       if (data.code === 402) {
         wx.redirectTo({
@@ -164,7 +164,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return
     }

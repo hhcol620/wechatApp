@@ -47,7 +47,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return 
@@ -60,7 +60,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return 
@@ -77,7 +77,7 @@ Page({
       icon: 'none',
       image: '',
       duration: 1500,
-      mask: true
+      mask: false
     });
       
     const time = 3 * 60 * 1000
@@ -107,7 +107,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return   
     }
@@ -117,7 +117,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return
     }
@@ -134,7 +134,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return
@@ -145,7 +145,7 @@ Page({
       icon: 'success',
       image: '',
       duration: 1500,
-      mask: true
+      mask: false
     });
     setTimeout(() => {
       wx.navigateBack({

@@ -184,7 +184,7 @@ Page({
         title: '获取信息成功',
         icon: 'none',
         duration: 1000,
-        mask: true
+        mask: false
       });
       return
     }
@@ -283,7 +283,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return  
     }
@@ -325,7 +325,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return  
     }

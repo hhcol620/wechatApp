@@ -63,7 +63,7 @@ Page({
         title: '获取信息失败',
         icon: 'none',
         duration: 1000,
-        mask: true
+        mask: false
       });
       return
     }
@@ -163,7 +163,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
       return
     }
@@ -191,7 +191,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
     }

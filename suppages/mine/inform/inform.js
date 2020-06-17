@@ -133,7 +133,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });
           
         break;
@@ -150,7 +150,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return

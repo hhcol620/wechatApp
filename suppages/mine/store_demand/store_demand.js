@@ -68,7 +68,7 @@ Page({
         title: '获取信息失败',
         icon: 'none',
         duration: 1000,
-        mask: true
+        mask: false
       });
       return  
     }
@@ -99,7 +99,7 @@ Page({
         title: '删除失败',
         icon: 'none',
         duration: 1000,
-        mask: true
+        mask: false
       });
     }
     let list = demandList
@@ -115,7 +115,7 @@ Page({
       title: '删除成功',
       icon: 'success',
       duration: 1000,
-      mask: true
+      mask: false
     });
   },
   // 点击编辑  进入发布需求页进行更改

@@ -287,7 +287,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });  
       }
       
@@ -301,7 +301,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });  
       }
     } else if (index == 2) {
@@ -314,7 +314,7 @@ Page({
           icon: 'none',
           image: '',
           duration: 1500,
-          mask: true
+          mask: false
         });  
       }
     }

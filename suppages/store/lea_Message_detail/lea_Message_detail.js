@@ -95,7 +95,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return
@@ -118,7 +118,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       }); 
       return
     }
@@ -127,7 +127,7 @@ Page({
       icon: 'success',
       image: '',
       duration: 1500,
-      mask: true
+      mask: false
     });
     // 从本地取出数据伪造假数据
     const userInfo = await this.get_my_Info()
@@ -231,7 +231,7 @@ Page({
         icon: 'none',
         image: '',
         duration: 1500,
-        mask: true
+        mask: false
       });
         
       return

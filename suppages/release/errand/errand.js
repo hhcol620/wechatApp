@@ -73,7 +73,7 @@ Page({
         title: '请输入必要的信息',
         icon: 'none',
         //  禁止用户手抖连续点击
-        mask: true
+        mask: false
       });
     }
 
