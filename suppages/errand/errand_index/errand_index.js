@@ -7,6 +7,7 @@ import { createComparisonFunction } from '../../../utils/sort_self.js'
 import {
   getAllErrandList
 } from '../../../request/api/store_api.js'
+import Toast from '../../../miniprogram_npm/vant-weapp/toast/toast.js'
 
 const app = getApp()
 // 引入全局  请求加载动画方法
@@ -132,13 +133,7 @@ Page({
   reachBottom () {
     const { index, pageSize, currentPage, totalCount } = this.data
     if (currentPage > Math.ceil(totalCount / pageSize)) {
-      wx.showToast({
-        title: '没有更多数据了',
-        icon: 'none',
-        image: '',
-        duration: 1500,
-        mask: true
-      }); 
+      Toast('没有更多数据了')
       return
     }
     if (index === 0) {
