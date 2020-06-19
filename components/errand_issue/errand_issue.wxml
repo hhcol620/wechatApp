@@ -1,19 +1,37 @@
+<wxs src="../../utils/timeFormat.wxs" module="minute"></wxs>
+<wxs src="../../utils/timeFormat.wxs" module="downtime"></wxs>
 <!-- 这是正在进行的订单 我发布的跑腿服务 -->
 <view class="container">
   <view class="item" wx:for="{{arrList}}" wx:for-item="item" wx:for-index="index" wx:key="id">
     <view class="header">
       <view class="left">
-        <view class="creatTime">发布时间 {{item.createTime}}</view>
+        <view class="creatTime" wx:if="{{item.state === 2}}">发布时间 {{item.createTime}}</view>
+        <view class="creatTime" wx:if="{{item.state === 3}}">预计送达时间 {{item.createTime}}</view>
+        <view class="creatTime" wx:if="{{item.state === 4}}">完成时间 {{item.createTime}}</view>
       </view>
-      <view class="right" wx:if="{{item.state === 2}}">还没有人接单</view>
-      <view class="right" wx:if="{{item.state === 3}}">正在送达</view>
-      <view class="right" wx:if="{{item.state === 4}}">已送达</view>
+      <view class="right" wx:if="{{item.payState === 0}}">待支付</view>
+      <view class="right" wx:if="{{item.payState !== 0&&item.state === 2}}">还没有人接单</view>
+      <view class="right" wx:if="{{item.payState !== 0&&item.state === 3}}">正在送达</view>
+      <view class="right" wx:if="{{item.payState !== 0&&item.state === 4}}">已送达</view>
     </view>
-    <view class="main" bind:tap="toDetail" data-id="{{item.id}}" data-state="{{item.state}}">
+    <view class="main" bind:tap="toDetail" data-id="{{item.id}}" data-state="{{item.state}}" data-paystate="{{item.payState}}" data-money="{{item.money}}">
       <view class="content">
         <view class="it">描述: {{item.content}}</view>
         <view class="it">地址: {{item.address}}</view>
-        <view class="it">要求: {{item.requirement}}</view>
+        <view class="it" wx:if="{{item.state==2}}">
+          要求: 在接单后
+          <text style="color:red">{{minute.get_h_m(item.requirement)}}</text>
+          送达
+        </view>
+        <view class="it timeFlex" wx:if="{{item.state==3}}">
+          要求: 已有人接单,送达大约还有
+          <van-count-down style="color:red" time="{{ downtime.getdowntime(item.createTime,item.requirement) }}" format="HH h mm min ss sec" />
+        </view>
+        <view class="it" wx:if="{{item.state==4}}">
+          要求: 在接单后
+          <text style="color:red">{{minute.get_h_m(item.requirement)}}</text>
+          送达,已送达
+        </view>
         <view class="it">价格: {{item.money}}</view>
         <!-- <view class="it">收货地点: 内蒙古科技大学23号宿舍</view> -->
       </view>

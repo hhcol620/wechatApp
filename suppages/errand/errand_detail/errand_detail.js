@@ -75,15 +75,33 @@ Page({
       // 等待3秒发送请求
       let timer = null
       clearTimeout(timer)
+      let tmp = 0
       timer = setTimeout(
         async () => {
-          const res = await this.get_order_state(code)
-          if (res.code !== 200) {
+          const res = await this.get_order_state(id,code)
+          tmp = tmp + 1
+          
+          if (res.code === 1000 && tmp <= 5) {
+            // 循环迭代
+            setTimeout(arguments.callee,2000)
+          } else if(res.code === 1000&&tmp>5) {
             this.setData({
               isShow:false
             })
             Dialog.alert({
-              message: `${data.text}`,
+              message: `${res.text}`,
+            }).then(() => {
+              
+            });
+            // 失败
+            return 
+          }
+          if (res.code !== 200 && res.code !== 1000) {
+            this.setData({
+              isShow:false
+            })
+            Dialog.alert({
+              message: `${res.text}`,
             }).then(() => {
               
             });
@@ -97,7 +115,9 @@ Page({
           Dialog.alert({
             message: `${res.text}`,
           }).then(() => {
-            
+            wx.redirectTo({
+              url: `/suppages/mine/errand_order_detail/errand_order_detail?id=${id}`
+            });
           });
         },3000
       )
@@ -127,20 +147,9 @@ Page({
     return data
   },
   // 发起接单请求之后  轮询 一个时间段内 间隔更小的一段时间 连续对服务器发起请求
-  async get_order_state (code) {
+  async get_order_state (id,code) {
     // 参数就是订单id
-    const { data } = await getOrderState(code)
-    if (data.code !== 200) {
-      Dialog.alert({
-        message: `${data.text}`,
-      }).then(() => {
-        this.setData({
-          isShow:false
-        })
-      });
-      // 失败
-      return 
-    }
+    const { data } = await getOrderState(id,code)
     return data
   },
   // 根据用户id获得用户信息

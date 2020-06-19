@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="title">IRH综合服务平台-订单编号{{id}}</view>
+  <view class="price">￥ {{money}}</view>
+  <view class="payee">
+    <view class="item_l">收款方</view>
+    <view class="item_r">IRH综合服务平台</view>
+  </view>
+  <view class="submit_pay">
+    <van-button type="primary" size="large" bind:click="wx_pay">立即支付</van-button>
+  </view>
+</view>
+<view class="tip">支付仅供测试使用,并无实际支付功能</view>
+<van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

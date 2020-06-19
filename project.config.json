@@ -483,6 +483,13 @@
 					"pathName": "suppages/store/lea_Message_detail/lea_Message_detail",
 					"query": "id=1&classid=45",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跑腿支付",
+					"pathName": "suppages/release/errand_pay/errand_pay",
+					"query": "money=1&id=19",
+					"scene": null
 				}
 			]
 		}

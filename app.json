@@ -31,6 +31,7 @@
         "release/release_product/release_product",
         "release/release_demand/release_demand",
         "release/errand/errand",
+        "release/errand_pay/errand_pay",
         "public_service/public_service_index/public_service_index",
         "public_service/public_service_detail/public_service_detail",
         "mine/browsing_history/browsing_history",

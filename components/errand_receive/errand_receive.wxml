@@ -2,6 +2,7 @@
 <!-- 接的单子应该有一个接单时间  距离应完成还剩余多久 这个弄一个倒计时 -->
 <!-- 订单的简略信息 物品描述 起始地点 收货地点 价格 -->
 <!-- 查看详情 这个使用弹框 跑腿人信息展示出来 -->
+<wxs src="../../utils/timeFormat.wxs" module="downtime"></wxs>
 <view class="container">
   <view class="item" wx:for="{{arrList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
     <view class="header">
@@ -23,6 +24,14 @@
       </view>
       <!-- 发布人信息 -->
       <view class="receiverMessage">发布人手机号: {{item.phoneNum}}</view>
+      <view class="downtime">
+        订单倒计时:
+        <van-count-down style="color:red" wx:if="{{downtime.getdowntime(item.createTime,item.requirement)>0&&item.state===3}}" time="{{ downtime.getdowntime(item.createTime,item.requirement) }}" format="HH h mm min ss sec" />
+        <view class="else_b" wx:if="{{downtime.getdowntime(item.createTime,item.requirement)<=0&&item.state===3}}" style="color:red">
+          超时
+        </view>
+        <view class="else_b" wx:if="{{item.state===4}}" style="color:red">已完成</view>
+      </view>
     </view>
     <view class="footer">
       <view class="left">

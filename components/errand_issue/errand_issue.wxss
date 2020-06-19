@@ -42,3 +42,10 @@ view.container view.item view.footer {
 view.container view.item view.footer view.edit button {
   margin-left: 20rpx;
 }
+.timeFlex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.timeFlex van-count-down {
+  margin-left: 4rpx;
+}

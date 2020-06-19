@@ -297,8 +297,6 @@ Page({
   onPullDownRefresh: function() {
     this.setData({
       userInfo: {},
-      // 加载图片基地址
-      imgURL: '',
       // 系统通知 未读
       inform_no_read: 0,
       // at我的未读

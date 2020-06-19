@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-button": "/miniprogram_npm/vant-weapp/button/index",
+    "van-dialog": "/miniprogram_npm/vant-weapp/dialog/index"
+  },
+  "navigationBarTitleText":"支付",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#f1f1f1",
+  "navigationBarTextStyle": "black"
+}

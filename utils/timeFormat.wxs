@@ -41,6 +41,23 @@ var time_for = function (time) {
     return result;
 }
 
+// 传入一个分钟数  返回多少h 多少min
+var get_h_m = function(time) {
+  var time_num = time-0
+  var h = Math.floor(time_num / 60)||0
+  var m = time_num % 60||0
+  return h+'h '+m+'min'
+}
+// 传入两个时间  一个是接单时间  一个是接单之后开始的倒计时时间 分钟*60*1000
+var getdowntime = function(createtime, minutes) {
+  var dateTimeStamp = Date.parse(createtime)+minutes*60*1000
+  var now = Date.now()   //获取当前时间毫秒
+  var diffValue = (dateTimeStamp - now)>0 ? (dateTimeStamp - now):0;//时间差
+  return diffValue
+}
+
 module.exports = {
-  time_for: time_for
+  time_for: time_for,
+  get_h_m: get_h_m,
+  getdowntime:getdowntime
 };

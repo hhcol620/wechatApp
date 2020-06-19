@@ -191,6 +191,10 @@ export const getErrand_detail = (id) => {
 export const releaseErrand = (params) => {
   return postData("/goods/errand", params)
 }
+// 发布跑腿支付
+export const releaseErrand_pay = (id) => {
+  return getData(`/order/pay/errand/${id}`)
+}
 
 //接跑腿订单 接单成功之后会返回一个订单编号
 export const receiveErrand = (id, version) => {
@@ -198,8 +202,8 @@ export const receiveErrand = (id, version) => {
 }
 
 //根据上面这个接口返回的订单id过几秒钟访问该接口查看是否接单成功
-export const getOrderState = (code)=> {
-  return getData(`/order/order/errand/state/${code}`)
+export const getOrderState = (id,code)=> {
+  return getData(`/order/order/errand/state/${id}/${code}`)
 }
 
 //删除跑腿订单  typ取值 5-删除发布的(作为卖家) 6-删除接单(作为买家)   已经完成的情况下

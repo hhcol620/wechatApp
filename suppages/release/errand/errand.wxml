@@ -7,9 +7,10 @@
     </view>
   </view>
   <view class="requirement">
-    <view class="tip">要求</view>
+    <view class="tip">送达时间</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" value="{{requirement}}" data-name="requirement" bindinput="getInputData" placeholder="请输入您对跑手的要求"></textarea>
+      <!-- <textarea show-confirm-bar="{{false}}" value="{{requirement}}" data-name="requirement" bindinput="getInputData" placeholder="请输入您希望跑手多久送达"></textarea> -->
+      <input class="weui-input" value="{{datetime_show}}" bindfocus="opentime" placeholder="请输入您希望跑手多久送达" />
     </view>
   </view>
   <!-- 价格 -->
@@ -49,3 +50,13 @@
 <van-notify id="van-notify" />
 <!-- 成功提示 -->
 <van-dialog id="van-dialog" />
+<van-toast id="van-toast" />
+<!-- 弹出层 -->
+<overlay_self wx:if="{{ time_show }}" bind:click="onClickHide">
+  <view class="wrapper_w">
+    <view class="item">
+      <van-datetime-picker type="time" value="{{ currentDate }}" min-hour="{{ minHour }}" max-hour="{{ maxHour }}" bind:input="onInput" bind:confirm="time_confirm" />
+    </view>
+  </view>
+</overlay_self>
+<wx_loading load-text="加载中" id="loading"></wx_loading>

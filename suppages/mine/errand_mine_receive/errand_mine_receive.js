@@ -42,7 +42,7 @@ Page({
     // 控制主要数据是否显示
     is_show: true
   },
-  // 获取我发布的跑腿订单   state  3 未完成  4已完成
+  // 获取我接到的跑腿订单   state  3 未完成  4已完成
   async getStateErrandList (state) {
     const { pageSize, currentPage } = this.data.stateObj
     const { errandList } = this.data
@@ -56,6 +56,7 @@ Page({
     const list = data.data.data||[]
     errandList.push(...list)
     errandList.sort(createComparisonFunction('createTime'))
+    let c_page = currentPage+1
     if (errandList.length <= 0) {
       this.setData({
         is_show:false
@@ -64,7 +65,8 @@ Page({
     // 关闭顶部加载loading
     wx.stopPullDownRefresh()
     this.setData({
-      ['stateObj.totalCount']:data.data.totalCount,
+      ['stateObj.totalCount']: data.data.totalCount,
+      ['stateObj.currentPage']:c_page,
       errandList
     })
   },
@@ -144,6 +146,15 @@ Page({
       } else if (index === 1) {
         this.getStateErrandList(4) 
       }
+    } else {
+      wx.showToast({
+        title: '没有更多数据了',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+        
     }
   },
 
