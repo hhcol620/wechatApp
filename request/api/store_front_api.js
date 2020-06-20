@@ -116,7 +116,7 @@ export const get_report_list = () => {
   return getData(`/user/report`)
 }
 // 提交举报  type   targetId   customerId   reason   reportTypeIds  pics  这些都放到params
-// type  1商品举报 2留言举报 3评价举报 4帖子举报 5需求举报
+// type  1商品举报 2留言举报 3评价举报 4帖子举报 5需求举报   6跑腿评价申诉
 export const post_report = (params) => {
   return postData(`/user/report`,params)
 }

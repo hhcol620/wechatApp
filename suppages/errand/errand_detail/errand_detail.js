@@ -76,16 +76,17 @@ Page({
       let timer = null
       clearTimeout(timer)
       let tmp = 0
+      let that = this
       timer = setTimeout(
-        async () => {
-          const res = await this.get_order_state(id,code)
+        async function settimeFunc(){
+          const res = await that.get_order_state(id,code)
           tmp = tmp + 1
           
           if (res.code === 1000 && tmp <= 5) {
             // 循环迭代
-            setTimeout(arguments.callee,2000)
+            setTimeout(settimeFunc,2000)
           } else if(res.code === 1000&&tmp>5) {
-            this.setData({
+            that.setData({
               isShow:false
             })
             Dialog.alert({
@@ -96,8 +97,8 @@ Page({
             // 失败
             return 
           }
-          if (res.code !== 200 && res.code !== 1000) {
-            this.setData({
+          if (res.code !== 200) {
+            that.setData({
               isShow:false
             })
             Dialog.alert({
@@ -109,7 +110,7 @@ Page({
             return 
           }
           // 成功
-          this.setData({
+          that.setData({
             isShow:false
           })
           Dialog.alert({

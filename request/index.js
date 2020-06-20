@@ -50,6 +50,10 @@ const getData = (url, params) => {
         let code = result.data.code
         if (code === 402) {
           // Toast('身份过期,请重新登陆');
+          wx.showToast({
+            title: '身份过期,请重新登陆',
+          });
+            
           wx.clearStorageSync();
         }
         reslove(result)
@@ -87,6 +91,9 @@ const postData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
+          wx.showToast({
+            title: '身份过期,请重新登陆',
+          });
           wx.clearStorageSync(); 
         }
       }
@@ -113,6 +120,9 @@ const deleteData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
+          wx.showToast({
+            title: '身份过期,请重新登陆',
+          });
           wx.clearStorageSync(); 
         }
       }
@@ -139,6 +149,9 @@ const putData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
+          wx.showToast({
+            title: '身份过期,请重新登陆',
+          });
           wx.clearStorageSync(); 
         }
       }
@@ -166,6 +179,9 @@ const postFormData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
+          wx.showToast({
+            title: '身份过期,请重新登陆',
+          });
           wx.clearStorageSync(); 
         }
       }

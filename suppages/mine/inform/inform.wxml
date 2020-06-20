@@ -8,7 +8,7 @@
     <view class="content">
       <view class="title">{{newsType.newsType(it.newsType)}}</view>
       <view class="desc">{{it.content}}</view>
-      <view class="more" bind:tap="view_more" data-newstype="{{it.newsType}}" data-targetid="{{it.targetId}}" wx:if="{{it.newsType===30||it.newsType===40||it.newsType===50||it.newsType===60}}">
+      <view class="more" bind:tap="view_more" data-newstype="{{it.newsType}}" data-targetid="{{it.targetId}}" wx:if="{{it.newsType===30||it.newsType===40||it.newsType===50||it.newsType===60||it.newsType===100}}">
         <view>查看更多</view>
         <text class="iconfont icon-jiantou"></text>
       </view>

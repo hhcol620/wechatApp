@@ -1,0 +1,97 @@
+page {
+  background-color: #f6f6f6;
+}
+view.container view.header_item {
+  margin: 30rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+view.container view.header_item view.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container view.header_item view.header view.left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.container view.header_item view.header view.left view.headImg image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+view.container view.header_item view.header view.left view.nickName {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+}
+view.container view.header_item view.commdity_desc {
+  background-color: #f9f9f9;
+  padding: 10rpx;
+  display: flex;
+}
+view.container view.header_item view.commdity_desc view.left.mainImage image {
+  height: 120rpx;
+  width: 120rpx;
+  border-radius: 6rpx;
+}
+view.container view.header_item view.commdity_desc view.right.desc_price {
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+view.container view.header_item view.commdity_desc view.right.desc_price view.desc {
+  font-size: 28rpx;
+  line-height: 36rpx;
+  font-weight: 500;
+  color: #333;
+  font-style: normal;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+view.container view.header_item view.commdity_desc view.right.desc_price view.price {
+  font-size: 30rpx;
+  line-height: 46rpx;
+  font-weight: 500;
+  color: #ff3f34;
+  font-style: normal;
+}
+view.container view.main_item {
+  margin: 30rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 16rpx;
+}
+view.container view.main_item .evaluate_grade {
+  margin-top: 20rpx;
+}
+view.container view.main_item .evaluate_grade .item .item_title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+}
+view.container view.main_item .evaluate_grade .item van-radio-group {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+}
+view.container view.main_item .evaluate_grade .item van-radio-group van-radio {
+  margin-right: 20rpx;
+}
+view.container view.footer_item {
+  margin: 30rpx;
+  width: calc(100vw - 60rpx);
+}
+view.container view.footer_item button {
+  width: calc(100vw - 60rpx);
+}

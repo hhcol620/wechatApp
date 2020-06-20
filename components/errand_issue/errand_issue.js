@@ -63,10 +63,9 @@ Component({
     },
     // 点击完成
     finish(e) {
-      const {
-        id
-      } = e.currentTarget.dataset
-      this.triggerEvent('finishFunc', id)
+      const { id, holderid, ordercode } = e.currentTarget.dataset
+      let obj = {id, holderid, ordercode}
+      this.triggerEvent('finishFunc', obj)
     },
     toDetail(e) {
       const {
@@ -113,6 +112,14 @@ Component({
         complete: () => {}
       });
 
+    },
+    // 写评价
+    write_evaluate (e) {
+      // 这个是订单id   接单人id  holeid
+      const { id,holderid,ordercode } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/suppages/mine/errand_write_evaluate/errand_write_evaluate?id=${id}&holderid=${holderid}&ordercode=${ordercode}`
+      });
     }
   }
 })

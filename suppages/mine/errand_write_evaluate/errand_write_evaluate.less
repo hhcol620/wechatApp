@@ -1,0 +1,112 @@
+page{
+  background-color: #f6f6f6;
+}
+
+view.container {
+  view.header_item {
+    margin: 30rpx;
+    padding: 20rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    view.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      view.left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        view.headImg {
+          image {
+            width: 60rpx;
+            height: 60rpx;
+            border-radius: 50%;
+          }
+        }
+
+        view.nickName {
+          margin-left: 10rpx;
+          font-size: 28rpx;
+          line-height: 36rpx;
+          font-weight: 500;
+          color: #333;
+          font-style: normal;
+        }
+      }
+    }
+    view.commdity_desc {
+      background-color: #f9f9f9;
+      padding: 10rpx;
+      display: flex;
+      view.left.mainImage {
+        image {
+          height: 120rpx;
+          width: 120rpx;
+          border-radius: 6rpx;
+        }
+      }
+
+      view.right.desc_price {
+        margin-left: 10rpx;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        view.desc {
+          font-size: 28rpx;
+          line-height: 36rpx;
+          font-weight: 500;
+          color: #333;
+          font-style: normal;
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        view.price {
+          font-size: 30rpx;
+          line-height: 46rpx;
+          font-weight: 500;
+          color: #ff3f34;
+          font-style: normal;
+        }
+      }
+    }
+  }
+  view.main_item{
+    margin: 30rpx;
+    padding: 20rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    .evaluate_grade {
+      margin-top: 20rpx;
+
+      .item {
+        .item_title {
+          font-size: 28rpx;
+          font-weight: 600;
+          color: #333;
+          line-height: 46rpx;
+          font-style: normal;
+        }
+        van-radio-group{
+          display: flex;
+          align-items: center;
+          height: 60rpx;
+          van-radio{
+            margin-right: 20rpx;
+          }
+        }
+      }
+    }
+  }
+  view.footer_item{
+    margin: 30rpx;
+    width: calc(~"100vw - 60rpx");
+    button{
+      width: calc(~"100vw - 60rpx");
+    }
+  }
+}

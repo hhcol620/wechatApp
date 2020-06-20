@@ -51,6 +51,7 @@
         "mine/errand_mine_receive/errand_mine_receive",
         "mine/errand_order_detail/errand_order_detail",
         "mine/store_write_evaluate/store_write_evaluate",
+        "mine/errand_write_evaluate/errand_write_evaluate",
         "errorPage/errorPage/errorPage"
       ]
     }

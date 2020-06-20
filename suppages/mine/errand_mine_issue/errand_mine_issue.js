@@ -43,7 +43,7 @@ Page({
     // 控制主要数据是否显示
     is_show: true
   },
-  // 获取我发布的跑腿订单   state  2 没有被接单的  3 已经被接单   4已完成
+  // 获取我发布的跑腿订单   state  2 没有被接单的 
   async getStateErrandList (state) {
     const { pageSize, currentPage } = this.data.stateObj
     const { errandList } = this.data
@@ -70,7 +70,7 @@ Page({
       ['stateObj.currentPage']:c_page
     })
   },
-  // 获取已完成的跑腿订单
+  // 获取已完成的跑腿订单 3 已经被接单   4已完成
   async getFinishErrandList (state) {
     // state 4
     // 
@@ -114,7 +114,7 @@ Page({
     if (index === 0) {
       await this.getStateErrandList(2)
     } else if (index === 1) {
-      await this.getStateErrandList(3) 
+      await this.getFinishErrandList(3) 
     } else if (index == 2) {
       await this.getFinishErrandList(4)
     }
@@ -186,31 +186,40 @@ Page({
   finishErrand (e) {
     // console.log(e.detail);
     const { errandList } = this.data
-    const id = e.detail
-    Dialog.confirm({
-      message: '亲点击确定表示已经收到货了'
-    }).then(async () => {
-      const res = await this.finish_errand_order(id)
-      if (res.code !== 200) {
-        Dialog.confirm({
-          message: `${res.text}`
-        })
-        return
-      }
-      // 这里进行一个遍历循环  然后本地删除id对应的一项
-      errandList.forEach((item,index) => {
-        if (item.id == id) {
-          // 删除这一项
-          errandList.splice(index,1)
-        }
-      })
-      this.setData({
-        errandList
-      })
+    console.log(e);
+    const {id, holderid, ordercode} = e.detail
+    // Dialog.confirm({
+    //   message: '亲点击确定表示已经收到货了'
+    // }).then(async () => {
+      // const res = await this.finish_errand_order(id)
+      // if (res.code !== 200) {
+      //   Dialog.confirm({
+      //     message: `${res.text}`
+      //   })
+      //   return
+      // }
+      // // 这里进行一个遍历循环  然后本地删除id对应的一项
+      // errandList.forEach((item,index) => {
+      //   if (item.id == id) {
+      //     // 删除这一项
+      //     errandList.splice(index,1)
+      //   }
+      // })
+      // this.setData({
+      //   errandList
+      // })
+      
 
+    // }).catch(() => {
+    //   // on cancel
+    // });
+    Dialog.confirm({ message: '您需要先完成对此次服务的评价哦' }).then(() => {
+      wx.navigateTo({
+        url: `/suppages/mine/errand_write_evaluate/errand_write_evaluate?id=${id}&holderid=${holderid}&ordercode=${ordercode}`
+      });
     }).catch(() => {
-      // on cancel
-    });
+      
+    })
   },
   // 点击完成
   async finish_errand_order (id) {
@@ -232,13 +241,15 @@ Page({
     this.setData({
       ['stateObj.totalCount']: 0,
       ['stateObj.currentPage']: 1,
-      errandList:[]
+      errandList: [],
+      // 控制主要数据是否显示
+      is_show: true
     })
     const index = this.data.active
     if (index === 0) {
       await this.getStateErrandList(2)
     } else if (index === 1) {
-      await this.getStateErrandList(3) 
+      await this.getFinishErrandList(3) 
     } else if (index == 2) {
       await this.getFinishErrandList(4)
     }
@@ -251,7 +262,7 @@ Page({
       if (index === 0) {
         await this.getStateErrandList(2)
       } else if (index === 1) {
-        await this.getStateErrandList(3) 
+        await this.getFinishErrandList(3) 
       } else if (index == 2) {
         await this.getFinishErrandList(4)
       }

@@ -37,6 +37,9 @@ var newsType = function (num) {
       case 90:
         result = "文章审核"
       break;
+      case 100:
+        result = "跑腿评价通知"
+      break;
     default:
       result = "其他留言"
       break;

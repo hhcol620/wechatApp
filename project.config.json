@@ -490,6 +490,13 @@
 					"pathName": "suppages/release/errand_pay/errand_pay",
 					"query": "money=1&id=19",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "写跑腿评价",
+					"pathName": "suppages/mine/errand_write_evaluate/errand_write_evaluate",
+					"query": "id=10&holderid=14&ordercode=1272152339880345600",
+					"scene": null
 				}
 			]
 		}

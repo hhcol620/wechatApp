@@ -196,6 +196,16 @@ export const releaseErrand_pay = (id) => {
   return getData(`/order/pay/errand/${id}`)
 }
 
+// 写跑腿的评价
+export const errand_write_evaluate=(params) => {
+  return postData(`/order/errand/evaluate`,params)
+}
+
+// 查看跑腿的评价
+export const get_errand_evaluate=(orderid) => {
+  return getData(`/order/errand/evaluate/${orderid}`)
+}
+
 //接跑腿订单 接单成功之后会返回一个订单编号
 export const receiveErrand = (id, version) => {
   return getData(`/order/order/errand/${id}/${version}`)
@@ -215,9 +225,10 @@ export const deleteErrandOrder_noreceive = (id, version) => {
   return deleteData(`/goods/errand/${id}/${version}`)
 }
 // 完成跑腿订单
-export const finishErrandOrder = (id) => {
-  return getData(`/order/order/errand/finish/${id}`)
+export const finishErrandOrder = (id,params) => {
+  return postData(`/order/order/errand/finish/${id}`,params)
 }
+
 
 //查看跑腿订单信息 我发布的 list state 2 没有被接单的 3已经被接单 4 已完成
 export const getMyErrandOrder = (pageSize,currentPage, state)=> {

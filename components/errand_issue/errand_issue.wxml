@@ -43,9 +43,12 @@
         <van-button plain type="primary" round size="small" bind:click="contactReceiver" wx:if="{{item.state === 3}}" data-phoneNum="{{item.phoneNum}}">
           联系接单人
         </van-button>
+        <!-- <van-button plain type="primary" round size="small" wx:if="{{item.state === 4}}" bind:click="write_evaluate" data-id="{{item.id}}" data-holderid="{{item.holderId}}" data-ordercode="{{item.orderCode}}">
+          评价
+        </van-button> -->
       </view>
       <view class="edit">
-        <van-button plain type="primary" round size="small" bind:click="finish" data-id="{{item.id}}" wx:if="{{item.state === 3}}">
+        <van-button plain type="primary" round size="small" bind:click="finish" data-id="{{item.id}}" data-holderid="{{item.holderId}}" data-ordercode="{{item.orderCode}}" wx:if="{{item.state === 3}}">
           完成
         </van-button>
         <van-button plain type="primary" round size="small" bind:click="delete" data-id="{{item.id}}" data-version="{{item.version}}" data-state="{{item.state}}" wx:if="{{item.state !== 3}}">

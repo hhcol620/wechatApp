@@ -1,6 +1,8 @@
 import regeneratorRuntime from '../../../lib/runtime/runtime.js'
 // 排序
-import { createComparisonFunction } from '../../../utils/sort_self.js'
+import {
+  createComparisonFunction
+} from '../../../utils/sort_self.js'
 
 
 // suppages/store/inform/inform.js
@@ -8,7 +10,8 @@ import {
   getSystemInfoSync
 } from "../../../miniprogram_npm/vant-weapp/common/utils";
 import {
-  getSystemNews,get_read_all
+  getSystemNews,
+  get_read_all
 } from '../../../request/api/store_api.js'
 
 //获取应用实例
@@ -54,20 +57,20 @@ Page({
     wx.stopPullDownRefresh()
     this.data.totalCount = data.data.totalCount;
     let cpage = currentPage + 1
-    let list = data.data.data||[]
+    let list = data.data.data || []
     evaluateList.push(...list)
     evaluateList.sort(createComparisonFunction('createTime'))
     if (evaluateList.length <= 0) {
       this.setData({
-        is_show:false
+        is_show: false
       })
     }
-    
+
     this.setData({
       evaluateList: evaluateList,
       currentPage: cpage
     })
-    
+
   },
   // 查看更多 
   /* 
@@ -77,54 +80,67 @@ Page({
   view_more(e) {
     // console.log(e.currentTarget.dataset);
     const {
-      newstype,targetid
+      newstype,
+      targetid
     } = e.currentTarget.dataset
-    console.log(newstype,targetid);
+    console.log(newstype, targetid);
     switch (newstype) {
       case 30:
         // 跳转到跑腿订单
         wx.navigateTo({
           url: `/suppages/mine/errand_order_detail/errand_order_detail?id=${targetid}`,
           success: (result) => {
-            
+
           },
           fail: () => {},
           complete: () => {}
         });
         break;
       case 40:
-          // 商城订单通知
-          wx.navigateTo({
-            url: `/suppages/mine/store_orders_detail/store_orders_detail?orderid=${targetid}`,
-            success: (result) => {
-              
-            },
-            fail: () => {},
-            complete: () => {}
-          });
-        break;
-      case 50:
-            // 跳转商城公益基金
-            wx.navigateTo({
-              url: `/suppages/public_service/public_service_detail/public_service_detail?id=${targetid}&type=5`,
-              success: (result) => {
-                
-              },
-              fail: () => {},
-              complete: () => {}
-            });
-        break;
-      case 60:
-          // 跳转到商城评价
+        // 商城订单通知
         wx.navigateTo({
           url: `/suppages/mine/store_orders_detail/store_orders_detail?orderid=${targetid}`,
           success: (result) => {
-            
+
           },
           fail: () => {},
           complete: () => {}
         });
-          
+        break;
+      case 50:
+        // 跳转商城公益基金
+        wx.navigateTo({
+          url: `/suppages/public_service/public_service_detail/public_service_detail?id=${targetid}&type=5`,
+          success: (result) => {
+
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+        break;
+      case 60:
+        // 跳转到商城评价
+        wx.navigateTo({
+          url: `/suppages/mine/store_orders_detail/store_orders_detail?orderid=${targetid}`,
+          success: (result) => {
+
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+
+        break;
+      case 100:
+        // 跳转到跑腿详情
+        wx.navigateTo({
+          url: `/suppages/mine/errand_order_detail/errand_order_detail?id=${targetid}`,
+          success: (result) => {
+
+          },
+          fail: () => {},
+          complete: () => {}
+        });
+
         break;
       default:
         // 提示未知错误
@@ -135,14 +151,16 @@ Page({
           duration: 1500,
           mask: false
         });
-          
+
         break;
     }
   },
 
   // 进入这个页面  全部标记已读  系统通知传1
-  async sign_read_all () {
-    const { data } = await get_read_all(1)
+  async sign_read_all() {
+    const {
+      data
+    } = await get_read_all(1)
     console.log(data);
     if (data.code !== 200) {
       wx.showToast({
@@ -152,7 +170,7 @@ Page({
         duration: 1500,
         mask: false
       });
-        
+
       return
     }
   },
@@ -209,7 +227,11 @@ Page({
    */
   onReachBottom: function() {
     // 页面触底进行判断 是否还有下一页 有下一页的话则请求  无则提示
-    const { pageSize, currentPage, totalCount } = this.data
+    const {
+      pageSize,
+      currentPage,
+      totalCount
+    } = this.data
     let num = Math.ceil((totalCount / pageSize))
     if (currentPage <= num) {
       // 可以请求
@@ -222,12 +244,12 @@ Page({
         duration: 1500,
         mask: false,
         success: (result) => {
-          
+
         },
         fail: () => {},
         complete: () => {}
       });
-        
+
     }
   },
 

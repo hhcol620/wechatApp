@@ -27,7 +27,7 @@ App({
     // uploadImgURL: 'https://222.186.174.9:13163/api/file/file',
     // 请求基地址
     // baseUrl: "https://222.186.174.9:13163/api",
-    baseUrl: "https://www.imuster.top/test/api",
+    baseUrl: "https://www.imuster.top/api",
     // access_token  请求里面设置的Authorization  当登陆成功设置这个并保存本地一个
     access_token: '',
     // cookie

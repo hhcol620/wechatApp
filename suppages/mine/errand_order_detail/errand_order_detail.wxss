@@ -68,6 +68,23 @@ view.main view.top view.other_mess {
   line-height: 46rpx;
   font-style: normal;
 }
+view.main view.top_two {
+  margin-bottom: 20rpx;
+}
+view.main view.top_two view.title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 46rpx;
+  font-style: normal;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+view.main view.top_two view.title .item:nth-child(2) {
+  font-weight: 500;
+  color: #4d4d4d;
+}
 view.main view.bottom .remark view.title {
   font-size: 28rpx;
   font-weight: 600;
