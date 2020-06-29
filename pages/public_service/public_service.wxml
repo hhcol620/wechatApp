@@ -1,0 +1,13 @@
+<!-- 这应该是一个列表区域 不加搜索不加分页  采用下拉自动加载更新 -->
+<view class="container">
+  <van-tabs active="{{ active }}" color="var(--themeColor)" bind:click="tabsClick">
+    <van-tab title="正在审核">
+      <public_service_list arrList="{{donationList}}" imgURL="{{imgURL}}" class="list" ids="{{box_index}}"></public_service_list>
+    </van-tab>
+    <van-tab title="审核成功">
+      <public_service_list arrList="{{donationList}}" imgURL="{{imgURL}}" class="list" ids="{{box_index}}"></public_service_list>
+    </van-tab>
+  </van-tabs>
+</view>
+<van-dialog id="van-dialog" />
+<wx_loading load-text="加载中" id="loading"></wx_loading>

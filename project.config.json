@@ -497,6 +497,12 @@
 					"pathName": "suppages/mine/errand_write_evaluate/errand_write_evaluate",
 					"query": "id=10&holderid=14&ordercode=1272152339880345600",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "公益",
+					"pathName": "pages/public_service/public_service",
+					"scene": null
 				}
 			]
 		}

@@ -9,7 +9,8 @@
     "pages/retrieve_password/retrieve_password",
     "pages/wechat_binding/wechat_binding",
     "pages/school_inform/school_inform",
-    "pages/advertising/advertising"
+    "pages/advertising/advertising",
+    "pages/public_service/public_service"
   ],
   "subPackages": [ 
     { 
@@ -58,14 +59,14 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#2ecc71",
+    "navigationBarBackgroundColor": "#2966C1",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#4d4d4d"
   },
   "tabBar": {
     "color": "#333",
-    "selectedColor": "#2ecc71",
+    "selectedColor": "#2966C1",
     "backgroundColor": "#fefefe",
     "position": "bottom",
     "borderStyle": "black",
@@ -73,14 +74,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./icons/icon_font_img/shouye.png",
-        "selectedIconPath": "./icons/icon_font_img/shouye-select.png"
+        "iconPath": "./icons/icon_font_img/index.png",
+        "selectedIconPath": "./icons/icon_font_img/index-select.png"
       }, 
+      {
+        "pagePath": "pages/public_service/public_service",
+        "text": "公益",
+        "iconPath": "./icons/icon_font_img/gongyi.png",
+        "selectedIconPath": "./icons/icon_font_img/gongyi-select.png"
+      },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "./icons/icon_font_img/wode.png",
-        "selectedIconPath": "./icons/icon_font_img/wode-select.png"
+        "iconPath": "./icons/icon_font_img/mine.png",
+        "selectedIconPath": "./icons/icon_font_img/mine-select.png"
       }
     ]
   },

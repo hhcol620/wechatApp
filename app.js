@@ -5,6 +5,7 @@ import Dialog from './miniprogram_npm/vant-weapp/dialog/dialog';
 // 排序
 import { createComparisonFunction } from './utils/sort_self.js'
 
+// import './style/iconfont/iconfont.js' 
 
 App({
   onLaunch: function() {

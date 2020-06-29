@@ -9,15 +9,15 @@ page {
   .card {
     margin: 0 20rpx;
     padding: 20rpx;
-    min-height: 260rpx;
+    min-height: 200rpx;
     border-radius: 10rpx;
     background-color: var(--themeColor);
     display: flex;
     position: relative;
 
     .headImg {
-      width: 150rpx;
-      height: 150rpx;
+      width: 100rpx;
+      height: 100rpx;
       image {
         width: 100%;
         height: 100%;
@@ -65,15 +65,18 @@ page {
         font-weight: 500;
       }
       .sign {
-        margin-top: 20rpx;
         color: #fff;
         font-size: 24rpx;
         line-height: 30rpx;
         font-style: normal;
         font-weight: 500;
         border-radius: 21rpx;
-        padding: 6rpx 10rpx;
-        // border: 1px solid #fff;
+        padding: 0 10rpx;
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+
       }
     }
     .noLogin{
@@ -97,59 +100,41 @@ page {
 }
 
 .main{
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   .item{
     background-color: #fff;
     margin-top:10rpx;
     .title{
       padding: 0 20rpx;
       font-size: 30rpx;
-      line-height: 80rpx;
-      height: 80rpx;
       font-weight: 600;
       color: #4d4d4d;
       font-style: normal;
+      padding-top: 20rpx;
     }
     .container{
       .iconfont{
         font-size: 40rpx;
         color: #4d4d4d;
       }
-      // button.iconfont{
-      //   font-size: 40rpx;
-      //   background-color: #fff;
-      //   color: #666;
-      //   line-height: 70rpx;
-      //   &::after{
-      //     border: none;
-      //   }
-      // }
-      // button.text{
-      //   font-size: 24rpx;
-      //   background-color: #fff;
-      //   color: #666;
-      //   line-height: 30rpx;
-        
-      // }
     }
   }
   .itemList{
     display: flex;
     flex-wrap: wrap;
     width: none;
-    border-top: 1rpx solid var(--borderColor);
+    // border-top: 1rpx solid var(--borderColor);
     .item_i{
       width: 25%;
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      // border-top: 1rpx solid var(--borderColor);
-      border-left: 1rpx solid var(--borderColor);
-      border-bottom: 1rpx solid var(--borderColor);
+      // border-left: 1rpx solid var(--borderColor);
+      // border-bottom: 1rpx solid var(--borderColor);
       box-sizing: border-box;
       &:last-child{
-        border-right: 1rpx solid var(--borderColor);
+        // border-right: 1rpx solid var(--borderColor);
       }
       .item_nav{
         line-height: 120rpx;

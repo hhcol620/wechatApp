@@ -2,6 +2,8 @@
 @import "./style/iconfont/iconfont.wxss";
 /* animate动画 */
 @import "./style/animate/animate.wxss";
+/* 我的里面的图标 */
+@import "./style/iconfont/mine_iconfont.wxss";
 /* 在微信小程序中不支持通配符 */
 page,view,text,swiper,swiper-item,image,navigator{
   padding: 0;
@@ -42,7 +44,8 @@ page,view,text,swiper,swiper-item,image,navigator{
 */
 
 page{
-  --themeColor:#2ecc71;
+  /* --themeColor:#2ecc71; */
+  --themeColor:#2966C1;
   --borderColor:#ecf0f1;
   --iconALIColor:#e74c3c;
   --iconORAColor:#f39c12;
@@ -51,3 +54,11 @@ page{
   --iconTURColor:#1abc9c;
   font-size: 28rpx;
 }
+
+/* .icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+} */
