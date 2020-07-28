@@ -129,12 +129,10 @@ page {
   height: 120rpx;
   margin-top: 30rpx;
 }
-.main .itemList .item_i .iconfont {
-  font-size: 40rpx;
-  line-height: 60rpx;
+.main .itemList .item_i .icon {
   position: relative;
 }
-.main .itemList .item_i .iconfont > view {
+.main .itemList .item_i .icon > view {
   position: absolute;
   height: 34rpx;
   border-radius: 17rpx;

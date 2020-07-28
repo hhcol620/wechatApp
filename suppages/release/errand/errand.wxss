@@ -162,6 +162,7 @@ view.container view.remark .content_box textarea {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 }
 .wrapper_w .item {
   width: 460rpx;

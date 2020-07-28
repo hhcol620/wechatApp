@@ -331,7 +331,7 @@ Page({
         message: '您还未登录,请登陆后再来留言哦',
       })
         .then(() => {
-          wx.wx.navigateTo({
+          wx.navigateTo({
             url: '/pages/login/login',
             success: (result) => {
               

@@ -10,7 +10,9 @@
     "pages/wechat_binding/wechat_binding",
     "pages/school_inform/school_inform",
     "pages/advertising/advertising",
-    "pages/public_service/public_service"
+    "pages/public_service/public_service",
+    "pages/chatlist/list",
+    "pages/chatroom/room"
   ],
   "subPackages": [ 
     { 
@@ -82,6 +84,12 @@
         "text": "公益",
         "iconPath": "./icons/icon_font_img/gongyi.png",
         "selectedIconPath": "./icons/icon_font_img/gongyi-select.png"
+      },
+      {
+        "pagePath": "pages/chatlist/list",
+        "text": "消息",
+        "iconPath": "./icons/icon_font_img/goutong.png",
+        "selectedIconPath": "./icons/icon_font_img/goutong-select.png"
       },
       {
         "pagePath": "pages/mine/mine",

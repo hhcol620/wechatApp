@@ -32,6 +32,8 @@ App({
     // access_token  请求里面设置的Authorization  当登陆成功设置这个并保存本地一个
     access_token: '',
     // cookie
-    userAccessToken:''
+    userAccessToken:'',
+    // 全部变量做判断
+    isNavi:1
   }
 })

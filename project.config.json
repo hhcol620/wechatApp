@@ -502,6 +502,13 @@
 					"id": -1,
 					"name": "公益",
 					"pathName": "pages/public_service/public_service",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/chatlist/list",
 					"scene": null
 				}
 			]

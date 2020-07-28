@@ -3,21 +3,21 @@
   <view class="desc">
     <view class="tip">描述</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" value="{{mian_desc}}" data-name="mian_desc" bindinput="getInputData" placeholder="请输入你想让跑手帮忙干什么,如取快递的地址,目的地地址"></textarea>
+      <textarea show-confirm-bar="{{false}}" value="{{mian_desc}}" data-name="mian_desc" bindinput="getInputData" placeholder="请输入你想让跑手帮忙干什么,如取快递的地址,目的地地址" placeholder-class="placeholder_css"></textarea>
     </view>
   </view>
   <view class="requirement">
     <view class="tip">送达时间</view>
     <view class="content_box">
       <!-- <textarea show-confirm-bar="{{false}}" value="{{requirement}}" data-name="requirement" bindinput="getInputData" placeholder="请输入您希望跑手多久送达"></textarea> -->
-      <input class="weui-input" value="{{datetime_show}}" bindfocus="opentime" placeholder="请输入您希望跑手多久送达" />
+      <input class="weui-input" value="{{datetime_show}}" adjust-position="{{false}}" bindtap="opentime" disabled placeholder="请输入您希望跑手多久送达" placeholder-class="placeholder_css" />
     </view>
   </view>
   <!-- 价格 -->
   <view class="price">
     <view class="tip">价格</view>
     <view class="price_content">
-      <input class="weui-input" value="{{price}}" data-name="price" bindinput="getInputData" type="digit" placeholder="请输入您提供佣金的金额" />
+      <input class="weui-input" value="{{price}}" data-name="price" bindinput="getInputData" type="digit" placeholder="请输入您提供佣金的金额" placeholder-class="placeholder_css" />
     </view>
   </view>
   <!-- 这个位置放一个小提示 提醒用户下面的信息属于隐私类信息 我们不会直接提供显示给每一个用户  只有接单的人才允许收到这部分数据 -->
@@ -25,20 +25,20 @@
   <view class="tel">
     <view class="tip">手机</view>
     <view class="tel_content">
-      <input class="weui-input" value="{{telNum}}" data-name="telNum" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手及时能联系到您" />
+      <input class="weui-input" value="{{telNum}}" data-name="telNum" bindinput="getInputData" type="number" placeholder="请如实填写,方便跑手及时能联系到您" placeholder-class="placeholder_css" />
     </view>
   </view>
   <view class="address">
     <view class="tip">地址</view>
     <view class="tel_content">
-      <input class="weui-input" value="{{address}}" data-name="address" bindinput="getInputData" type="text" placeholder="请如实填写,方便跑手准确送到货物" />
+      <input class="weui-input" value="{{address}}" data-name="address" bindinput="getInputData" type="text" placeholder="请如实填写,方便跑手准确送到货物" placeholder-class="placeholder_css" />
     </view>
   </view>
   <!-- 备注信息 -->
   <view class="remark">
     <view class="tip">备注</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" value="{{remark}}" data-name="remark" bindinput="getInputData" placeholder="请输入您的备注信息，比如快递柜取件码，快递手机号，快递单号之类的"></textarea>
+      <textarea show-confirm-bar="{{false}}" value="{{remark}}" data-name="remark" bindinput="getInputData" placeholder="请输入您的备注信息，比如快递柜取件码，快递手机号，快递单号之类的" placeholder-class="placeholder_css"></textarea>
     </view>
   </view>
 </view>

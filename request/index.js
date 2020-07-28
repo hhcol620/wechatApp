@@ -49,12 +49,22 @@ const getData = (url, params) => {
         // console.log(result);
         let code = result.data.code
         if (code === 402) {
-          // Toast('身份过期,请重新登陆');
-          wx.showToast({
-            title: '身份过期,请重新登陆',
-          });
-            
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync();
+
+          
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+                app.globalData.isNavi = 0
+          }
         }
         reslove(result)
       },
@@ -63,8 +73,20 @@ const getData = (url, params) => {
       },
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
-          Toast('身份过期,请重新登陆');
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync();
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+            app.globalData.isNavi = 0
+        }
             
         }
       }
@@ -91,10 +113,20 @@ const postData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
-          wx.showToast({
-            title: '身份过期,请重新登陆',
-          });
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync(); 
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+            app.globalData.isNavi = 0
+      }
         }
       }
     });
@@ -120,10 +152,20 @@ const deleteData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
-          wx.showToast({
-            title: '身份过期,请重新登陆',
-          });
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync(); 
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+            app.globalData.isNavi = 0
+      }
         }
       }
     });
@@ -149,10 +191,20 @@ const putData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
-          wx.showToast({
-            title: '身份过期,请重新登陆',
-          });
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync(); 
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+            app.globalData.isNavi = 0
+      }
         }
       }
     });
@@ -179,10 +231,20 @@ const postFormData = (url, params) => {
       complete: (e) => {
         if (e.statusCode === 401||e.statusCode === 402) {
           // Toast('身份过期,请重新登陆');
-          wx.showToast({
-            title: '身份过期,请重新登陆',
-          });
+          // wx.showToast({
+          //   title: '身份过期,请重新登陆',
+          //   icon: 'none',
+          //   image: '',
+          //   duration: 1500,
+          //   mask: false
+          // });
           wx.clearStorageSync(); 
+          if(app.globalData.isNavi === 1){
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+            app.globalData.isNavi = 0
+      }
         }
       }
     });

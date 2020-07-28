@@ -82,17 +82,6 @@ Page({
         duration: 1500,
         mask: false,
         success: (result) => {
-          // if (data.code === 402) {
-          //   wx.navigateTo({
-          //     url: '/pages/login/login',
-          //     success: (result) => {
-
-          //     },
-          //     fail: () => {},
-          //     complete: () => {}
-          //   });
-
-          // }
         },
         fail: () => {},
         complete: () => {}
@@ -254,7 +243,6 @@ Page({
       imgURL
     })
     this.redirectToLogin()
-    // this.isBind()
   },
 
   /**
@@ -272,9 +260,6 @@ Page({
       imgURL
     })
     this.redirectToLogin()
-    // this.getmyinfo()
-    // this.getUnRead()
-    // this.isBind()
   },
 
   /**

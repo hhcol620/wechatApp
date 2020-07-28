@@ -37,6 +37,11 @@ page,view,text,swiper,swiper-item,image,navigator{
   border-bottom-right-radius: 10rpx;
 }
 
+.placeholder_css{
+  z-index: 99;
+  color: #999;
+}
+
 /* 
   定义主题颜色  通过变量来实现
   其他地方如果需要使用可以按照下面这种方式

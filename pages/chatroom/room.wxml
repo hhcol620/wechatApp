@@ -1,0 +1,58 @@
+<view class='page_bg' wx:if='{{block}}' bindtap='hide_bg' />
+<view class='btn_bg' wx:if='{{block}}'>
+  <view wx:for="{{link_list}}" wx:key='index'>
+    <button class="sp_tit" id='{{index}}' bindtap='list_item'>查看详情 {{item}}</button>
+  </view>
+</view>
+<scroll-view class="history" scroll-y="true" scroll-with-animation scroll-top="{{scrollTop}}">
+  <block wx:key="{{index}}" wx:for="{{allContentList}}">
+    <!-- <view>
+      <text class='time'>{{time}}</text>
+    </view> -->
+    <view class='my_right' wx:if="{{item.is_my}}">
+      <view class='p_r' wx:if='{{item.is_my.text}}'>
+        <text class='new_txt'>
+          <text class='new_txt_my'>{{item.is_my.text}}</text>
+        </text>
+        <view class='sanjiao my'></view>
+        <image class='new_img' src='/images/test.jpg'></image>
+      </view>
+      <view class='p_r' wx:if='{{item.is_my.img}}' bindtap='my_audio_click' data-id='{{index}}'>
+        <text class='new_txt'></text>
+        <view class='my_img_bg'>
+          <image class='my_audio' src='{{img}}'></image>
+        </view>
+        <view class='sanjiao my'></view>
+        <image class='new_img' src='/images/test.jpg'></image>
+      </view>
+    </view>
+    <!-- <view class='you_left' id='id_{{allContentList.length}}'> -->
+    <view class='you_left' id='id_{{allContentList.length}}' wx:key="{{index}}" wx:if="{{item.is_ai}}">
+      <view class='p_r'>
+        <image class='new_img' src='/images/chac.jpg'></image>
+        <view class='sanjiao you'></view>
+        <view class='new_txt'>
+          <view class='new_txt_ai'>
+            <!-- {{item.text}} -->
+            <block wx:for='{{item.is_two}}' wx:key='index'>
+              <text wx:if='{{item.text}}'>{{item.text}}</text>
+              <text wx:if='{{item.a.title}}' style='color:#0000EE' bindtap='link' id='{{item.a.link}}'>
+                {{item.a.title}}
+              </text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+<view class="sendmessage">
+  <image class='voice_icon' bindtap='addImg' src='/images/jia_img.png'></image>
+  <block wx:if='{{!addImg}}'>
+    <input type="text" bindinput="bindKeyInput" value='{{inputValue}}' focus='{{focus}}' bindfocus="focus" confirm-type="done" placeholder="" />
+    <button bindtap="submitTo" class='user_input_text'>发送</button>
+  </block>
+  <block wx:if='{{addImg}}'>
+    <view class='voice_ing' bindtap="upimg">发送图片</view>
+  </block>
+</view>

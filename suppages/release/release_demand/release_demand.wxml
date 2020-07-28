@@ -3,14 +3,14 @@
   <view class="title">
     <view class="tip">*标题</view>
     <view class="title_content">
-      <input class="weui-input" type="text" value="{{title}}" data-name="title" placeholder="请输入标题" bindinput="getInputData" />
+      <input class="weui-input" type="text" value="{{title}}" data-name="title" placeholder="请输入标题" bindinput="getInputData" placeholder-class="placeholder_css" />
     </view>
   </view>
   <!-- 描述 -->
   <view class="desc">
     <view class="tip">*描述</view>
     <view class="content_box">
-      <textarea show-confirm-bar="{{false}}" value="{{productDesc}}" data-name="productDesc" bindinput="getInputData" placeholder="请输入描述(也可以包含价格哦)" bindblur="getTagsRecommend"></textarea>
+      <textarea show-confirm-bar="{{false}}" value="{{productDesc}}" data-name="productDesc" bindinput="getInputData" placeholder="请输入描述(也可以包含价格哦)" bindblur="getTagsRecommend" placeholder-class="placeholder_css"></textarea>
     </view>
   </view>
   <!-- 选择主图 -->
@@ -44,7 +44,7 @@
   <view class="setTags">
     <view class="tip">*标签</view>
     <view class="setTags_content">
-      <input class="weui-input" type="text" value="{{tagNames}}" data-name="tagNames" placeholder="请输入标签关键词 使用空格分开" bindinput="getInputData" bindblur="getUpTags" />
+      <input class="weui-input" type="text" value="{{tagNames}}" data-name="tagNames" placeholder="请输入标签关键词 使用空格分开" bindinput="getInputData" bindblur="getUpTags" placeholder-class="placeholder_css" />
     </view>
   </view>
   <view class="get_rec_Tags">

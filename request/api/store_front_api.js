@@ -177,3 +177,7 @@ export const get_add_swipers_history = (id) => {
   return getData(`/goods/rotation/browse/${id}`)
 }
 
+// 获得所有的捐赠
+export const get_all_donation = (pageSize,currentPage) => {
+  return getData(`/order/donation/all/${pageSize}/${currentPage}`)
+}

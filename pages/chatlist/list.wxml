@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="item" bind:tap="to_chat_room">
+    <view class="left_container">
+      <view class="left head_img">
+        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573335722703.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+      </view>
+      <view class="middle">
+        <view class="middle_head">张三</view>
+        <view class="middle_middle">东西还在吗??</view>
+        <view class="middle_foot">刚刚</view>
+      </view>
+    </view>
+    <view class="right product_img">
+      <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573335722703.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+    </view>
+  </view>
+</view>

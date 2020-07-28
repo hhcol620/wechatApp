@@ -9,7 +9,7 @@
       <!-- <view class="sponsor">活动主办方 : {{item.applyUserInfo.nickname}}</view> -->
       <view class="main">
         <!-- <image class="" src="{{imgURL}}/{{item.pic}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" /> -->
-        <image class="" src="https://image.suning.cn/uimg/ZR/share_order/158742573158888363.jpg" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
+        <image class="" src="{{imgURL}}/{{item.reasonPicUrl}}" mode="aspectFill" lazy-load="false" binderror="" bindload="" />
       </view>
       <!-- 下面放置 浏览量 网友对此次活动的支持度 -->
       <view class="footer">

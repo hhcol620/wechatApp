@@ -128,6 +128,7 @@ Page({
     const userAccessToken = wx.getStorageSync('userAccessToken');
     app.globalData.access_token = 'bearer ' +  accessToken
     app.globalData.userAccessToken = userAccessToken
+    app.globalData.isNavi = 1
     // 获取登陆信息
     // await this.getmyinfo()
     // 存储成功之后 返回上一页
@@ -356,6 +357,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    app.globalData.isNavi = 1
 
   },
 
@@ -363,6 +365,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    app.globalData.isNavi = 1
 
   },
 
